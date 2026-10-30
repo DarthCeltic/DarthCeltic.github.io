@@ -3,3 +3,25 @@
 *.ico binary
 proofs/first-rung/evidence/composite-counterexample-r1/check.json -text -eol -diff
 proofs/first-rung/evidence/prime-sqrt2-model-reuse-r2/sqrt2-child-compile.stdout.txt -text -eol -diff
+*.olean binary
+docs/portable-hero/evidence/** -text -eol -diff
+proofs/first-rung/evidence/prime-sqrt2-model-reuse-r2/** -text -eol -diff
+proofs/first-rung/evidence/composite-counterexample-r1/** -text -eol -diff
+proofs/first-rung/MathCasePrimeInfiniteDescent.lean -text -eol -diff
+proofs/first-rung/MathCaseSqrtTwoInfiniteDescent.lean -text -eol -diff
+data/local/staging/problem-queue/experimental-campaign/post30-prime-divisibility-r1/source-binding.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/calls/provider-call-03fc4531d62acfb94a871d921ad5bc67.receipt.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/calls/provider-call-03fc4531d62acfb94a871d921ad5bc67.request.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/calls/provider-call-03fc4531d62acfb94a871d921ad5bc67.response.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/calls/provider-call-165cbb886bd767baa84793dd35f1094c.receipt.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/calls/provider-call-165cbb886bd767baa84793dd35f1094c.request.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/calls/provider-call-165cbb886bd767baa84793dd35f1094c.response.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/completion-receipt.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/launch-receipt.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/lean-receipts/lean-48a7b6c489cdefa1e7783ffdefbd6f24.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/lean-receipts/lean-bd896ed31a768edc2eced91df6ac52f2.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/lean-receipts/lean-ddfc54f448b3f8237561ccad22c4496d.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/problem.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/provider-solve.json -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/stderr.txt -text -eol -diff
+data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/stdout.txt -text -eol -diff

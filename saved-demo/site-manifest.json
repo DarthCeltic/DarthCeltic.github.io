@@ -1,6 +1,6 @@
 {
   "schema_version": "mathcase-static-site-r7",
-  "source_head": "2f218b8cc94e00c627b43fa0b3a6e0d50e464290",
+  "source_head": "6cc8f0d43da2d24f0c1922a56235e123e07d4f7e",
   "mode": "SAVED_EXECUTION_READ_ONLY",
   "provider_calls_on_open": 0,
   "files": [
@@ -8,19 +8,31 @@
       "path": ".nojekyll",
       "bytes": 0,
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "source_sha256": null
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 11349,
+      "sha256": "41a5da747522527b19b93715729d630b956410957b32f853b8c7d0a2b68267c3",
+      "source_sha256": "41a5da747522527b19b93715729d630b956410957b32f853b8c7d0a2b68267c3"
+    },
+    {
+      "path": "NOTICE",
+      "bytes": 1299,
+      "sha256": "af65accd71dd17d137132cc13d471ae67a706fc5e9ed61b0afcb085929c0b36e",
+      "source_sha256": "af65accd71dd17d137132cc13d471ae67a706fc5e9ed61b0afcb085929c0b36e"
     },
     {
       "path": "app.css",
       "bytes": 9219,
       "sha256": "aa6ff3295d76f808f052d5714d81bae78a807bbeb95034096fe19aa462b43246",
-      "source_sha256": null
+      "source_sha256": "aa6ff3295d76f808f052d5714d81bae78a807bbeb95034096fe19aa462b43246"
     },
     {
       "path": "app.js",
       "bytes": 8872,
       "sha256": "5b9a24a817c1772f1f0f9165b2f45afc47ba7a2adae8a7fd109005d6df60ff38",
-      "source_sha256": null
+      "source_sha256": "5b9a24a817c1772f1f0f9165b2f45afc47ba7a2adae8a7fd109005d6df60ff38"
     },
     {
       "path": "assets/mathcase-branding-kit/favicon.ico",
@@ -47,22 +59,22 @@
       "source_sha256": "c430babfed2aec700e9da6e8665d444602f123fe88ac7998a91989f1992636e4"
     },
     {
+      "path": "case-desk-launch.js",
+      "bytes": 594,
+      "sha256": "a93075dd47110550c39d4828f627f2144a1db594eb4b55f1f49610d6ae19902c",
+      "source_sha256": null
+    },
+    {
       "path": "index.html",
-      "bytes": 2447,
-      "sha256": "b6ea33de689577b16d029834bee89811eac28e5f2510a681d603817c7b532d44",
-      "source_sha256": "a3b7942ff929b59a3969e3499b886b9d067f6d31ce6ea7bae13d376000a15b19"
+      "bytes": 674,
+      "sha256": "b78a3b40e29013c8222181c71310642187231fab857791fa459b820446805136",
+      "source_sha256": null
     },
     {
-      "path": "LICENSE",
-      "bytes": 11349,
-      "sha256": "41a5da747522527b19b93715729d630b956410957b32f853b8c7d0a2b68267c3",
-      "source_sha256": "41a5da747522527b19b93715729d630b956410957b32f853b8c7d0a2b68267c3"
-    },
-    {
-      "path": "NOTICE",
-      "bytes": 1299,
-      "sha256": "af65accd71dd17d137132cc13d471ae67a706fc5e9ed61b0afcb085929c0b36e",
-      "source_sha256": "af65accd71dd17d137132cc13d471ae67a706fc5e9ed61b0afcb085929c0b36e"
+      "path": "proofs/first-rung/MathCaseSqrtTwoInfiniteDescent.lean",
+      "bytes": 4431,
+      "sha256": "7e21fcfc7fe30109ceb79a75dc6d40d6de2860fdaa74588351ab6d08b43a01bd",
+      "source_sha256": "7e21fcfc7fe30109ceb79a75dc6d40d6de2860fdaa74588351ab6d08b43a01bd"
     },
     {
       "path": "proofs/first-rung/evidence/composite-counterexample-r1/check.json",
@@ -89,22 +101,22 @@
       "source_sha256": "92cfbf662b95e8ecaca861b3316455d935a92bf1c06ccf038d02c688226239d5"
     },
     {
-      "path": "proofs/first-rung/MathCaseSqrtTwoInfiniteDescent.lean",
-      "bytes": 4431,
-      "sha256": "7e21fcfc7fe30109ceb79a75dc6d40d6de2860fdaa74588351ab6d08b43a01bd",
-      "source_sha256": "7e21fcfc7fe30109ceb79a75dc6d40d6de2860fdaa74588351ab6d08b43a01bd"
+      "path": "reader.html",
+      "bytes": 2447,
+      "sha256": "b6ea33de689577b16d029834bee89811eac28e5f2510a681d603817c7b532d44",
+      "source_sha256": "b6ea33de689577b16d029834bee89811eac28e5f2510a681d603817c7b532d44"
     },
     {
       "path": "saved-demo/data.js",
       "bytes": 5008,
       "sha256": "dd468f6744017e35396c3e236eb24b436ce64cc12ae88d4a0aa3d0d9f6441a75",
-      "source_sha256": null
+      "source_sha256": "dd468f6744017e35396c3e236eb24b436ce64cc12ae88d4a0aa3d0d9f6441a75"
     },
     {
       "path": "saved-demo/s0-failure.json",
       "bytes": 1575,
       "sha256": "c5dbc12a00b4ea0da2566a26106af2420679cc56da69b1b5080ca8eaf6be4fb6",
-      "source_sha256": null
+      "source_sha256": "c5dbc12a00b4ea0da2566a26106af2420679cc56da69b1b5080ca8eaf6be4fb6"
     },
     {
       "path": "saved-demo/tavily-runtime.json",
@@ -116,7 +128,9 @@
       "path": "saved-demo/verification.json",
       "bytes": 1702,
       "sha256": "8eb43e7f4554b5205e21eb3a0e4c46c705b66630b5aebeb7a176b7f2086e21b2",
-      "source_sha256": null
+      "source_sha256": "8eb43e7f4554b5205e21eb3a0e4c46c705b66630b5aebeb7a176b7f2086e21b2"
     }
-  ]
+  ],
+  "default_workbench": true,
+  "case_desk_manifest": "ui/prototype/static-case-manifest.json"
 }
