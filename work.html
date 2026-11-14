@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="The MathCase research ledger: Lean-checked bounded results, finite campaigns, failed attempts, and work still in progress.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MathCase — Research ledger</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="index.html" aria-label="MathCase home">
+      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Mathematical workbench</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Judging guide</a>
+      <a class="current" href="work.html" aria-current="page">All work</a>
+      <a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost ↗</a>
+    </nav>
+  </header>
+
+  <main class="shell" id="top">
+    <section class="archive-intro" aria-labelledby="work-title">
+      <p class="eyebrow">MathCase research ledger · November 13, 2026</p>
+      <h1 id="work-title">What MathCase has actually done.</h1>
+      <p>This page gathers the current mathematical work and the state of the system around it. It separates public source artifacts from internal run summaries, formal proof checks from finite searches, and completed results from unfinished plans.</p>
+    </section>
+
+    <nav class="archive-nav" aria-label="Research sections">
+      <a href="#proof-workbench">Proof workbench</a>
+      <a href="#collatz-public">Public Collatz result</a>
+      <a href="#collatz-replay">Collatz replay</a>
+      <a href="#collatz-sample">Collatz sample</a>
+      <a href="#egyptian">Egyptian fractions</a>
+      <a href="#system">System progress</a>
+      <a href="#frontier">What's next</a>
+    </nav>
+
+    <div class="record-key" aria-label="Evidence labels">
+      <span class="record-label public">Public source artifact</span>
+      <span class="record-label internal">Internal run summary</span>
+      <span class="record-label planned">Staged, not run</span>
+    </div>
+
+    <section class="record-section" id="proof-workbench" aria-labelledby="proof-workbench-title">
+      <span class="record-label public">Saved public case</span>
+      <h2 id="proof-workbench-title">Model proposal, rejected attempt, Lean check</h2>
+      <p>The saved prime-divisibility case asks whether a prime dividing a square must divide the underlying natural number. The first model candidate was rejected by Lean for using the wrong argument. A revised proof used the primality fact and the known theorem <code>Nat.Prime.dvd_of_dvd_pow</code>, and the saved kernel and axiom checks passed.</p>
+      <div class="record-statline"><strong>Known theorem</strong><span>Formalized and checked for the pinned statement · no novelty claim · no live check runs on this page</span></div>
+      <p>The useful engineering result is the evidence path: the statement, failed candidate, checker error, repaired source, and saved check can be inspected as separate records. A successful Lean check supports the exact formal statement; it does not establish novelty or independent review of every explanation.</p>
+    </section>
+
+    <section class="record-section" id="collatz-public" aria-labelledby="collatz-public-title">
+      <span class="record-label public">Public Lean source artifact</span>
+      <h2 id="collatz-public-title">Collatz: bounded descent across 7,825 residue classes</h2>
+      <p>The public Lean source states that every qualifying natural number n ≥ 2 in 7,825 of 8,192 residue classes reaches a smaller value after 1 to 21 ordinary Collatz steps. Lean also checks the finite class count.</p>
+      <div class="record-statline"><strong>7,825 / 8,192</strong><span>classes in this bounded theorem · maximum 21 steps · 367 classes outside this statement</span></div>
+      <p>This is not a percentage of the Collatz conjecture solved. It does not prove that every trajectory reaches 1, and it does not close any previously uncovered whole class modulo 128. The source is a saved local compile, not a fresh public-checkout replay or a standard M4 receipt.</p>
+      <div class="record-links">
+        <a href="https://github.com/DarthCeltic/MathCase/blob/main/proofs/collatz/remaining-residues/BoundedDescent8192.lean" target="_blank" rel="noopener noreferrer">Lean source ↗</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/main/proofs/collatz/remaining-residues/bounded-descent-receipt.json" target="_blank" rel="noopener noreferrer">Saved source/output receipt ↗</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-descent.md" target="_blank" rel="noopener noreferrer">Scope and explanation ↗</a>
+      </div>
+    </section>
+
+    <section class="record-section" id="collatz-replay" aria-labelledby="collatz-replay-title">
+      <span class="record-label internal">Internal pinned replay summary · Nov 13, 2026</span>
+      <h2 id="collatz-replay-title">Collatz: 229 individual shard modules replayed</h2>
+      <p>A sequential offline replay compiled the existing M15, M16, M18, and M20 shard modules in a fresh checkout. All 229 modules exited successfully. A separate audit issued 4,262 theorem-axiom queries: every report listed only <code>propext</code> and <code>Quot.sound</code>, and none reported <code>sorryAx</code>.</p>
+      <div class="record-statline"><strong>229 / 229</strong><span>individual modules compiled · 4,262 / 4,262 axiom queries reported · one CPU · 2 GiB memory cap · network disabled</span></div>
+      <table class="result-table">
+        <thead><tr><th>Tier</th><th>Checked first-descent residue classes</th></tr></thead>
+        <tbody>
+          <tr><td>M15</td><td>31,473 / 32,768</td></tr>
+          <tr><td>M16</td><td>63,422 / 65,536</td></tr>
+          <tr><td>M18</td><td>254,649 / 262,144</td></tr>
+          <tr><td>M20</td><td>1,021,248 / 1,048,576</td></tr>
+        </tbody>
+      </table>
+      <p>These counts summarize finite residue-family shard statements; they are not percentages of the Collatz conjecture solved.</p>
+      <p class="record-note">This is an internal run summary, not yet a public reproduction package. Its pinned Docker image is not anonymously pullable, so a stranger cannot reproduce this replay from a clean public checkout today. Individual shard passes do not combine into one accepted M20 theorem.</p>
+      <h3>The M20 aggregate is still open</h3>
+      <p>Three bounded composition attempts did not produce an accepted aggregate proof. The first two failed during Lean elaboration; the latest stopped at a deterministic <code>isDefEq</code> heartbeat timeout at 200,000. It was not an out-of-memory termination. No theorem was accepted, and no aggregate claim is made.</p>
+    </section>
+
+    <section class="record-section" id="collatz-sample" aria-labelledby="collatz-sample-title">
+      <span class="record-label internal">Internal finite-sample summary</span>
+      <h2 id="collatz-sample-title">Collatz: a 4,096-case structure sample</h2>
+      <p>The frozen sample used 4,096 unique odd residue classes left after an earlier finite screen. In the discovery half, 2,002 of 2,048 representatives reached a smaller value within 64 odd-to-odd steps. In the holdout half, 2,007 of 2,048 did so. One of three registered hypotheses passed; the sample did not yield a general rule.</p>
+      <div class="record-statline"><strong>97.754% / 97.998%</strong><span>discovery / holdout bounded descent rates on these sampled representatives only</span></div>
+      <p class="record-note">These are finite sample rates, not a convergence theorem or a population-wide probability claim. The initial-valuation hypothesis failed because the prior screen forces that statistic; the holdout confirms only the registered finite rate.</p>
+    </section>
+
+    <section class="record-section" id="egyptian" aria-labelledby="egyptian-title">
+      <span class="record-label internal">Internal bounded CPU campaign summary</span>
+      <h2 id="egyptian-title">Erdős–Straus: 831,860 exact finite witnesses</h2>
+      <p>The campaign checked a factor-conditioned subset of the n ≡ 1 (mod 12) residual cases through d = 10,000,000. It recorded 831,860 candidate rows and 831,860 exact Egyptian-fraction witnesses. All 427 base-search misses in the audited 10-million range resolved inside the fixed 65,536-offset extension cap.</p>
+      <div class="record-statline"><strong>831,860 / 831,860</strong><span>candidate rows with exact finite witnesses · bounded to the recorded filter and denominator range</span></div>
+      <p>The full Erdős–Straus conjecture remains open. This campaign established no new parameterized identity, makes no novelty claim, and says nothing about filtered-out cases or denominators beyond the cap.</p>
+      <h3>What the miss and offset analysis found</h3>
+      <p>The largest first-denominator offset in the audited runs was 35,498, leaving 30,038 below the fixed 65,536 cap. Per-range maxima were noisy: their correlation with denominator range was weak in v9 alone (r = 0.067), so the sample gives no bound on future ranges. The 427 base-search misses shared n ≡ 1 (mod 24), but that residue is imposed by the candidate filter; their factor patterns still varied. The analysis found no single new rule covering the misses.</p>
+      <p class="record-note">The detailed manifests, witness streams, extension replays, and audit remain in the internal research checkout; this page is a status summary, not a public reproduction bundle.</p>
+    </section>
+
+    <section class="record-section" id="system" aria-labelledby="system-title">
+      <span class="record-label internal">System engineering snapshot</span>
+      <h2 id="system-title">More than a proof button</h2>
+      <div class="open-work-grid">
+        <article>
+          <h3>Knowledge graph</h3>
+          <p>A local searchable index contains 4,294 result and attempt records, including checked statements, dependencies, axiom reports, source and receipt hashes, and failures. The graph itself is not yet a public dataset.</p>
+        </article>
+        <article>
+          <h3>Reviewed theorem batch</h3>
+          <p>Ten MathCase-authored statements have exact human statement reviews. Nine have recorded Lean passes; one remains candidate-only. These are standard facts, not open-problem discoveries, and none has been promoted to M4.</p>
+        </article>
+        <article>
+          <h3>Transfer comparison</h3>
+          <p>A library-versus-baseline protocol and held-out targets are staged. The comparison has not run, so MathCase does not yet claim that its knowledge graph improves later proof work.</p>
+        </article>
+        <article>
+          <h3>Research controller</h3>
+          <p>The local evidence layer supports stable case IDs, separated statuses, preserved failures, and pause/resume. Model-driven proposing and adversarial checking are not running in this local-only work period.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="record-section" id="frontier" aria-labelledby="frontier-title">
+      <span class="record-label planned">Current frontier</span>
+      <h2 id="frontier-title">What would make the next claims stronger</h2>
+      <ul>
+        <li>Publish the pinned Collatz replay inputs and make the exact toolchain image reproducible to anonymous readers.</li>
+        <li>Find a memory-bounded composition that proves the M20 aggregate; the current attempts do not.</li>
+        <li>Run the preregistered transfer comparison with equal budgets and a held-out target set before claiming compounding.</li>
+        <li>Keep finite searches, known-theorem checks, formal proofs, and open-problem results visibly distinct.</li>
+      </ul>
+      <p class="record-note">Some proof dossiers and source materials remain owner-only and are intentionally not included or linked on these pages.</p>
+    </section>
+
+    <p><a class="back-top" href="#top">Back to top ↑</a></p>
+  </main>
+
+  <footer class="site-footer shell">
+    <span>MathCase · research and evidence ledger</span>
+    <span>Static pages · no provider calls · no live proof execution</span>
+  </footer>
+</body>
+</html>
