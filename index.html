@@ -3,130 +3,154 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="MathCase is an AI-assisted math workbench built around formal statements, Lean checking, and inspectable evidence.">
+  <meta name="description" content="MathCase is a proof workbench where AI suggestions are checked in Lean and the evidence stays inspectable.">
   <meta name="theme-color" content="#0b1823">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>MathCase — Judge the evidence</title>
+  <title>MathCase — Proofs you can inspect</title>
   <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="judging.css">
+  <script defer src="case-desk-launch.js"></script>
 </head>
 <body>
   <header class="site-header shell">
     <a class="brand" href="index.html" aria-label="MathCase home">
       <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
-      <span>MathCase<small>Mathematical workbench</small></span>
+      <span>MathCase<small>Proofs you can inspect</small></span>
     </a>
     <nav aria-label="Main navigation">
-      <a class="current" href="index.html" aria-current="page">Judging guide</a>
+      <a class="current" href="index.html" aria-current="page">Home</a>
       <a href="work.html">All work</a>
-      <a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost ↗</a>
+      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero shell" aria-labelledby="hero-title">
+    <section class="hero hero-judging shell" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">Nebius × NVIDIA Global AI Hackathon · project guide</p>
-        <h1 id="hero-title">AI can propose the proof.<br><em>Lean checks the claim.</em></h1>
-        <p class="hero-lede">MathCase is an AI-assisted mathematics workbench. It turns a reviewed statement and a proof candidate into an inspectable record: the exact claim, what the model tried, what Lean accepted or rejected, and what the evidence does—and does not—establish.</p>
+        <p class="eyebrow">Nebius × NVIDIA Global AI Hackathon · judge's guide</p>
+        <h1 id="hero-title">Question an AI proof, check it in Lean, and build on what holds.</h1>
+        <p class="hero-lede">MathCase keeps a proof attempt's story together: the claim, the AI's candidate, Lean's response, and the limits of what the saved evidence establishes.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#proof-story">Follow a proof case <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="work.html">Explore all MathCase work <span aria-hidden="true">→</span></a>
+          <a class="button button-primary" href="#case-desk">Open a saved case <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary" href="work.html">Explore all work <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">MathCase on Devpost ↗</a>
         </div>
-        <p class="hero-note">This GitHub Pages site is a static reading experience. It does not call a model, run Lean, or make a live proof claim.</p>
+        <p class="hero-note">Hackathon judging: Dec 9–23, 2026 · winners announced Jan 25, 2027 at noon Pacific time.</p>
       </div>
-      <aside class="hero-art" aria-label="MathCase project mark">
-        <div class="art-glow"></div>
-        <img src="assets/mathcase-branding-kit/mathcase-icon-256.png" alt="MathCase casebook mark">
-        <p>Formal statements · checked proofs · visible limits</p>
+      <aside class="judge-card" aria-label="Quick guide for judges">
+        <p class="eyebrow">A three-minute review</p>
+        <ol>
+          <li><span>01</span><div><strong>Read the claim</strong><small>Start with an ordinary-language statement.</small></div></li>
+          <li><span>02</span><div><strong>See the failed attempt</strong><small>Lean's rejection remains part of the story.</small></div></li>
+          <li><span>03</span><div><strong>Check the limits</strong><small>Separate a known theorem from a new result.</small></div></li>
+        </ol>
+        <p class="judge-card-note">This site displays saved work. It does not call an AI service or run Lean in your browser.</p>
       </aside>
     </section>
 
-    <section class="snapshot shell" aria-labelledby="snapshot-title">
-      <div class="section-heading compact-heading">
-        <p class="eyebrow">A quick judging snapshot · updated November 13, 2026</p>
-        <h2 id="snapshot-title">Three results, three honest scopes</h2>
+    <section class="case-desk-section shell" id="case-desk" aria-labelledby="desk-title">
+      <div class="section-heading desk-heading">
+        <div>
+          <p class="eyebrow">Try the Case Desk</p>
+          <h2 id="desk-title">Start with a real saved case.</h2>
+          <p>Open either case to inspect its statement, step through the saved result, and try the exact-integer counterexample. Nothing dispatches a model or starts a proof run.</p>
+        </div>
+        <a class="button button-secondary" data-case-desk-launch="hero-prime-divisibility-r1" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open the saved Case Desk <span aria-hidden="true">→</span></a>
       </div>
-      <div class="metric-grid">
-        <article class="metric-card metric-public">
-          <span class="metric-kicker">Public Lean source</span>
-          <strong>7,825 <small>/ 8,192</small></strong>
-          <p>residue classes with a checked bounded Collatz descent statement, within 1–21 steps.</p>
-          <a href="work.html#collatz-public">See its exact scope <span aria-hidden="true">→</span></a>
+
+      <div class="case-card-grid">
+        <article class="case-card">
+          <p class="case-kicker">Saved local calculation</p>
+          <h3>A counterexample narrows the claim</h3>
+          <p class="case-plain">A composite number can divide a square without dividing its root: the saved example uses 4 and 2.</p>
+          <p class="case-math" aria-label="Four divides two squared, but four does not divide two">4 ∣ 2², but 4 ∤ 2</p>
+          <p class="case-scope"><strong>It shows:</strong> this unrestricted statement has a counterexample. <strong>It does not show:</strong> a general theorem or a failed AI response.</p>
+          <a class="case-open" data-case-desk-launch="hero-composite-counterexample-r1" href="reader.html?scope=public#case/hero-composite-counterexample-r1">Open this saved case <span aria-hidden="true">→</span></a>
         </article>
-        <article class="metric-card metric-internal">
-          <span class="metric-kicker">Pinned replay · internal record</span>
-          <strong>229 <small>/ 229</small></strong>
-          <p>individual M15, M16, M18, and M20 shard modules compiled in a bounded offline replay.</p>
-          <a href="work.html#collatz-replay">See the reproduction limit <span aria-hidden="true">→</span></a>
+
+        <article class="case-card case-card-featured">
+          <p class="case-kicker">Saved model attempt + Lean check</p>
+          <h3>Adding primality makes a known result</h3>
+          <p class="case-plain">If a natural prime p divides n squared, then p divides n.</p>
+          <p class="case-math">p prime, p ∣ n² ⟹ p ∣ n</p>
+          <p class="case-scope"><strong>It shows:</strong> Lean rejected the first candidate and accepted the saved correction for this statement. <strong>It does not show:</strong> a new theorem or broad solving ability.</p>
+          <a class="case-open" data-case-desk-launch="hero-prime-divisibility-r1" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open this saved case <span aria-hidden="true">→</span></a>
         </article>
-        <article class="metric-card metric-bounded">
-          <span class="metric-kicker">Bounded CPU search · internal record</span>
-          <strong>831,860</strong>
-          <p>exact Egyptian-fraction witnesses in a filtered campaign through d = 10,000,000.</p>
-          <a href="work.html#egyptian">See what that does not prove <span aria-hidden="true">→</span></a>
+
+        <article class="case-card case-card-held">
+          <p class="case-kicker">Public coverage gap</p>
+          <h3>A third unrestricted case is not packaged yet</h3>
+          <p class="case-plain">The current bundle has two suitable saved examples for this public walkthrough. Its other bundled case is not cleared for this view, and no replacement case with the same statement–failure–Lean evidence chain is available in the public dataset.</p>
+          <p class="case-scope"><strong>Next needed:</strong> a separately reviewed public case with its own statement and saved evidence. No substitute has been invented.</p>
+          <span class="case-open case-open-disabled">Not available in this public walkthrough</span>
         </article>
       </div>
-      <p class="snapshot-footnote">The figures describe different finite studies. None proves Collatz convergence or the full Erdős–Straus conjecture; internal summaries are labeled separately from public source artifacts.</p>
+      <p class="desk-footnote">The saved reader preserves the original two public cases. Evidence file locations are shown in the reader; individual machine-readable records are not linked as the visitor experience.</p>
     </section>
 
     <section class="proof-story shell" id="proof-story" aria-labelledby="proof-title">
       <div class="story-heading">
         <div>
-          <p class="eyebrow">Start here · one complete proof journey</p>
-          <h2 id="proof-title">A failed candidate stays in the record.</h2>
-          <p>MathCase demonstrates the whole loop on a known theorem: a model's first proof was rejected, the Lean type mismatch was preserved, and a corrected candidate passed the saved Lean and axiom checks.</p>
+          <p class="eyebrow">How to read a result</p>
+          <h2 id="proof-title">A check applies to one exact statement.</h2>
+          <p>For the prime-divisibility example, the saved record includes an actual Lean rejection and a repaired candidate. That makes the proof process inspectable without turning a known theorem into a discovery claim.</p>
         </div>
         <div class="statement-card">
-          <span class="card-label">Reviewed formal statement</span>
-          <p class="formula">∀ p n : ℕ,<br>Prime(p) → p ∣ n² → p ∣ n</p>
+          <span class="card-label">In plain language</span>
           <p class="plain-statement">If a natural prime p divides n squared, then p divides n.</p>
+          <p class="formula">p prime, p ∣ n² ⟹ p ∣ n</p>
+          <p class="statement-limit"><strong>What it proves:</strong> the exact formal theorem was accepted by the saved Lean check.<br><strong>What it does not prove:</strong> novelty, independent review of every explanation, or open-problem capability.</p>
         </div>
       </div>
 
       <ol class="proof-steps">
-        <li>
-          <span class="step-number">01</span>
-          <div><h3>State the claim</h3><p>The formal target includes the primality condition. That condition matters.</p></div>
-          <span class="step-state">Statement reviewed</span>
-        </li>
         <li class="step-rejected">
-          <span class="step-number">02</span>
-          <div><h3>Keep the failed attempt</h3><p>The first candidate supplied <code>h : p ∣ n²</code> where Lean required <code>hp : p.Prime</code>. The rejection stays in the record.</p></div>
-          <span class="step-state">Rejected · preserved</span>
+          <span class="step-number">01</span>
+          <div><h3>The first candidate was rejected</h3><p>It supplied the divisibility assumption where Lean required the primality assumption. The failed attempt remains available in the saved case.</p></div>
+          <span class="step-state">Failure preserved</span>
         </li>
         <li class="step-accepted">
+          <span class="step-number">02</span>
+          <div><h3>The repaired candidate used both assumptions</h3><p>The saved proof applies the known result <code>Nat.Prime.dvd_of_dvd_pow</code>. Its recorded Lean check passed.</p></div>
+          <span class="step-state">Saved check passed</span>
+        </li>
+        <li>
           <span class="step-number">03</span>
-          <div><h3>Check the repair</h3><p>The saved proof applies the known theorem with both hypotheses: <code>by intro p n hp h; exact Nat.Prime.dvd_of_dvd_pow hp h</code>.</p></div>
-          <span class="step-state">Saved Lean check passed</span>
+          <div><h3>The evidence stays in its lane</h3><p>A kernel check validates the formal proof for its formal target. It does not establish that the theorem is new or that a finite search proves a general conjecture.</p></div>
+          <span class="step-state">Limits stated</span>
         </li>
       </ol>
       <div class="story-foot">
-        <p>This verifies a known theorem for its formal statement. It is not a new theorem or a claim that MathCase has solved an open problem.</p>
-        <a class="text-link" href="work.html#proof-workbench">Read the wider work record <span aria-hidden="true">→</span></a>
+        <p>Read the result, failure, and saved proof in the Case Desk. The webpage itself makes no live proof claim.</p>
+        <a class="text-link" href="work.html#proof-workbench">See the wider evidence map <span aria-hidden="true">→</span></a>
       </div>
     </section>
 
-    <section class="judge-guide shell" aria-labelledby="guide-title">
+    <section class="latest-update shell" aria-labelledby="latest-title">
+      <div>
+        <p class="eyebrow">Latest research update · Nov 13, 2026</p>
+        <h2 id="latest-title">The Collatz work is growing beyond individual shards.</h2>
+        <p>A chunked M20 composition compiled as a local candidate under the two-gigabyte cap. Its source and run receipts are recorded privately; a public reproduction package is still pending, so the site does not present it as a public replay result.</p>
+      </div>
+      <a class="button button-secondary" href="work.html#collatz-m20">Read the status and limits <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="browse-work shell" aria-labelledby="browse-title">
       <div class="section-heading">
-        <p class="eyebrow">A useful three-minute review</p>
-        <h2 id="guide-title">What to look for</h2>
+        <p class="eyebrow">Beyond the judging walkthrough</p>
+        <h2 id="browse-title">Browse the work by question.</h2>
       </div>
-      <div class="guide-grid">
-        <article><span>1</span><h3>Read the target</h3><p>Check the exact mathematical statement before judging its proof.</p></article>
-        <article><span>2</span><h3>Inspect the evidence</h3><p>Separate a model suggestion, a Lean kernel check, a finite computation, and a research claim.</p></article>
-        <article><span>3</span><h3>Read the limits</h3><p>Open the research ledger for the failures, unfinished work, and boundaries behind each headline number.</p></article>
-      </div>
-      <div class="guide-actions">
-        <a class="button button-primary" href="work.html">Open the complete research ledger <span aria-hidden="true">→</span></a>
-        <a class="text-link" href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">MathCase project entry on Devpost ↗</a>
+      <div class="browse-grid">
+        <a href="work.html#collatz-public"><span>01 · Bounded proof</span><strong>What has Lean checked for Collatz?</strong><small>Read the finite scope and the whole-conjecture limits.</small></a>
+        <a href="work.html#egyptian"><span>02 · Exact computation</span><strong>What did the Egyptian-fraction campaign find?</strong><small>See the recorded range, witnesses, misses, and limits.</small></a>
+        <a href="work.html#system"><span>03 · Research system</span><strong>What is built, staged, and still blocked?</strong><small>Separate checked math from the tools and experiments around it.</small></a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer shell">
-    <span>MathCase · evidence before claims</span>
-    <span>Static pages · no provider calls · no live proof execution</span>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a><a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost entry</a></nav>
+    <span>Static saved evidence · no model calls · no live Lean execution</span>
   </footer>
 </body>
 </html>

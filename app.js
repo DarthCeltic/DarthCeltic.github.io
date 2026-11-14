@@ -10,13 +10,18 @@
     if (text) node.textContent = text;
     return node;
   };
-  const caseMap = new Map(data.cases.map(item => [item.id, item]));
+  const publicCases = data.cases;
+  const caseMap = new Map(publicCases.map(item => [item.id, item]));
   const position = new Map();
+
+  function caseSteps(item) {
+    return item.steps;
+  }
 
   function currentId() {
     const route = decodeURIComponent(location.hash.slice(1));
     const match = /^case\/([a-z0-9-]+)$/.exec(route);
-    return match && caseMap.has(match[1]) ? match[1] : data.cases[0].id;
+    return match && caseMap.has(match[1]) ? match[1] : publicCases[0].id;
   }
 
   function caseHref(id) { return "#case/" + encodeURIComponent(id); }
@@ -24,7 +29,7 @@
   function renderNav(activeId) {
     const host = byId("case-nav");
     host.replaceChildren();
-    data.cases.forEach((item, index) => {
+    publicCases.forEach((item, index) => {
       const link = make("a", "case-tab");
       link.href = caseHref(item.id);
       if (item.id === activeId) link.setAttribute("aria-current", "page");
@@ -40,7 +45,8 @@
     const id = currentId();
     const item = caseMap.get(id);
     if (!location.hash || !location.hash.startsWith("#case/")) history.replaceState(null, "", caseHref(id));
-    const step = Math.min(position.get(id) || 0, item.steps.length - 1);
+    const stepsForCase = caseSteps(item);
+    const step = Math.min(position.get(id) || 0, stepsForCase.length - 1);
     renderNav(id);
     const host = byId("case-stage");
     host.replaceChildren();
@@ -54,17 +60,23 @@
     const reader = make("div", "reader");
     const paper = make("section", "paper");
     paper.setAttribute("aria-label", "Saved mathematical reading surface");
-    paper.append(make("span", "paper-label", "Saved case · " + item.status), make("div", "math", item.math), make("p", "statement", item.statement));
+    paper.append(make("span", "paper-label", "Saved case · " + item.status), make("p", "statement", item.statement), make("div", "math", item.math));
+    const claimScope = item.id === "hero-composite-counterexample-r1"
+      ? { shows: "This exact divisor claim has a counterexample: d = 4 and n = 2.", limits: "It does not establish a general theorem or represent a failed model response." }
+      : { shows: "The saved Lean check accepted this exact, known prime-divisibility theorem after rejecting the first candidate.", limits: "It does not establish novelty, independent review of every explanation, or broad open-problem capability." };
+    const scope = make("div", "claim-scope");
+    scope.append(make("p", "", "What this evidence shows: " + claimScope.shows), make("p", "", "What it does not show: " + claimScope.limits));
+    paper.append(scope);
     if (item.id === "hero-composite-counterexample-r1") paper.append(renderArithmeticCheck());
     const stepArea = make("div", "step");
-    stepArea.append(make("span", "step-kicker", `Step ${step + 1} / ${item.steps.length}`), make("h3", "", item.steps[step].title), make("p", "", item.steps[step].body));
+    stepArea.append(make("span", "step-kicker", `Step ${step + 1} / ${stepsForCase.length}`), make("h3", "", stepsForCase[step].title), make("p", "", stepsForCase[step].body));
     if (item.rejected_attempt) {
       const failure = item.rejected_attempt;
       const detail = make("details", "details");
       detail.open = step === 1;
       const summary = make("summary", "", "S0 rejected proposal and Lean error");
       summary.style.color = "#775326";
-      const note = make("p", "", "First NVIDIA Nemotron proposal through Nebius. Lean rejected this attempt; it is not a proof. The linked derived record carries the original source hashes.");
+      const note = make("p", "", "First NVIDIA Nemotron proposal through Nebius. Lean rejected this attempt; it is not a proof. The saved derived record includes the original source hashes.");
       note.style.color = "#334958";
       const errorLabel = make("p", "", "Saved Lean error excerpt");
       errorLabel.style.color = "#334958";
@@ -74,7 +86,7 @@
     const controls = make("div", "step-controls");
     const previous = make("button", "", "← Previous step"); previous.type = "button"; previous.disabled = step === 0;
     previous.addEventListener("click", () => { position.set(id, step - 1); renderCase(); });
-    const next = make("button", "", "Next step →"); next.type = "button"; next.disabled = step === item.steps.length - 1;
+    const next = make("button", "", "Next step →"); next.type = "button"; next.disabled = step === stepsForCase.length - 1;
     next.addEventListener("click", () => { position.set(id, step + 1); renderCase(); });
     controls.append(previous, next); stepArea.append(controls); paper.append(stepArea); reader.append(paper);
 
@@ -82,7 +94,7 @@
     const overview = make("section", "side-card");
     overview.append(make("h3", "", "Saved progression"));
     const steps = make("ol");
-    item.steps.forEach((entry, index) => {
+    stepsForCase.forEach((entry, index) => {
       const row = make("li", index === step ? "current" : "", entry.title);
       steps.append(row);
     });
@@ -91,18 +103,29 @@
     if (item.previous_case) {
       const link = make("a", "", "← Checked parent lemma"); link.href = caseHref(item.previous_case); links.append(link);
     }
-    if (item.next_case) {
-      const link = make("a", "", "Use lemma in √2 →"); link.href = caseHref(item.next_case); links.append(link);
+    if (item.next_case && caseMap.has(item.next_case)) {
+      const link = make("a", "", "Open the related saved case →"); link.href = caseHref(item.next_case); links.append(link);
     }
     overview.append(links); side.append(overview);
 
     const evidence = make("section", "side-card");
-    evidence.append(make("h3", "", "Inspect the evidence"), make("p", "", "These links open the saved source or a clearly labeled derived verification summary. The original private receipts remain unchanged."));
+    evidence.append(make("h3", "", "Where to find the saved files"), make("p", "", "The records stay in the MathCase repository. These locations help you find them without opening a raw machine-readable record."));
     const evidenceList = make("div", "evidence-list");
-    item.evidence.forEach(record => {
-      const link = make("a", "", record.label + " ↗");
-      link.href = "/" + record.path; link.target = "_blank"; link.rel = "noopener";
-      evidenceList.append(link);
+    const locations = item.id === "hero-composite-counterexample-r1"
+      ? [{ label: "Saved exact-integer check", path: "proofs/first-rung/evidence/composite-counterexample-r1/" }]
+      : [
+          { label: "Lean theorem source", path: "proofs/first-rung/MathCasePrimeInfiniteDescent.lean" },
+          { label: "Saved model and Lean run records", path: "data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/" }
+        ];
+    locations.forEach(record => {
+      const itemLocation = make("div", "evidence-location");
+      itemLocation.append(make("strong", "", record.label), make("code", "", record.path));
+      const target = record.path.endsWith("/") ? record.path.slice(0, -1) : record.path.slice(0, record.path.lastIndexOf("/"));
+      const link = make("a", "", "Open this repository location ↗");
+      link.href = "https://github.com/DarthCeltic/MathCase/tree/main/" + target;
+      link.target = "_blank"; link.rel = "noopener noreferrer";
+      itemLocation.append(link);
+      evidenceList.append(itemLocation);
     });
     evidence.append(evidenceList);
     if (item.proof) {
@@ -151,11 +174,9 @@
   async function renderTavily() {
     const host = byId("tavily-body");
     const t = data.tavily;
-    host.append(make("p", "", `${t.note} The saved receipt records ${t.result_count} results on ${t.completed_at_utc}.`));
+    host.append(make("p", "", `${t.note} The saved record reports ${t.result_count} results on ${t.completed_at_utc}.`));
     host.append(make("p", "", "Query: " + t.query));
-    const link = make("a", "", "Open the source-free receipt summary ↗");
-    link.href = "/" + t.path; link.target = "_blank"; link.rel = "noopener";
-    host.append(link);
+    host.append(make("p", "", "Saved file location: " + t.path + " and saved-demo/tavily-sources.json. This was a separate related-work search, not an input to the proof."));
     const status = make("p", "", "Reading six saved source locators…");
     host.append(status);
     try {

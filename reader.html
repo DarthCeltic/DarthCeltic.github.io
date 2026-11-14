@@ -9,24 +9,29 @@
   <title>MathCase · Saved proof journey</title>
   <link rel="icon" href="/assets/mathcase-branding-kit/favicon.ico" sizes="any">
   <link rel="stylesheet" href="/app.css">
-  <script defer src="/saved-demo/data.js"></script>
+  <script defer src="/saved-demo/public-reader-data.js"></script>
   <script defer src="/app.js"></script>
 </head>
 <body>
   <div class="page">
     <header class="topbar">
-      <a class="brand" href="/#case/hero-composite-counterexample-r1" aria-label="MathCase saved demo home">
+      <a class="brand" href="/#case-desk" aria-label="MathCase saved demo home">
         <img src="/assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="46" height="46">
         <span>Math<span class="brand-accent">Case</span><small>Saved proof journey</small></span>
       </a>
+      <nav class="reader-nav" aria-label="Site navigation">
+        <a href="/">Home</a>
+        <a href="/work.html">All work</a>
+        <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+      </nav>
       <span class="mode"><span class="mode-dot"></span> Saved execution · read only</span>
     </header>
 
     <section class="intro" aria-labelledby="intro-title">
       <div>
-        <p class="eyebrow">One result, three inspectable cases</p>
+        <p class="eyebrow">Explore a saved counterexample and a checked proof</p>
         <h1 id="intro-title">Where a proof <em>earns</em> its next step.</h1>
-        <p class="intro-copy">Start with a counterexample. Add the missing prime condition. Follow the checked lemma into a saved √2 compilation. Every result shown here is preserved evidence; opening the demo makes no model, Lean, or Tavily call.</p>
+        <p class="intro-copy">Start with a counterexample, then inspect a known theorem where Lean rejected the first proof candidate and accepted a correction. Every result shown here is saved evidence; opening this reader makes no model, Lean, or search call.</p>
       </div>
       <img class="lockup" src="/assets/mathcase-branding-kit/mathcase-lockup-960.png" alt="MathCase" width="960" height="640">
     </section>
@@ -42,7 +47,7 @@
 
     <footer>
       <span>MathCase · Saved Case Desk reader</span>
-      <span>Known theorem checking, local counterexample, and saved parent reuse. No broad solver claim.</span>
+      <span>One saved local counterexample and one known theorem check. No broad solver claim.</span>
     </footer>
   </div>
 </body>
