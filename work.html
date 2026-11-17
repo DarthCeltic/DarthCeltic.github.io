@@ -25,7 +25,7 @@
 
   <main class="shell" id="top">
     <section class="archive-intro" aria-labelledby="work-title">
-      <p class="eyebrow">MathCase work map · updated November 13, 2026</p>
+      <p class="eyebrow">MathCase work map · updated November 17, 2026</p>
       <h1 id="work-title">What has been checked, what has been measured, and what remains open.</h1>
       <p>This page is the human-readable map of the work. It keeps Lean proofs, exact finite computations, internal run summaries, and unfinished experiments separate so each result is read at the right scale.</p>
       <div class="archive-intro-actions">
@@ -38,7 +38,7 @@
       <a href="#proof-workbench">Saved proof</a>
       <a href="#collatz-public">Public Collatz source</a>
       <a href="#collatz-replay">Replay study</a>
-      <a href="#collatz-m20">M20 composition</a>
+      <a href="#collatz-composition">Combined Collatz result</a>
       <a href="#collatz-sample">Structure sample</a>
       <a href="#egyptian">Egyptian fractions</a>
       <a href="#system">System progress</a>
@@ -68,7 +68,7 @@
       <h2 id="collatz-public-title">Collatz: bounded descent across 7,825 residue classes.</h2>
       <p><strong>Plain statement:</strong> for every qualifying n ≥ 2 in 7,825 of the 8,192 residue classes, one of the first 21 ordinary Collatz steps reaches a smaller value.</p>
       <p class="record-formula">7,825 of 8,192 classes · first descent within 1–21 steps</p>
-      <p>This is not a percentage of the Collatz conjecture solved. It does not prove that every trajectory reaches 1, and it does not close any previously uncovered whole class modulo 128. The source is a saved local compile, not a fresh public-checkout replay or a standard M4 receipt.</p>
+      <p>This is not a percentage of the Collatz conjecture solved. It does not prove that every trajectory reaches 1, and it does not close any previously uncovered whole class modulo 128. The source is a saved local compile, not a fresh public-checkout replay or a standard MathCase evidence-acceptance receipt.</p>
       <div class="record-links">
         <a href="https://github.com/DarthCeltic/MathCase/blob/main/proofs/collatz/remaining-residues/BoundedDescent8192.lean" target="_blank" rel="noopener noreferrer">Read the Lean source ↗</a>
         <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-descent.md" target="_blank" rel="noopener noreferrer">Read the scope notes ↗</a>
@@ -79,30 +79,45 @@
     <section class="record-section" id="collatz-replay" aria-labelledby="collatz-replay-title">
       <span class="record-label internal">Internal pinned replay summary · Nov 13, 2026</span>
       <h2 id="collatz-replay-title">229 individual Collatz shard modules replayed.</h2>
-      <p>A sequential offline replay compiled the existing M15, M16, M18, and M20 shard modules in a fresh checkout. All 229 modules exited successfully. A separate audit issued 4,262 theorem-axiom queries: each report listed only <code>propext</code> and <code>Quot.sound</code>, with no <code>sorryAx</code>.</p>
+      <p>A sequential offline replay compiled 229 separate Lean files in a fresh checkout. They covered four group sizes: 32,768, 65,536, 262,144, and 1,048,576 possible remainders when starting numbers are divided by the matching value. A separate check examined 4,262 theorem declarations: reports listed only <code>propext</code> and <code>Quot.sound</code>, with no <code>sorryAx</code> placeholder.</p>
       <div class="record-statline"><strong>229 / 229</strong><span>individual modules compiled · one CPU · 2 GiB memory cap · network disabled</span></div>
       <table class="result-table">
-        <thead><tr><th>Tier</th><th>Checked first-descent residue classes</th></tr></thead>
+        <thead><tr><th>Possible remainder groups</th><th>Groups with a checked first descent</th></tr></thead>
         <tbody>
-          <tr><td>M15</td><td>31,473 / 32,768</td></tr>
-          <tr><td>M16</td><td>63,422 / 65,536</td></tr>
-          <tr><td>M18</td><td>254,649 / 262,144</td></tr>
-          <tr><td>M20 shard total</td><td>1,021,248 / 1,048,576</td></tr>
+          <tr><td>32,768 (2 to the 15th power)</td><td>31,473 / 32,768</td></tr>
+          <tr><td>65,536 (2 to the 16th power)</td><td>63,422 / 65,536</td></tr>
+          <tr><td>262,144 (2 to the 18th power)</td><td>254,649 / 262,144</td></tr>
+          <tr><td>1,048,576 (2 to the 20th power)</td><td>1,021,248 / 1,048,576</td></tr>
         </tbody>
       </table>
+      <details class="record-note">
+        <summary>What older archive labels mean</summary>
+        <p>Older files use labels such as M15 and M20. The number is the exponent on 2: for example, M20 means 2 to the 20th power, or 1,048,576 possible remainder groups. The table above uses the actual group counts. A checked group is not a solved case of the full conjecture.</p>
+      </details>
       <p>These counts summarize finite shard statements. They are not percentages of the Collatz conjecture solved. Individual shard passes do not, by themselves, establish a combined theorem.</p>
       <p class="record-note">This remains an internal replay summary. The pinned Docker image is not anonymously pullable, so a stranger cannot reproduce this replay from a clean public checkout yet.</p>
     </section>
 
-    <section class="record-section" id="collatz-m20" aria-labelledby="collatz-m20-title">
+    <section class="record-section" id="collatz-composition" aria-labelledby="collatz-composition-title">
+      <span class="anchor-alias" id="collatz-m20" aria-hidden="true"></span>
+      <span class="anchor-alias" id="collatz-m20-title" aria-hidden="true"></span>
       <span class="record-label internal">Internal composition result · public evidence package pending</span>
-      <h2 id="collatz-m20-title">M20: the shard results now compose into one checked candidate.</h2>
-      <p><strong>Plain statement:</strong> the exact 2,652-family conjunction assembled from the M20 shards was compiled through explicit intermediate modules on the pinned Lean and Mathlib snapshot.</p>
-      <p class="record-formula">133 intermediate modules + final 2,652-family theorem · exit 0 · 2 GiB cap · [propext, Quot.sound]</p>
-      <p>The bounded local run completed without an out-of-memory termination. It used the already replayed shard outputs and stayed within the 2 GiB container limit. The final theorem covers the listed affine first-descent families; it does not prove global Collatz convergence, fill every residue class, or establish novelty.</p>
-      <p class="record-note"><strong>Public status:</strong> the composition source and run receipt are recorded in a private MathCase-internal commit, <code>c82c9685fe8294b47db8ba90c9a65d6e189553de</code>. Visitors cannot retrieve that private receipt from this site. The public evidence package is still pending, so this is reported as an internal result rather than a public reproducibility claim. No M4 promotion is implied.</p>
+      <h2 id="collatz-composition-title">A result at the 1,048,576-remainder scale was assembled in chunks.</h2>
+      <p><strong>In plain English:</strong> at the largest checked scale of 1,048,576 possible remainders, Lean checked one theorem combining 2,652 formula families. Each family gives a bounded sequence of Collatz steps that reaches a value below its eligible starting value.</p>
+      <p class="record-formula">133 intermediate Lean files → one theorem for 2,652 families · exit 0 · 2 GiB memory limit</p>
+      <p>The local run completed without an out-of-memory termination and reused the already replayed shard outputs. The theorem covers its listed bounded-descent families; it does not prove that every Collatz trajectory reaches 1, cover every residue class, or establish novelty. The separate axiom report listed <code>propext</code> and <code>Quot.sound</code>, and no <code>sorryAx</code> placeholder.</p>
+      <p class="record-note"><strong>Public status:</strong> the composition source and run receipt are recorded in a private MathCase-internal commit, <code>c82c9685fe8294b47db8ba90c9a65d6e189553de</code>. Visitors cannot retrieve that private receipt from this site. The public evidence package is still pending, so this remains an internal result, not a publicly reproducible one. No formal dossier acceptance is implied.</p>
       <h3>Earlier attempts remain visible</h3>
-      <p>The record preserves three earlier failures: two elaboration failures and a deterministic <code>isDefEq</code> heartbeat timeout at 200,000. That timeout was not an out-of-memory failure. The later chunked composition is an additional result; it does not overwrite or relabel those receipts.</p>
+      <p>The record preserves three earlier failures: two Lean elaboration failures and one timeout at the 200,000 heartbeat limit while Lean compared expressions for definitional equality. That timeout was not an out-of-memory failure. The later chunked composition does not overwrite or relabel those receipts.</p>
+    </section>
+
+    <section class="record-section" id="collatz-step33" aria-labelledby="collatz-step33-title">
+      <span class="record-label internal">Internal finite CPU computation · Nov 17, 2026</span>
+      <h2 id="collatz-step33-title">A 33-step odd-to-odd scan of 23.6 million representatives.</h2>
+      <p>For one fixed odd representative from each of 23,642,078 remaining residue classes, a CPU calculation applied the accelerated odd-to-odd Collatz step 33 times. Each step applies 3n + 1 and divides out all factors of 2, leaving an odd value. Among the representatives, 17,719,163 had at least one of their first 33 odd-to-odd iterates below the start; 443,772 first did so at step 33.</p>
+      <div class="record-statline"><strong>17,719,163 / 23,642,078</strong><span>fixed representatives with at least one value below their start by step 33</span></div>
+      <p>After the 33rd odd-to-odd step, 15,462,277 values were below their starts and 8,179,801 were above. Of the 17,719,163 representatives that had been below at least once by then, 2,256,886 were above their start again at the step-33 endpoint. The sequence can move up and down; a later value is not a “first descent” just because it is below the start at that step.</p>
+      <p class="record-note">This is one bounded computation on one selected starting value per residue class. It does not prove descent for every number in any class, establish a general rule, or prove the Collatz conjecture. Its code and receipt are in a private research branch, so this page is not yet a public reproduction package.</p>
     </section>
 
     <section class="record-section" id="collatz-sample" aria-labelledby="collatz-sample-title">
@@ -134,11 +149,11 @@
         </article>
         <article>
           <h3>Human-reviewed statement batch</h3>
-          <p>Fourteen elementary statements have recorded M0 statement reviews. Nine have individual Lean passes; later batch entries and aggregate reviews are tracked separately. These are standard facts, not open-problem discoveries, and none is promoted to M4 by this page.</p>
+          <p>Fourteen elementary statements have recorded human statement reviews. Nine have individual Lean passes; later batch entries and aggregate reviews are tracked separately. These are standard facts, not open-problem discoveries, and this page does not mark any dossier as formally accepted.</p>
         </article>
         <article>
           <h3>Transfer comparison</h3>
-          <p>A library-versus-baseline protocol and held-out targets are staged. The comparison has not run, so MathCase does not yet claim its knowledge graph improves later proof work.</p>
+          <p>An initial two-target diagnostic ran with one candidate per arm. On the prime-fourth-power target, the baseline passed but the library response is missing. On the nine-step order-chain target, Lean rejected the same malformed term in both arms. The only complete pair scored 0/1 in each arm, so this tiny run establishes neither a transfer benefit nor a general lack of one. The locked evaluation bundles remain excluded, and no frozen eligible benchmark has been scored.</p>
         </article>
         <article>
           <h3>Research controller</h3>
@@ -153,7 +168,7 @@
       <h2 id="frontier-title">What would make the next claims stronger?</h2>
       <ul>
         <li>Publish the pinned Collatz replay inputs and make the exact toolchain image reproducible to anonymous readers.</li>
-        <li>Package the M20 composition sources and receipts in the public repository before calling it publicly reproducible.</li>
+        <li>Package the sources and receipts for the combined result covering 1,048,576 possible remainder groups before calling it publicly reproducible.</li>
         <li>Run the preregistered library-versus-baseline comparison on a held-out target set before claiming that prior results help later proofs.</li>
         <li>Keep finite searches, known-theorem checks, formal proofs, and open-problem results visibly distinct.</li>
       </ul>

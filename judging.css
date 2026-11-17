@@ -113,6 +113,7 @@ h1,h2,h3,p { margin-top:0; }
 .record-label.internal { border-color:#e0a56d66; color:#efc18c; }
 .record-label.planned { border-color:#9bbfc555; color:#b7cbd4; }
 .record-section { min-width:0; max-width:100%; scroll-margin-top:18px; margin:0 0 14px; padding:25px; border:1px solid var(--line); border-radius:15px; background:linear-gradient(145deg,#ffffff08,#ffffff02),#0f2430bb; }
+.anchor-alias { display:block; height:0; scroll-margin-top:18px; }
 .record-section h2 { margin:10px 0 9px; font:500 clamp(23px,3vw,31px)/1.15 Georgia,serif; overflow-wrap:anywhere; }
 .record-section h3 { margin:22px 0 8px; font:500 17px Georgia,serif; color:#e8d3b1; }
 .record-section p,.record-section li { color:#bbc7c9; font-size:12px; line-height:1.7; overflow-wrap:anywhere; }
@@ -131,6 +132,8 @@ h1,h2,h3,p { margin-top:0; }
 .record-links { display:flex; flex-wrap:wrap; gap:11px 18px; margin-top:16px; }
 .record-links a { color:#efce9a; font-size:11px; font-weight:800; text-underline-offset:4px; overflow-wrap:anywhere; }
 .record-note { margin-top:14px !important; padding:12px 14px; border-left:2px solid var(--gold); background:#ffffff05; color:#aebdc1 !important; font-size:10px !important; }
+.record-note summary { cursor:pointer; color:#d5c2a2; font-weight:800; }
+.record-note p { margin:8px 0 0; color:#aebdc1; font-size:10px; line-height:1.6; }
 .open-work-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:11px; }
 .open-work-grid article { padding:16px; border:1px solid var(--line); border-radius:11px; background:#ffffff05; }
 .open-work-grid h3 { margin:0 0 8px; font-size:16px; }
