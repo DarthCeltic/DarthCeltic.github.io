@@ -115,14 +115,14 @@
       ? [{ label: "Saved exact-integer check", path: "proofs/first-rung/evidence/composite-counterexample-r1/" }]
       : [
           { label: "Lean theorem source", path: "proofs/first-rung/MathCasePrimeInfiniteDescent.lean" },
-          { label: "Saved model and Lean run records", path: "data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/" }
         ];
     locations.forEach(record => {
       const itemLocation = make("div", "evidence-location");
       itemLocation.append(make("strong", "", record.label), make("code", "", record.path));
-      const target = record.path.endsWith("/") ? record.path.slice(0, -1) : record.path.slice(0, record.path.lastIndexOf("/"));
+      const isDirectory = record.path.endsWith("/");
+      const target = isDirectory ? "tree/main/" + record.path.slice(0, -1) : "blob/main/" + record.path;
       const link = make("a", "", "Open this repository location ↗");
-      link.href = "https://github.com/DarthCeltic/MathCase/tree/main/" + target;
+      link.href = "https://github.com/DarthCeltic/MathCase/" + target;
       link.target = "_blank"; link.rel = "noopener noreferrer";
       itemLocation.append(link);
       evidenceList.append(itemLocation);
