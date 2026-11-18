@@ -314,6 +314,14 @@ h1,h2,h3,p { margin-top:0; }
 .coefficient-bound { color:#e9cf9f; }
 .coefficient-limit { color:#aebfc2; font-size:10px; }
 .coefficient-error { color:#f0c6bc; font-size:12px; }
+.ramsey-certificate-panel { max-width:900px; margin:18px 0; padding:17px; border:1px solid #d7ae7155; border-radius:12px; background:linear-gradient(140deg,#102631,#08151e); }
+.ramsey-certificate-panel button { min-height:43px; padding:10px 13px; border:1px solid #e7c49477; border-radius:8px; background:#c89452; color:#16110b; font-size:10px; font-weight:900; cursor:pointer; }
+.ramsey-certificate-panel button:disabled { opacity:.55; cursor:wait; }
+.ramsey-certificate-panel button:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+.ramsey-certificate-panel .graph-status { min-height:1.6em; }
+.ramsey-certificate-panel .graph-status[data-state="error"] { color:#f0c6bc; }
+.ramsey-certificate-panel .graph-status[data-state="success"] { color:#a8d4b6; }
+.ramsey-certificate-panel .coefficient-result-card { margin-top:10px; }
 
 @media(max-width:660px) {
   .hero {grid-template-columns:minmax(0,1fr); gap:24px; padding-top:44px; padding-bottom:40px;}
@@ -323,6 +331,8 @@ h1,h2,h3,p { margin-top:0; }
   .result-table { font-size:9px; }
   .record-links { display:grid; gap:9px; }
   .coefficient-audit-panel { padding:13px; }
+  .ramsey-certificate-panel { padding:13px; }
+  .ramsey-certificate-panel button { width:100%; }
   .coefficient-form { grid-template-columns:1fr; }
   .coefficient-form button { width:100%; }
 }

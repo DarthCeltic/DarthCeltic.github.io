@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="judging.css">
   <script defer src="public-evidence.js"></script>
   <script defer src="collatz-coefficient.js"></script>
+  <script defer src="ramsey-certificate.js"></script>
 </head>
 <body>
   <header class="site-header shell">
@@ -201,12 +202,20 @@
       <span class="record-label internal">Exact finite construction check · known result</span>
       <h2 id="ramsey-title">A 42-vertex graph reproduces a known lower bound for R(5,5).</h2>
       <p><strong>Plain statement:</strong> a checked two-coloring on 42 vertices has no monochromatic clique of size five. This gives the known bound <code>R(5,5) ≥ 43</code>.</p>
-      <p>The local checker examined all 850,668 five-vertex subsets of the reconstructed Exoo(42) graph. It is a reproduction of a known finite construction, not a new theorem. No Lean proof is included. The owner M0 statement review is unassessed; the exact question is staged privately.</p>
+      <p><strong>Exact target:</strong> <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>. Here the graph and its complement are the two colors. The pinned FormalConjectures target is a proof placeholder; Ryan's M0 review of this wording is unassessed, and no Lean attempt has been made.</p>
+      <p>The construction is already known in the literature. MathCase reproduced one finite certificate and checked every five-vertex subset; this is not a new theorem and does not solve a general Ramsey problem.</p>
+      <div class="ramsey-certificate-panel">
+        <p class="coefficient-local-note">This check runs locally in your browser. It fetches the saved graph6 certificate from this site, verifies its pinned SHA-256, decodes the 42-vertex graph, and checks every five-vertex subset in both colors.</p>
+        <button id="ramsey-verify" type="button">Verify the 42-vertex certificate</button>
+        <p id="ramsey-status" class="graph-status" role="status" aria-live="polite">The finite check has not run in this browser yet.</p>
+        <div id="ramsey-result" class="coefficient-result" aria-live="polite"></div>
+      </div>
       <p>A separate supplied certificate failed an order check: its metadata said 42 vertices but its graph6 bytes decoded to 41. That failed input is preserved and is not used for the passing construction.</p>
       <div class="record-links">
         <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the construction and checker note</a>
+        <a href="evidence/finite-graphs/ramsey-r55/exoo42-derived.graph6">Download the checked graph6 certificate</a>
         <a href="https://arxiv.org/abs/2212.12630" target="_blank" rel="noopener noreferrer">Read the published construction paper ↗</a>
-        <a href="https://google-deepmind.github.io/formal-conjectures/src/FormalConjectures/Wikipedia/RamseyNumbers/" target="_blank" rel="noopener noreferrer">View the pinned FormalConjectures target ↗</a>
+        <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">View the exact pinned FormalConjectures source ↗</a>
       </div>
       <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the checker, derived graph6 data, and success/failure records. The Lean target has not been attempted.</p>
     </section>
