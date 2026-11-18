@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A plain-language timeline of MathCase's checked mathematics, finite computations, replay evidence, and open limits.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MathCase — Research timeline</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="research.css">
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="index.html" aria-label="MathCase home">
+      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Research timeline</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="work.html">All work</a>
+      <a class="current" href="timeline.html" aria-current="page">Timeline</a>
+      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+    </nav>
+  </header>
+
+  <main class="shell research-page" id="top">
+    <section class="research-hero" aria-labelledby="timeline-title">
+      <p class="eyebrow">From proof checking to a public evidence trail</p>
+      <h1 id="timeline-title">MathCase keeps the claim, the check, and the limits together.</h1>
+      <p>This timeline follows the work from a small proof-checking question to a larger set of bounded mathematics, preserved failures, and reproducible evidence. Each milestone says what was established and what remains open.</p>
+      <div class="research-actions">
+        <a class="button button-primary" href="work.html">Open the full work ledger <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="index.html#case-desk">Try a saved case <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="timeline-section" aria-labelledby="timeline-heading">
+      <div class="timeline-heading">
+        <p class="eyebrow">Recorded milestones</p>
+        <h2 id="timeline-heading">What happened, and what it tells us</h2>
+        <p>The labels distinguish a checked theorem from a finite computation or an engineering replay. A result is only as broad as its exact statement and evidence.</p>
+      </div>
+
+      <ol class="timeline-list">
+        <li class="timeline-item">
+          <span class="timeline-date">October 2026</span>
+          <article class="timeline-card">
+            <p class="timeline-kind">Calibration · saved proof case</p>
+            <h3>A known prime-divisibility statement exposed both a bad attempt and a repair.</h3>
+            <p>MathCase preserved a candidate that Lean rejected, then the corrected proof that Lean accepted for the exact prime statement. A separate composite example shows why the primality condition matters.</p>
+            <p class="timeline-scope"><strong>Established:</strong> the saved checker path can retain and display a failed attempt beside a passing proof for a known result. <strong>Not established:</strong> a new theorem or broad open-problem solving ability.</p>
+            <a href="index.html#case-desk">Open the saved Case Desk cases <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+
+        <li class="timeline-item">
+          <span class="timeline-date">October–November 2026</span>
+          <article class="timeline-card">
+            <p class="timeline-kind">Collatz · finite residue evidence</p>
+            <h3>Bounded first-descent records grew across several residue moduli.</h3>
+            <p>The public record includes a Lean source covering 7,825 of 8,192 residue classes within 21 steps. A larger M15–M20 chain reports 1,021,248 of 1,048,576 classes with a listed bounded descent.</p>
+            <p class="timeline-scope"><strong>Established:</strong> finite coverage counts and selected bounded proofs, with their separate evidence types. <strong>Not established:</strong> that every integer descends or that the Collatz conjecture is solved.</p>
+            <a href="work.html#collatz-public">Read the bounded Collatz records <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+
+        <li class="timeline-item">
+          <span class="timeline-date">November 12–13, 2026</span>
+          <article class="timeline-card">
+            <p class="timeline-kind">Pinned replay · composition evidence</p>
+            <h3>The shard set was replayed, and the M20 composition was recorded in chunks.</h3>
+            <p>The preserved record covers 229 shard modules. The M20 result combines 133 intermediate modules with the existing final composition theorem; earlier all-at-once and elaboration attempts remain in the history.</p>
+            <p class="timeline-scope"><strong>Established:</strong> recorded source, receipt, and bounded theorem evidence. <strong>Not established:</strong> a global Collatz result or an anonymous clean-room build.</p>
+            <a href="work.html#collatz-main">Read the exact 2,652-family theorem and replay note <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+
+        <li class="timeline-item">
+          <span class="timeline-date">November 18, 2026</span>
+          <article class="timeline-card">
+            <p class="timeline-kind">Fresh source replay · bounded theorem</p>
+            <h3>Two offline runs agreed on the 363-file source replay.</h3>
+            <p>Each run compiled the 229 shard inputs and 134 composition files, checked 23 axiom groups across 4,262 queries, and reported zero <code>sorryAx</code>. All per-module source, output, and exit-code hashes agree between the runs. The first Docker wrapper ended with 124 after its watchdog expired; the second returned 0.</p>
+            <p class="timeline-scope"><strong>Established:</strong> agreement between the two recorded runs in the pinned environment. <strong>Not established:</strong> that a stranger can repeat the build; the image is not anonymously pullable and the complete rebuild context is missing.</p>
+            <a href="evidence/collatz/m20-source-replay-2026-11-18/README.md">Read the human replay report <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+
+        <li class="timeline-item">
+          <span class="timeline-date">November 18, 2026</span>
+          <article class="timeline-card">
+            <p class="timeline-kind">Erdős–Straus · exact finite computation</p>
+            <h3>The public campaign now includes 831,860 witnesses through d = 10,000,000.</h3>
+            <p>The fixed factor-conditioned candidate set has one exact witness per recorded candidate. All 427 bounded base-search misses were resolved within the recorded cap. The miss analysis found no single pattern covering the cases and no new identity family.</p>
+            <p class="timeline-scope"><strong>Established:</strong> checked finite identities for this filtered set and range. <strong>Not established:</strong> a decomposition for every integer or a proof of the Erdős–Straus conjecture.</p>
+            <a href="https://github.com/DarthCeltic/MathCase/blob/7238e9ea51fd7fcb035c102b7e8b33361e798648/research/number-theory/egyptian-fractions/README.md" target="_blank" rel="noopener noreferrer">Open the public bundle guide ↗</a>
+          </article>
+        </li>
+
+        <li class="timeline-item">
+          <span class="timeline-date">November 2026</span>
+          <article class="timeline-card">
+            <p class="timeline-kind">Finite graph · reproduction of known work</p>
+            <h3>A 42-vertex construction was checked against every five-vertex subset.</h3>
+            <p>The checker found no monochromatic five-clique in the reconstructed graph, reproducing the known lower bound R(5,5) ≥ 43 across 850,668 subsets.</p>
+            <p class="timeline-scope"><strong>Established:</strong> a local check of a known finite construction. <strong>Not established:</strong> a new Ramsey result or a Lean proof; the formal target has not been attempted.</p>
+            <a href="work.html#ramsey">Read the construction and checker scope <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+
+        <li class="timeline-item timeline-item-open">
+          <span class="timeline-date">Next</span>
+          <article class="timeline-card">
+            <p class="timeline-kind">Open work · evidence before claims</p>
+            <h3>Make the replay reproducible by a stranger, then test what actually transfers.</h3>
+            <p>The immediate work is a complete pinned build recipe and an independent replay. A finite-structure target needs statement and prior-work review before any attempt. A library-versus-baseline comparison remains staged; no model calls are running and external spend is $0.</p>
+            <p class="timeline-scope"><strong>Goal:</strong> make the system easier to inspect and use. <strong>Current limit:</strong> no independent mathematical review, no clean-room replay, and no measured transfer result.</p>
+            <a href="work.html#limits">See the open limits and blockers <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <p class="back-home"><a class="back-top" href="index.html">← Home</a><a class="back-top" href="work.html">All work →</a><a class="back-top" href="#top">Back to top ↑</a></p>
+  </main>
+
+  <footer class="site-footer shell">
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="timeline.html">Timeline</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a><a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost entry</a></nav>
+    <span>Human-readable milestones · no model calls · no live Lean execution</span>
+  </footer>
+</body>
+</html>

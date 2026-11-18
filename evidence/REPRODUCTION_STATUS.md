@@ -7,7 +7,7 @@
 - A public slice of 4,262 theorem statements with hash-checked local browser search.
 - The M31 affine-bound source, input files, and successful independent arithmetic-verifier receipt.
 - Three affine Collatz family sources with saved local Lean receipts.
-- Erdős–Straus aggregate audit/summary and per-range maxima; public per-witness payloads are only independently bundled through `d ≤ 1,000,000` on the MathCase showcase branch.
+- Erdős–Straus aggregate audit/summary and per-range maxima on this Pages site. The public MathCase main branch now carries the per-witness payloads for all 100 recorded ranges through `d ≤ 10,000,000`; its [human-readable guide](https://github.com/DarthCeltic/MathCase/blob/main/research/number-theory/egyptian-fractions/README.md) explains the bundle and recheck commands.
 - The Ramsey finite-graph construction, exact checker, graph6 output, and receipt.
 
 ## Still open

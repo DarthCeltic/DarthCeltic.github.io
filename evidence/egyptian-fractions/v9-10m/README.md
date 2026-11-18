@@ -15,7 +15,7 @@ This is finite witness data for the recorded filter and range. The full Erdős�
 
 The aggregate audit checks 100 range bindings, candidate/result row counts, witness counts, extension receipts, and exact identity rows. Its human-readable source summary, range maxima, and audit record are in this directory.
 
-The public MathCase showcase branch contains independently checked witness/checker bundles only through `d ≤ 1,000,000`: [browse the bundle](https://github.com/DarthCeltic/MathCase/tree/codex/math-results-showcase-20261112/research/number-theory/egyptian-fractions). The 831,860-row aggregate through `d = 10,000,000` is not the same thing as publishing every witness payload: the higher-range per-witness streams are not included in that public branch.
+The public MathCase release at commit `7238e9e` includes the per-witness payloads for all 100 recorded ranges through `d = 10,000,000`. Use the [human-readable bundle guide](https://github.com/DarthCeltic/MathCase/blob/7238e9ea51fd7fcb035c102b7e8b33361e798648/research/number-theory/egyptian-fractions/README.md) for the file map and recheck commands, and the [10-million aggregate audit summary](https://github.com/DarthCeltic/MathCase/blob/7238e9ea51fd7fcb035c102b7e8b33361e798648/research/number-theory/egyptian-fractions/campaign-v9-10m-audit-v1/summary.md) for the audit scope. The 831,860 exact witnesses remain finite evidence for the stated factor-conditioned candidates only.
 
 ## Literature context
 

@@ -20,6 +20,7 @@
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a class="current" href="work.html" aria-current="page">All work</a>
+      <a href="timeline.html">Timeline</a>
       <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
     </nav>
   </header>
@@ -154,11 +155,12 @@
       <p><strong>Plain statement:</strong> for the factor-conditioned candidates in the recorded ranges through <code>d=10,000,000</code>, the campaign saved one exact Egyptian-fraction witness per candidate.</p>
       <div class="record-statline"><strong>831,860 / 831,860</strong><span>candidate rows with witnesses · 427 base misses resolved within the fixed 65,536 offset cap</span></div>
       <p>The largest observed first-denominator offset was 35,498. The offset trend was noisy; v9-only correlation with range was <code>r=0.067</code>. Misses varied in factor shape and finer residues. No new identity family was established, and the full conjecture remains open.</p>
-      <p>The 831,860 aggregate rows are not all bundled as public per-witness payloads. The MathCase showcase branch has witness/checker bundles through <code>d≤1,000,000</code>; higher-range row-by-row public replay remains open.</p>
+      <p>The public MathCase main branch now includes all 100 range bundles and their per-witness records through <code>d=10,000,000</code>. The aggregate audit confirms the recorded bindings and exact identities; this remains a finite, factor-filtered computation, not a proof of the full conjecture.</p>
       <div class="record-links">
         <a href="evidence/egyptian-fractions/v9-10m/README.md">Read the human campaign report</a>
         <a href="evidence/egyptian-fractions/v9-10m/family-investigation.md">Read the rejected identity lead</a>
-        <a href="https://github.com/DarthCeltic/MathCase/tree/codex/math-results-showcase-20261112/research/number-theory/egyptian-fractions" target="_blank" rel="noopener noreferrer">Browse the public witness/checker bundle through d≤1,000,000 ↗</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/7238e9ea51fd7fcb035c102b7e8b33361e798648/research/number-theory/egyptian-fractions/README.md" target="_blank" rel="noopener noreferrer">Open the public bundle guide ↗</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/7238e9ea51fd7fcb035c102b7e8b33361e798648/research/number-theory/egyptian-fractions/campaign-v9-10m-audit-v1/summary.md" target="_blank" rel="noopener noreferrer">Read the 10-million audit summary ↗</a>
       </div>
       <p class="file-location"><strong>Files:</strong> <code>evidence/egyptian-fractions/v9-10m/</code> contains the range maxima, aggregate audit, summary, and human-readable campaign note.</p>
     </section>
@@ -235,7 +237,7 @@
   </main>
 
   <footer class="site-footer shell">
-    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="timeline.html">Timeline</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
     <span>Human-readable evidence map · no model calls · no browser-side Lean execution</span>
   </footer>
 </body>
