@@ -299,6 +299,8 @@ h1,h2,h3,p { margin-top:0; }
 .record-section li + li { margin-top:8px; }
 
 @media(max-width:660px) {
+  .hero {grid-template-columns:minmax(0,1fr); gap:24px; padding-top:44px; padding-bottom:40px;}
+  .hero > * {min-width:0;}
   .graph-search-row { display:grid; grid-template-columns:1fr; }
   .graph-search-row input,.graph-search-row button { width:100%; min-width:0; }
   .result-table { font-size:9px; }
