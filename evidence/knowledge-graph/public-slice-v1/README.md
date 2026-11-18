@@ -1,6 +1,6 @@
-# Public safe partial knowledge graph slice (staged candidate)
+# Public safe partial knowledge graph slice
 
-This is a partial exact-statement index for the M15-M20 shard replay. It contains 4,262 theorem records. Each exact statement, source digest, dependency list, axiom report, and receipt row was checked against source bytes and receipts bundled in this candidate. The graph index supports exact statement-hash matches only; it does not perform semantic retrieval or infer theorem reuse.
+This published slice is a partial exact-statement index for the M15-M20 shard replay. It contains 4,262 theorem records. Each exact statement, source digest, dependency list, axiom report, and receipt row was checked against source bytes and receipts in the public evidence package. The graph index supports exact statement-hash matches only; it does not perform semantic retrieval or infer theorem reuse.
 
 ## What a row means
 
@@ -10,8 +10,8 @@ Every included row says `m0_status: NOT_REVIEWED_AS_INDIVIDUAL_SHARD_STATEMENT` 
 
 The slice excludes 29 owner-local or out-of-package records and three historical aggregate records. It does not include the owner graph, personal paths, or restricted dossier content. The root `PACKAGE_INVENTORY.json` binds these files and all included source and receipt bytes. `manifest.sha256` binds this slice manifest; `records.sha256` binds the human-inspectable JSONL record set.
 
-## Verify
+## Browse and verify
 
-From the candidate package root, run `py -3 tools\verify_public_knowledge_graph_slice.py`. The application’s exact-match graph loader can be smoke-tested with the staged slice directory and the SHA-256 of this slice’s `manifest.json`.
+On the [All work page](../../../work.html#knowledge-graph), click **Verify and load the index**. The browser checks the published manifest, index, and records against their pinned SHA-256 values, then checks each displayed statement against its recorded digest. The files are also available directly in this directory: `manifest.json`, `index.jsonl`, `records.jsonl`, `manifest.sha256`, and `records.sha256`.
 
-This candidate has not been merged or published. The public Lean image and clean-room build context remain unavailable, so these records do not establish independent reproduction. No M4 gate is changed.
+The public Lean image and clean-room build context remain unavailable, so this data does not establish independent reproduction of the Lean replay. No M4 gate is changed.
