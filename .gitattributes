@@ -25,3 +25,4 @@ data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisib
 data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/provider-solve.json -text -eol -diff
 data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/stderr.txt -text -eol -diff
 data/local/verification/proofdesk-ui-dispatch-r1/proofdesk-ui-hero-prime-divisibility-r1-20261028T152753Z-8d06f9d0e04b/stdout.txt -text -eol -diff
+evidence/** -text whitespace=cr-at-eol

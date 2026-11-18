@@ -1,0 +1,16 @@
+{
+  "analysis_code_path": "scripts/derive_collatz_m31_residual_third_valuation_analysis.py",
+  "analysis_code_sha256": "3f39ba7f0821a9213eb0f45c5265092b5536d22174a214722bb8a569fe1ad3a1",
+  "analysis_sha256": "40fa628165db76837137d11e0c3471759abb9d03cd41d006a215645696028c5d",
+  "created_utc": "2026-11-14T17:25:31+00:00",
+  "network_calls": 0,
+  "protocol_path": "research/collatz/structure-sample/m31-residual-third-valuation-v1/analysis-protocol.md",
+  "protocol_sha256": "12dd2d904a7fb97b2aeae0982e7f68001ae6a23f701cd2972208a7bccc544b4e",
+  "provider_calls": 0,
+  "run_manifest_sha256": "15a77151be8e75457e1a1dee6675fb5207df7bb319f1548633df8a07d54a3258",
+  "schema": "mathcase-collatz-m31-residual-third-valuation-analysis-receipt-v1",
+  "status": "PASS_DERIVED_EXACT_FINITE_AGGREGATE_DECOMPOSITION",
+  "summary_sha256": "a0d10e2006f3f4d27bc894b45acedf804b54028094b5fab7a1362fd4bbd9b1d3",
+  "trajectory_rescan_performed": false,
+  "verification_receipt_sha256": "7769ecb6e201e072318eabba2ac3637d6ae1600d03dea15536538631b7df9e1d"
+}

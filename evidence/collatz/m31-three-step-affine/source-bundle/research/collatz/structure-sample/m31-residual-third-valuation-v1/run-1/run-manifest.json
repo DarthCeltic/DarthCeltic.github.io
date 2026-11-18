@@ -1,0 +1,69 @@
+{
+  "audit_code_sha256": "c96cdbaa912880325e29a87b9764cc1335e02645de8355568b8b362d3f786d8b",
+  "axiom_checked": false,
+  "created_utc": "2026-11-14T17:19:17+00:00",
+  "docker_used": false,
+  "global_collatz_proof": false,
+  "gpu_used": false,
+  "inputs": {
+    "m30_package_manifest": {
+      "path": "research/collatz/m30-exploratory/package-manifest.json",
+      "sha256": "72e27d839c8dd17f3b012ef03522a084dd967d9460a9a5fb93abaddd9e48c019"
+    },
+    "m30_scan": {
+      "path": "research/collatz/m30-exploratory/scan/m30-residual-affine-screen.json.gz",
+      "sha256": "3473cc97beae317309eedcb0dc0a1087be0f0b5ffbd0b949be46d44be2d2518b"
+    },
+    "m31_independent_validation": {
+      "path": "research/collatz/m31-exploratory/independent-validation.json",
+      "sha256": "6ce4e0cfc7a97b28f6822e8d94c0330f5f014aaf6fcbe32d40322099f6cdb6f4"
+    },
+    "m31_package_manifest": {
+      "path": "research/collatz/m31-exploratory/package-manifest.json",
+      "sha256": "1515cc783aef878b0f415b93631f91870b335bc27fb4d7bd294aa595ced15a76"
+    },
+    "m31_scan": {
+      "path": "research/collatz/m31-exploratory/scan/m31-residual-affine-screen.json.gz",
+      "sha256": "07bb83639beb5298725a3e965844b0b3a6fbac282b22efdeb1dace290b8b4619"
+    },
+    "prior_census_manifest": {
+      "path": "research/collatz/structure-sample/m31-residual-second-valuation-v1/run-1/run-manifest.json",
+      "sha256": "6f891e898648ef3311175539badee0d57654aa81409086ea3eedfbcb83acb7c5"
+    },
+    "prior_census_protocol": {
+      "path": "research/collatz/structure-sample/m31-residual-second-valuation-v1/protocol.md",
+      "sha256": "6fad4096def3916ddf7de0eaebc9ff639f645869d3a7f9811a4052b361da08e2"
+    },
+    "prior_census_summary": {
+      "path": "research/collatz/structure-sample/m31-residual-second-valuation-v1/run-1/summary.json",
+      "sha256": "1c7f3000fb700cda2a04e650ec8e5e5bc6b2aefabc2f62675a935548b3a3b296"
+    }
+  },
+  "lean_compiled": false,
+  "m30_baseline_binding": {
+    "m30_covered_arithmetic_only": 1060970550,
+    "m30_package_sha256": "72e27d839c8dd17f3b012ef03522a084dd967d9460a9a5fb93abaddd9e48c019",
+    "m30_scan_sha256": "3473cc97beae317309eedcb0dc0a1087be0f0b5ffbd0b949be46d44be2d2518b",
+    "m30_validation_sha256": "b1ca36c4051182c775cba0ad2aca6e3582ec509ad90020835bb181583d239bbd"
+  },
+  "m30_coverage_mask_sha256": "e54b4438a73d90d44eddde61f074439aafafc368b8649ab02c0dab702a4a118a",
+  "m31_family_rows": 1900470,
+  "network_calls": 0,
+  "prior_census_binding": {
+    "manifest": "6f891e898648ef3311175539badee0d57654aa81409086ea3eedfbcb83acb7c5",
+    "protocol": "6fad4096def3916ddf7de0eaebc9ff639f645869d3a7f9811a4052b361da08e2",
+    "summary": "1c7f3000fb700cda2a04e650ec8e5e5bc6b2aefabc2f62675a935548b3a3b296"
+  },
+  "protocol_path": "research/collatz/structure-sample/m31-residual-third-valuation-v1/protocol.md",
+  "protocol_sha256": "4f72f4014efd6ceb1b73e499b0f3d51a4b219d06ba83d8a075159bec8c55ddc8",
+  "provider_calls": 0,
+  "residual_index_path": "research/collatz/structure-sample/m31-residual-third-valuation-v1/run-1/residual-classes.u32le",
+  "residual_index_sha256": "e04b6be58d34f2c2ce935cd87356cfbc7743a270b2c007432c3c724597b1d202",
+  "schema": "mathcase-collatz-m31-residual-third-valuation-manifest-v1",
+  "status": "PASS_EXACT_FINITE_RESIDUAL_CLASS_CENSUS",
+  "summary_sha256": "a0d10e2006f3f4d27bc894b45acedf804b54028094b5fab7a1362fd4bbd9b1d3",
+  "test_code_path": "scripts/test_collatz_m31_residual_third_valuation.py",
+  "test_code_sha256": "28a52207028ab6a3710953af88aa7fe59b32660a15c3c89e305a190572a5ab8c",
+  "verification_code_path": "scripts/verify_collatz_m31_residual_third_valuation.py",
+  "verification_code_sha256": "dda88efff401adcd4777f796ef53ea5298e38c265e7a72d0bf1573f34307d3b3"
+}

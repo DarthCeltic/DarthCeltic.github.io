@@ -1,0 +1,17 @@
+{
+  "schema": "mathcase-collatz-m31-first-three-above-start-verification-v1",
+  "status": "PASS_INDEPENDENT_DERIVATION_AND_BINDING_CHECK",
+  "created_utc": "2026-11-15T02:35:23+00:00",
+  "summary_sha256": "074dc937cee95da535bf372d3f5cb1b35e7be2e372ebb3f88da5d55308f32a84",
+  "run_manifest_sha256": "a894f9ec6f2ba8ade337973ed593093bbc7671b6267911a1baffc628e374d6d3",
+  "verification_script_path": "scripts/verify_collatz_m31_first_three_above_start_v1.py",
+  "verification_script_sha256": "69ac53b58153897104c15b6e1b796dc002962e6d815af65ec2d513d74b9cc304",
+  "inputs_rehashed": 21,
+  "class_strata_checked": 4,
+  "population_conserved": 23642078,
+  "nonmonotone_observed_strata_confirmed": 2,
+  "external_calls": 0,
+  "cost_usd": 0,
+  "lean_compiled": false,
+  "trajectory_rescan_performed": false
+}

@@ -1,0 +1,102 @@
+{
+  "axioms": [
+    "propext",
+    "Quot.sound"
+  ],
+  "bindings": {
+    "certificate_source": {
+      "base": "repository",
+      "path": "research/collatz/affine-trace/M31Residue223.lean",
+      "sha256": "a58a57ded7be3934f2cf96f1fe310dccb2eeea435b764d17a76fa4d8a9f73bd2"
+    },
+    "generator": {
+      "base": "repository",
+      "path": "scripts/generate_collatz_affine_certificate.py",
+      "sha256": "6346dc937901d570ab1c139fe2e5ff3b8a46a2bf49d4a7735cc81b05228fb670"
+    },
+    "generic_theorem_source": {
+      "base": "repository",
+      "path": "research/collatz/affine-trace/CollatzAffineTrace.lean",
+      "sha256": "8a53e1cee2436efc347c6ebb07da0203d9c613670ad52bafdd0d0d19258d408c"
+    },
+    "parent_manifest": {
+      "base": "repository",
+      "path": "research/collatz/m31-exploratory/package-manifest.json",
+      "sha256": "1515cc783aef878b0f415b93631f91870b335bc27fb4d7bd294aa595ced15a76"
+    },
+    "parent_scan": {
+      "base": "repository",
+      "path": "research/collatz/m31-exploratory/scan/m31-residual-affine-screen.json.gz",
+      "sha256": "07bb83639beb5298725a3e965844b0b3a6fbac282b22efdeb1dace290b8b4619"
+    },
+    "runner": {
+      "base": "repository",
+      "path": "research/collatz/affine-trace/verify-m31-residue223-fast-in-pinned-image.sh",
+      "sha256": "e5d635b60eb561058888769b7606f3de9990ea785658388a774c2817b5939467"
+    },
+    "stderr": {
+      "base": "receipt_directory",
+      "path": "docker-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "base": "receipt_directory",
+      "path": "docker-stdout.log",
+      "sha256": "26ca5580f9fc052aa2297da8c2f02c1847717d0a58c25fea5717f49817c95691"
+    }
+  },
+  "classification": "ONE_UNIVERSAL_AFFINE_FAMILY_DESCENT",
+  "evidence_class": "LOCAL_BOUNDED_LEAN_REPLAY",
+  "execution": {
+    "api_calls": 0,
+    "capabilities_dropped": "ALL",
+    "container_auto_removed": true,
+    "container_name": "mathcase-m31-r223-20261101",
+    "cpu_limit": "1",
+    "dependency_environment": "direct LEAN_PATH, no lake env",
+    "exit_code": 0,
+    "finished_at": "2026-11-01T17:51:31.5904133+00:00",
+    "gpu_used": false,
+    "host_available_gib_post_run": 5.34,
+    "host_available_gib_precheck": 11.42,
+    "image_id": "sha256:ec3377f34aaf0b83502e6755d5403ca36382adb99e4c7ab1470d42a1ac5abdc7",
+    "image_source_root_sha256": "8f587bf452930d3f8d7fa888f0f72fc1d938b1fbb9930d3a11c0e75daaab5089",
+    "input_mount": "affine-trace source directory read-only at /mathcase/input",
+    "lean_version": "Lean 4.33.1",
+    "memory_limit": "2g",
+    "memory_swap_limit": "2g",
+    "model_calls": 0,
+    "network": "none",
+    "no_new_privileges": true,
+    "pids_limit": 64,
+    "project_tree": "pinned image embedded project; no host checkout overmount",
+    "provider_calls": 0,
+    "root_filesystem_read_only": true,
+    "started_at": "2026-11-01T17:48:20.7852130+00:00",
+    "timed_out": false,
+    "timeout_seconds": 300,
+    "wall_seconds": 190.805
+  },
+  "family": {
+    "endpoint_intercept": 122,
+    "endpoint_slope": 1162261467,
+    "modulus": 2147483648,
+    "residue": 223,
+    "steps": 50,
+    "strict_gap_intercept": 101,
+    "strict_gap_slope": 985222181
+  },
+  "interpretation": {
+    "global_collatz_proof": false,
+    "human_semantic_review": "NOT_PERFORMED",
+    "m0_pass": false,
+    "novelty_review": "NOT_PERFORMED",
+    "source_proof_use_grant": false,
+    "standard_m4_receipt": false
+  },
+  "proof_statement": "For every natural k, exactly 50 standard Collatz steps from 2^31*k+223 reach 1162261467*k+122, which is strictly smaller.",
+  "schema": "mathcase-collatz-m31-row-lean-receipt-v1",
+  "source_use": "Local arithmetic scan and local computation; no provider input, training, derivative or public use is granted.",
+  "status": "PASS_FINITE_FAMILY_ONLY",
+  "theorem": "MathCase.CollatzAffineTrace.m31Residue223.universalDescent"
+}

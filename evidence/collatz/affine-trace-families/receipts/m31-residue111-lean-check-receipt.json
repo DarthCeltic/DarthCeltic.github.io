@@ -1,0 +1,68 @@
+{
+  "schema": "mathcase-collatz-affine-lean-check-receipt-v1",
+  "status": "PASS_FINITE_FAMILY_ONLY",
+  "evidence_class": "LOCAL_BOUNDED_LEAN_REPLAY",
+  "claim_scope": "For every natural k, exactly 50 standard Collatz steps from 2^31*k+111 reach 1162261467*k+61, which is strictly smaller.",
+  "source_use": "Arithmetic scan and local computation only; no source proof-use authorization is claimed.",
+  "certificate_source": {
+    "path": "research/collatz/affine-trace/M31Residue111.lean",
+    "sha256": "c75c33d7bc0d2cdc900a48c0ba062a657e5b8d7cd443e7166f09a25fbeb81004"
+  },
+  "generic_theorem_source": {
+    "path": "research/collatz/affine-trace/CollatzAffineTrace.lean",
+    "sha256": "8a53e1cee2436efc347c6ebb07da0203d9c613670ad52bafdd0d0d19258d408c"
+  },
+  "verifier_script": {
+    "path": "research/collatz/affine-trace/verify-in-pinned-image.sh",
+    "sha256": "207d5cb85957ebf444c07ed1f0d62560f50f1940803b880c7348c3b5d662acb3"
+  },
+  "parent_scan": {
+    "classification": "EXPLORATORY_ARITHMETIC_ONLY",
+    "sha256": "07bb83639beb5298725a3e965844b0b3a6fbac282b22efdeb1dace290b8b4619",
+    "path": "research/collatz/m31-exploratory/scan/m31-residual-affine-screen.json.gz"
+  },
+  "parent_manifest": {
+    "classification": "EXPLORATORY_ARITHMETIC_ONLY",
+    "sha256": "1515cc783aef878b0f415b93631f91870b335bc27fb4d7bd294aa595ced15a76",
+    "path": "research/collatz/m31-exploratory/package-manifest.json"
+  },
+  "compiler_stdout": {
+    "path": "research/collatz/affine-trace/lean-check.stdout.log",
+    "sha256": "2185fbf27077cc280e8cd2b66f4455491e25ef644a66eddaa162ba44d8538e64"
+  },
+  "compiler_stderr": {
+    "note": "Lean emitted the pre-existing proofwidgets repository local-changes warning.",
+    "sha256": "81a718673723db8a13dfce061c1327aab26f4b073e3bb01af507323383a20472",
+    "path": "research/collatz/affine-trace/lean-check.stderr.log"
+  },
+  "formal_theorem": "MathCase.CollatzAffineTrace.m31Residue111.universalDescent",
+  "checked_axioms": [
+    "propext",
+    "Quot.sound"
+  ],
+  "execution": {
+    "wall_seconds": 164.271,
+    "network": "none",
+    "finished_at": "2026-11-01T11:48:21.5648377-05:00",
+    "pids_limit": 64,
+    "image_id": "sha256:ec3377f34aaf0b83502e6755d5403ca36382adb99e4c7ab1470d42a1ac5abdc7",
+    "started_at": "2026-11-01T11:45:37.2937266-05:00",
+    "root_filesystem_read_only": true,
+    "dependency_environment": "lake env",
+    "project_tree": "pinned image embedded project; no host checkout overmount",
+    "image_source_root_sha256": "8f587bf452930d3f8d7fa888f0f72fc1d938b1fbb9930d3a11c0e75daaab5089",
+    "lean_version": "Lean 4.33.1",
+    "memory_limit": "2g",
+    "cpu_limit": "1",
+    "host_available_memory_gib_at_admission": 9.11,
+    "replay_method": "verify-in-pinned-image.sh"
+  },
+  "interpretation": {
+    "m0_pass": false,
+    "novelty_review": "NOT_PERFORMED",
+    "source_proof_use_grant": false,
+    "standard_m4_receipt": false,
+    "global_collatz_proof": false,
+    "human_semantic_review": "NOT_PERFORMED"
+  }
+}

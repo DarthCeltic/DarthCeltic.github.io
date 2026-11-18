@@ -1,0 +1,20 @@
+{
+  "schema": "mathcase-collatz-m15-m20-affine-basis-verification-v1",
+  "status": "PASS_INDEPENDENT_AFFINE_BASIS_AND_COVERAGE_CHECK",
+  "created_utc": "2026-11-15T03:05:51+00:00",
+  "summary_sha256": "2fb05b824e3ec5a2de618a5933b3759a4794c00d960219e99932cc44f2ce071e",
+  "run_manifest_sha256": "592aae771ae03a88ed6a930c24aafad1be9301e7fe3dd2ec77bcff47b44a7bb0",
+  "family_basis_sha256": "00bd520f0924605efe2c5f94ae8dc546de0f8ba947d459bbcbd91e8add398f68",
+  "sparse_trace_comparison_sha256": "5b3d6f1441ff9f7269514394d87c26822ecc0364dd8c2f2aa9db3f0c53d005aa",
+  "inputs_rehashed": 496,
+  "family_rows_checked": 4262,
+  "shard_modules_checked": 229,
+  "m13_seed_classes_checked": 7825,
+  "m20_coverage_classes": 1021248,
+  "sparse_new_classes_at_2_31": 6,
+  "external_calls": 0,
+  "cost_usd": 0,
+  "lean_compiled": false,
+  "trajectory_rescan_performed": false,
+  "m4_promoted": false
+}
