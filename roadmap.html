@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MathCase's public research roadmap: reproducibility, independent review, finite structures, exact identity work, and measured transfer.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MathCase — Research roadmap</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="research.css">
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="index.html" aria-label="MathCase home">
+      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Research roadmap</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="work.html">All work</a>
+      <a href="timeline.html">Timeline</a>
+      <a class="current" href="roadmap.html" aria-current="page">Roadmap</a>
+      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+    </nav>
+  </header>
+
+  <main class="shell research-page" id="top">
+    <section class="research-hero" aria-labelledby="roadmap-title">
+      <p class="eyebrow">Work that can survive outside this machine</p>
+      <h1 id="roadmap-title">MathCase is building a tool mathematicians can inspect, reproduce, and use.</h1>
+      <p>The strongest evidence today is a disciplined checking and record-keeping pipeline. Broad autonomous mathematical discovery has not been demonstrated. This roadmap turns that gap into specific work with visible finish conditions.</p>
+      <div class="research-actions">
+        <a class="button button-primary" href="work.html#reproduction">Start with reproducibility <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="timeline.html">Read the project timeline <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="index.html#case-desk">Try the saved Case Desk <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="roadmap-overview" aria-labelledby="roadmap-overview-title">
+      <p class="eyebrow">Current position</p>
+      <h2 id="roadmap-overview-title">What is ready, and what is still missing</h2>
+      <div class="roadmap-status-grid">
+        <article class="roadmap-status-card status-ready"><span>Available now</span><strong>Inspect the saved work</strong><p>Open the Case Desk, bounded theorem reports, finite computation bundles, replay records, and hash-checked statement index.</p></article>
+        <article class="roadmap-status-card status-open"><span>Still open</span><strong>Repeat the flagship build independently</strong><p>The pinned Docker image is not anonymously pullable and its complete build context is missing.</p></article>
+        <article class="roadmap-status-card status-staged"><span>Not run</span><strong>Measure whether the library helps</strong><p>The equal-budget comparison is staged. No model calls are running; external spend is $0.</p></article>
+      </div>
+    </section>
+
+    <section class="roadmap-section" aria-labelledby="roadmap-items-title">
+      <div class="timeline-heading">
+        <p class="eyebrow">Next steps in order</p>
+        <h2 id="roadmap-items-title">Each step has a checkable finish line</h2>
+        <p>Items with prerequisites stay visible as open work. The page does not treat a prepared packet or a saved local run as a finished independent result.</p>
+      </div>
+
+      <ol class="roadmap-list">
+        <li class="roadmap-item">
+          <span class="roadmap-number">01</span>
+          <article class="roadmap-card">
+            <p class="roadmap-state state-blocked">Blocked by build inputs</p>
+            <h3>Make the 363-module Lean replay repeatable by a stranger.</h3>
+            <p>The two recorded runs agree in the pinned environment. A new operator still needs an anonymously pullable pinned image or a complete, public image build recipe.</p>
+            <details><summary>What counts as done?</summary><p>A fresh public checkout and documented runtime reproduce the source and axiom checks with matching recorded bindings, without MathCase OLEAN reuse. Any output difference stays visible.</p></details>
+            <a href="evidence/REPRODUCTION_STATUS.md">Read the current reproduction boundary <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-number">02</span>
+          <article class="roadmap-card">
+            <p class="roadmap-state state-open">Review not yet independent</p>
+            <h3>Put the exact bounded theorem in front of an independent Lean reviewer.</h3>
+            <p>The public packet contains the plain statement, formal source location, both replay reports, axiom summary, and limits. A request for review is Ryan's to send in his own words.</p>
+            <details><summary>What should a reviewer receive?</summary><p>The exact 2,652-family statement, its source and hash bindings, both phase reports, the coefficient-gap check, and the explicit scope: first descent on listed progressions after 32 steps.</p></details>
+            <a href="work.html#collatz-main">Open the theorem and replay evidence <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-number">03</span>
+          <article class="roadmap-card">
+            <p class="roadmap-state state-review">Candidate only · statement review unassessed</p>
+            <h3>Choose one finite-structure target only after checking its statement and prior work.</h3>
+            <p>The current candidate is a formal lower-bound target for the known R(5,5) problem. A separate local checker reproduces a 42-vertex construction; it is not a Lean proof. The next step is to compare the pinned statement with plain English and nearby literature, before any formal attempt.</p>
+            <p class="roadmap-formula">Pinned target: <code>ramsey_number_five_five_lower_bound</code> at snapshot <code>b576d527</code>.</p>
+            <details><summary>Why not call this a new result?</summary><p>The graph construction and bound are known. The local checker verifies the supplied finite construction; the FormalConjectures target still contains a proof placeholder, and no proof attempt has been made.</p></details>
+            <div class="roadmap-links">
+              <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the local construction and check scope</a>
+              <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">Open the pinned target source ↗</a>
+              <a href="https://arxiv.org/abs/2212.12630" target="_blank" rel="noopener noreferrer">Read the known construction paper ↗</a>
+            </div>
+          </article>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-number">04</span>
+          <article class="roadmap-card">
+            <p class="roadmap-state state-open">Computation complete · proof idea not established</p>
+            <h3>Use the Erdős–Straus pile to look for a proved identity family.</h3>
+            <p>The public data now includes 831,860 exact witnesses for a filtered finite set through d = 10,000,000. Its miss analysis did not establish a new general rule. The next useful step is to formulate one precise candidate identity or criterion from the existing pile, then prove it and check prior work.</p>
+            <details><summary>What would count as progress?</summary><p>A new identity pattern is only a conjecture until its exact hypotheses and algebraic proof are written down. A literature check must precede any novelty claim. More range extension alone is not the headline.</p></details>
+            <a href="work.html#egyptian">Read the complete campaign scope and limits <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-number">05</span>
+          <article class="roadmap-card">
+            <p class="roadmap-state state-staged">Staged · no model calls running</p>
+            <h3>Test whether a checked library helps on held-out theorems.</h3>
+            <p>A useful comparison needs the same Lean snapshot, fixed held-out targets, a library-enabled arm, a no-library baseline, and equal time and attempt budgets. The 11 reserved evaluation bundles remain unopened so they can still serve as held-out material.</p>
+            <details><summary>Why is there no score yet?</summary><p>The comparison depends on a model-based worker. No provider or model calls are running, no target has been attempted for this measurement, and external spend is $0. Until the necessary review and execution conditions exist, a transfer score would be invented.</p></details>
+            <a href="work.html#limits">See the limits and staged measurements <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+
+        <li class="roadmap-item">
+          <span class="roadmap-number">06</span>
+          <article class="roadmap-card roadmap-card-judging">
+            <p class="roadmap-state state-live">Public judge path</p>
+            <h3>Keep the three-minute walkthrough simple and live.</h3>
+            <p>The judging path starts on the plain-language homepage, opens a saved Case Desk example, and points to the larger evidence ledger. The hackathon judging window is December 9–23, 2026; winners are announced January 25, 2027 at noon Pacific time.</p>
+            <a href="index.html#case-desk">Start the judge walkthrough <span aria-hidden="true">→</span></a>
+          </article>
+        </li>
+      </ol>
+    </section>
+
+    <p class="back-home"><a class="back-top" href="index.html">← Home</a><a class="back-top" href="work.html">All work →</a><a class="back-top" href="#top">Back to top ↑</a></p>
+  </main>
+
+  <footer class="site-footer shell">
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a><a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost entry</a></nav>
+    <span>Human-readable priorities · no model calls · no live Lean execution</span>
+  </footer>
+</body>
+</html>
