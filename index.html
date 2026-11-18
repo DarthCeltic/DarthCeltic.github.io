@@ -22,6 +22,7 @@
       <a href="work.html">All work</a>
       <a href="timeline.html">Timeline</a>
       <a href="roadmap.html">Roadmap</a>
+      <a href="replay.html">Replay</a>
       <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
     </nav>
   </header>
@@ -134,7 +135,10 @@
         <h2 id="latest-title">A precise 32-step Collatz result now has two agreeing source replays.</h2>
         <p>For 2,652 listed progressions, Lean checked both the exact endpoint after 32 ordinary steps and that the endpoint is smaller. Two offline runs compiled the same source set and agree on all 363 module hashes. The separate M20 ledger count is 1,021,248 of 1,048,576 residue classes: 97.394% of that finite residue space, not a percentage of the conjecture solved. The pinned runtime still prevents a stranger from repeating the replay from a clean checkout.</p>
       </div>
-      <a class="button button-secondary" href="work.html#collatz-main">Read the exact theorem and evidence <span aria-hidden="true">→</span></a>
+          <div class="hero-actions">
+            <a class="button button-secondary" href="work.html#collatz-main">Read the exact theorem and evidence <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="replay.html">Explore the replay hashes <span aria-hidden="true">→</span></a>
+          </div>
     </section>
 
     <section class="browse-work shell" aria-labelledby="browse-title">
@@ -148,12 +152,13 @@
         <a href="work.html#knowledge-graph"><span>03 · Search the evidence</span><strong>Can I inspect the exact theorem records?</strong><small>Verify and search a public slice of the Lean statement graph.</small></a>
         <a href="timeline.html"><span>04 · Project history</span><strong>How did the work grow?</strong><small>Follow the saved milestones, what each established, and what remains open.</small></a>
         <a href="roadmap.html"><span>05 · What comes next</span><strong>What would make the evidence stronger?</strong><small>See the next steps and the concrete conditions for finishing them.</small></a>
+        <a href="replay.html"><span>06 · Replay explorer</span><strong>Do both proof replays agree?</strong><small>Search the module records and inspect the exact phase hashes.</small></a>
       </div>
     </section>
   </main>
 
   <footer class="site-footer shell">
-    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a><a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost entry</a></nav>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a><a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost entry</a></nav>
     <span>Static saved evidence · no model calls · no live Lean execution</span>
   </footer>
 </body>
