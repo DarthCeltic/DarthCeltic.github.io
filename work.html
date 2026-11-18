@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="judging.css">
   <script defer src="public-evidence.js"></script>
   <script defer src="collatz-coefficient.js"></script>
+  <script defer src="egyptian-shift7.js"></script>
   <script defer src="ramsey-certificate.js"></script>
 </head>
 <body>
@@ -187,7 +188,7 @@
       <h2 id="egyptian-title">The Erdős–Straus campaign recorded 831,860 bounded witnesses.</h2>
       <p><strong>Plain statement:</strong> for the factor-conditioned candidates in the recorded ranges through <code>d=10,000,000</code>, the campaign saved one exact Egyptian-fraction witness per candidate.</p>
       <div class="record-statline"><strong>831,860 / 831,860</strong><span>candidate rows with witnesses · 427 base misses resolved within the fixed 65,536 offset cap</span></div>
-      <p>The largest observed first-denominator offset was 35,498. The offset trend was noisy; v9-only correlation with range was <code>r=0.067</code>. Misses varied in factor shape and finer residues. No new identity family was established, and the full conjecture remains open.</p>
+      <p>The largest observed first-denominator offset was 35,498. The offset trend was noisy; v9-only correlation with range was <code>r=0.067</code>. Misses varied in factor shape and finer residues. The range search itself did not identify a family; a separate algebraic derivation below gives one exact progression identity. The full conjecture remains open.</p>
       <p>The public MathCase main branch now includes all 100 range bundles and their per-witness records through <code>d=10,000,000</code>. The aggregate audit confirms the recorded bindings and exact identities; this remains a finite, factor-filtered computation, not a proof of the full conjecture.</p>
       <div class="record-links">
         <a href="evidence/egyptian-fractions/v9-10m/README.md">Read the human campaign report</a>
@@ -196,6 +197,29 @@
         <a href="https://github.com/DarthCeltic/MathCase/blob/7238e9ea51fd7fcb035c102b7e8b33361e798648/research/number-theory/egyptian-fractions/campaign-v9-10m-audit-v1/summary.md" target="_blank" rel="noopener noreferrer">Read the 10-million audit summary ↗</a>
       </div>
       <p class="file-location"><strong>Files:</strong> <code>evidence/egyptian-fractions/v9-10m/</code> contains the range maxima, aggregate audit, summary, and human-readable campaign note.</p>
+
+      <div class="shift7-panel" id="shift7-identity">
+        <span class="record-label internal">Direct algebraic identity · M0 unassessed · no Lean attempt</span>
+        <h3>A three-fraction formula for every n = 433 + 840t.</h3>
+        <p><strong>Plain statement:</strong> for every integer <code>t ≥ 0</code>, set <code>n = 433 + 840t</code>. The formulas below give positive, strictly increasing denominators whose unit fractions add exactly to <code>4/n</code>.</p>
+        <p><strong>Formula:</strong> <code>A = n(n+7)/4</code>, <code>x = (n+7)/4</code>, <code>y = (A+5)/7</code>, and <code>z = A(A+5)/35</code>, so <code>4/n = 1/x + 1/y + 1/z</code>.</p>
+        <p>Here <code>n ≡ 1 (mod 4)</code>, <code>n ≡ 3 (mod 5)</code>, and <code>n ≡ 6 (mod 7)</code>. These make <code>x</code> and <code>A</code> integers; they also give <code>A ≡ 0 (mod 5)</code> and <code>A ≡ 2 (mod 7)</code>, so <code>y</code> and <code>z</code> are integers. Since <code>y−x = (x(n−7)+5)/7 &gt; 0</code> and <code>z/y = A/5 &gt; 1</code>, the denominators are ordered.</p>
+        <p>The identity follows by subtraction: <code>4/n − 1/x = 7/A</code>, then <code>7/A − 1/y = 1/z</code>. This covers one progression, not every integer. It does not settle Erdős–Straus. A 2026 paper studies the same first-denominator shift <code>c=7</code> in a related prime case; no novelty claim or broad literature search is made.</p>
+        <div class="shift7-panel-box">
+          <p class="coefficient-local-note">Try a value of <code>t</code>. This checker uses browser-local BigInt arithmetic, makes no network request, and verifies the exact integer identity and denominator order for the displayed member.</p>
+          <form class="coefficient-form" id="shift7-form">
+            <label>Nonnegative integer t<input id="shift7-parameter" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="36" value="0" autocomplete="off"></label>
+            <button type="submit">Check this member</button>
+          </form>
+          <p id="shift7-status" class="graph-status" role="status" aria-live="polite">Ready to check t = 0.</p>
+          <div id="shift7-result" class="coefficient-result" aria-live="polite"></div>
+        </div>
+        <p class="file-location"><strong>Limits:</strong> this is an elementary algebraic identity, not a Lean-checked result. M0 is unassessed; no M4 status changes. The campaign’s finite witness record remains a separate, factor-conditioned computation.</p>
+        <div class="record-links">
+          <a href="evidence/egyptian-fractions/v9-10m/README.md">Read the finite campaign report</a>
+          <a href="https://arxiv.org/abs/2608.24035" target="_blank" rel="noopener noreferrer">Read the related 2026 shift-7 paper ↗</a>
+        </div>
+      </div>
     </section>
 
     <section class="record-section" id="ramsey" aria-labelledby="ramsey-title">
