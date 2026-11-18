@@ -297,6 +297,23 @@ h1,h2,h3,p { margin-top:0; }
 .record-links a:hover { color:#ffe2b8; }
 .record-section ul { color:#bdc8cb; font-size:11px; line-height:1.7; }
 .record-section li + li { margin-top:8px; }
+.coefficient-audit-panel { max-width:900px; margin:18px 0; padding:17px; border:1px solid #d7ae7155; border-radius:12px; background:linear-gradient(140deg,#102631,#08151e); }
+.coefficient-local-note,.coefficient-status { color:#b8c7c9; font-size:11px; line-height:1.6; }
+.coefficient-status { min-height:1.6em; color:#a8d4b6; }
+.coefficient-form { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto; gap:10px; align-items:end; }
+.coefficient-form label { display:grid; gap:6px; min-width:0; color:#e8d7b8; font-size:10px; font-weight:850; }
+.coefficient-form input { width:100%; min-height:43px; min-width:0; padding:10px 11px; border:1px solid #e7c49455; border-radius:8px; background:#07151e; color:#f2ede4; font:13px/1.4 ui-monospace,Consolas,monospace; }
+.coefficient-form button { min-height:43px; padding:10px 13px; border:1px solid #e7c49477; border-radius:8px; background:#c89452; color:#16110b; font-size:10px; font-weight:900; cursor:pointer; }
+.coefficient-form button:disabled { opacity:.5; cursor:wait; }
+.coefficient-form input:focus-visible,.coefficient-form button:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
+.coefficient-result { margin-top:12px; }
+.coefficient-result-card { padding:14px; border:1px solid #91c7ab55; border-radius:9px; background:#06130f70; color:#c7d4d0; font-size:11px; line-height:1.65; overflow-wrap:anywhere; }
+.coefficient-result-card h3 { margin:0 0 9px; color:#f0e4cf; font:500 17px/1.3 Georgia,serif; }
+.coefficient-result-card p { margin:7px 0; }
+.coefficient-identity { color:#a8d4b6; font-weight:850; }
+.coefficient-bound { color:#e9cf9f; }
+.coefficient-limit { color:#aebfc2; font-size:10px; }
+.coefficient-error { color:#f0c6bc; font-size:12px; }
 
 @media(max-width:660px) {
   .hero {grid-template-columns:minmax(0,1fr); gap:24px; padding-top:44px; padding-bottom:40px;}
@@ -305,4 +322,7 @@ h1,h2,h3,p { margin-top:0; }
   .graph-search-row input,.graph-search-row button { width:100%; min-width:0; }
   .result-table { font-size:9px; }
   .record-links { display:grid; gap:9px; }
+  .coefficient-audit-panel { padding:13px; }
+  .coefficient-form { grid-template-columns:1fr; }
+  .coefficient-form button { width:100%; }
 }
