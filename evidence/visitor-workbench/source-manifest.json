@@ -1,0 +1,25 @@
+{
+  "schema": "mathcase-visitor-workbench-source-v1",
+  "source_repository": "https://github.com/DarthCeltic/MathCase",
+  "source_branch": "main",
+  "source_commit": "a168d25e4a747640ec5c5321b29307db69a29084",
+  "source_path": "visitor/",
+  "files": [
+    {
+      "path": "visitor/index.html",
+      "bytes": 6112,
+      "sha256": "0e043465de6faaf03112c2d58ce426a19ba6ea9d66dd6e07969dca84371ac9eb"
+    },
+    {
+      "path": "visitor/workbench.css",
+      "bytes": 8298,
+      "sha256": "e64f6a7ac6240c06bb10df5a86439f564f9d3f77f4d7d7f0294c95ae98562587"
+    },
+    {
+      "path": "visitor/workbench.js",
+      "bytes": 13412,
+      "sha256": "9d25883869f4e27d1ec49757414c2454c175b5d475b2cef956431875cd679751"
+    }
+  ],
+  "total_bytes": 27822
+}

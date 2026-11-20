@@ -21,6 +21,7 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
+      <a href="visitor/">Make a case</a>
       <a href="work.html">All work</a>
       <a href="collatz.html">Collatz theorem</a>
       <a class="current" href="tools.html" aria-current="page">Try math</a>
@@ -37,9 +38,10 @@
       <h1 id="tools-title">Run a finite math check and take the receipt with you.</h1>
       <p>Enter a number to check one Collatz trajectory, or choose a campaign parameter and search boundedly for an exact three-fraction decomposition.</p>
       <div class="runtime-note" role="note">
-        <strong>Scope:</strong> these tools use exact browser integer arithmetic and save receipts locally. They do not run Lean. The browser-side Lean WASM runtime needed for arbitrary Lean statements and proof attempts is not bundled yet; no input is sent to a server.
+        <strong>Scope:</strong> these two tools use exact browser integer arithmetic and save receipts locally. They do not run Lean, and their calculator inputs stay in this browser. To write a Lean proof, use the <a href="visitor/">MathCase visitor workbench</a>; it offers an optional live Lean editor and a pinned compiler check in your own Codespace.
       </div>
       <div class="tools-actions">
+        <a class="button button-primary" href="visitor/">Create a case and write Lean</a>
         <a class="button button-secondary" href="index.html#case-desk">Open a saved case</a>
         <a class="button button-secondary" href="work.html#collatz-main">Read the bounded results</a>
       </div>
@@ -136,13 +138,14 @@
     <section class="visitor-tool-note">
       <h2>About the receipts</h2>
       <p>Each receipt records its inputs, finite bound, exact result, and a SHA-256 digest over the canonical result fields. Downloading saves a JSON file to your device. Saving stores the receipt in this browser's local storage only; it is not uploaded or shared.</p>
-      <p>For an arbitrary Lean statement and proof attempt, MathCase still needs a self-hosted Lean WASM runtime. The host has Lean 4.33.1 but not its browser build tools or WASM files, so this page does not pretend a JavaScript calculation is a kernel-checked proof.</p>
+      <p>This tools page does not compile Lean or present arithmetic as a kernel-checked proof. The separate visitor workbench edits Lean source and supports a compiler-only receipt; that receipt can still rely on declared axioms and does not contain an axiom audit. Use the pinned compiler in your own Codespace when you want the reproducible local route.</p>
     </section>
   </main>
 
   <footer class="site-footer shell">
     <nav aria-label="Footer navigation">
       <a href="index.html">Home</a>
+      <a href="visitor/">Make a case</a>
       <a href="work.html">All work</a>
       <a href="tools.html">Try math</a>
       <a href="timeline.html">Timeline</a>

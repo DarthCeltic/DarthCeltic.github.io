@@ -19,6 +19,7 @@
     </a>
     <nav aria-label="Main navigation">
       <a class="current" href="index.html" aria-current="page">Home</a>
+      <a href="visitor/">Make a case</a>
       <a href="work.html">All work</a>
       <a href="collatz.html">Collatz theorem</a>
       <a href="tools.html">Try math</a>
@@ -36,7 +37,8 @@
         <h1 id="hero-title">Question an AI proof, check it in Lean, and build on what holds.</h1>
         <p class="hero-lede">MathCase keeps a proof attempt's story together: the claim, the AI's candidate, Lean's response, and the limits of what the saved evidence establishes.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="#case-desk">Open a saved case <span aria-hidden="true">↓</span></a>
+          <a class="button button-primary" href="visitor/">Make a case <span aria-hidden="true">→</span></a>
+          <a class="button button-secondary" href="#case-desk">Open a saved case <span aria-hidden="true">↓</span></a>
           <a class="button button-secondary" href="work.html">Explore all work <span aria-hidden="true">→</span></a>
           <a class="button button-secondary" href="tools.html">Try the finite math tools</a>
           <a class="button button-secondary" href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">MathCase on Devpost ↗</a>
@@ -50,7 +52,7 @@
           <li><span>02</span><div><strong>See the failed attempt</strong><small>Lean's rejection remains part of the story.</small></div></li>
           <li><span>03</span><div><strong>Check the limits</strong><small>Separate a known theorem from a new result.</small></div></li>
         </ol>
-        <p class="judge-card-note">This site displays saved work. It does not call an AI service or run Lean in your browser.</p>
+        <p class="judge-card-note">Opening this page makes no AI or Lean call. In the separate workbench, Lean runs only when you choose it; that check uses the Lean web editor or your own Codespace.</p>
       </aside>
     </section>
 
@@ -92,6 +94,26 @@
         </article>
       </div>
       <p class="desk-footnote">The saved reader preserves the original two public cases. Evidence file locations are shown in the reader; individual machine-readable records are not linked as the visitor experience.</p>
+    </section>
+
+    <section class="proof-story shell" id="your-workspace" aria-labelledby="workspace-title">
+      <div class="story-heading">
+        <div>
+          <p class="eyebrow">Make your own case</p>
+          <h2 id="workspace-title">Bring a claim. Edit Lean. Check the exact file.</h2>
+          <p>The visitor workbench keeps drafts in your browser, lets you import or download a <code>.lean</code> file, and compares a checker receipt with the source digest. You can use the Lean web editor by choice or check with the pinned compiler in your own Codespace.</p>
+          <p>The hosted workbench is copied from the <a href="https://github.com/DarthCeltic/MathCase/tree/a168d25e4a747640ec5c5321b29307db69a29084/visitor" target="_blank" rel="noopener noreferrer">public MathCase visitor source at commit a168d25</a>. The page keeps its exact source bytes and records their hashes with the release.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="visitor/">Open the MathCase workbench <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">Open the public source ↗</a>
+          </div>
+        </div>
+        <aside class="statement-card">
+          <span class="card-label">What stays local</span>
+          <p class="plain-statement">Your draft and saved cases stay in your browser unless you choose a checker route.</p>
+          <p class="statement-limit"><strong>Lean web editor:</strong> the source is sent only after you click Run.<br><strong>Your Codespace:</strong> it uses your GitHub account’s Codespaces allowance and downloads the pinned Lean toolchain on first setup.<br><strong>Compiler receipt:</strong> records acceptance, version, diagnostics, and a source hash; it does not audit axioms or dependencies.</p>
+        </aside>
+      </div>
     </section>
 
     <section class="proof-story shell" id="proof-story" aria-labelledby="proof-title">
@@ -165,7 +187,7 @@
   <footer class="site-footer shell">
     <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a>
       <a href="tools.html">Try math</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a><a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost entry</a></nav>
-    <span>Static saved evidence · no model calls · no live Lean execution</span>
+    <span>Saved research + visitor-owned workbench · no automatic model calls</span>
   </footer>
 </body>
 </html>
