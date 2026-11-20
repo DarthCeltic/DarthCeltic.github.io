@@ -87,6 +87,17 @@
 .replay-boundary code,.file-location code { overflow-wrap:anywhere; word-break:break-word; }
 @media(max-width:660px) {
   .research-hero { padding:34px 0 28px; }
+  .research-page,
+  .research-page > *,
+  .research-page .record-section > *,
+  .research-page .coefficient-audit-panel,
+  .research-page .coefficient-form,
+  .research-page .coefficient-result-card { min-width:0; max-width:100%; }
+  .research-page .research-hero h1,
+  .research-page .research-hero > p,
+  .research-page .record-section p,
+  .research-page .record-section li { max-width:100%; overflow-wrap:anywhere; }
+  .research-page .record-formula { overflow-wrap:anywhere; word-break:normal; }
   .research-hero > p:not(.eyebrow) { font-size:13px; }
   .timeline-list { gap:13px; }
   .timeline-list::before { left:9px; }

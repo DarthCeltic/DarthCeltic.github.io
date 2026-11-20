@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A precise, replayed Lean theorem for 2,652 listed Collatz progressions, with exact scope, receipts, a coefficient check, and limits.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>A bounded Collatz theorem | MathCase</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="research.css">
+  <script defer src="collatz-coefficient.js"></script>
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="index.html" aria-label="MathCase home">
+      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Bounded Collatz result</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="work.html">All work</a>
+      <a class="current" href="collatz.html" aria-current="page">Collatz theorem</a>
+      <a href="tools.html">Try math</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="replay.html">Replay</a>
+      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+    </nav>
+  </header>
+
+  <main class="shell research-page" id="top">
+    <section class="research-hero" aria-labelledby="collatz-title">
+      <p class="eyebrow">A bounded result, checked from source twice</p>
+      <h1 id="collatz-title">A checked 32-step descent result for 2,652 Collatz families.</h1>
+      <p>The theorem proves that every number in each listed family reaches a smaller value after exactly 32 ordinary Collatz steps. It does not prove the Collatz conjecture.</p>
+      <div class="research-actions">
+        <a class="button button-primary" href="#exact-statement">Read the exact statement <span aria-hidden="true">↓</span></a>
+        <a class="button button-secondary" href="#coefficient-check">Check a listed family <span aria-hidden="true">↓</span></a>
+        <a class="button button-secondary" href="replay.html">Inspect the replay <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="record-section" id="exact-statement" aria-labelledby="statement-title">
+      <span class="record-label public">Lean source replay · exact scope</span>
+      <h2 id="statement-title">The proved claim</h2>
+      <p><strong>Plain statement:</strong> take any one of the 2,652 exact coefficient pairs in the linked source and any natural number <code>k</code>. Starting from <code>2²⁰k+r</code>, exactly 32 standard Collatz steps reach <code>3¹²k+q</code>, and that endpoint is strictly smaller than the start.</p>
+      <p class="record-formula">∀ (r,q) ∈ S, ∀ k ∈ ℕ: C³²(2²⁰k+r) = 3¹²k+q ∧ 3¹²k+q &lt; 2²⁰k+r</p>
+      <p>Here <code>S</code> is the finite set of 2,652 pairs listed in the theorem source. The map <code>C</code> sends an even number to half of it and an odd number to three times the number plus one. The theorem proves the trajectory equality and the strict decrease together for every natural <code>k</code>.</p>
+      <p class="record-note"><strong>What this does not prove:</strong> it does not cover every starting number, give a descent rule for all residue classes, or show that every trajectory reaches 1. It is not a solution of the Collatz conjecture and makes no novelty claim.</p>
+      <div class="record-links">
+        <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/sources/M20CompositionAllFamiliesV1.lean">Open the exact Lean theorem source</a>
+        <a href="evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/README.md">Read the coefficient audit</a>
+        <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/CORRECTION.md">Read the archive correction</a>
+      </div>
+    </section>
+
+    <section class="record-section" id="coefficient-proof" aria-labelledby="coefficient-proof-title">
+      <span class="record-label public">Exact integer consequence</span>
+      <h2 id="coefficient-proof-title">Why the recorded endpoint is smaller</h2>
+      <p><strong>Plain statement:</strong> for every listed pair, the starting expression exceeds the endpoint expression by a positive amount for every natural <code>k</code>.</p>
+      <p class="record-formula">(2²⁰k+r) − (3¹²k+q) = 517,135k + (r−q)</p>
+      <p>The source-pair audit checks all 2,652 intercepts <code>r−q</code>. Every one is positive; the minimum is 117. Since <code>k ≥ 0</code> and the coefficient of <code>k</code> is positive, the displayed gap is positive. This algebra explains the inequality, while the Lean replay establishes that 32 Collatz steps actually reach the stated endpoint.</p>
+      <details class="record-note">
+        <summary>How much of the residue space is covered?</summary>
+        <p>This theorem covers 2,652 listed infinite progressions; it does not itself imply a density statement. A separate finite audit records certificates for 1,021,248 of 1,048,576 remainders modulo <code>2²⁰</code> (about 97.394%). That is a finite share of one residue space, not a share of all natural numbers and not a percentage of the conjecture solved. <a href="work.html#collatz-coverage">Read that separate audit</a>.</p>
+      </details>
+    </section>
+
+    <section class="record-section coefficient-section" id="coefficient-check" aria-labelledby="coefficient-title">
+      <span class="record-label public">Exact calculation in this browser</span>
+      <h2 id="coefficient-title">Check any listed pair at a value of k</h2>
+      <p><strong>Plain statement:</strong> choose a row from the pinned 2,652-pair table and a natural number <code>k</code>; this tool recomputes the start, endpoint, and exact difference using integer arithmetic.</p>
+      <p class="record-formula">start = 1,048,576k+r · endpoint = 531,441k+q · start−endpoint = 517,135k+(r−q)</p>
+      <div class="coefficient-audit-panel">
+        <p class="coefficient-local-note">The browser verifies the table’s SHA-256 before enabling the check. Your inputs stay in this browser. This is an arithmetic check, not a Lean run; the Lean source replay is the evidence for each 32-step equality.</p>
+        <p id="coefficient-status" class="coefficient-status" role="status" aria-live="polite">Loading and checking the source-pair table…</p>
+        <form id="coefficient-form" class="coefficient-form">
+          <label for="coefficient-pair">Listed pair row (1–2,652)
+            <input id="coefficient-pair" type="text" inputmode="numeric" autocomplete="off" maxlength="4" value="1" disabled>
+          </label>
+          <label for="coefficient-k">Natural number k (0 or larger)
+            <input id="coefficient-k" type="text" inputmode="numeric" autocomplete="off" maxlength="1000" value="0" disabled>
+          </label>
+          <button id="coefficient-run" type="submit" disabled>Calculate exact values</button>
+        </form>
+        <div id="coefficient-result" class="coefficient-result" aria-live="polite"></div>
+      </div>
+      <p class="file-location"><strong>Method and source:</strong> <a href="evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/README.md">Read the human audit and reproduction steps</a>. The browser table is loaded from <code>evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/pairs.tsv</code>, SHA-256 <code>30f06904507a35d180fab9d0d9195759047d13edfd857c04e2ef483eaf75194a</code>, pinned in <code>collatz-coefficient.js</code>.</p>
+    </section>
+
+    <section class="record-section" id="replay-evidence" aria-labelledby="replay-evidence-title">
+      <span class="record-label public">Two source-to-kernel replay records</span>
+      <h2 id="replay-evidence-title">The two bounded runs agree on the checked files</h2>
+      <p><strong>Plain statement:</strong> two fresh isolated workspaces compiled the same source set, and the tracked source, OLEAN, output, and exit-code hashes agree across the runs.</p>
+      <div class="record-statline"><strong>363 files per phase</strong><span>229 shard inputs + 133 composition modules + the final theorem; 23 axiom groups and 4,262 queries; zero sorryAx reports</span></div>
+      <table class="result-table">
+        <thead><tr><th>Evidence</th><th>Phase 1</th><th>Phase 2</th></tr></thead>
+        <tbody>
+          <tr><td>Lean module exits</td><td>All 0</td><td>All 0</td></tr>
+          <tr><td>Outer Docker wrapper</td><td>124 after the two-hour watchdog expired</td><td>0</td></tr>
+          <tr><td>Docker OOM reported</td><td>No</td><td>No</td></tr>
+          <tr><td>Final theorem axioms</td><td>[propext, Quot.sound]</td><td>[propext, Quot.sound]</td></tr>
+        </tbody>
+      </table>
+      <p>The first wrapper stopped with exit 124 after its inner compiles and axiom checks completed; the second wrapper exited 0. The two workspaces were isolated but were not separate Git clones. The replay did not reuse MathCase OLEANs; the pinned container supplied 346 Mathlib dependency OLEANs.</p>
+      <details class="record-note">
+        <summary>Open receipt bindings and the exact replay limits</summary>
+        <ul>
+          <li>Phase 1 source receipt SHA-256: <code>115d08d619763e3478e17467a80852529e55d77f11be7b55e48361830462ebf4</code>.</li>
+          <li>Phase 2 source receipt SHA-256: <code>6e48d17cf40f4f6b61a7a46793ae1b33f87ead146723ec3762b1f3af69ea45b6</code>.</li>
+          <li>Phase 1 output manifest SHA-256: <code>7baa0fc698f848b125cfe1aef59d2c6793ffe9ace29290a916edb037fe3d37f4</code>.</li>
+          <li>Phase 2 output manifest SHA-256: <code>b0e8eba33252d1f7eb253d55e05e0249fb599f58ebe75bc0db74c71fcbf967c9</code>.</li>
+          <li>The theorem source SHA-256 is <code>8e8fb280df93829c988a360b01276def73e7e5cbd8c9ce8eca70987d5733d3e5</code>; the staged comparison copy was byte-identical.</li>
+          <li>Phase 2 was bound to Candidate A. Candidate B's matching hash is a separate provenance check; the replay is not claimed to have consumed Candidate B.</li>
+          <li>Toolchain: Lean 4.33.1 commit <code>819816b2e0a3bf405af45ae5c7af2491d8f5bee6</code>; Mathlib commit <code>0df444a360eaa60ab8c11dca51a86af692955474</code>; container image <code>sha256:ec3377f34aaf0b83502e6755d5403ca36382adb99e4c7ab1470d42a1ac5abdc7</code>.</li>
+          <li>Recorded cap: one CPU, 2 GiB memory and swap, network disabled. The fresh OLEAN hashes differ from historical expected OLEAN hashes; the two fresh runs agree with one another. Timing and run-metadata hashes vary.</li>
+          <li>Reproduction is not yet clean-room: the pinned Docker image is not anonymously pullable and its full rebuild context is not staged. The source report explains the limitation.</li>
+          <li>The earlier root-guard failure and the all-at-once aggregate stop remain preserved in the linked attempt history; neither was a Lean proof refutation.</li>
+        </ul>
+      </details>
+      <div class="record-links">
+        <a href="evidence/collatz/m20-source-replay-2026-11-18/README.md">Read the full replay report</a>
+        <a href="replay.html">Search the module-by-module evidence</a>
+        <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/attempt-history.md">Read the preserved attempt history</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-shared-affine-structure-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the shared-structure review ↗</a>
+      </div>
+    </section>
+
+    <section class="record-section" id="basis-status" aria-labelledby="basis-status-title">
+      <span class="record-label planned">Basis reduction reviewed · no reduction found</span>
+      <h2 id="basis-status-title">The smaller-basis search is closed for this 2,652-case set</h2>
+      <p><strong>Plain statement:</strong> the two bounded analyses found no smaller checkable basis, so the exact 32-step trajectory equalities for all 2,652 rows remain in the proof.</p>
+      <ul>
+        <li>The prefix screen found that all 2,652 candidates first qualify at step 32; it reduced zero rows.</li>
+        <li>The shared affine/dependency review found common coefficient structure and 133 grouped modules, but it removed none of the trajectory equalities.</li>
+        <li>No further basis screen or reduction search is running.</li>
+      </ul>
+      <p>This is a negative result about the tried compression approaches, not a theorem that no smaller proof basis exists.</p>
+      <a class="text-link" href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-shared-affine-structure-2026-11-20.md" target="_blank" rel="noopener noreferrer">Open the shared-structure analysis <span aria-hidden="true">→</span></a>
+    </section>
+
+    <section class="record-section" id="other-checks" aria-labelledby="other-checks-title">
+      <span class="record-label internal">Related tools and scope</span>
+      <h2 id="other-checks-title">Use the finite checker for other starting values</h2>
+      <p><strong>Plain statement:</strong> the visitor tool can calculate a bounded trajectory for an entered starting number; that local calculation is separate from the 2,652-family Lean theorem.</p>
+      <p>Try an individual Collatz trajectory in the browser’s exact-integer tool, or open the full ledger for the other Collatz certificates, finite counts, and preserved failures.</p>
+      <div class="record-links">
+        <a href="tools.html#collatz-tool">Try a bounded Collatz calculation</a>
+        <a href="work.html#collatz-coverage">Read the separate finite residue audit</a>
+        <a href="work.html#limits">Read the open limits</a>
+        <a href="index.html">Return to the MathCase home page</a>
+      </div>
+    </section>
+
+    <p class="back-home"><a class="back-top" href="index.html">← Home</a><a class="back-top" href="work.html">All work →</a><a class="back-top" href="#top">Back to top ↑</a></p>
+  </main>
+
+  <footer class="site-footer shell">
+    <span>MathCase · evidence before claims</span>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="collatz.html">Collatz theorem</a><a href="tools.html">Try math</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
+  </footer>
+</body>
+</html>

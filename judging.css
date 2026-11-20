@@ -262,8 +262,8 @@ h1,h2,h3,p { margin-top:0; }
   .back-home { align-items:flex-start; }
 }
 @media(max-width:660px) {
-  .site-header nav { justify-content:flex-start; gap:5px; }
-  .site-header nav a { padding:7px 8px; font-size:9px; }
+  .site-header nav { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); justify-content:initial; gap:5px; min-width:0; }
+  .site-header nav a { min-width:0; max-width:100%; padding:7px 5px; font-size:9px; text-align:center; overflow-wrap:anywhere; }
   .hero-judging,.hero-judging > *, .hero-copy, .judge-card, .archive-intro, .archive-intro > *, .record-section, .case-card { width:100%; min-width:0; max-width:100%; }
   .hero-judging h1,.archive-intro h1,.archive-intro > p,.record-section h2,.record-section p,.record-section li { max-width:100%; overflow-wrap:anywhere; }
   .record-statline,.archive-nav,.archive-intro-actions { min-width:0; max-width:100%; }
