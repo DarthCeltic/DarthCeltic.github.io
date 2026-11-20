@@ -10,13 +10,13 @@ The pinned formal target at FormalConjectures snapshot `b576d527b271b936f9e61c0e
 ∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5
 ```
 
-The English paraphrase used on the site is: “There exists a 42-vertex graph with no 5-clique in either color.” The graph and its complement represent the two colors. This is the finite-certificate formulation of the known lower bound `R(5,5) ≥ 43`. Ryan's M0 statement-fidelity review is **UNASSESSED**; no Lean proof attempt has been made.
+The English statement used on the site is: “There is a simple graph on 42 vertices with no clique of size five and no independent set of size five.” The graph and its complement represent the two colors. Ryan reviewed this statement (M0 YES, packet SHA-256 `3866a0a6be46bd580c52b0677b1bc9c096ce75038d3941bb77ec795dc77f50cb`). The exact target is `∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5`.
 
 MathCase independently reconstructed the published Exoo(42) construction and checked every 5-vertex subset: **850,668** subsets were examined, with no red or blue `K5`. The derived graph6 file has SHA-256 `0d855016014ce4c2fbfcdba270683086a351b4a1e59afd611cc53e9b15109da7`; the checker has SHA-256 `cfbacf65e9ebe4ac3eefe80adb53c712ffdf842a515f20e991603e7157eef538`.
 
 The work page includes a browser-side verifier that checks the graph6 file's pinned SHA-256, decodes it, and exhaustively tests every five-vertex subset in both colors. It verifies this finite certificate; it does not prove a general Ramsey theorem or run Lean.
 
-This reproduces a known finite construction. It is not a new Ramsey result, and it has not been formalized in Lean. The pinned FormalConjectures target remains `sorry` in its source; Ryan's M0 statement review is still unassessed. The exact M0 question is staged owner-local and is not part of this public bundle.
+The separate graph6 browser check verifies this known finite construction. The Lean formalization is now published at [the MathCase R(5,5) source and receipt bundle](https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1): 27 chunk receipts and a final composition receipt, with axioms `[propext, Classical.choice, Quot.sound]`. The original run used a warm local cache; fresh-checkout replay, independent review, and M4 acceptance remain open.
 
 ## Files and literature
 

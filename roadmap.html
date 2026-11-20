@@ -83,13 +83,14 @@
         <li class="roadmap-item">
           <span class="roadmap-number">03</span>
           <article class="roadmap-card">
-            <p class="roadmap-state state-review">Candidate only · statement review unassessed</p>
+            <p class="roadmap-state state-review">Lean-checked known bound · independent review open</p>
             <h3>Choose one finite-structure target only after checking its statement and prior work.</h3>
-            <p>The current candidate is a formal lower-bound target for the known R(5,5) problem. A separate local checker reproduces a 42-vertex construction; it is not a Lean proof. The next step is to compare the pinned statement with plain English and nearby literature, before any formal attempt.</p>
-            <p class="roadmap-formula">Pinned target: <code>ramsey_number_five_five_lower_bound</code> at snapshot <code>b576d527</code>.</p>
-            <details><summary>Why not call this a new result?</summary><p>The graph construction and bound are known. The local checker verifies the supplied finite construction; the FormalConjectures target still contains a proof placeholder, and no proof attempt has been made.</p></details>
+            <p>The known R(5,5) lower bound now has a MathCase Lean formalization: 27 chunks and a final composition checked the 42-vertex witness. Ryan reviewed the exact statement (M0 YES). The run used a warm local cache; fresh-checkout reproduction and independent review remain open. R(6,6) is staged with M0 YES, but no construction search or Lean attempt is authorized yet.</p>
+            <p class="roadmap-formula">R(5,5) Lean target: <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>.</p>
+            <details><summary>Why not call this a new result?</summary><p>The graph construction and bound are known. The browser checker verifies the finite certificate, and MathCase has a separate Lean proof bundle. The upstream FormalConjectures file remains a proof placeholder; that does not change the saved MathCase result or make it a new construction.</p></details>
             <div class="roadmap-links">
               <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the local construction and check scope</a>
+              <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1" target="_blank" rel="noopener noreferrer">Open the Lean sources and receipts ↗</a>
               <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">Open the pinned target source ↗</a>
               <a href="https://arxiv.org/abs/2212.12630" target="_blank" rel="noopener noreferrer">Read the known construction paper ↗</a>
             </div>

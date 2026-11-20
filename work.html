@@ -46,6 +46,7 @@
       <a href="#proof-workbench">Saved proof case</a>
       <a href="#collatz-main">Collatz theorem</a>
       <a href="#coefficient-audit">Coefficient calculator</a>
+      <a href="#collatz-shared-structure">Shared Collatz structure</a>
       <a href="#collatz-coverage">Residue coverage</a>
       <a href="#affine-families">Affine families</a>
       <a href="#m31-bound">M31 lower bound</a>
@@ -117,6 +118,16 @@
         <p><strong>Arithmetic boundary:</strong> the data audit parses the listed proposition rows and confirms the count, distinct pairs, positive intercepts, and minimum gap. It does not recompute the trajectories, cover unlisted residues, or prove Collatz convergence.</p>
         <p><strong>Source and method:</strong> the pair rows and generator live in <code>evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/</code>. <a href="evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/README.md">Read the human audit and reproduction steps</a>.</p>
       </div>
+    </section>
+
+    <section class="record-section" id="collatz-shared-structure" aria-labelledby="collatz-shared-structure-title">
+      <span class="record-label internal">Source-level structure review · no new Lean run</span>
+      <h2 id="collatz-shared-structure-title">The same descent inequality serves all 2,652 rows; the 2,652 trajectory equalities remain.</h2>
+      <p><strong>Plain statement:</strong> every recorded M20 endpoint is smaller because the shared coefficient gap is positive, once its row’s exact 32-step trajectory equality is established.</p>
+      <p class="record-formula">start − endpoint = 517,135k + (r−q), with every listed r−q ≥ 117</p>
+      <p>All rows share modulus 2²⁰, step count 32, and slope 3¹². The 133 modules group 132 sets of 20 rows and one set of 12. That organization and the shared algebra clarify the proof; they do not remove any row’s trajectory equality or reduce the 2,652 mathematical cases. The earlier prefix screen also found zero reduction and was not rerun.</p>
+      <p>This is source analysis, not a new theorem or a refactored proof. It describes exactly the listed families and does not imply a general Collatz rule or convergence.</p>
+      <a class="text-link" href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-shared-affine-structure-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the full structure review ↗</a>
     </section>
 
     <section class="record-section" id="collatz-coverage" aria-labelledby="collatz-coverage-title">
@@ -223,11 +234,11 @@
     </section>
 
     <section class="record-section" id="ramsey" aria-labelledby="ramsey-title">
-      <span class="record-label internal">Exact finite construction check · known result</span>
-      <h2 id="ramsey-title">A 42-vertex graph reproduces a known lower bound for R(5,5).</h2>
-      <p><strong>Plain statement:</strong> a checked two-coloring on 42 vertices has no monochromatic clique of size five. This gives the known bound <code>R(5,5) ≥ 43</code>.</p>
-      <p><strong>Exact target:</strong> <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>. Here the graph and its complement are the two colors. The pinned FormalConjectures target is a proof placeholder; Ryan's M0 review of this wording is unassessed, and no Lean attempt has been made.</p>
-      <p>The construction is already known in the literature. MathCase reproduced one finite certificate and checked every five-vertex subset; this is not a new theorem and does not solve a general Ramsey problem.</p>
+      <span class="record-label public">Finite certificate + Lean proof · known result</span>
+      <h2 id="ramsey-title">A 42-vertex graph verifies the known lower bound R(5,5) ≥ 43.</h2>
+      <p><strong>Plain statement:</strong> there is a simple graph on 42 vertices with no clique of size five, and no independent set of size five. This witnesses the established lower bound <code>R(5,5) ≥ 43</code>.</p>
+      <p><strong>Exact Lean target:</strong> <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>. Ryan reviewed the statement wording (M0 YES). Lean checked the target in 27 separately compiled chunks plus a final composition; all returned exit 0. The recorded axiom list is <code>[propext, Classical.choice, Quot.sound]</code>, with no <code>sorryAx</code> or <code>native_decide</code> in the proof sources.</p>
+      <p>The graph is a known Exoo construction. MathCase formalized and checked this finite witness; it is not a new construction, does not determine the Ramsey number, and is not an independent review or M4 dossier pass. The original run used a warm local cache; a fresh-checkout rebuild has not yet been verified.</p>
       <div class="ramsey-certificate-panel">
         <p class="coefficient-local-note">This check runs locally in your browser. It fetches the saved graph6 certificate from this site, verifies its pinned SHA-256, decodes the 42-vertex graph, and checks every five-vertex subset in both colors.</p>
         <button id="ramsey-verify" type="button">Verify the 42-vertex certificate</button>
@@ -239,9 +250,10 @@
         <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the construction and checker note</a>
         <a href="evidence/finite-graphs/ramsey-r55/exoo42-derived.graph6">Download the checked graph6 certificate</a>
         <a href="https://arxiv.org/abs/2212.12630" target="_blank" rel="noopener noreferrer">Read the published construction paper ↗</a>
-        <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">View the exact pinned FormalConjectures source ↗</a>
+        <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1" target="_blank" rel="noopener noreferrer">Open the Lean sources, receipts, and rebuild guide ↗</a>
+        <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">View the pinned FormalConjectures source ↗</a>
       </div>
-      <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the checker, derived graph6 data, and success/failure records. The Lean target has not been attempted.</p>
+      <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the browser checker and graph6 success/failure record. The new MathCase bundle contains all 29 Lean sources, 27 exact chunk receipts, and the final receipt. M4 remains unpromoted and the run has not been independently reproduced from a clean checkout.</p>
     </section>
 
     <section class="record-section graph-section" id="knowledge-graph" aria-labelledby="knowledge-graph-title">
@@ -271,11 +283,11 @@
       <h2 id="limits-title">What is not established yet.</h2>
       <div class="open-work-grid">
         <article><h3>Clean-room Lean replay</h3><p>The pinned image is not anonymously pullable and its complete rebuild context is not published. A stranger cannot yet repeat the flagship replay from a fresh public checkout using only this site.</p></article>
-        <article><h3>Human and independent review</h3><p>Individual Collatz shard statements remain unreviewed at M0; M4 is not promoted. Independent mathematical review is open. The finite Ramsey target has no owner M0 answer and no Lean proof.</p></article>
+        <article><h3>Human and independent review</h3><p>Individual Collatz shard statements remain unreviewed at M0; M4 is not promoted. Independent mathematical review is open. The R(5,5) wording has M0 YES and a Lean proof, but no independent review or fresh-checkout replay.</p></article>
         <article><h3>Transfer comparison</h3><p>The model-based library-versus-baseline evaluation is staged, not run. No model calls are running; spend is $0. No benefit claim is made.</p></article>
         <article><h3>Open problems</h3><p>These results do not solve Collatz or Erdős–Straus. The finite Ramsey construction reproduces a known lower bound; it is not a new result.</p></article>
       </div>
-      <p class="record-note">The MathCase release candidate remains on Ryan's GitHub-import/review path. This Pages publication does not push or merge the MathCase repository.</p>
+      <p class="record-note">The R(5,5) source and receipt bundle is published in MathCase. Its result remains candidate evidence: no M4 promotion, signature, or independent review.</p>
     </section>
 
     <section class="record-section" id="failures" aria-labelledby="failures-title">
@@ -285,7 +297,8 @@
         <li><strong>M20 composition:</strong> two Lean elaboration failures and one 200,000-heartbeat definitional-equality timeout are preserved in the attempt history. A separate earlier all-at-once run stopped after 132 shards with exit 137; Docker reported no OOM. The later chunked proof and two source replays are separate records.</li>
         <li><strong>M20 replay setup:</strong> the root guard rejected one input path before Lean parsed a theorem; stderr SHA-256 is <code>2def9b59c92924c0da78eacb2ff935fb652dede81c4186b7aec689b1c3cff0f6</code>. Phase 1's wrapper exit 124 came from the added watchdog after the inner runner completed.</li>
         <li><strong>M31 verification setup:</strong> two starts failed before reading data because the expected output directory or bound summary was missing. The later corrected public-copy audit passed; details and receipt hash are in its human report.</li>
-        <li><strong>Finite graph input:</strong> a supplied graph6 certificate declared 42 vertices in YAML but encoded 41. It is excluded from the successful check and retained as a failed input record.</li>
+        <li><strong>Finite graph input:</strong> a supplied graph6 certificate declared 42 vertices in YAML but encoded 41. It is excluded from the successful check and retained as a failed input record. The later R(5,5) Lean proof also preserves six earlier nonpassing receipt hashes beside the successful 27-chunk composition.</li>
+        <li><strong>TruffleHog history scan:</strong> two unverified URI findings remain in historical negative-test fixtures. The current source constructs those inputs with <code>net/url</code>; an exact public exception record documents the fixture hashes and fail-closed monitoring rule. History was not rewritten and the scanner was not weakened. <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/security/trufflehog-history-exception-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the exception and verification record ↗</a>.</li>
         <li><strong>Separate owner-only dossier setup:</strong> a parent/import preflight stopped before a usable compatible receipt existed; no child proof was started. Restricted theorem material and source were not included here.</li>
       </ul>
       <p class="file-location"><strong>Failure files:</strong> <code>evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/attempt-history.md</code>, <code>legacy-aggregate-stop.json</code>, and <code>evidence/finite-graphs/ramsey-r55/graph6-order-mismatch-receipt.json</code>. Private setup logs remain owner-local; this page reports their sanitized outcome.</p>
@@ -302,7 +315,7 @@
   </main>
 
   <footer class="site-footer shell">
-    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="work.html">All work</a><a href="tools.html">Try math</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
     <span>Human-readable evidence map · no model calls · no browser-side Lean execution</span>
   </footer>
 </body>

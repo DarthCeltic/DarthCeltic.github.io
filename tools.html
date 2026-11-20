@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Run exact, bounded Collatz and Erdős-Straus calculations in your own browser and save hash-bound receipts.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Try a finite math check | MathCase</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="research.css">
+  <link rel="stylesheet" href="visitor-tools.css">
+  <script defer src="visitor-tools.js"></script>
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="index.html" aria-label="MathCase home">
+      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Proofs you can inspect</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="work.html">All work</a>
+      <a class="current" href="tools.html" aria-current="page">Try math</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="replay.html">Replay</a>
+      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo</a>
+    </nav>
+  </header>
+
+  <main class="shell research-page">
+    <section class="research-hero tools-hero" aria-labelledby="tools-title">
+      <p class="eyebrow">Your browser, your inputs</p>
+      <h1 id="tools-title">Run a finite math check and take the receipt with you.</h1>
+      <p>Enter a number to check one Collatz trajectory, or choose a campaign parameter and search boundedly for an exact three-fraction decomposition.</p>
+      <div class="runtime-note" role="note">
+        <strong>Scope:</strong> these tools use exact browser integer arithmetic and save receipts locally. They do not run Lean. The browser-side Lean WASM runtime needed for arbitrary Lean statements and proof attempts is not bundled yet; no input is sent to a server.
+      </div>
+      <div class="tools-actions">
+        <a class="button button-secondary" href="index.html#case-desk">Open a saved case</a>
+        <a class="button button-secondary" href="work.html#collatz-main">Read the bounded results</a>
+      </div>
+    </section>
+
+    <section class="visitor-tool-grid" aria-label="Finite math tools">
+      <article class="visitor-tool-card" aria-labelledby="collatz-tool-title">
+        <p class="eyebrow">Finite trajectory check</p>
+        <h2 id="collatz-tool-title">Check a Collatz trajectory</h2>
+        <p class="tool-plain">For one supplied starting number, MathCase follows standard Collatz steps and reports whether a value below that start appears within your step limit.</p>
+        <p class="tool-formula">T(n) = n/2 for even n; T(n) = 3n+1 for odd n.</p>
+        <form id="visitor-collatz-form" class="visitor-form">
+          <label class="visitor-field">
+            <span>Input type</span>
+            <select id="collatz-mode">
+              <option value="direct">Starting number n</option>
+              <option value="residue">One residue representative 2^m k + r</option>
+            </select>
+          </label>
+          <div id="collatz-direct-fields" class="field-row">
+            <label class="visitor-field">
+              <span>Starting number n</span>
+              <input id="collatz-start" type="text" inputmode="numeric" value="27" maxlength="300" autocomplete="off">
+            </label>
+          </div>
+          <div id="collatz-residue-fields" class="field-row" hidden>
+            <label class="visitor-field">
+              <span>Exponent m (0-256)</span>
+              <input id="collatz-exponent" type="text" inputmode="numeric" value="20" maxlength="3" autocomplete="off" disabled>
+            </label>
+            <label class="visitor-field">
+              <span>Residue r</span>
+              <input id="collatz-residue" type="text" inputmode="numeric" value="1" maxlength="300" autocomplete="off" disabled>
+            </label>
+            <label class="visitor-field">
+              <span>Parameter k</span>
+              <input id="collatz-parameter" type="text" inputmode="numeric" value="0" maxlength="300" autocomplete="off" disabled>
+            </label>
+          </div>
+          <label class="visitor-field">
+            <span>Maximum steps (1-10,000)</span>
+            <input id="collatz-step-limit" type="text" inputmode="numeric" value="1000" maxlength="5" autocomplete="off">
+          </label>
+          <div class="visitor-actions">
+            <button class="button button-primary" type="submit">Check this trajectory</button>
+            <button class="button button-secondary" id="collatz-download" type="button" disabled>Download receipt</button>
+            <button class="button button-secondary" id="collatz-save" type="button" disabled>Save in this browser</button>
+          </div>
+        </form>
+        <p id="collatz-status" class="visitor-status" role="status" aria-live="polite">Ready. Nothing runs until you submit the form.</p>
+        <div id="collatz-result" class="visitor-result" aria-live="polite"></div>
+        <p class="tool-limit"><strong>What a pass means:</strong> this exact starting number reaches a smaller value within the checked steps. A residue-mode run checks one chosen k only. It does not prove the result for every k, prove convergence, or replace Lean.</p>
+      </article>
+
+      <article class="visitor-tool-card" aria-labelledby="egypt-tool-title">
+        <p class="eyebrow">Bounded exact search</p>
+        <h2 id="egypt-tool-title">Search an Erdős-Straus member</h2>
+        <p class="tool-plain">For n = 12d+1, MathCase searches your finite denominator bounds for positive, strictly increasing x, y, z that satisfy the exact equation.</p>
+        <p class="tool-formula">4/n = 1/x + 1/y + 1/z</p>
+        <form id="visitor-egypt-form" class="visitor-form">
+          <div class="field-row">
+            <label class="visitor-field">
+              <span>Campaign parameter d (positive)</span>
+              <input id="egypt-d" type="text" inputmode="numeric" value="1" maxlength="80" autocomplete="off">
+            </label>
+            <label class="visitor-field">
+              <span>How many x values to try (1-100,000)</span>
+              <input id="egypt-x-budget" type="text" inputmode="numeric" value="100" maxlength="6" autocomplete="off">
+            </label>
+          </div>
+          <div class="field-row">
+            <label class="visitor-field">
+              <span>y values per x (1-100,000)</span>
+              <input id="egypt-y-budget" type="text" inputmode="numeric" value="1000" maxlength="6" autocomplete="off">
+            </label>
+            <label class="visitor-field">
+              <span>Total pair checks (1-1,000,000)</span>
+              <input id="egypt-total-budget" type="text" inputmode="numeric" value="100000" maxlength="7" autocomplete="off">
+            </label>
+          </div>
+          <div class="visitor-actions">
+            <button class="button button-primary" id="egypt-run" type="submit">Search these bounds</button>
+            <button class="button button-secondary" id="egypt-cancel" type="button" disabled>Stop search</button>
+            <button class="button button-secondary" id="egypt-download" type="button" disabled>Download receipt</button>
+            <button class="button button-secondary" id="egypt-save" type="button" disabled>Save in this browser</button>
+          </div>
+        </form>
+        <p id="egypt-status" class="visitor-status" role="status" aria-live="polite">Ready. The search is bounded and stays in this browser.</p>
+        <div id="egypt-result" class="visitor-result" aria-live="polite"></div>
+        <p class="tool-limit"><strong>What a witness means:</strong> the displayed tuple satisfies the exact integer identity for this one n. A bounded miss means only that no witness appeared within the searched bounds; it is not a counterexample to the conjecture.</p>
+      </article>
+    </section>
+
+    <section class="visitor-tool-note">
+      <h2>About the receipts</h2>
+      <p>Each receipt records its inputs, finite bound, exact result, and a SHA-256 digest over the canonical result fields. Downloading saves a JSON file to your device. Saving stores the receipt in this browser's local storage only; it is not uploaded or shared.</p>
+      <p>For an arbitrary Lean statement and proof attempt, MathCase still needs a self-hosted Lean WASM runtime. The host has Lean 4.33.1 but not its browser build tools or WASM files, so this page does not pretend a JavaScript calculation is a kernel-checked proof.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer shell">
+    <nav aria-label="Footer navigation">
+      <a href="index.html">Home</a>
+      <a href="work.html">All work</a>
+      <a href="tools.html">Try math</a>
+      <a href="timeline.html">Timeline</a>
+      <a href="roadmap.html">Roadmap</a>
+      <a href="replay.html">Replay</a>
+      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a>
+    </nav>
+    <span>Local exact calculations · no model calls · no Lean proof execution</span>
+  </footer>
+</body>
+</html>
