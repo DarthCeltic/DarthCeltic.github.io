@@ -13,6 +13,7 @@
   <script defer src="collatz-coefficient.js"></script>
   <script defer src="egyptian-shift7.js"></script>
   <script defer src="ramsey-certificate.js"></script>
+  <script defer src="ramsey66-certificate.js"></script>
 </head>
 <body>
   <header class="site-header shell">
@@ -53,7 +54,8 @@
       <a href="#affine-families">Affine families</a>
       <a href="#m31-bound">M31 lower bound</a>
       <a href="#egyptian">Egyptian fractions</a>
-      <a href="#ramsey">Finite graph</a>
+      <a href="#ramsey">R(5,5) Lean proof</a>
+      <a href="#ramsey-r66">R(6,6) finite certificate</a>
       <a href="#knowledge-graph">Statement index</a>
       <a href="#limits">Open limits</a>
     </nav>
@@ -256,6 +258,31 @@
         <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">View the pinned FormalConjectures source ↗</a>
       </div>
       <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the browser checker and graph6 success/failure record. The new MathCase bundle contains all 29 Lean sources, 27 exact chunk receipts, and the final receipt. M4 remains unpromoted and the run has not been independently reproduced from a clean checkout.</p>
+    </section>
+
+    <section class="record-section" id="ramsey-r66" aria-labelledby="ramsey-r66-title">
+      <span class="record-label internal">Finite graph certificate · two local checkers · not Lean-checked</span>
+      <h2 id="ramsey-r66-title">A 101-vertex graph witnesses the known lower bound R(6,6) ≥ 102.</h2>
+      <p><strong>Plain statement:</strong> there is a simple graph on 101 labeled vertices with no clique of six and no independent set of six.</p>
+      <p><strong>Exact target:</strong> <code>∃ G : SimpleGraph (Fin 101), G.CliqueFree 6 ∧ (Gᶜ).CliqueFree 6</code>. Ryan reviewed the English statement against this target (M0 YES).</p>
+      <p>The certificate is the Paley graph P(101), with 2,525 edges and degree 50 at every vertex. Two separately implemented local checkers found no six-clique and no independent six-set; both exited 0. This reproduces a known finite lower bound. It is not a Lean proof, a new Ramsey theorem, an exact value for R(6,6), or an independent mathematical review.</p>
+      <div class="ramsey-certificate-panel">
+        <p class="coefficient-local-note">Inspect the saved graph in this browser. The page checks the certificate hash and degree sequence, then displays one vertex’s neighbors. It does not rerun the exhaustive clique searches.</p>
+        <form class="coefficient-form" id="ramsey66-inspect-form">
+          <label for="ramsey66-vertex">Vertex number (0–100)
+            <input id="ramsey66-vertex" type="number" min="0" max="100" step="1" value="0">
+          </label>
+          <button id="ramsey66-inspect" type="submit">Inspect this vertex</button>
+        </form>
+        <p id="ramsey66-status" class="graph-status" role="status" aria-live="polite">The certificate is not loaded until you inspect a vertex.</p>
+        <div id="ramsey66-result" class="coefficient-result" aria-live="polite"></div>
+      </div>
+      <div class="record-links">
+        <a href="evidence/finite-graphs/ramsey-r66-paley101/README.md">Read the plain-language reproduction guide</a>
+        <a href="evidence/finite-graphs/ramsey-r66-paley101/ramsey66_exact_checker.cpp">View the C++ finite checker</a>
+        <a href="evidence/finite-graphs/ramsey-r66-paley101/verify_paley101_independent.py">View the Python cross-checker</a>
+      </div>
+      <p class="file-location"><strong>Evidence files:</strong> <code>evidence/finite-graphs/ramsey-r66-paley101/</code> contains the human guide, graph certificate, both checker sources, two run receipts, and a SHA-256 manifest.</p>
     </section>
 
     <section class="record-section graph-section" id="knowledge-graph" aria-labelledby="knowledge-graph-title">
