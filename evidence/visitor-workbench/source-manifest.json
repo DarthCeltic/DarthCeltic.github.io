@@ -2,24 +2,84 @@
   "schema": "mathcase-visitor-workbench-source-v1",
   "source_repository": "https://github.com/DarthCeltic/MathCase",
   "source_branch": "main",
-  "source_commit": "e3451de82c040638c1cb60bf3c8aea46b541417c",
+  "source_commit": "17174a4a6311eb2e32556d9e4fb38255290a36be",
   "source_path": "visitor/",
   "files": [
     {
+      "path": "visitor/classroom.html",
+      "bytes": 5773,
+      "sha256": "9705b7d95af0905a0130d3e4771f205212e96586e05dd0b8443efde3247aa100"
+    },
+    {
+      "path": "visitor/classroom.js",
+      "bytes": 10807,
+      "sha256": "2bcaff022a3a42841031c6a3323260d4d4e22dc17f79ea1ecd34ca9cb690b241"
+    },
+    {
       "path": "visitor/index.html",
-      "bytes": 6112,
-      "sha256": "0e043465de6faaf03112c2d58ce426a19ba6ea9d66dd6e07969dca84371ac9eb"
+      "bytes": 7489,
+      "sha256": "18a8b9f87022ec9204e8234e1264171cba15dfe7fd821e9a7a17bada4524a7d9"
+    },
+    {
+      "path": "visitor/lab-example-report.md",
+      "bytes": 1173,
+      "sha256": "813faa98e20495d67be6cf454543ec3000fd25a6f6a50a0ce706a1c03ca24ee2"
+    },
+    {
+      "path": "visitor/lab.html",
+      "bytes": 4039,
+      "sha256": "4de37815cb72aed28cbdc49f78c10f349e8d7462a6fe908f3db4e7015959c122"
+    },
+    {
+      "path": "visitor/lab.js",
+      "bytes": 11220,
+      "sha256": "88c61f5da68e7062d2bf8ec6e5ef030a4c6e8dcf8800cf4a1fa52dd1f1ad9c83"
+    },
+    {
+      "path": "visitor/lesson.html",
+      "bytes": 4398,
+      "sha256": "78ccc65358e87f80e9e59105d1db81adee235a7fd9b77a156bd7b3bdb1f0199b"
+    },
+    {
+      "path": "visitor/model-workflow.html",
+      "bytes": 5910,
+      "sha256": "df097c55a150e97e320197899ef94c39e34d78161a61b7824625764fb9e78674"
+    },
+    {
+      "path": "visitor/model-workflow.js",
+      "bytes": 11319,
+      "sha256": "732698245f5531b33e8638b5826efc2c920f6aee6fe377420d05af41231c2d72"
+    },
+    {
+      "path": "visitor/study-lab.html",
+      "bytes": 4256,
+      "sha256": "85912f7b21cb07eb096b6834b4e97cfaa6cb7b9b42439cc05f615034efb5949d"
+    },
+    {
+      "path": "visitor/study-lab.js",
+      "bytes": 23690,
+      "sha256": "605ec7cfa272d9834fbfa879d3c3abaec9869ab49c02e9704344e75f7446a7bc"
+    },
+    {
+      "path": "visitor/teacher-guide.md",
+      "bytes": 1490,
+      "sha256": "d25b309995dce485a23478a61fc09eb0b6bbf83a6e33774adcf69b47e577bf20"
+    },
+    {
+      "path": "visitor/tools.css",
+      "bytes": 2991,
+      "sha256": "6ead1578ddb440a19909e44d8c2e8b155dde9c5a985c6dba7a2afcb9cd7bdba3"
     },
     {
       "path": "visitor/workbench.css",
-      "bytes": 8587,
-      "sha256": "e13e9a01776a53840ceb3901698b2b81bfc0acf51cbfc47fe52ef01d4f0feb05"
+      "bytes": 9352,
+      "sha256": "59883b67ad19257d0dac5b8294f0de60e313d05a25e4eb32b926876e6dae17ae"
     },
     {
       "path": "visitor/workbench.js",
-      "bytes": 13412,
-      "sha256": "9d25883869f4e27d1ec49757414c2454c175b5d475b2cef956431875cd679751"
+      "bytes": 19653,
+      "sha256": "11865e1de252e964ff485eb34f0b7eec0cfebe405d12cba2dd11739510be6f38"
     }
   ],
-  "total_bytes": 28111
+  "total_bytes": 123560
 }
