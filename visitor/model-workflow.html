@@ -27,7 +27,7 @@
     </section>
     <section class="tool-card">
       <h2>2 · Run locally only after your review</h2>
-      <p>The existing <code>mathcase solve-provider</code> command requires an explicit <code>--dispatch</code>, owner authorization, item clearance, fixed provider/model/pricing, a hard spend cap, and pinned Lean Docker verification. For local inference, the CLI allows an OpenAI-compatible HTTP endpoint only on loopback (localhost, 127.0.0.1, or ::1); the same authorization and environment-key configuration still applies. Use the exact problem packet; the browser cannot dispatch or approve it.</p>
+      <p>The published <code>mathcase solve-provider</code> command requires an explicit <code>--dispatch</code>, owner authorization, item clearance, fixed provider/model/pricing, a hard spend cap, and pinned Lean Docker verification. This published version accepts HTTPS provider endpoints; it does not support local HTTP Ollama dispatch. Do not point this version at an <code>http://</code> endpoint. Use the exact problem packet; the browser cannot dispatch or approve a run.</p>
       <p>Command template for Bash-like shells. Replace every angle-bracket placeholder before running; the placeholders are not literal shell syntax. In PowerShell, put the arguments on one line instead of using the backslash line breaks shown here.</p>
       <pre><code>mathcase solve-provider --dispatch \
   --problem &lt;cleared-problem.json&gt; \

@@ -26,16 +26,16 @@
         <h2>1 · A counterexample repairs a claim</h2>
         <p><strong>Plain:</strong> A composite divisor can divide a square without dividing its root.</p>
         <code class="formula">(4 : Nat) ∣ 2 ^ 2 ∧ ¬ (4 : Nat) ∣ 2</code>
-        <p><strong>Shows:</strong> the implication “d divides n², therefore d divides n” needs a prime hypothesis.</p>
-        <p><strong>Does not show:</strong> the corresponding statement for primes; that is the next case.</p>
+        <p><strong>Shows:</strong> the unrestricted implication fails: 4 divides 2², but 4 does not divide 2.</p>
+        <p><strong>Does not show:</strong> that primality is necessary. It is sufficient, and square-free composites such as 6 also work because 2 and 3 each divide n.</p>
         <a class="tool-action" href="index.html?starter=counterexample">Open this case</a>
       </article>
       <article class="tool-card">
-        <h2>2 · Repair with primality</h2>
+        <h2>2 · A sufficient repair: primality</h2>
         <p><strong>Plain:</strong> If a prime divides a natural number’s square, it divides that number.</p>
         <code class="formula">∀ (p n : Nat), p.Prime → p ∣ n ^ 2 → p ∣ n</code>
         <p><strong>Shows:</strong> a known elementary theorem, checked by Lean from the Mathlib prime-divisor lemma.</p>
-        <p><strong>Does not show:</strong> a new result or a general AI theorem-solving capability.</p>
+        <p><strong>Does not show:</strong> that every composite divisor fails, a new result, or a general AI theorem-solving capability.</p>
         <a class="tool-action" href="index.html?starter=prime">Open this case</a>
       </article>
       <article class="tool-card">

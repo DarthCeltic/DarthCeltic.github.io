@@ -27,7 +27,7 @@ by
   exact hp.dvd_mul.mp hProduct
 ```
 
-The first line uses primality to move from a divisor of a square to a divisor of its base. The second applies the prime-divides-product property. The proof assumes `p` is prime; without that hypothesis the conclusion need not hold.
+The first line uses primality to move from a divisor of a square to a divisor of its base. The second applies the prime-divides-product property. Primality is a sufficient hypothesis for this proof, not a necessary condition for every divisor: the square-free composite `6` also works, since `6 ∣ n²` implies both `2 ∣ n` and `3 ∣ n`, hence `6 ∣ n`. The counterexample with `4` shows why the unrestricted claim fails; it does not show that all composite divisors fail.
 
 ## Teaching notes
 
