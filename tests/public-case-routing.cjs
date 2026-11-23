@@ -1,0 +1,78 @@
+"use strict";
+const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const path = require("node:path");
+const vm = require("node:vm");
+const test = require("node:test");
+const root = path.resolve(__dirname, "..");
+
+class NodeStub {
+  constructor(tag) { this.tag = tag; this.children = []; this.attributes = {}; this.style = {}; this.classList = { add() {} }; }
+  append(...nodes) { this.children.push(...nodes); }
+  replaceChildren(...nodes) { this.children = []; this.append(...nodes); }
+  setAttribute(name, value) { this.attributes[name] = value; }
+  addEventListener() {}
+}
+function descendantsText(node) {
+  return [node.textContent || "", ...(node.children || []).map(descendantsText)].join(" ");
+}
+function findNode(node, predicate) {
+  if (predicate(node)) return node;
+  for (const child of node.children || []) { const found = findNode(child, predicate); if (found) return found; }
+  return null;
+}
+function loadReader(hash) {
+  const nodes = Object.fromEntries(["case-nav", "case-stage", "tavily-panel", "tavily-body"].map(id => [id, new NodeStub(id)]));
+  const replaced = [];
+  const location = { hash, replace(target) { replaced.push(target); } };
+  const window = {};
+  const context = {
+    window, location, history: { replaceState() {} },
+    document: { getElementById(id) { return nodes[id]; }, createElement(tag) { return new NodeStub(tag); } },
+    addEventListener() {}, fetch: async () => { throw new Error("offline test"); }, URL, TextDecoder,
+    crypto: require("node:crypto").webcrypto,
+  };
+  vm.runInNewContext(fs.readFileSync(path.join(root, "saved-demo/public-reader-data.js"), "utf8"), context);
+  vm.runInNewContext(fs.readFileSync(path.join(root, "app.js"), "utf8"), context);
+  return { nodes, replaced };
+}
+function loadRouteScript(file, href) {
+  const replaced = [];
+  const url = new URL(href);
+  const location = { href, hash: url.hash, search: url.search, replace(target) { replaced.push(target); } };
+  const window = { location };
+  const context = { window, document: { querySelectorAll() { return []; } }, URL, decodeURIComponent };
+  vm.runInNewContext(fs.readFileSync(path.join(root, file), "utf8"), context);
+  return replaced;
+}
+
+test("prime and composite saved IDs accept understand and historical run suffixes", () => {
+  const prime = loadReader("#case/hero-prime-divisibility-r1/understand");
+  assert.deepEqual(prime.replaced, []);
+  assert.ok(prime.nodes["case-nav"].children.some(node => node.attributes["aria-current"] === "page"));
+  const composite = loadReader("#case/hero-composite-counterexample-r1/run/hero-composite-counterexample-r1-exact-arithmetic");
+  assert.deepEqual(composite.replaced, []);
+  assert.match(descendantsText(composite.nodes["case-stage"]), /Try an exact integer example/);
+});
+
+test("legacy square-root child routes to its actual public case", () => {
+  const reader = loadReader("#case/hero-sqrt2-parent-reuse-r2/understand");
+  assert.deepEqual(reader.replaced, ["/cases.html#sqrt2-child"]);
+  assert.deepEqual(loadRouteScript("case-desk-launch.js", "https://darthceltic.github.io/#case/hero-sqrt2-parent-reuse-r2/understand"), ["https://darthceltic.github.io/cases.html#sqrt2-child"]);
+});
+
+test("unknown IDs show a missing-case message and catalog link", () => {
+  const { nodes } = loadReader("#case/not-a-public-case");
+  const text = descendantsText(nodes["case-stage"]);
+  assert.match(text, /This saved case is not available/);
+  assert.match(text, /No public case matches/);
+  assert.ok(findNode(nodes["case-stage"], child => child.href === "/cases.html"));
+  assert.doesNotMatch(text, /Try an exact integer example/);
+});
+
+test("root shared case links and the saved-demo alias preserve the requested route", () => {
+  const rootLink = loadRouteScript("case-desk-launch.js", "https://darthceltic.github.io/#case/hero-prime-divisibility-r1/run/run-17");
+  assert.deepEqual(rootLink, ["https://darthceltic.github.io/reader.html?scope=public#case/hero-prime-divisibility-r1/run/run-17"]);
+  const alias = loadRouteScript("saved-demo-redirect.js", "https://darthceltic.github.io/saved-demo/?scope=public#case/hero-composite-counterexample-r1/understand");
+  assert.deepEqual(alias, ["https://darthceltic.github.io/reader.html?scope=public#case/hero-composite-counterexample-r1/understand"]);
+});

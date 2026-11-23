@@ -24,6 +24,7 @@
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="visitor/">Make a case</a>
+      <a href="cases.html">Cases</a>
       <a class="current" href="work.html" aria-current="page">All work</a>
       <a href="collatz.html">Collatz theorem</a>
       <a href="timeline.html">Timeline</a>
@@ -243,7 +244,8 @@
       <h2 id="ramsey-title">A 42-vertex graph verifies the known lower bound R(5,5) ≥ 43.</h2>
       <p><strong>Plain statement:</strong> there is a simple graph on 42 vertices with no clique of size five, and no independent set of size five. This witnesses the established lower bound <code>R(5,5) ≥ 43</code>.</p>
       <p><strong>Exact Lean target:</strong> <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>. Ryan reviewed the statement wording (M0 YES). Lean checked the target in 27 separately compiled chunks plus a final composition; all returned exit 0. The recorded axiom list is <code>[propext, Classical.choice, Quot.sound]</code>, with no <code>sorryAx</code> or <code>native_decide</code> in the proof sources.</p>
-      <p>The graph is a known Exoo construction. MathCase formalized and checked this finite witness; it is not a new construction, does not determine the Ramsey number, and is not an independent review or M4 dossier pass. The original run used a warm local cache; a fresh-checkout rebuild has not yet been verified.</p>
+      <p>The graph is a known Exoo construction. MathCase formalized and checked this finite witness; it is not a new construction, does not determine the Ramsey number, and is not an independent review or M4 dossier pass. The original Lean run used a warm local cache; a fresh-checkout rebuild has not yet been verified.</p>
+      <p class="record-note"><strong>Graph6 correction:</strong> the first exported bytes used row-major ordering, which is not the standard graph6 order. The historical file and receipts remain available for audit, but the browser check and current download now use a corrected standard graph6 file that matches all 42 Lean adjacency rows. The corrected file was independently checked over all 850,668 five-vertex subsets. <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the human correction and verification note</a>.</p>
       <div class="ramsey-certificate-panel">
         <p class="coefficient-local-note">This check runs locally in your browser. It fetches the saved graph6 certificate from this site, verifies its pinned SHA-256, decodes the 42-vertex graph, and checks every five-vertex subset in both colors.</p>
         <button id="ramsey-verify" type="button">Verify the 42-vertex certificate</button>
@@ -253,12 +255,13 @@
       <p>A separate supplied certificate failed an order check: its metadata said 42 vertices but its graph6 bytes decoded to 41. That failed input is preserved and is not used for the passing construction.</p>
       <div class="record-links">
         <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the construction and checker note</a>
-        <a href="evidence/finite-graphs/ramsey-r55/exoo42-derived.graph6">Download the checked graph6 certificate</a>
+        <a href="evidence/finite-graphs/ramsey-r55/exoo42.g6">Download the standard graph6 certificate</a>
+        <a href="evidence/finite-graphs/ramsey-r55/check_exoo42_graph6.py">Open the standalone checker</a>
         <a href="https://arxiv.org/abs/2212.12630" target="_blank" rel="noopener noreferrer">Read the published construction paper ↗</a>
         <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1" target="_blank" rel="noopener noreferrer">Open the Lean sources, receipts, and rebuild guide ↗</a>
         <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">View the pinned FormalConjectures source ↗</a>
       </div>
-      <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the browser checker and graph6 success/failure record. The new MathCase bundle contains all 29 Lean sources, 27 exact chunk receipts, and the final receipt. M4 remains unpromoted and the run has not been independently reproduced from a clean checkout.</p>
+      <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the standard graph6 browser checker, the preserved legacy encoding, and the correction record. The MathCase bundle contains all 29 Lean sources, 27 exact chunk receipts, and the final receipt. M4 remains unpromoted and the Lean proof has not been independently rebuilt from a clean checkout.</p>
     </section>
 
     <section class="record-section" id="ramsey-r66" aria-labelledby="ramsey-r66-title">
@@ -345,7 +348,7 @@
   </main>
 
   <footer class="site-footer shell">
-    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="visitor/">Make a case</a><a href="work.html">All work</a><a href="tools.html">Try math</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="visitor/">Make a case</a><a href="cases.html">Cases</a><a href="work.html">All work</a><a href="tools.html">Try math</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
     <span>Human-readable evidence map · no model calls · no browser-side Lean execution</span>
   </footer>
 </body>

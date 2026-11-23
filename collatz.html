@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="judging.css">
   <link rel="stylesheet" href="research.css">
   <script defer src="collatz-coefficient.js"></script>
+  <script defer src="collatz-twelve-of-twenty.js"></script>
 </head>
 <body>
   <header class="site-header shell">
@@ -21,6 +22,7 @@
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
       <a href="visitor/">Make a case</a>
+      <a href="cases.html">Cases</a>
       <a href="work.html">All work</a>
       <a class="current" href="collatz.html" aria-current="page">Collatz theorem</a>
       <a href="tools.html">Try math</a>
@@ -39,6 +41,31 @@
         <a class="button button-primary" href="#exact-statement">Read the exact statement <span aria-hidden="true">↓</span></a>
         <a class="button button-secondary" href="#coefficient-check">Check a listed family <span aria-hidden="true">↓</span></a>
         <a class="button button-secondary" href="replay.html">Inspect the replay <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+
+    <section class="record-section" id="twelve-of-twenty" aria-labelledby="twelve-title">
+      <span class="record-label public">Fresh Lean-core source replay · exact parity condition</span>
+      <h2 id="twelve-title">When do 32 Collatz steps take you downhill?</h2>
+      <p><strong>Plain statement:</strong> if exactly 12 of the first 20 accelerated inputs are odd, the value after 32 ordinary Collatz steps is smaller than the start. Lean proves this for every qualifying residue progression, with every natural parameter.</p>
+      <p class="record-formula">125,970 of the 1,048,576 residues modulo 2²⁰ have exactly 12 odd inputs; for every such r and k, C³²(2²⁰k+r) = 531,441k + A²⁰(r) &lt; 2²⁰k+r.</p>
+      <p>An accelerated step halves an even input. For an odd input, it applies <code>(3n+1)/2</code>. The parity condition makes 20 accelerated steps correspond to 32 ordinary steps. Lean proves the count by a recurrence on sibling residue classes, then ties that exact count to the same parity predicate used by the descent theorem.</p>
+      <p class="record-note"><strong>Limits:</strong> this covers a fixed parity pattern, not every starting number. It gives no eventual-return rule, proves no global convergence, and makes no priority claim. The count is a residue-class density, not a percentage of Collatz solved.</p>
+      <div class="coefficient-audit-panel">
+        <p class="coefficient-local-note">This browser control calculates one entered trajectory using exact integer arithmetic. It is illustrative only; it does not run Lean or prove the general rule.</p>
+        <form class="coefficient-form" id="twelve-form">
+          <label for="twelve-start">Starting number
+            <input id="twelve-start" type="text" inputmode="numeric" autocomplete="off" value="239" aria-describedby="twelve-hint">
+          </label>
+          <button type="submit">Check this start</button>
+        </form>
+        <p id="twelve-hint">Try 239, then 27. Inputs are limited to 120 digits.</p>
+        <p class="coefficient-result-card" id="twelve-result" role="status" aria-live="polite" aria-atomic="true"></p>
+        <noscript>Enable JavaScript to calculate the examples.</noscript>
+      </div>
+      <div class="record-links">
+        <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-twelve-of-twenty-v1" target="_blank" rel="noopener noreferrer">Read the exact Lean sources, receipts, and commands ↗</a>
+        <a href="cases.html#collatz-twelve-of-twenty">Open the public case catalog</a>
       </div>
     </section>
 
@@ -159,7 +186,7 @@
 
   <footer class="site-footer shell">
     <span>MathCase · evidence before claims</span>
-    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="visitor/">Make a case</a><a href="work.html">All work</a><a href="collatz.html">Collatz theorem</a><a href="tools.html">Try math</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="visitor/">Make a case</a><a href="cases.html">Cases</a><a href="work.html">All work</a><a href="collatz.html">Collatz theorem</a><a href="tools.html">Try math</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
   </footer>
 </body>
 </html>

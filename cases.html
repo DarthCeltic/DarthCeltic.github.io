@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="MathCase public case catalog: saved proof attempts, exact local calculations, and reproducible Lean checks with honest limits.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self' https://raw.githubusercontent.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="canonical" href="https://darthceltic.github.io/cases.html">
+  <title>MathCase — Public case index</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="case-index.css">
+  <script defer src="riemann-reference.js"></script>
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="index.html" aria-label="MathCase home">
+      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Public case index</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="visitor/">Make a case</a>
+      <a class="current" href="cases.html" aria-current="page">Cases</a>
+      <a href="work.html">All work</a>
+      <a href="collatz.html">Collatz theorem</a>
+      <a href="tools.html">Try math</a>
+      <a href="replay.html">Replay</a>
+      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+    </nav>
+  </header>
+  <main class="shell case-index" id="top">
+    <section class="archive-intro" aria-labelledby="case-index-title">
+      <p class="eyebrow">Saved evidence · local calculations · Lean replays</p>
+      <h1 id="case-index-title">MathCase lets you inspect saved proof attempts, run exact arithmetic, and replay selected Lean checks.</h1>
+      <p>This index separates what is already saved from what a visitor can calculate or rebuild locally. Opening a saved case does not start a model, search, or Lean run.</p>
+      <div class="archive-intro-actions">
+        <a class="button button-primary" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open a saved proof case</a>
+        <a class="button button-secondary" href="visitor/">Write and check your own Lean case</a>
+        <a class="button button-secondary" href="work.html">Read the full work ledger</a>
+      </div>
+    </section>
+    <section class="case-card-page" id="local-launcher" aria-labelledby="local-launcher-title">
+      <span class="case-status pass">Local Python · bounded checks</span>
+      <h2 id="local-launcher-title">Run a public case from a clone</h2>
+      <p>One command lists ten routes. Choose a case ID to run its documented calculation or Lean check; each run writes fresh logs and receipts in a new local output folder. No inference model is called.</p>
+      <pre>python scripts/run_public_case.py list
+python scripts/run_public_case.py collatz
+python scripts/run_public_case.py ramsey66</pre>
+      <p>The prime-to-√2 route needs pinned Mathlib or an explicit bootstrap directory. The Riemann route fetches only four hash-pinned upstream files. A visitor-owned Lean file is checked locally with the pinned toolchain.</p>
+      <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/blob/main/scripts/run_public_case.py">Read the launcher source ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/CASE_CATALOG.md">Read the case IDs and limits ↗</a></div>
+    </section>
+    <div class="case-grid" aria-label="Public mathematics cases">
+      <article class="case-card-page" id="prime-divisibility">
+        <span class="case-status pass">Saved model attempt + Lean check</span>
+        <h2>Prime divisibility</h2>
+        <p><strong>Plain claim:</strong> when a natural prime divides a square, it divides the number being squared.</p>
+        <p class="case-formula">p prime and p ∣ n² ⇒ p ∣ n</p>
+        <p>The saved case preserves a rejected first candidate and the checked correction. This is a known theorem and a historical saved run, not a new proof attempt or a broad capability claim.</p>
+        <div class="case-actions"><a href="reader.html?scope=public#case/hero-prime-divisibility-r1">Inspect the saved statement and Lean result →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/proofs/first-rung">Find the source files ↗</a></div>
+      </article>
+      <article class="case-card-page" id="counterexample">
+        <span class="case-status">Saved local arithmetic check</span>
+        <h2>A composite-divisor counterexample</h2>
+        <p><strong>Plain claim:</strong> the unrestricted rule “a divisor of a square divides its root” is false.</p>
+        <p class="case-formula">4 ∣ 2², but 4 ∤ 2</p>
+        <p>The saved reader demonstrates this one exact counterexample. It was not a failed model response and it does not imply a general theorem.</p>
+        <div class="case-actions"><a href="reader.html?scope=public#case/hero-composite-counterexample-r1">Run the exact local example →</a><a href="tools.html#divisibility-tool">Try another integer example →</a></div>
+      </article>
+      <article class="case-card-page" id="sqrt2-child">
+        <span class="case-status candidate">Pinned local parent-to-child replay · candidate-only</span>
+        <h2>Prime lemma reused in the √2 descent</h2>
+        <p><strong>Plain claim:</strong> the public child source uses the prime-divisibility lemma at the prime two inside a classical infinite-descent proof of the irrationality of √2.</p>
+        <p>The public replay compiled the exact parent source and then the child from pinned Lean 4.33.1 and Mathlib bytes, checked both formal targets, and rejected a negative control with primality removed. The recorded axioms are <code>[Classical.choice, Quot.sound, propext]</code>.</p>
+        <p>This source replay does not create a new M0 review, grant proof-use rights, create a standard M4 receipt, or promote any dossier gate. The saved child remains candidate-only.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/prime-sqrt2-source-replay-v1">Read the replay instructions and receipt ↗</a></div>
+      </article>
+      <article class="case-card-page" id="collatz-twelve-of-twenty">
+        <span class="case-status pass">Fresh public Lean-core replay</span>
+        <h2>A parity-conditioned 32-step descent theorem</h2>
+        <p><strong>Plain claim:</strong> if exactly 12 of a number’s first 20 accelerated Collatz inputs are odd, its value after 32 ordinary steps is smaller than its start. This holds for every number in each qualifying residue progression.</p>
+        <p class="case-formula">125,970 of 1,048,576 residues satisfy the condition; Lean proves the exact count and the descent for every progression member.</p>
+        <p>The result covers a fixed parity pattern, not every starting value; it proves no global convergence and makes no priority claim.</p>
+        <pre>py -3 -B reproduction/collatz-twelve-of-twenty-v1/check_word_bound.py
+py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
+        <div class="case-actions"><a href="collatz.html#twelve-of-twenty">Try two exact browser calculations →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-twelve-of-twenty-v1">Open source, axiom audits, and replay steps ↗</a></div>
+      </article>
+      <article class="case-card-page" id="collatz-listed-families">
+        <span class="case-status pass">Compact Lean replay · separate from historical 363-module replay</span>
+        <h2>The 2,652 listed Collatz progressions</h2>
+        <p><strong>Plain claim:</strong> for each of the 2,652 published coefficient pairs and every natural <code>k</code>, 32 ordinary steps take <code>1,048,576k+r</code> to <code>531,441k+q</code>, which is smaller.</p>
+        <p>The five-module Lean-core replay also checks a separate 456-row prespecified sample. Its source route is distinct from the archived 229 shards plus 133 composition chunks.</p>
+        <pre>py -3 -B reproduction/collatz-affine-family-replay-v1/verify_parity.py</pre>
+        <div class="case-actions"><a href="collatz.html#exact-statement">Read the exact theorem and scope →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-affine-family-replay-v1">Open compact proof sources and receipt ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m15-m20-r2/PUBLIC_REPRODUCTION.md">Check the separate 363-module replay status ↗</a></div>
+      </article>
+      <article class="case-card-page" id="transfer-pilot">
+        <span class="case-status">One matched pair · no observed uplift</span>
+        <h2>Does saved Collatz context help the proof writer?</h2>
+        <p><strong>Plain finding:</strong> the control and library-assisted responses returned identical predictors and tied on each recorded test group.</p>
+        <p>Both arms scored 681/681 held rows, 4,096/4,096 outside probes, and 96/96 boundary cases; both exact Lean audits passed. This single pair found no benefit. It is not enough data to estimate average performance, and Codex credit use was not exposed.</p>
+        <pre>py -3 -B research/collatz-library-transfer-pilot-v1/replay_pilot.py</pre>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/research/collatz-library-transfer-pilot-v1">Inspect the paired result and replay source ↗</a></div>
+      </article>
+      <article class="case-card-page" id="ramsey">
+        <span class="case-status candidate">Known finite lower bound · source replay status shown</span>
+        <h2>Ramsey R(5,5)</h2>
+        <p><strong>Plain claim:</strong> a known 42-vertex graph has no monochromatic five-clique, witnessing the established bound R(5,5) ≥ 43.</p>
+        <p>The standard graph6 export and its browser decoder now agree with the Lean adjacency masks; an exhaustive local checker examines all 850,668 five-vertex subsets. The Lean proof still has its recorded warm-cache receipt; a fresh-checkout Lean build and independent review remain open.</p>
+        <div class="case-actions"><a href="work.html#ramsey">Run the browser finite graph check →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1/graph6-interoperability">Read the standard graph6 correction and checker ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1">Read Lean sources and receipts ↗</a></div>
+      </article>
+      <article class="case-card-page" id="ramsey66">
+        <span class="case-status">Independent finite check · not Lean-checked</span>
+        <h2>Ramsey R(6,6)</h2>
+        <p><strong>Plain claim:</strong> a 101-vertex Paley graph is presented as a finite witness for the known lower bound R(6,6) ≥ 102.</p>
+        <p>The local Python checker independently searches all 101 vertices and the complement for six-cliques. This finite certificate check supports the known lower bound; it is not a Lean proof and does not determine the exact Ramsey number.</p>
+        <pre>python scripts/run_public_case.py ramsey66</pre>
+        <div class="case-actions"><a href="work.html#ramsey-r66">Inspect the saved graph certificate →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-paley101-v1">Open the checker and certificate ↗</a></div>
+      </article>
+      <article class="case-card-page" id="erdos-straus">
+        <span class="case-status">Finite search and one identity family</span>
+        <h2>Erdős–Straus</h2>
+        <p><strong>Plain claim:</strong> the public campaign records exact bounded denominator witnesses and an identity for one arithmetic progression.</p>
+        <p>The finite witnesses and the one identity are different kinds of evidence. They do not establish the Erdős–Straus conjecture for all integers.</p>
+        <div class="case-actions"><a href="work.html#egyptian">Read the identity, search record, and limits →</a></div>
+      </article>
+      <article class="case-card-page" id="riemann-source-audit">
+        <span class="case-status">External result · source provenance check only</span>
+        <h2>Riemann Hypothesis source audit</h2>
+        <p><strong>Plain statement:</strong> every nontrivial zero of the Riemann zeta function has real part ½.</p>
+        <p>Levent Alpöge published the Claude-assisted proof; the Lean FRO and Mathlib Initiative coordinated independent checks. The result and proof belong to the upstream authors and community, not MathCase.</p>
+        <p>MathCase’s small checker pins four public source files and verifies their byte counts and SHA-256 values. It does not download the proof export, elaborate the target, replay the proof, or independently validate the theorem.</p>
+        <button type="button" class="button button-primary" id="check-riemann-files">Check four source files</button>
+        <p id="riemann-file-summary" role="status" aria-live="polite">Downloads 14 KB from GitHub when clicked. This checks source identity only.</p>
+        <ul id="riemann-file-results"></ul>
+        <pre>py -3 -B reproduction/riemann-source-audit-v1/check_sources.py</pre>
+        <div class="case-actions"><a href="https://github.com/leanprover-community/riemann-hypothesis">Open the upstream project and attribution ↗</a><a href="https://math.mit.edu/~drew/grh/">Read upstream verification files and reproduction instructions ↗</a><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/NumberTheory/LSeries/RiemannZeta.lean">Read the pinned Mathlib target ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/riemann-source-audit-v1">Read the MathCase source-only checker ↗</a></div>
+      </article>
+      <article class="case-card-page" id="own-claim">
+        <span class="case-status">Visitor-owned work</span>
+        <h2>Bring your own theorem</h2>
+        <p><strong>Plain route:</strong> write the statement in Lean, save the source, and ask the configured checker to compile it. A successful compile certifies that exact formal target, not that it matches your informal wording.</p>
+        <div class="case-actions"><a href="visitor/">Open the workbench →</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/scripts/check_visitor_case.py">Read the local receipt command ↗</a></div>
+      </article>
+    </div>
+    <p class="record-note"><strong>How to read these labels:</strong> “saved” means an earlier result is displayed; “local calculation” runs bounded arithmetic in your browser; “Lean replay” compiles source locally when you run the command. The public site does not run arbitrary Lean in the browser. No model calls or external inference API calls are triggered by this catalog.</p>
+    <p class="back-home"><a class="back-top" href="index.html">← Home</a><a class="back-top" href="work.html">All work →</a><a class="back-top" href="#top">Back to top ↑</a></p>
+  </main>
+  <footer class="site-footer shell">
+    <span>MathCase · evidence before claims</span>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="visitor/">Make a case</a><a href="cases.html">Cases</a><a href="work.html">All work</a><a href="collatz.html">Collatz theorem</a><a href="tools.html">Try math</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
+  </footer>
+</body>
+</html>

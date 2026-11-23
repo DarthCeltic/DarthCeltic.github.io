@@ -1,0 +1,16 @@
+.case-index { padding-top: 48px; padding-bottom: 70px; }
+.case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 26px; }
+.case-card-page { min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, #ffffff08, #ffffff02), #102431b8; }
+.case-card-page h2 { margin: 10px 0; color: #f0e4cf; font: 500 24px/1.15 Georgia, "Times New Roman", serif; }
+.case-card-page p { color: #c1ccce; font-size: 12px; line-height: 1.7; }
+.case-card-page .case-type { color: var(--gold); font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }
+.case-card-page .case-formula { padding: 12px; border: 1px solid #e7c49425; border-radius: 8px; background: #07151e; color: #f4dfbf; font: 13px/1.55 ui-monospace, Consolas, monospace; overflow-wrap: anywhere; }
+.case-card-page .case-actions { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 12px; }
+.case-card-page .case-actions a { color: #edcf9e; font-size: 11px; font-weight: 850; text-underline-offset: 4px; }
+.case-card-page .case-status { display: inline-block; margin-bottom: 5px; padding: 6px 9px; border: 1px solid #e7c49435; border-radius: 99px; color: #d7c49f; font-size: 9px; font-weight: 900; letter-spacing: .06em; text-transform: uppercase; }
+.case-card-page .case-status.pass { color: var(--green); border-color: #9bd1ae4d; }
+.case-card-page .case-status.candidate { color: #e8bf94; border-color: #d18f604f; }
+.case-card-page .case-status.pending { color: #d4c7a9; border-color: #e7c49435; }
+.case-card-page pre { max-width: 100%; overflow: auto; padding: 12px; border-radius: 8px; background: #07151e; color: #d7e0de; font-size: 10px; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
+.case-index .record-note { max-width: 900px; }
+@media (max-width: 720px) { .case-grid { grid-template-columns: minmax(0, 1fr); } .case-card-page { padding: 18px; } }

@@ -4,8 +4,8 @@
   const result = document.getElementById("ramsey-result");
   if (!button || !status || !result) return;
 
-  const certificateUrl = "evidence/finite-graphs/ramsey-r55/exoo42-derived.graph6";
-  const expectedSha256 = "0d855016014ce4c2fbfcdba270683086a351b4a1e59afd611cc53e9b15109da7";
+  const certificateUrl = "evidence/finite-graphs/ramsey-r55/exoo42.g6";
+  const expectedSha256 = "a7db2ac21e14b3652629d0cfc1c47bf7b65f355e1f2fcf9048a075622c5ba75a";
   const expectedVertices = 42;
   const expectedSubsets = 850668;
 
@@ -50,17 +50,14 @@
     }
 
     const adjacency = new Uint8Array(n * n);
-    for (let bit = 0; bit < bitCount; bit += 1) {
-      const edge = (values[Math.floor(bit / 6)] >> (5 - (bit % 6))) & 1;
-      let left = 0;
-      let remaining = bit;
-      while (remaining >= n - left - 1) {
-        remaining -= n - left - 1;
-        left += 1;
+    let bit = 0;
+    for (let right = 1; right < n; right += 1) {
+      for (let left = 0; left < right; left += 1) {
+        const edge = (values[Math.floor(bit / 6)] >> (5 - (bit % 6))) & 1;
+        adjacency[left * n + right] = edge;
+        adjacency[right * n + left] = edge;
+        bit += 1;
       }
-      const right = left + 1 + remaining;
-      adjacency[left * n + right] = edge;
-      adjacency[right * n + left] = edge;
     }
     return { n, adjacency };
   }
@@ -128,6 +125,9 @@
       const expected = binomial(n, 5);
       if (counts.subsets !== expected || counts.subsets !== expectedSubsets) {
         throw new Error(`Subset count mismatch: checked ${counts.subsets}, expected ${expected}.`);
+      }
+      if (counts.redCliques !== 0 || counts.blueCliques !== 0) {
+        throw new Error(`Monochromatic five-sets found: red ${counts.redCliques}, blue ${counts.blueCliques}.`);
       }
       renderResult(counts, elapsedMs);
       setStatus(`PASS — pinned SHA-256 matches; graph6 encodes ${n} vertices; all ${counts.subsets.toLocaleString()} five-vertex subsets were checked.`, "success");

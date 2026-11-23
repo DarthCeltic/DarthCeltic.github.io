@@ -18,10 +18,17 @@
     return item.steps;
   }
 
-  function currentId() {
-    const route = decodeURIComponent(location.hash.slice(1));
-    const match = /^case\/([a-z0-9-]+)$/.exec(route);
-    return match && caseMap.has(match[1]) ? match[1] : publicCases[0].id;
+  function resolveRoute() {
+    if (!location.hash) return { kind: "case", id: publicCases[0].id };
+    let route;
+    try { route = decodeURIComponent(location.hash.slice(1)); }
+    catch { return { kind: "missing", requested: "invalid case link" }; }
+    const match = /^case\/([a-z0-9-]+)(?:\/(.*))?$/i.exec(route);
+    if (!match) return { kind: "missing", requested: route };
+    const id = match[1].toLowerCase();
+    if (id === "hero-sqrt2-parent-reuse-r2") return { kind: "redirect", href: "/cases.html#sqrt2-child" };
+    if (caseMap.has(id)) return { kind: "case", id };
+    return { kind: "missing", requested: id };
   }
 
   function caseHref(id) { return "#case/" + encodeURIComponent(id); }
@@ -42,14 +49,31 @@
   }
 
   function renderCase() {
-    const id = currentId();
+    const route = resolveRoute();
+    const host = byId("case-stage");
+    if (route.kind === "redirect") {
+      location.replace(route.href);
+      return;
+    }
+    host.replaceChildren();
+    renderNav(route.kind === "case" ? route.id : null);
+    if (route.kind === "missing") {
+      const panel = make("section", "case-missing");
+      panel.setAttribute("role", "status");
+      panel.append(make("h2", "", "This saved case is not available in the public reader."));
+      if (route.requested) panel.append(make("p", "", `No public case matches “${route.requested}”.`));
+      panel.append(make("p", "", "The reader will not substitute a different proof or calculation."));
+      const catalog = make("a", "", "Browse the public case catalog →");
+      catalog.href = "/cases.html";
+      panel.append(catalog);
+      host.append(panel);
+      return;
+    }
+    const id = route.id;
     const item = caseMap.get(id);
-    if (!location.hash || !location.hash.startsWith("#case/")) history.replaceState(null, "", caseHref(id));
+    if (!location.hash) history.replaceState(null, "", caseHref(id));
     const stepsForCase = caseSteps(item);
     const step = Math.min(position.get(id) || 0, stepsForCase.length - 1);
-    renderNav(id);
-    const host = byId("case-stage");
-    host.replaceChildren();
 
     const head = make("div", "stage-head");
     const headText = make("div");
