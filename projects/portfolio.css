@@ -135,6 +135,7 @@ h2 { font-size: clamp(2rem, 4.2vw, 3rem); font-weight: 400; letter-spacing: -.04
 }
 .contact-section h2 { font-size: 1.85rem; }
 .contact-section > div:first-child > p:last-child { margin-top: .45rem; color: var(--muted); }
+.portfolio-credit { margin-top: .55rem; max-width: 56ch; color: var(--muted); line-height: 1.5; }
 .contact-links { flex-wrap: wrap; gap: .8rem 1.2rem; }
 .footer-note { flex: 1 0 100%; color: #9eaeae; font-size: .83rem; }
 @media (max-width: 66rem) {
