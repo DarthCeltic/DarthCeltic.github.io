@@ -1,0 +1,44 @@
+{
+  "schema": "mathcase-pages-visitor-overlay-v1",
+  "overlay_id": "visitor-disclosure-receipt-controls-2026-11-22-r1",
+  "site_repository": "DarthCeltic/DarthCeltic.github.io",
+  "site_base_commit": "1c46af8cec7c15915c07f8ee1a7a0bfec7bbb688",
+  "source_repository": "DarthCeltic/MathCase",
+  "source_branch": "main",
+  "source_commit": "17174a4a6311eb2e32556d9e4fb38255290a36be",
+  "source_manifest_path": "evidence/visitor-workbench/source-manifest.json",
+  "source_manifest_sha256": "b8a531c3d212f5106644661ec0e56058ed4d7a57e0a9aa1688ce9068293bffb1",
+  "purpose": "Move the public-editor disclosure before the check action and make receipt import visible without changing the existing receipt handler.",
+  "preexisting_pages_deltas": [
+    {
+      "path": "visitor/lesson.html",
+      "pinned_source_sha256": "78ccc65358e87f80e9e59105d1db81adee235a7fd9b77a156bd7b3bdb1f0199b",
+      "pages_base_sha256": "0f6076d27e9698b5cbeff08fc61ff60b17fd39a894e14351264ce98b7b38fd58",
+      "disposition": "Present at the Pages base commit; not changed in this overlay."
+    },
+    {
+      "path": "visitor/model-workflow.html",
+      "pinned_source_sha256": "df097c55a150e97e320197899ef94c39e34d78161a61b7824625764fb9e78674",
+      "pages_base_sha256": "c40ede97e2742afa720404d96d6becdd5ad4f4a3e7837148bde50f251466ffae",
+      "disposition": "Present at the Pages base commit; not changed in this overlay."
+    },
+    {
+      "path": "visitor/teacher-guide.md",
+      "pinned_source_sha256": "d25b309995dce485a23478a61fc09eb0b6bbf83a6e33774adcf69b47e577bf20",
+      "pages_base_sha256": "08625cc408dd16aaad05bfca1f3deac81edfbf27c98f1cd67cbc482276c9f9cc",
+      "disposition": "Present at the Pages base commit; not changed in this overlay."
+    }
+  ],
+  "files": [
+    {
+      "path": "visitor/index.html",
+      "base_source_sha256": "18a8b9f87022ec9204e8234e1264171cba15dfe7fd821e9a7a17bada4524a7d9",
+      "overlay_sha256": "505e57db59c72a968fbaa2a87738cca9f37b984a542322e6895ee57a51633668",
+      "change": "Adds a pre-run disclosure that Lean source is sent to live.lean-lang.org, removes the duplicated inline explanation, and moves the existing receipt-import button and file input outside the collapsed local-check disclosure. Their IDs, parser, and event listener are unchanged."
+    }
+  ],
+  "limits": [
+    "This is a Pages-only editorial and control-placement overlay; the pinned MathCase source and original source manifest remain unchanged.",
+    "The imported receipt is visitor-supplied compiler evidence, not a MathCase signature or axiom audit."
+  ]
+}

@@ -77,16 +77,19 @@
         </details>
       </section>
       <section class="checking" aria-labelledby="checking-heading">
+        <p><strong>Before you run:</strong> this sends your Lean source to the public Lean web editor at <a href="https://live.lean-lang.org/" target="_blank" rel="noreferrer">live.lean-lang.org</a>. It does not run Lean here, does not compare the theorem declaration with the target above, and creates no MathCase receipt.</p>
         <div class="check-row">
           <div>
             <h2 id="checking-heading">Check the proof</h2>
-            <p>This opens your Lean source in <a href="https://live.lean-lang.org/" target="_blank" rel="noreferrer">live.lean-lang.org</a> for a compilation check. It does not compare the theorem declaration with the target above or create a MathCase receipt.</p>
           </div>
           <div class="run-actions">
             <button id="run-lean" type="button" class="primary" aria-expanded="false" aria-controls="live-panel">Run in Lean</button>
             <button id="web-editor" type="button" class="text-action">Run in new tab <span aria-hidden="true">↗</span></button>
           </div>
         </div>
+        <p>Already ran the checker locally? Import the receipt below to compare its source digest with this draft.</p>
+        <button id="import-receipt" class="secondary" type="button">Import checker receipt</button>
+        <input type="file" accept=".json,application/json" id="receipt-file" hidden>
         <section id="live-panel" class="live-panel" aria-label="Live Lean editor" hidden>
           <div class="live-head">
             <p>Copy any edits you make in the live editor back into your MathCase source to save them.</p>
@@ -99,8 +102,6 @@
           <p>Download the .lean file. In a local checkout, place it in the repository root. In a <a href="https://codespaces.new/DarthCeltic/MathCase?quickstart=1" target="_blank" rel="noopener noreferrer">MathCase Codespace <span aria-hidden="true">↗</span></a>, drag it into the repository root in Explorer. Open a terminal there and run the checker on your trusted source.</p>
           <pre><code id="check-command"></code></pre>
           <p>Import the resulting JSON to compare its source digest with this draft.</p>
-          <button id="import-receipt" class="secondary" type="button">Import checker receipt</button>
-          <input type="file" accept=".json,application/json" id="receipt-file" hidden>
         </details>
         <div class="receipt" id="receipt-panel" hidden>
           <h3>Visitor-supplied checker receipt</h3>
