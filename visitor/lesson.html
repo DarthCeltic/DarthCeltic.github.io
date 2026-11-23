@@ -13,45 +13,63 @@
 <body>
   <header class="mast"><div class="mast-inner">
     <a href="../" class="brand"><img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" width="38" height="38" alt=""><span>Math<span>Case</span></span></a>
-    <nav class="tool-nav" aria-label="MathCase tools">
-      <a href="index.html">Workbench</a><a href="lesson.html" aria-current="page">Guided work</a><a href="model-workflow.html">Model runs</a><a href="lab.html">Lab report</a><a href="study-lab.html">Frozen study</a><a href="classroom.html">Classroom</a>
+    <nav class="tool-nav" aria-label="MathCase pages">
+      <a href="lesson.html" aria-current="page">Try a lesson</a>
+      <a href="index.html">Your proof</a>
+      <a href="../tools.html">Try number math</a>
+      <details class="tool-nav-group">
+        <summary>For teachers</summary>
+        <div class="tool-nav-links">
+          <a href="teacher-guide.html">Read the worked answer</a>
+          <a href="classroom.html">Assignment files</a>
+        </div>
+      </details>
+      <details class="tool-nav-group">
+        <summary>More</summary>
+        <div class="tool-nav-links">
+          <a href="model-workflow.html">Saved proof attempts</a>
+          <a href="lab.html">Run reports</a>
+          <a href="study-lab.html">Compare saved runs</a>
+        </div>
+      </details>
     </nav>
   </div></header>
   <main class="tool-page">
-    <h1>Start with a claim. See what Lean checks.</h1>
-    <p class="tool-lede">Move from a concrete counterexample to a theorem, then try a related statement on your own. Each case keeps the plain statement, exact Lean declaration, proof source, and checker receipt as separate parts.</p>
-    <div class="tool-note"><strong>How to read each card:</strong> plain statement first, exact declaration next, then the boundary of the result. A checked theorem establishes only the statement written in Lean.</div>
+    <h1>Try a counterexample, then repair the claim.</h1>
+    <p class="tool-lede">Start with 4 and 2. Then add the prime assumption and try a related question yourself. The teacher answer is on a separate readable page.</p>
+    <div class="tool-note"><strong>Start here:</strong> 4 divides 2 squared, but 4 does not divide 2. That one example shows why the unrestricted rule fails.</div>
     <section class="tool-grid" aria-label="Guided cases">
       <article class="tool-card">
-        <h2>1 · A counterexample repairs a claim</h2>
-        <p><strong>Plain:</strong> A composite divisor can divide a square without dividing its root.</p>
-        <code class="formula">(4 : Nat) ∣ 2 ^ 2 ∧ ¬ (4 : Nat) ∣ 2</code>
+        <h2>First, try 4 and 2</h2>
+        <p><strong>What happens:</strong> 4 divides 2 × 2, but 4 does not divide 2.</p>
+        <details><summary>Exact Lean statement</summary><code class="formula">(4 : Nat) ∣ 2 ^ 2 ∧ ¬ (4 : Nat) ∣ 2</code></details>
         <p><strong>Shows:</strong> the unrestricted implication fails: 4 divides 2², but 4 does not divide 2.</p>
-        <p><strong>Does not show:</strong> that primality is necessary. It is sufficient, and square-free composites such as 6 also work because 2 and 3 each divide n.</p>
-        <a class="tool-action" href="index.html?starter=counterexample">Open this case</a>
+        <p><strong>Keep separate:</strong> 6 works for the one-square claim because 2 and 3 dividing n² imply 2 and 3 divide n. But 6 fails the later product rule: 6 divides 2 × 3, while it divides neither factor.</p>
+        <a class="tool-action" href="index.html?starter=counterexample">Try this example in your proof</a>
       </article>
       <article class="tool-card">
-        <h2>2 · A sufficient repair: primality</h2>
+        <h2>Next, assume the divisor is prime</h2>
         <p><strong>Plain:</strong> If a prime divides a natural number’s square, it divides that number.</p>
-        <code class="formula">∀ (p n : Nat), p.Prime → p ∣ n ^ 2 → p ∣ n</code>
+        <details><summary>Exact Lean statement</summary><code class="formula">∀ (p n : Nat), p.Prime → p ∣ n ^ 2 → p ∣ n</code></details>
         <p><strong>Shows:</strong> a known elementary theorem, checked by Lean from the Mathlib prime-divisor lemma.</p>
         <p><strong>Does not show:</strong> that every composite divisor fails, a new result, or a general AI theorem-solving capability.</p>
-        <a class="tool-action" href="index.html?starter=prime">Open this case</a>
+        <a class="tool-action" href="index.html?starter=prime">Try the prime example</a>
       </article>
       <article class="tool-card">
-        <h2>3 · Transfer challenge</h2>
+        <h2>Then try a related product question</h2>
         <p><strong>Plain:</strong> If a prime divides a product squared, prove it divides at least one factor.</p>
-        <code class="formula">∀ (p a b : Nat), p.Prime → p ∣ (a * b) ^ 2 → p ∣ a ∨ p ∣ b</code>
+        <details><summary>Exact Lean statement</summary><code class="formula">∀ (p a b : Nat), p.Prime → p ∣ (a * b) ^ 2 → p ∣ a ∨ p ∣ b</code></details>
         <p><strong>Uses:</strong> the prime-divides-square result, followed by the prime-divides-product result.</p>
         <p><strong>Does not show:</strong> this is a fresh teaching exercise in the workbench, not an evaluated transfer experiment. The teacher explanation is separate.</p>
-        <a class="tool-action" href="index.html?starter=transfer">Try the transfer case</a>
+        <a class="tool-action" href="index.html?starter=transfer">Try writing the proof</a>
       </article>
     </section>
     <section>
-      <h2>Take it to a class</h2>
-      <p>Download the teacher guide separately so learners see only the prompt. Assignments and submissions can move as files; the browser does not create shared class accounts or upload student work.</p>
-      <a class="tool-action" href="teacher-guide.md" download>Download teacher guide</a>
-      <a class="tool-action" href="classroom.html">Open the file handoff</a>
+      <h2>For teachers</h2>
+      <p>Open the worked answer in a readable page, or download its Markdown source. The separate file activity lets a teacher and learner exchange assignment and response files without an account or upload.</p>
+      <a class="tool-action" href="teacher-guide.html">Read the worked teacher answer</a>
+      <a class="tool-action" href="teacher-guide.md" download>Download the teacher answer (.md)</a>
+      <a class="tool-action" href="classroom.html">Use the assignment file activity</a>
     </section>
     <p class="tool-footer">The workbench stores cases in this browser unless you export them. A visitor-supplied receipt is evidence to inspect, not a MathCase signature. No page here claims a famous open problem is solved.</p>
   </main>

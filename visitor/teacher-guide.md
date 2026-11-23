@@ -1,6 +1,10 @@
 # MathCase guided cases — teacher guide
 
-This answer key is a separate download. The learner-facing case asks for the proof; the guide supplies one Lean route. The examples formalize standard facts and are not novelty claims.
+This is the downloadable copy of the readable [teacher answer page](teacher-guide.html). The examples formalize standard facts; they are not novelty claims.
+
+## Start with the hand calculation
+
+Two squared is four. Four goes into four exactly once. Four does not go into two a whole number of times, so at n = 2 the rule fails. This disproves the unrestricted claim that a divisor of a square must divide its root. It does not show that every composite divisor fails.
 
 ## Transfer challenge
 
@@ -27,7 +31,9 @@ by
   exact hp.dvd_mul.mp hProduct
 ```
 
-The first line uses primality to move from a divisor of a square to a divisor of its base. The second applies the prime-divides-product property. Primality is a sufficient hypothesis for this proof, not a necessary condition for every divisor: the square-free composite `6` also works, since `6 ∣ n²` implies both `2 ∣ n` and `3 ∣ n`, hence `6 ∣ n`. The counterexample with `4` shows why the unrestricted claim fails; it does not show that all composite divisors fail.
+The first line uses primality to move from a divisor of a square to a divisor of its base. The second applies the prime-divides-product property.
+
+Keep the square and product statements separate. For one square, if `6 ∣ n²`, then `2 ∣ n` and `3 ∣ n`; since 2 and 3 are coprime, `6 ∣ n`. But for the product statement, `a = 2` and `b = 3` give `6 ∣ a*b` while `6 ∤ a` and `6 ∤ b`. So the square-free composite example does not make 6 behave like a prime in the product step.
 
 ## Teaching notes
 

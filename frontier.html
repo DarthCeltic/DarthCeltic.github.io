@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Six active math questions, with runnable checks and plain limits on what each result establishes.">
+  <meta name="theme-color" content="#0b1823">
+  <link rel="canonical" href="https://darthceltic.github.io/frontier.html">
+  <title>MathCase — Six math frontiers</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="research.css">
+  <link rel="stylesheet" href="frontier.css">
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="index.html" aria-label="MathCase home">
+      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Six math frontiers</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="tools.html">Try math</a>
+      <a href="cases.html">Examples</a>
+      <a href="work.html">Results</a>
+      <a href="visitor/">Your proof</a>
+      <a href="visitor/teacher-guide.html">For teachers</a>
+      <details class="nav-more">
+        <summary aria-current="page">More</summary>
+        <div class="nav-more-links">
+          <a class="current" href="frontier.html" aria-current="page">Frontier math</a>
+          <a href="collatz.html">Collatz result</a>
+          <a href="roadmap.html">Research plan</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="replay.html">Replay records</a>
+          <a href="projects/">Projects</a>
+          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+  <main class="shell research-page frontier-page" id="top">
+    <section class="research-hero" aria-labelledby="frontier-title">
+      <p class="eyebrow">Real questions · bounded evidence · next steps</p>
+      <h1 id="frontier-title">Six math questions, and exactly how far the checks go.</h1>
+      <p>MathCase has runnable work on number patterns, fractions, and graph colorings. Each card starts with the plain question, then tells you what was checked, what remains open, and the next concrete target.</p>
+      <div class="research-actions">
+        <a class="button button-primary" href="tools.html#collatz-tool">Try 239 in the number-pattern checker</a>
+        <a class="button button-secondary" href="tools.html#triangle-game">Color a small graph</a>
+        <a class="button button-secondary" href="tools.html#fraction-identity">Check 4/21 exactly</a>
+      </div>
+      <p class="frontier-reassurance">The browser activities work without a command line. Deeper source and receipt checks can be rerun from a fresh MathCase clone.</p>
+    </section>
+
+    <section class="frontier-grid" aria-label="Six research questions">
+      <article class="frontier-card" id="vdw-2-7">
+        <p class="frontier-kicker">Van der Waerden · number patterns</p>
+        <h2>Can you avoid seven equally spaced numbers of one color?</h2>
+        <p>These numbers can skip positions: for example, 2, 5, and 8 are equally spaced. A checked two-coloring covers 3,703 positions without a single-color pattern of seven. That reproduces the known lower bound <strong>W(2,7) ≥ 3,704</strong>.</p>
+        <p>MathCase also checked 617 cases in one specified quadratic-residue construction family at length 3,704, covering 644,907,008 assignments. That family is ruled out; other colorings are not.</p>
+        <p class="frontier-next"><strong>Next:</strong> check a different construction family, or produce a general certificate covering every coloring at length 3,704.</p>
+        <div class="frontier-links">
+          <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/van-der-waerden">Run the coloring and obstruction checks ↗</a>
+          <a href="https://doi.org/10.4153/CMB-1979-012-1" target="_blank" rel="noopener noreferrer">Rabung's 1979 construction ↗</a>
+          <a href="https://github.com/google-deepmind/formal-conjectures/issues/2286" target="_blank" rel="noopener noreferrer">Related upstream issue #2286: open and assigned ↗</a>
+        </div>
+      </article>
+
+      <article class="frontier-card" id="ws-5">
+        <p class="frontier-kicker">Weak Schur · five colors</p>
+        <h2>Can five colors cover 1 through 208 without a same-color sum?</h2>
+        <p>The rule forbids same-color sums <code>a + b = c</code> when <code>a</code> and <code>b</code> are distinct positive numbers. Two known colorings cover 1 through 207; MathCase checked both and searched every color for 208 while changing up to 18 old entries.</p>
+        <p>All ten bounded searches finished. Starting from either published coloring, at least 19 old positions must change before an extension can work. A coloring farther from both starting points could still exist.</p>
+        <p class="frontier-next"><strong>Next:</strong> find a valid 208 coloring outside those neighborhoods, or check a proof that covers every five-coloring.</p>
+        <div class="frontier-links">
+          <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/weak-schur-5">Run the witness and radius checks ↗</a>
+          <a href="https://oeis.org/A072842" target="_blank" rel="noopener noreferrer">Rowley's published sequence record ↗</a>
+          <a href="https://arxiv.org/abs/2611.22032" target="_blank" rel="noopener noreferrer">Vicenzi et al., 2026 ↗</a>
+        </div>
+      </article>
+
+      <article class="frontier-card" id="ramsey-3-3-3-3">
+        <p class="frontier-kicker">Ramsey · dots and lines</p>
+        <h2>Can you color lines between 51 dots without making a one-color triangle?</h2>
+        <p>A known graph on 50 vertices has no monochromatic triangle, giving <strong>R(3,3,3,3) ≥ 51</strong>. MathCase checked every triangle and every way to attach a 51st vertex while leaving the old graph unchanged.</p>
+        <p>A second bounded check found that an extension from this particular starting graph needs at least three old edges recolored. The published interval is 51–60; MathCase did not reproduce the upper-bound proof.</p>
+        <p class="frontier-next"><strong>Next:</strong> search for a genuinely different 50-vertex starting graph or expand the certified class of possible starts.</p>
+        <div class="frontier-links">
+          <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/ramsey-four-color">Run the graph and certificate checks ↗</a>
+          <a href="https://doi.org/10.1016/0012-365X(73)90125-8" target="_blank" rel="noopener noreferrer">Chung's construction ↗</a>
+          <a href="https://arxiv.org/abs/2610.36648v2" target="_blank" rel="noopener noreferrer">Tatarević's version 2 paper ↗</a>
+        </div>
+      </article>
+
+      <article class="frontier-card" id="vdw-5-3">
+        <p class="frontier-kicker">Van der Waerden · number patterns</p>
+        <h2>Can five colors avoid three equally spaced positions of one color through 171?</h2>
+        <p>A checked coloring covers 170 positions without a monochromatic three-term progression, so <strong>W(5,3) ≥ 171</strong>. The unrestricted 171-position search has 855 variables and 38,006 clauses.</p>
+        <p>The 20-second solver probe ended <strong>unknown</strong>; it did not prove that 171 is impossible. A small W(2,3)=9 positive control was independently checked.</p>
+        <p class="frontier-next"><strong>Next:</strong> obtain a checked result for the unrestricted 171-position formula, or find an avoiding coloring there.</p>
+        <div class="frontier-links">
+          <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/van-der-waerden">Run the witness and positive-control checks ↗</a>
+          <a href="https://www.cs.cmu.edu/~mheule/publications/JOC_08_03_A01.pdf" target="_blank" rel="noopener noreferrer">Heule's van der Waerden paper ↗</a>
+        </div>
+      </article>
+
+      <article class="frontier-card" id="egyptian-28k-21">
+        <p class="frontier-kicker">Fractions · three unit fractions</p>
+        <h2>Can 4/21 be written as three fractions with 1 on top?</h2>
+        <p>Yes. Two exact examples are <strong>4/21 = 1/7 + 1/22 + 1/462</strong> and <strong>4/21 = 1/6 + 1/63 + 1/126</strong>. The checked formulas extend to every number of the form <code>28k+21</code>.</p>
+        <p>A separate formula covers every positive multiple of seven. These are exact identities for specific infinite families, not a solution of the Erdős–Straus conjecture for every integer.</p>
+        <p class="frontier-next"><strong>Next:</strong> finish the literature comparison before making any broader identity or priority claim.</p>
+        <div class="frontier-links">
+          <a href="tools.html#fraction-identity">Check a 4/21 example in your browser</a>
+          <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/egyptian-28k-plus-21">Open Lean sources and receipt ↗</a>
+          <a href="https://doi.org/10.1017/S1446788712000468" target="_blank" rel="noopener noreferrer">Elsholtz and Tao on the equation ↗</a>
+        </div>
+      </article>
+
+      <article class="frontier-card" id="ramsey-6-6">
+        <p class="frontier-kicker">Ramsey · dots and lines</p>
+        <h2>Can you add a 102nd dot without making six dots whose lines are all one color?</h2>
+        <p>The known Paley graph on 101 vertices has no monochromatic six-clique, giving <strong>R(6,6) ≥ 102</strong>. A checked certificate rules out adding one new vertex while keeping every old edge the same.</p>
+        <p>Other bounded checks find that at least 16 old edges must change. None of 33 predefined structured edge-change patterns gave a valid extension; each produced a six-clique. These restrictions apply to this starting graph and these changes only.</p>
+        <p class="frontier-next"><strong>Next:</strong> find a materially different 102-vertex coloring and check every six-vertex subset.</p>
+        <div class="frontier-links">
+          <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/ramsey-four-color">Run the saved Paley certificate and bounded checks ↗</a>
+          <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/paley-101">Read the 16-edge recoloring check ↗</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="frontier-footer-card" aria-labelledby="frontier-replay-title">
+      <p class="eyebrow">For people who want the evidence</p>
+      <h2 id="frontier-replay-title">Every card has a runnable check and a written limit.</h2>
+      <p>Clone MathCase, then run `python scripts/run_frontier_case.py list`. Choose an ID to produce a fresh run folder with logs and hashes. The checks use local Python and, for the fraction identities, Lean 4.33.1. The weak-Schur check downloads only its two hash-pinned public witnesses. No model calls are part of these runs.</p>
+      <p><a class="button button-primary" href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11">Open the complete research package ↗</a></p>
+      <p class="frontier-limit">No claim here says Collatz, a Ramsey problem, van der Waerden, weak Schur, or Erdős–Straus is solved. The listed bounds and identities have the narrower scopes stated on their cards.</p>
+    </section>
+    <p class="back-home"><a class="back-top" href="index.html">Home</a><a class="back-top" href="cases.html">Math examples</a><a class="back-top" href="#top">Back to top</a></p>
+  </main>
+  <footer class="site-footer shell">
+    <span>MathCase · check the claim and its limits</span>
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="tools.html">Try math</a><a href="cases.html">Examples</a><a href="work.html">Results</a><a href="visitor/teacher-guide.html">For teachers</a><a href="frontier.html">Frontier math</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo</a></nav>
+  </footer>
+</body>
+</html>

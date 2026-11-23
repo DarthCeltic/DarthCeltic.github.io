@@ -11,6 +11,9 @@
   <link rel="stylesheet" href="judging.css">
   <link rel="stylesheet" href="research.css">
   <link rel="stylesheet" href="visitor-tools.css">
+  <script defer src="activities-core.js"></script>
+  <script defer src="triangle-game.js"></script>
+  <script defer src="egyptian-identity.js"></script>
   <script defer src="visitor-tools.js"></script>
 </head>
 <body>
@@ -21,51 +24,54 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="visitor/">Make a case</a>
-      <a href="work.html">All work</a>
-      <a href="collatz.html">Collatz theorem</a>
-      <a class="current" href="tools.html" aria-current="page">Try math</a>
-      <a href="timeline.html">Timeline</a>
-      <a href="roadmap.html">Roadmap</a>
-      <a href="replay.html">Replay</a>
-      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo</a>
+      <a class="current" aria-current="page" href="tools.html">Try math</a>
+      <a href="cases.html">Examples</a>
+      <a href="work.html">Results</a>
+      <a href="visitor/">Your proof</a>
+      <a href="visitor/teacher-guide.html">For teachers</a>
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-links">
+          <a href="frontier.html">Frontier math</a>
+          <a href="collatz.html">Collatz result</a>
+          <a href="roadmap.html">Research plan</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="replay.html">Replay records</a>
+          <a href="projects/">Projects</a>
+          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+        </div>
+      </details>
     </nav>
   </header>
 
   <main class="shell research-page">
     <section class="research-hero tools-hero" aria-labelledby="tools-title">
-      <p class="eyebrow">Your browser, your inputs</p>
-      <h1 id="tools-title">Run a finite math check and take the receipt with you.</h1>
-      <p>Enter a number to check one Collatz trajectory, or choose a campaign parameter and search boundedly for an exact three-fraction decomposition.</p>
+      <p class="eyebrow">Try the examples · change an input</p>
+      <h1 id="tools-title">Pick a question. Check the answer in your browser.</h1>
+      <p>Start with 239, color a small graph, or test whether three unit fractions add to 4/21. Each activity shows what its one check means.</p>
       <div class="runtime-note" role="note">
-        <strong>Scope:</strong> these two tools use exact browser integer arithmetic and save receipts locally. They do not run Lean, and their calculator inputs stay in this browser. To write a Lean proof, use the <a href="visitor/">MathCase visitor workbench</a>; it offers an optional live Lean editor and a pinned compiler check in your own Codespace.
+        <strong>Where your work goes:</strong> these number and fraction checks run in this browser. They do not send your inputs anywhere or call a model. For your own proof, use <a href="visitor/">Your proof</a>; for the saved results and their limits, open <a href="frontier.html">the six math questions</a>.
       </div>
       <div class="tools-actions">
-        <a class="button button-primary" href="visitor/">Create a case and write Lean</a>
-        <a class="button button-secondary" href="index.html#case-desk">Open a saved case</a>
-        <a class="button button-secondary" href="work.html#collatz-main">Read the bounded results</a>
+        <a class="button button-primary" href="#collatz-tool">Try 239</a>
+        <a class="button button-secondary" href="#triangle-game">Color a graph</a>
+        <a class="button button-secondary" href="#fraction-identity">Check 4/21</a>
       </div>
     </section>
 
     <section class="visitor-tool-grid" aria-label="Finite math tools">
       <article id="collatz-tool" class="visitor-tool-card" aria-labelledby="collatz-tool-title">
-        <p class="eyebrow">Finite trajectory check</p>
-        <h2 id="collatz-tool-title">Check a Collatz trajectory</h2>
-        <p class="tool-plain">For one supplied starting number, MathCase follows standard Collatz steps and reports whether a value below that start appears within your step limit.</p>
-        <p class="tool-formula">T(n) = n/2 for even n; T(n) = 3n+1 for odd n.</p>
+        <p class="eyebrow">Number patterns</p>
+        <h2 id="collatz-tool-title">Will 239 fall below itself?</h2>
+        <p class="tool-plain">Follow the rule: halve an even number; triple an odd number and add one. The checker stops at the first value below 239 or at the step limit.</p>
+        <p class="tool-formula">239 → 718 → 359 → 1078 → 539</p>
         <form id="visitor-collatz-form" class="visitor-form">
-          <label class="visitor-field">
-            <span>Input type</span>
-            <select id="collatz-mode">
-              <option value="direct">Starting number n</option>
-              <option value="residue">One residue representative 2^m k + r</option>
-            </select>
-          </label>
+          <label class="visitor-field"><span>Starting whole number</span><input id="collatz-start" type="text" inputmode="numeric" value="239" maxlength="300" autocomplete="off"></label>
+          <details class="activity-advanced">
+            <summary>Change the step limit or use a residue example</summary>
+            <label class="visitor-field"><span>Input type</span><select id="collatz-mode"><option value="direct">One starting number</option><option value="residue">One residue example</option></select></label>
           <div id="collatz-direct-fields" class="field-row">
-            <label class="visitor-field">
-              <span>Starting number n</span>
-              <input id="collatz-start" type="text" inputmode="numeric" value="27" maxlength="300" autocomplete="off">
-            </label>
+            <p class="tool-plain">The starting number is the whole number above.</p>
           </div>
           <div id="collatz-residue-fields" class="field-row" hidden>
             <label class="visitor-field">
@@ -82,23 +88,57 @@
             </label>
           </div>
           <label class="visitor-field">
-            <span>Maximum steps (1-10,000)</span>
+            <span>Stop after this many steps (1–10,000)</span>
             <input id="collatz-step-limit" type="text" inputmode="numeric" value="1000" maxlength="5" autocomplete="off">
           </label>
+          </details>
           <div class="visitor-actions">
-            <button class="button button-primary" type="submit">Check this trajectory</button>
+            <button class="button button-primary" type="submit">Check the steps</button>
             <button class="button button-secondary" id="collatz-download" type="button" disabled>Download receipt</button>
             <button class="button button-secondary" id="collatz-save" type="button" disabled>Save in this browser</button>
           </div>
         </form>
         <p id="collatz-status" class="visitor-status" role="status" aria-live="polite">Ready. Nothing runs until you submit the form.</p>
         <div id="collatz-result" class="visitor-result" aria-live="polite"></div>
-        <p class="tool-limit"><strong>What a pass means:</strong> this exact starting number reaches a smaller value within the checked steps. A residue-mode run checks one chosen k only. It does not prove the result for every k, prove convergence, or replace Lean.</p>
+        <p class="tool-limit"><strong>What this shows:</strong> whether this one starting number drops below itself within the chosen limit. It says nothing about every number or eventual stopping.</p>
+      </article>
+
+      <article class="visitor-tool-card" id="triangle-game" aria-labelledby="triangle-game-title">
+        <p class="eyebrow">Graph coloring</p>
+        <h2 id="triangle-game-title">Can you color six vertices without a single-color triangle?</h2>
+        <p class="tool-plain">Color each of the 15 connections red or blue. Click an edge to cycle its color. The checker examines all 20 groups of three vertices in this one coloring.</p>
+        <div class="triangle-edges" id="triangle-edges" aria-label="The 15 edges to color"></div>
+        <div class="visitor-actions">
+          <button class="button button-secondary" id="triangle-sample" type="button">Load a sample coloring</button>
+          <button class="button button-primary" id="triangle-check" type="button">Check this coloring</button>
+        </div>
+        <p class="visitor-status" id="triangle-status" role="status" aria-live="polite">Color the edges yourself, or load a sample, then check it.</p>
+        <p class="tool-limit"><strong>What this shows:</strong> whether your chosen coloring contains a single-color triangle. It checks one coloring, not all possible colorings; it is a small exploration of the known R(3,3)=6 result.</p>
+      </article>
+
+      <article class="visitor-tool-card" id="fraction-identity" aria-labelledby="fraction-identity-title">
+        <p class="eyebrow">Fractions</p>
+        <h2 id="fraction-identity-title">Can 4/21 be three fractions with 1 on top?</h2>
+        <p class="tool-plain">Try the worked example. The checker multiplies through by the denominators, so it uses exact whole-number arithmetic.</p>
+        <form id="fraction-form" class="visitor-form">
+          <div class="field-row fraction-denominators">
+            <label class="visitor-field"><span>First denominator</span><input id="fraction-x" inputmode="numeric" value="7" maxlength="100"></label>
+            <label class="visitor-field"><span>Second denominator</span><input id="fraction-y" inputmode="numeric" value="22" maxlength="100"></label>
+            <label class="visitor-field"><span>Third denominator</span><input id="fraction-z" inputmode="numeric" value="462" maxlength="100"></label>
+          </div>
+          <div class="visitor-actions">
+            <button class="button button-primary" type="submit">Check these fractions</button>
+            <button class="button button-secondary" id="fraction-alternative" type="button">Try 6, 63, 126</button>
+          </div>
+        </form>
+        <p class="visitor-status" id="fraction-status" role="status" aria-live="polite">Example: 4/21 = 1/7 + 1/22 + 1/462.</p>
+        <details class="activity-advanced"><summary>Why the exact check works</summary><p class="tool-formula">4xyz = 21(xy + xz + yz)</p><p class="tool-plain">For positive increasing denominators x, y, z, this integer equality is exactly equivalent to 4/21 = 1/x + 1/y + 1/z.</p></details>
+        <p class="tool-limit"><strong>What this shows:</strong> whether these three chosen fractions add exactly to 4/21. It does not prove a formula for every denominator or solve the full Erdős–Straus conjecture.</p>
       </article>
 
       <article class="visitor-tool-card" aria-labelledby="egypt-tool-title">
-        <p class="eyebrow">Bounded exact search</p>
-        <h2 id="egypt-tool-title">Search an Erdős-Straus member</h2>
+        <p class="eyebrow">More exploration</p>
+        <h2 id="egypt-tool-title">Search within chosen fraction bounds</h2>
         <p class="tool-plain">For n = 12d+1, MathCase searches your finite denominator bounds for positive, strictly increasing x, y, z that satisfy the exact equation.</p>
         <p class="tool-formula">4/n = 1/x + 1/y + 1/z</p>
         <form id="visitor-egypt-form" class="visitor-form">

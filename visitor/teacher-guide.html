@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Teacher answer · MathCase</title>
+  <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="workbench.css">
+  <link rel="stylesheet" href="tools.css">
+</head>
+<body>
+  <header class="mast"><div class="mast-inner">
+    <a href="../" class="brand"><img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" width="38" height="38" alt=""><span>Math<span>Case</span></span></a>
+    <span class="mast-label">For teachers</span>
+    <nav class="tool-nav" aria-label="MathCase pages">
+      <a href="lesson.html">Try a lesson</a>
+      <a href="index.html">Your proof</a>
+      <a href="../tools.html">Try number math</a>
+      <details class="tool-nav-group">
+        <summary aria-current="page">For teachers</summary>
+        <div class="tool-nav-links">
+          <a href="teacher-guide.html" aria-current="page">Read the worked answer</a>
+          <a href="classroom.html">Assignment files</a>
+        </div>
+      </details>
+      <details class="tool-nav-group">
+        <summary>More</summary>
+        <div class="tool-nav-links">
+          <a href="model-workflow.html">Saved proof attempts</a>
+          <a href="lab.html">Run reports</a>
+          <a href="study-lab.html">Compare saved runs</a>
+        </div>
+      </details>
+    </nav>
+  </div></header>
+  <main class="tool-page teacher-answer">
+    <p class="eyebrow">A short worked answer</p>
+    <h1>Why the prime assumption helps</h1>
+    <p class="tool-lede">The lesson starts with one failed rule, adds a prime assumption, then asks learners to reuse the idea for a product.</p>
+
+    <section class="tool-card">
+      <h2>1. Check the counterexample by hand</h2>
+      <p>Two squared is four. Four goes into four exactly once. Four does not go into two a whole number of times, so at n = 2 the rule fails. That disproves the unrestricted claim that a divisor of a square must divide its root.</p>
+      <p class="formula">4 goes into 2 × 2 exactly; 4 does not go into 2 evenly.</p>
+      <p>One counterexample is enough to disprove that unrestricted statement. It does not show that every composite divisor fails.</p>
+    </section>
+
+    <section class="tool-card">
+      <h2>2. Use primality twice</h2>
+      <p>For the transfer question, suppose a prime number <em>p</em> divides the square of <em>a × b</em>.</p>
+      <ol>
+        <li>Apply the prime-divides-a-square fact to <em>a × b</em>. Now <em>p</em> divides <em>a × b</em>.</li>
+        <li>Since <em>p</em> is prime, a prime that divides a product divides at least one factor. Thus <em>p</em> divides <em>a</em> or <em>p</em> divides <em>b</em>.</li>
+      </ol>
+      <p>This is a known elementary argument. The saved exercise is a teaching example, not a new theorem or a measured model-evaluation result.</p>
+    </section>
+
+    <section class="tool-card">
+      <h2>3. Keep the two claims separate</h2>
+      <p>The square claim has a useful composite example: if 6 divides <em>n</em> squared, then both 2 and 3 divide <em>n</em>; because 2 and 3 are coprime, 6 divides <em>n</em>.</p>
+      <p>That does not make 6 behave like a prime in the product claim. With <em>a</em> = 2 and <em>b</em> = 3, 6 divides <em>a × b</em>, but it divides neither factor. This is why the lesson uses a prime assumption for the product step.</p>
+    </section>
+
+    <details class="tool-card teacher-technical">
+      <summary>Optional Lean proof and exact statement</summary>
+      <p>The target is: if a natural prime <code>p</code> divides <code>(a*b)^2</code>, then it divides <code>a</code> or <code>b</code>.</p>
+      <pre><code>theorem prime_dvd_factor_of_product_square (p a b : Nat)
+    (hp : p.Prime) (h : p ∣ (a * b) ^ 2) : p ∣ a ∨ p ∣ b := by
+  have hProduct : p ∣ a * b := hp.dvd_of_dvd_pow h
+  exact hp.dvd_mul.mp hProduct</code></pre>
+      <p>The first line uses primality to move from a divisor of a square to a divisor of its base. The second uses the prime-divides-product property.</p>
+    </details>
+
+    <section class="tool-card">
+      <h2>Try it with a learner</h2>
+      <ol>
+        <li>Ask them to verify 4 and 2 without opening the proof.</li>
+        <li>Ask which assumption changed when the prime statement is introduced.</li>
+        <li>Give the product question and ask them to name the two steps before writing code.</li>
+      </ol>
+      <p>They can enter a proof attempt in <a href="index.html?starter=transfer">Your proof</a>. For file-based assignments, open the <a href="classroom.html">assignment activity</a>. It does not execute student source or upload files.</p>
+    </section>
+    <p class="tool-footer"><a class="tool-action" href="teacher-guide.md" download>Download the Markdown teacher answer</a> <a class="tool-action" href="lesson.html">Return to the learner lesson</a></p>
+  </main>
+</body>
+</html>

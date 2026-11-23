@@ -20,13 +20,23 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="visitor/">Make a case</a>
-      <a href="work.html">All work</a>
-      <a href="collatz.html">Collatz theorem</a>
-      <a href="timeline.html">Timeline</a>
-      <a href="roadmap.html">Roadmap</a>
-      <a class="current" href="replay.html" aria-current="page">Replay</a>
-      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+      <a href="tools.html">Try math</a>
+      <a href="cases.html">Examples</a>
+      <a href="work.html">Results</a>
+      <a href="visitor/">Your proof</a>
+      <a href="visitor/teacher-guide.html">For teachers</a>
+      <details class="nav-more">
+        <summary class="current">More</summary>
+        <div class="nav-more-links">
+          <a href="frontier.html">Frontier math</a>
+          <a href="collatz.html">Collatz result</a>
+          <a href="roadmap.html">Research plan</a>
+          <a href="timeline.html">Timeline</a>
+          <a class="current" aria-current="page" href="replay.html">Replay records</a>
+          <a href="projects/">Projects</a>
+          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+        </div>
+      </details>
     </nav>
   </header>
 
@@ -58,7 +68,7 @@
       <div class="replay-boundary">
         <p><strong>Important hash distinction:</strong> the two fresh runs agree with each other, but their OLEAN output hashes differ from the older expected OLEAN hashes. The replay does not claim historical OLEAN byte identity.</p>
         <p><strong>Run exits:</strong> every inner Lean module and axiom group returned 0. The Phase 1 Docker wrapper later returned 124 when its added two-hour watchdog expired; Phase 2 returned 0. The report records no Docker OOM.</p>
-        <p><strong>Final theorem axioms:</strong> <code>[propext, Quot.sound]</code>. This source replay does not promote M0 or M4 and is not a clean-room build by an independent operator.</p>
+        <p><strong>Final theorem axioms:</strong> <code>[propext, Quot.sound]</code>. This replay does not change the human statement-review or formal dossier-acceptance status, and it was not a clean-room build by an independent operator.</p>
       </div>
     </section>
 
@@ -79,12 +89,12 @@
       <div class="timeline-heading">
         <p class="eyebrow">Interactive module comparison</p>
         <h2 id="module-list-title">Find a module, then expand its hashes.</h2>
-        <p>The explorer reads the public phase tables already included with the evidence. Search by module name or source path; the phase hashes stay collapsed until opened.</p>
+        <p>The explorer reads the public phase tables already included with the evidence. Search by module name or source path; the phase hashes stay collapsed until opened. Archived filenames keep the old “M20” shorthand for the residue tier modulo 2<sup>20</sup> (1,048,576 classes).</p>
       </div>
 
       <div class="replay-control-panel">
         <label for="replay-search">Search the module list
-          <input id="replay-search" type="search" autocomplete="off" placeholder="Example: M20CompositionShard133">
+          <input id="replay-search" type="search" autocomplete="off" placeholder="Example: CompositionShard133">
         </label>
         <label for="replay-kind">Show
           <select id="replay-kind">

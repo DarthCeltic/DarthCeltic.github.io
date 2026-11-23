@@ -1,6 +1,8 @@
 .case-index { padding-top: 48px; padding-bottom: 70px; }
 .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 26px; }
 .case-card-page { min-width: 0; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, #ffffff08, #ffffff02), #102431b8; }
+.local-launcher > summary { color: #e9cf9f; font-size: 14px; font-weight: 800; cursor: pointer; }
+.local-launcher-content { margin-top: 10px; }
 .case-card-page h2 { margin: 10px 0; color: #f0e4cf; font: 500 24px/1.15 Georgia, "Times New Roman", serif; }
 .case-card-page p { color: #c1ccce; font-size: 12px; line-height: 1.7; }
 .case-card-page .case-type { color: var(--gold); font-size: 9px; font-weight: 900; letter-spacing: .12em; text-transform: uppercase; }

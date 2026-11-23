@@ -19,13 +19,23 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="visitor/">Make a case</a>
-      <a href="work.html">All work</a>
-      <a href="collatz.html">Collatz theorem</a>
-      <a href="timeline.html">Timeline</a>
-      <a href="replay.html">Replay</a>
-      <a class="current" href="roadmap.html" aria-current="page">Roadmap</a>
-      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+      <a href="tools.html">Try math</a>
+      <a href="cases.html">Examples</a>
+      <a href="work.html">Results</a>
+      <a href="visitor/">Your proof</a>
+      <a href="visitor/teacher-guide.html">For teachers</a>
+      <details class="nav-more">
+        <summary class="current">More</summary>
+        <div class="nav-more-links">
+          <a href="frontier.html">Frontier math</a>
+          <a href="collatz.html">Collatz result</a>
+          <a class="current" aria-current="page" href="roadmap.html">Research plan</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="replay.html">Replay records</a>
+          <a href="projects/">Projects</a>
+          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+        </div>
+      </details>
     </nav>
   </header>
 
@@ -35,9 +45,10 @@
       <h1 id="roadmap-title">MathCase is building a tool mathematicians can inspect, reproduce, and use.</h1>
       <p>The strongest evidence today is a disciplined checking and record-keeping pipeline. Broad autonomous mathematical discovery has not been demonstrated. This roadmap turns that gap into specific work with visible finish conditions.</p>
       <div class="research-actions">
-        <a class="button button-primary" href="work.html#reproduction">Start with reproducibility <span aria-hidden="true">→</span></a>
-        <a class="button button-secondary" href="timeline.html">Read the project timeline <span aria-hidden="true">→</span></a>
-        <a class="button button-secondary" href="index.html#case-desk">Try the saved Case Desk <span aria-hidden="true">→</span></a>
+        <a class="button button-primary" href="frontier.html">Explore six math questions</a>
+        <a class="button button-secondary" href="tools.html#collatz-tool">Try 239</a>
+        <a class="button button-secondary" href="work.html#reproduction">See how the results are checked</a>
+        <a class="button button-secondary" href="timeline.html">See the project timeline</a>
       </div>
     </section>
 
@@ -87,7 +98,7 @@
           <article class="roadmap-card">
             <p class="roadmap-state state-review">Lean-checked known bound · independent review open</p>
             <h3>Choose one finite-structure target only after checking its statement and prior work.</h3>
-            <p>The known R(5,5) lower bound now has a MathCase Lean formalization: 27 chunks and a final composition checked the 42-vertex witness. Ryan reviewed the exact statement (M0 YES). The run used a warm local cache; fresh-checkout reproduction and independent review remain open. R(6,6) is staged with M0 YES, but no construction search or Lean attempt is authorized yet.</p>
+            <p>The known R(5,5) lower bound now has a MathCase Lean formalization: 27 chunks and a final composition checked the 42-vertex witness. Ryan reviewed that the English statement matches the Lean target. The run used a warm local cache; fresh-checkout reproduction and independent review remain open. The R(6,6) statement was also reviewed, but no Lean attempt is recorded here.</p>
             <p class="roadmap-formula">R(5,5) Lean target: <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>.</p>
             <details><summary>Why not call this a new result?</summary><p>The graph construction and bound are known. The browser checker verifies the finite certificate, and MathCase has a separate Lean proof bundle. The upstream FormalConjectures file remains a proof placeholder; that does not change the saved MathCase result or make it a new construction.</p></details>
             <div class="roadmap-links">

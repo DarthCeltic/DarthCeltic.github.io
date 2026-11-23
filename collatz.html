@@ -21,26 +21,37 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="visitor/">Make a case</a>
-      <a href="cases.html">Cases</a>
-      <a href="work.html">All work</a>
-      <a class="current" href="collatz.html" aria-current="page">Collatz theorem</a>
       <a href="tools.html">Try math</a>
-      <a href="timeline.html">Timeline</a>
-      <a href="replay.html">Replay</a>
-      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+      <a href="cases.html">Examples</a>
+      <a href="work.html">Results</a>
+      <a href="visitor/">Your proof</a>
+      <a href="visitor/teacher-guide.html">For teachers</a>
+      <details class="nav-more">
+        <summary class="current">More</summary>
+        <div class="nav-more-links">
+          <a href="frontier.html">Frontier math</a>
+          <a class="current" aria-current="page" href="collatz.html">Collatz result</a>
+          <a href="roadmap.html">Research plan</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="replay.html">Replay records</a>
+          <a href="projects/">Projects</a>
+          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+        </div>
+      </details>
     </nav>
   </header>
 
   <main class="shell research-page" id="top">
     <section class="research-hero" aria-labelledby="collatz-title">
       <p class="eyebrow">A bounded result, checked from source twice</p>
-      <h1 id="collatz-title">A checked 32-step descent result for 2,652 Collatz families.</h1>
-      <p>The theorem proves that every number in each listed family reaches a smaller value after exactly 32 ordinary Collatz steps. It does not prove the Collatz conjecture.</p>
+      <h1 id="collatz-title">Collatz: when does a number get smaller?</h1>
+      <p>For 2,652 checked number patterns, the value after 32 standard steps is smaller than the start. This proves a bounded rule for those listed patterns; it does not prove that every Collatz sequence reaches 1.</p>
       <div class="research-actions">
-        <a class="button button-primary" href="#exact-statement">Read the exact statement <span aria-hidden="true">↓</span></a>
-        <a class="button button-secondary" href="#coefficient-check">Check a listed family <span aria-hidden="true">↓</span></a>
-        <a class="button button-secondary" href="replay.html">Inspect the replay <span aria-hidden="true">→</span></a>
+        <a class="button button-primary" href="tools.html#collatz-tool">Try the number 239</a>
+        <a class="button button-secondary" href="#exact-statement">See the exact statement</a>
+        <a class="button button-secondary" href="#coefficient-check">Check a listed family</a>
+        <a class="button button-secondary" href="frontier.html">See the other math questions</a>
+        <a class="button button-secondary" href="replay.html">Inspect the replay</a>
       </div>
     </section>
 
@@ -77,7 +88,7 @@
       <p>Here <code>S</code> is the finite set of 2,652 pairs listed in the theorem source. The map <code>C</code> sends an even number to half of it and an odd number to three times the number plus one. The theorem proves the trajectory equality and the strict decrease together for every natural <code>k</code>.</p>
       <p class="record-note"><strong>What this does not prove:</strong> it does not cover every starting number, give a descent rule for all residue classes, or show that every trajectory reaches 1. It is not a solution of the Collatz conjecture and makes no novelty claim.</p>
       <div class="record-links">
-        <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/sources/M20CompositionAllFamiliesV1.lean">Open the exact Lean theorem source</a>
+        <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/sources/M20CompositionAllFamiliesV1.lean">Open the Lean source for the 2,652-family theorem</a>
         <a href="evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/README.md">Read the coefficient audit</a>
         <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/CORRECTION.md">Read the archive correction</a>
       </div>

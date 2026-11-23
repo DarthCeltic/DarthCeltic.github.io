@@ -23,14 +23,23 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="visitor/">Make a case</a>
-      <a href="cases.html">Cases</a>
-      <a class="current" href="work.html" aria-current="page">All work</a>
-      <a href="collatz.html">Collatz theorem</a>
-      <a href="timeline.html">Timeline</a>
-      <a href="roadmap.html">Roadmap</a>
-      <a href="replay.html">Replay</a>
-      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+      <a href="tools.html">Try math</a>
+      <a href="cases.html">Examples</a>
+      <a class="current" aria-current="page" href="work.html">Results</a>
+      <a href="visitor/">Your proof</a>
+      <a href="visitor/teacher-guide.html">For teachers</a>
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-links">
+          <a href="frontier.html">Frontier math</a>
+          <a href="collatz.html">Collatz result</a>
+          <a href="roadmap.html">Research plan</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="replay.html">Replay records</a>
+          <a href="projects/">Projects</a>
+          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+        </div>
+      </details>
     </nav>
   </header>
 
@@ -40,13 +49,16 @@
       <h1 id="work-title">Question an AI proof, check it in Lean, and build on what holds.</h1>
       <p>This ledger separates formal proofs, finite computations, and saved engineering evidence. Each result starts in ordinary language, then shows the exact scope and the limits.</p>
       <div class="archive-intro-actions">
-        <a class="button button-primary" href="index.html#case-desk">Open a saved Case Desk case</a>
-        <a class="button button-secondary" href="collatz.html">Open the precise Collatz theorem</a>
-        <a class="button button-secondary" href="#collatz-main">Read the bounded Collatz theorem</a>
+        <a class="button button-primary" href="tools.html#collatz-tool">Try 239</a>
+        <a class="button button-secondary" href="tools.html#triangle-game">Color six dots</a>
+        <a class="button button-secondary" href="tools.html#fraction-identity">Check 4/21</a>
+        <a class="button button-secondary" href="frontier.html">See six research questions</a>
       </div>
       <p class="record-note">No model calls are running; external spend is $0. This website shows saved evidence and does not run Lean in the browser.</p>
     </section>
 
+    <details class="work-jumps">
+      <summary>Jump to a result</summary>
     <nav class="archive-nav" aria-label="Research sections">
       <a href="#proof-workbench">Saved proof case</a>
       <a href="#collatz-main">Collatz theorem</a>
@@ -54,13 +66,14 @@
       <a href="#collatz-shared-structure">Shared Collatz structure</a>
       <a href="#collatz-coverage">Residue coverage</a>
       <a href="#affine-families">Affine families</a>
-      <a href="#m31-bound">M31 lower bound</a>
+      <a href="#m31-bound">Three-step Collatz profile</a>
       <a href="#egyptian">Egyptian fractions</a>
       <a href="#ramsey">R(5,5) Lean proof</a>
       <a href="#ramsey-r66">R(6,6) finite certificate</a>
       <a href="#knowledge-graph">Statement index</a>
       <a href="#limits">Open limits</a>
     </nav>
+    </details>
 
     <div class="record-key" aria-label="Evidence labels">
       <span class="record-label public">Lean-checked source</span>
@@ -94,9 +107,9 @@
         <a href="replay.html">Search the module-by-module replay evidence</a>
         <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/CORRECTION.md">Read the 2,652-family archive correction</a>
         <a href="evidence/collatz/m15-m20-pinned-replay/README.md">See how the shard evidence is packaged</a>
-        <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/attempt-history.md">Read the preserved M20 attempt history</a>
+        <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/attempt-history.md">Read the preserved composition attempt history</a>
       </div>
-      <p class="file-location"><strong>Exact theorem file:</strong> <code>evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/sources/M20CompositionAllFamiliesV1.lean</code>. Phase hash tables and axiom outputs are under <code>evidence/collatz/m20-source-replay-2026-11-18/phase-1/</code> and <code>phase-2/</code>.</p>
+      <details class="file-location"><summary>Inspect the source and receipt locations</summary><p>The archived Lean source is named <code>M20CompositionAllFamiliesV1.lean</code>; here, “M20” means the residue tier modulo 2<sup>20</sup>, or 1,048,576 classes. Phase hash tables and axiom outputs are under <code>evidence/collatz/m20-source-replay-2026-11-18/phase-1/</code> and <code>phase-2/</code>.</p></details>
       <a class="text-link" href="#coefficient-audit">Try the exact coefficient calculation <span aria-hidden="true">↓</span></a>
     </section>
 
@@ -128,8 +141,8 @@
 
     <section class="record-section" id="collatz-shared-structure" aria-labelledby="collatz-shared-structure-title">
       <span class="record-label internal">Source-level structure review · no new Lean run</span>
-      <h2 id="collatz-shared-structure-title">The same descent inequality serves all 2,652 rows; the 2,652 trajectory equalities remain.</h2>
-      <p><strong>Plain statement:</strong> every recorded M20 endpoint is smaller because the shared coefficient gap is positive, once its row’s exact 32-step trajectory equality is established.</p>
+      <h2 id="collatz-shared-structure-title">The same descent inequality serves all 2,652 rows; every 32-step trajectory equality remains.</h2>
+      <p><strong>Plain statement:</strong> every listed endpoint is smaller because the shared coefficient gap is positive, once its row’s exact 32-step trajectory equality is established.</p>
       <p class="record-formula">start − endpoint = 517,135k + (r−q), with every listed r−q ≥ 117</p>
       <p>All rows share modulus 2²⁰, step count 32, and slope 3¹². The 133 modules group 132 sets of 20 rows and one set of 12. That organization and the shared algebra clarify the proof; they do not remove any row’s trajectory equality or reduce the 2,652 mathematical cases. The earlier prefix screen also found zero reduction and was not rerun.</p>
       <p>This is source analysis, not a new theorem or a refactored proof. It describes exactly the listed families and does not imply a general Collatz rule or convergence.</p>
@@ -138,21 +151,21 @@
 
     <section class="record-section" id="collatz-coverage" aria-labelledby="collatz-coverage-title">
       <span class="record-label internal">Finite residue counts · arithmetic/binding audit</span>
-      <h2 id="collatz-coverage-title">The larger ledger covers 97.394% of the M20 residue space.</h2>
-      <p><strong>Plain statement:</strong> among the 1,048,576 residue classes modulo <code>2²⁰</code>, the recorded M20 tier has checked bounded-descent certificates for 1,021,248 classes.</p>
+      <h2 id="collatz-coverage-title">The larger ledger covers 97.394% of one finite residue space.</h2>
+      <p><strong>Plain statement:</strong> among the 1,048,576 residue classes modulo <code>2²⁰</code>, the largest recorded power-of-two tier has checked bounded-descent certificates for 1,021,248 classes.</p>
       <div class="record-statline"><strong>1,021,248 / 1,048,576</strong><span>97.393798828125% · rounds to 97.394%</span></div>
       <table class="result-table">
-        <thead><tr><th>Tier label</th><th>Residue space</th><th>Checked descent classes</th><th>Finite share</th></tr></thead>
+        <thead><tr><th>Modulus</th><th>Residue space</th><th>Checked descent classes</th><th>Finite share</th></tr></thead>
         <tbody>
-          <tr><td>M15</td><td>32,768</td><td>31,473</td><td>96.048%</td></tr>
-          <tr><td>M16</td><td>65,536</td><td>63,422</td><td>96.774%</td></tr>
-          <tr><td>M18</td><td>262,144</td><td>254,649</td><td>97.141%</td></tr>
-          <tr><td>M20</td><td>1,048,576</td><td>1,021,248</td><td>97.394%</td></tr>
+          <tr><td>2<sup>15</sup></td><td>32,768</td><td>31,473</td><td>96.048%</td></tr>
+          <tr><td>2<sup>16</sup></td><td>65,536</td><td>63,422</td><td>96.774%</td></tr>
+          <tr><td>2<sup>18</sup></td><td>262,144</td><td>254,649</td><td>97.141%</td></tr>
+          <tr><td>2<sup>20</sup></td><td>1,048,576</td><td>1,021,248</td><td>97.394%</td></tr>
         </tbody>
       </table>
       <details class="record-note">
-        <summary>What “M20” means and how to read this percentage</summary>
-        <p>The number is the exponent: M20 means <code>2²⁰ = 1,048,576</code> possible remainders. This is a finite fraction of one residue space, not a percentage of the Collatz conjecture solved and not a natural-density statement. The 2,652-family composition theorem above is one exact theorem within the larger recorded tier; the count comes from a separate family-basis audit.</p>
+        <summary>How to read this percentage and the old shorthand</summary>
+        <p>The table counts residue classes for the displayed power-of-two moduli. Older files call the 2<sup>20</sup> tier “M20.” This is a finite fraction of one residue space, not a percentage of the Collatz conjecture solved and not a natural-density statement. The 2,652-family composition theorem above is one exact theorem within the larger recorded tier; the count comes from a separate family-basis audit.</p>
       </details>
       <p>The underlying audit checked 4,262 saved family rows, 229 shard modules, 496 input bindings, and the 7,825-class M13 seed. It did not compile Lean or rescan trajectories. An older README rounds this number incorrectly as 97.395%; the correction is recorded beside the preserved historical artifact.</p>
       <a class="text-link" href="evidence/collatz/m15-m20-coverage-audit/README.md">Read the human coverage audit and its receipt location <span aria-hidden="true">→</span></a>
@@ -173,7 +186,7 @@
       </table>
       <p>The saved local Lean receipts report exit code 0 and axioms <code>[propext, Quot.sound]</code>. These are three infinite arithmetic progressions, not all integers. The upstream arithmetic scans were exploratory; the certificates do not prove a global descent premise or settle Collatz.</p>
       <a class="text-link" href="evidence/collatz/affine-trace-families/README.md">Read the source and receipt map <span aria-hidden="true">→</span></a>
-      <p class="file-location"><strong>Files:</strong> <code>evidence/collatz/affine-trace-families/sources/</code> contains the generic trace and family sources; saved receipts are in the adjacent <code>receipts/</code> directory. These are local run records, not M0/M4 acceptance or independent review.</p>
+      <p class="file-location"><strong>Files:</strong> <code>evidence/collatz/affine-trace-families/sources/</code> contains the generic trace and family sources; saved receipts are in the adjacent <code>receipts/</code> directory. These are local run records, not human statement approval, dossier acceptance, or independent review.</p>
     </section>
 
     <section class="record-section" id="collatz-public" aria-labelledby="collatz-public-title">
@@ -181,7 +194,7 @@
       <h2 id="collatz-public-title">A smaller Lean result covers 7,825 classes modulo 8,192.</h2>
       <p><strong>Plain statement:</strong> for every qualifying natural number in each of 7,825 listed residue classes, one of the first 21 ordinary Collatz steps reaches a smaller value.</p>
       <p class="record-formula">7,825 / 8,192 residue classes · bounded first descent within 21 steps</p>
-      <p>This does not prove global convergence or close any whole congruence class modulo 128. Its saved source and local compile are public, but the historical local compile is not a fresh clean-checkout replay or a standard MathCase M4 receipt.</p>
+      <p>This does not prove global convergence or close any whole congruence class modulo 128. Its saved source and local compile are public, but the historical local compile is not a fresh clean-checkout replay or a standard MathCase dossier receipt.</p>
       <div class="record-links">
         <a href="https://github.com/DarthCeltic/MathCase/blob/main/proofs/collatz/remaining-residues/BoundedDescent8192.lean" target="_blank" rel="noopener noreferrer">Read the Lean source ↗</a>
         <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-descent.md" target="_blank" rel="noopener noreferrer">Read the scope notes ↗</a>
@@ -216,7 +229,7 @@
       <p class="file-location"><strong>Files:</strong> <code>evidence/egyptian-fractions/v9-10m/</code> contains the range maxima, aggregate audit, summary, and human-readable campaign note.</p>
 
       <div class="shift7-panel" id="shift7-identity">
-        <span class="record-label internal">Direct algebraic identity · M0 unassessed · no Lean attempt</span>
+        <span class="record-label internal">Direct algebraic identity · statement review open · no Lean attempt</span>
         <h3>A three-fraction formula for every n = 433 + 840t.</h3>
         <p><strong>Plain statement:</strong> for every integer <code>t ≥ 0</code>, set <code>n = 433 + 840t</code>. The formulas below give positive, strictly increasing denominators whose unit fractions add exactly to <code>4/n</code>.</p>
         <p><strong>Formula:</strong> <code>A = n(n+7)/4</code>, <code>x = (n+7)/4</code>, <code>y = (A+5)/7</code>, and <code>z = A(A+5)/35</code>, so <code>4/n = 1/x + 1/y + 1/z</code>.</p>
@@ -231,7 +244,7 @@
           <p id="shift7-status" class="graph-status" role="status" aria-live="polite">Ready to check t = 0.</p>
           <div id="shift7-result" class="coefficient-result" aria-live="polite"></div>
         </div>
-        <p class="file-location"><strong>Limits:</strong> this is an elementary algebraic identity, not a Lean-checked result. M0 is unassessed; no M4 status changes. The campaign’s finite witness record remains a separate, factor-conditioned computation.</p>
+        <p class="file-location"><strong>Limits:</strong> this is an elementary algebraic identity, not a Lean-checked result. The statement has not had a human fidelity review or a Lean attempt. The campaign’s finite witness record remains a separate, factor-conditioned computation.</p>
         <div class="record-links">
           <a href="evidence/egyptian-fractions/v9-10m/README.md">Read the finite campaign report</a>
           <a href="https://arxiv.org/abs/2608.24035" target="_blank" rel="noopener noreferrer">Read the related 2026 shift-7 paper ↗</a>
@@ -243,8 +256,8 @@
       <span class="record-label public">Finite certificate + Lean proof · known result</span>
       <h2 id="ramsey-title">A 42-vertex graph verifies the known lower bound R(5,5) ≥ 43.</h2>
       <p><strong>Plain statement:</strong> there is a simple graph on 42 vertices with no clique of size five, and no independent set of size five. This witnesses the established lower bound <code>R(5,5) ≥ 43</code>.</p>
-      <p><strong>Exact Lean target:</strong> <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>. Ryan reviewed the statement wording (M0 YES). Lean checked the target in 27 separately compiled chunks plus a final composition; all returned exit 0. The recorded axiom list is <code>[propext, Classical.choice, Quot.sound]</code>, with no <code>sorryAx</code> or <code>native_decide</code> in the proof sources.</p>
-      <p>The graph is a known Exoo construction. MathCase formalized and checked this finite witness; it is not a new construction, does not determine the Ramsey number, and is not an independent review or M4 dossier pass. The original Lean run used a warm local cache; a fresh-checkout rebuild has not yet been verified.</p>
+      <p><strong>Exact Lean target:</strong> <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>. Ryan reviewed that the English statement matches this target. Lean checked it in 27 separately compiled chunks plus a final composition; all returned exit 0. The recorded axiom list is <code>[propext, Classical.choice, Quot.sound]</code>, with no <code>sorryAx</code> or <code>native_decide</code> in the proof sources.</p>
+      <p>The graph is a known Exoo construction. MathCase formalized and checked this finite witness; it is not a new construction, does not determine the Ramsey number, and has not received independent review or dossier acceptance. The original Lean run used a warm local cache; a fresh-checkout rebuild has not yet been verified.</p>
       <p class="record-note"><strong>Graph6 correction:</strong> the first exported bytes used row-major ordering, which is not the standard graph6 order. The historical file and receipts remain available for audit, but the browser check and current download now use a corrected standard graph6 file that matches all 42 Lean adjacency rows. The corrected file was independently checked over all 850,668 five-vertex subsets. <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the human correction and verification note</a>.</p>
       <div class="ramsey-certificate-panel">
         <p class="coefficient-local-note">This check runs locally in your browser. It fetches the saved graph6 certificate from this site, verifies its pinned SHA-256, decodes the 42-vertex graph, and checks every five-vertex subset in both colors.</p>
@@ -261,14 +274,14 @@
         <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1" target="_blank" rel="noopener noreferrer">Open the Lean sources, receipts, and rebuild guide ↗</a>
         <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">View the pinned FormalConjectures source ↗</a>
       </div>
-      <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the standard graph6 browser checker, the preserved legacy encoding, and the correction record. The MathCase bundle contains all 29 Lean sources, 27 exact chunk receipts, and the final receipt. M4 remains unpromoted and the Lean proof has not been independently rebuilt from a clean checkout.</p>
+      <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the standard graph6 browser checker, the preserved legacy encoding, and the correction record. The MathCase bundle contains all 29 Lean sources, 27 exact chunk receipts, and the final receipt. Dossier acceptance has not been granted, and the Lean proof has not been independently rebuilt from a clean checkout.</p>
     </section>
 
     <section class="record-section" id="ramsey-r66" aria-labelledby="ramsey-r66-title">
       <span class="record-label internal">Finite graph certificate · two local checkers · not Lean-checked</span>
-      <h2 id="ramsey-r66-title">A 101-vertex graph witnesses the known lower bound R(6,6) ≥ 102.</h2>
+      <h2 id="ramsey-r66-title">A checked 101-dot graph supports the known lower bound R(6,6) ≥ 102.</h2>
       <p><strong>Plain statement:</strong> there is a simple graph on 101 labeled vertices with no clique of six and no independent set of six.</p>
-      <p><strong>Exact target:</strong> <code>∃ G : SimpleGraph (Fin 101), G.CliqueFree 6 ∧ (Gᶜ).CliqueFree 6</code>. Ryan reviewed the English statement against this target (M0 YES).</p>
+      <p><strong>Exact target:</strong> <code>∃ G : SimpleGraph (Fin 101), G.CliqueFree 6 ∧ (Gᶜ).CliqueFree 6</code>. Ryan reviewed that the English statement matches this target.</p>
       <p>The certificate is the Paley graph P(101), with 2,525 edges and degree 50 at every vertex. Two separately implemented local checkers found no six-clique and no independent six-set; both exited 0. This reproduces a known finite lower bound. It is not a Lean proof, a new Ramsey theorem, an exact value for R(6,6), or an independent mathematical review.</p>
       <div class="ramsey-certificate-panel">
         <p class="coefficient-local-note">Inspect the saved graph in this browser. The page checks the certificate hash and degree sequence, then displays one vertex’s neighbors. It does not rerun the exhaustive clique searches.</p>
@@ -283,6 +296,8 @@
       </div>
       <div class="record-links">
         <a href="evidence/finite-graphs/ramsey-r66-paley101/README.md">Read the plain-language reproduction guide</a>
+        <a href="frontier.html#ramsey-6-6">See what MathCase checked next and what remains</a>
+        <a href="tools.html#triangle-game">Try the six-dot triangle activity</a>
         <a href="evidence/finite-graphs/ramsey-r66-paley101/ramsey66_exact_checker.cpp">View the C++ finite checker</a>
         <a href="evidence/finite-graphs/ramsey-r66-paley101/verify_paley101_independent.py">View the Python cross-checker</a>
       </div>
@@ -305,7 +320,7 @@
       <div id="public-graph-results" class="graph-results" aria-live="polite"></div>
       <details class="record-note">
         <summary>What the hash check verifies</summary>
-        <p>The browser checks the manifest, index, and records file against pinned SHA-256 values before searching. It also checks a displayed statement against its recorded statement digest. The 4,262 rows concern the pinned M15–M20 shard set; individual shard M0 review is not recorded, and M4 was not promoted.</p>
+        <p>The browser checks the manifest, index, and records file against pinned SHA-256 values before searching. It also checks a displayed statement against its recorded statement digest. The 4,262 rows concern the pinned 2<sup>15</sup>–2<sup>20</sup> shard set; individual shard statements did not receive separate human fidelity reviews, and dossier acceptance was not granted.</p>
       </details>
       <a class="text-link" href="evidence/knowledge-graph/README.md">Read the data scope and excluded records <span aria-hidden="true">→</span></a>
       <p class="file-location"><strong>Files:</strong> <code>evidence/knowledge-graph/public-slice-v1/</code> contains the manifest, index, and records. The full 4,294-record owner graph is not published.</p>
@@ -316,20 +331,20 @@
       <h2 id="limits-title">What is not established yet.</h2>
       <div class="open-work-grid">
         <article><h3>Clean-room Lean replay</h3><p>The pinned image is not anonymously pullable and its complete rebuild context is not published. A stranger cannot yet repeat the flagship replay from a fresh public checkout using only this site.</p></article>
-        <article><h3>Human and independent review</h3><p>Individual Collatz shard statements remain unreviewed at M0; M4 is not promoted. Independent mathematical review is open. The R(5,5) wording has M0 YES and a Lean proof, but no independent review or fresh-checkout replay.</p></article>
+        <article><h3>Human and independent review</h3><p>Individual Collatz shard statements have not had separate human fidelity reviews, and dossier acceptance has not been granted. Independent mathematical review is open. The R(5,5) wording was reviewed and has a Lean proof, but no independent review or fresh-checkout replay.</p></article>
         <article><h3>Transfer comparison</h3><p>The model-based library-versus-baseline evaluation is staged, not run. No model calls are running; spend is $0. No benefit claim is made.</p></article>
         <article><h3>Open problems</h3><p>These results do not solve Collatz or Erdős–Straus. The finite Ramsey construction reproduces a known lower bound; it is not a new result.</p></article>
       </div>
-      <p class="record-note">The R(5,5) source and receipt bundle is published in MathCase. Its result remains candidate evidence: no M4 promotion, signature, or independent review.</p>
+      <p class="record-note">The R(5,5) source and receipt bundle is published in MathCase. Its result remains candidate evidence: no dossier acceptance, signature, or independent review.</p>
     </section>
 
     <section class="record-section" id="failures" aria-labelledby="failures-title">
       <span class="record-label internal">Failures preserved</span>
       <h2 id="failures-title">The record includes what did not work.</h2>
       <ul>
-        <li><strong>M20 composition:</strong> two Lean elaboration failures and one 200,000-heartbeat definitional-equality timeout are preserved in the attempt history. A separate earlier all-at-once run stopped after 132 shards with exit 137; Docker reported no OOM. The later chunked proof and two source replays are separate records.</li>
-        <li><strong>M20 replay setup:</strong> the root guard rejected one input path before Lean parsed a theorem; stderr SHA-256 is <code>2def9b59c92924c0da78eacb2ff935fb652dede81c4186b7aec689b1c3cff0f6</code>. Phase 1's wrapper exit 124 came from the added watchdog after the inner runner completed.</li>
-        <li><strong>M31 verification setup:</strong> two starts failed before reading data because the expected output directory or bound summary was missing. The later corrected public-copy audit passed; details and receipt hash are in its human report.</li>
+        <li><strong>Largest-tier composition:</strong> two Lean elaboration failures and one 200,000-heartbeat definitional-equality timeout are preserved in the attempt history. A separate earlier all-at-once run stopped after 132 shards with exit 137; Docker reported no OOM. The later chunked proof and two source replays are separate records.</li>
+        <li><strong>Replay setup:</strong> the root guard rejected one input path before Lean parsed a theorem; stderr SHA-256 is <code>2def9b59c92924c0da78eacb2ff935fb652dede81c4186b7aec689b1c3cff0f6</code>. Phase 1's wrapper exit 124 came from the added watchdog after the inner runner completed.</li>
+        <li><strong>2<sup>31</sup>-tier verification setup:</strong> two starts failed before reading data because the expected output directory or bound summary was missing. The later corrected public-copy audit passed; details and receipt hash are in its human report.</li>
         <li><strong>Finite graph input:</strong> a supplied graph6 certificate declared 42 vertices in YAML but encoded 41. It is excluded from the successful check and retained as a failed input record. The later R(5,5) Lean proof also preserves six earlier nonpassing receipt hashes beside the successful 27-chunk composition.</li>
         <li><strong>TruffleHog history scan:</strong> two unverified URI findings remain in historical negative-test fixtures. The current source constructs those inputs with <code>net/url</code>; an exact public exception record documents the fixture hashes and fail-closed monitoring rule. History was not rewritten and the scanner was not weakened. <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/security/trufflehog-history-exception-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the exception and verification record ↗</a>.</li>
         <li><strong>Separate owner-only dossier setup:</strong> a parent/import preflight stopped before a usable compatible receipt existed; no child proof was started. Restricted theorem material and source were not included here.</li>
@@ -340,7 +355,7 @@
     <section class="record-section" id="reproduction" aria-labelledby="reproduction-title">
       <span class="record-label planned">Reproduction status</span>
       <h2 id="reproduction-title">The files are public; the pinned runtime is still a blocker.</h2>
-      <p>The site includes human reports, source trees, hash manifests, receipt projections, exact arithmetic checkers, and selected data. It does not claim that all artifacts can currently be rebuilt from a clean anonymous checkout. The Docker image is not public-pullable, the full image-rebuild context is missing, and the large M20 OLEAN output trees are represented by hashes rather than binaries.</p>
+      <p>The site includes human reports, source trees, hash manifests, receipt projections, exact arithmetic checkers, and selected data. It does not claim that all artifacts can currently be rebuilt from a clean anonymous checkout. The Docker image is not public-pullable, the full image-rebuild context is missing, and the large compiler-output trees for the 2<sup>20</sup> composition are represented by hashes rather than binaries.</p>
       <a class="text-link" href="evidence/REPRODUCTION_STATUS.md">Read what a stranger can reproduce today <span aria-hidden="true">→</span></a>
     </section>
 

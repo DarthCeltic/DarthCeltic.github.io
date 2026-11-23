@@ -4,7 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>Classroom file handoff · MathCase</title>
+  <title>Assignment files · MathCase</title>
   <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="workbench.css"><link rel="stylesheet" href="tools.css">
   <script defer src="classroom.js"></script>
@@ -12,14 +12,33 @@
 <body>
   <header class="mast"><div class="mast-inner">
     <a href="../" class="brand"><img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" width="38" height="38" alt=""><span>Math<span>Case</span></span></a>
-    <nav class="tool-nav" aria-label="MathCase tools"><a href="index.html">Workbench</a><a href="lesson.html">Guided work</a><a href="model-workflow.html">Model runs</a><a href="lab.html">Lab report</a><a href="study-lab.html">Frozen study</a><a href="classroom.html" aria-current="page">Classroom</a></nav>
+    <nav class="tool-nav" aria-label="MathCase pages">
+      <a href="lesson.html">Try a lesson</a>
+      <a href="index.html">Your proof</a>
+      <a href="../tools.html">Try number math</a>
+      <details class="tool-nav-group">
+        <summary aria-current="page">For teachers</summary>
+        <div class="tool-nav-links">
+          <a href="teacher-guide.html">Read the worked answer</a>
+          <a href="classroom.html" aria-current="page">Assignment files</a>
+        </div>
+      </details>
+      <details class="tool-nav-group">
+        <summary>More</summary>
+        <div class="tool-nav-links">
+          <a href="model-workflow.html">Saved proof attempts</a>
+          <a href="lab.html">Run reports</a>
+          <a href="study-lab.html">Compare saved runs</a>
+        </div>
+      </details>
+    </nav>
   </div></header>
   <main class="tool-page">
-    <h1>Teach with MathCase, locally or by file.</h1>
-    <p class="tool-lede">Use the file handoff below for a no-server classroom, or run the optional self-hosted service for separate teacher and learner accounts with assignments saved on your own machine.</p>
+    <h1>Share an exercise by file.</h1>
+    <p class="tool-lede">A teacher can make a prompt file, a learner can return proof code and notes, and the teacher can review the response. The files stay on the devices where they are downloaded.</p>
     <div class="tool-note"><strong>Self-hosted option:</strong> the Go prototype listens on your computer only by default. It stores accounts, assignments, and submissions in a local data directory. It does not send work to MathCase, check Lean proofs, or create evidence receipts. Read the <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/private-classroom-service.md">setup and security limits</a> before using it. Do not expose it to the public internet.</div>
-    <h2>File handoff · no server required</h2>
-    <p class="tool-lede">Create an assignment from a case, hand it to a learner, then review the returned proof and leave feedback. Assignment, submission, and review are separate downloadable files and stay on the devices where the user downloads them.</p>
+    <h2>Make a prompt, return work, leave feedback</h2>
+    <p class="tool-lede">The assignment, learner response, and teacher review are separate files. No account or upload is involved.</p>
     <section class="tool-grid">
       <article class="tool-card">
         <h2>Teacher · make an assignment</h2>

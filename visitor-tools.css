@@ -72,6 +72,15 @@
 .visitor-tool-note { max-width: 940px; padding: 12px 0 36px; }
 .visitor-tool-note h2 { color: #f1e6d3; font: 500 27px Georgia, serif; }
 .visitor-tool-note p { color: #bac6c9; font-size: 12px; line-height: 1.7; }
+.activity-advanced { margin-top: 10px; padding: 11px 12px; border: 1px solid var(--tool-line); border-radius: 8px; background: #06131c55; }
+.activity-advanced summary { color: #ecd5ae; font-size: 13px; font-weight: 800; cursor: pointer; }
+.activity-advanced > p { margin: 10px 0 0; }
+.triangle-edges { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 7px; margin: 14px 0; }
+.edge-choice { min-width: 0; min-height: 42px; padding: 8px 7px; border: 1px solid #e7c49455; border-radius: 7px; background: #08151f; color: #e7e2d9; font-size: 12px; font-weight: 750; cursor: pointer; }
+.edge-choice[data-color="red"] { border-color: #dc8174; background: #6b2d2b; color: #fff3eb; }
+.edge-choice[data-color="blue"] { border-color: #79a9d1; background: #234d70; color: #eef7ff; }
+.edge-choice:focus-visible,.visitor-actions button:focus-visible { outline: 3px solid #e7c494; outline-offset: 3px; }
+.fraction-denominators { grid-template-columns: repeat(3,minmax(0,1fr)); }
 @media (max-width: 800px) {
   .visitor-tool-grid { grid-template-columns: 1fr; }
 }
@@ -81,4 +90,6 @@
   .field-row { grid-template-columns: 1fr; }
   .visitor-actions { display: grid; grid-template-columns: 1fr 1fr; }
   .visitor-actions .button { width: 100%; min-height: 43px; white-space: normal; }
+  .triangle-edges { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .fraction-denominators { grid-template-columns: minmax(0,1fr); }
 }

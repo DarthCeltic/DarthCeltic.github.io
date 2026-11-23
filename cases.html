@@ -21,36 +21,49 @@
     </a>
     <nav aria-label="Main navigation">
       <a href="index.html">Home</a>
-      <a href="visitor/">Make a case</a>
-      <a class="current" href="cases.html" aria-current="page">Cases</a>
-      <a href="work.html">All work</a>
-      <a href="collatz.html">Collatz theorem</a>
       <a href="tools.html">Try math</a>
-      <a href="replay.html">Replay</a>
-      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+      <a class="current" aria-current="page" href="cases.html">Examples</a>
+      <a href="work.html">Results</a>
+      <a href="visitor/">Your proof</a>
+      <a href="visitor/teacher-guide.html">For teachers</a>
+      <details class="nav-more">
+        <summary>More</summary>
+        <div class="nav-more-links">
+          <a href="frontier.html">Frontier math</a>
+          <a href="collatz.html">Collatz result</a>
+          <a href="roadmap.html">Research plan</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="replay.html">Replay records</a>
+          <a href="projects/">Projects</a>
+          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+        </div>
+      </details>
     </nav>
   </header>
   <main class="shell case-index" id="top">
     <section class="archive-intro" aria-labelledby="case-index-title">
-      <p class="eyebrow">Saved evidence · local calculations · Lean replays</p>
-      <h1 id="case-index-title">MathCase lets you inspect saved proof attempts, run exact arithmetic, and replay selected Lean checks.</h1>
-      <p>This index separates what is already saved from what a visitor can calculate or rebuild locally. Opening a saved case does not start a model, search, or Lean run.</p>
+      <p class="eyebrow">Questions to try · examples to inspect</p>
+      <h1 id="case-index-title">Pick a claim, a number, or a graph. See what the check says.</h1>
+      <p>Start with a browser activity, then open a saved proof or result if you want the detailed record. Nothing on this page starts an AI call.</p>
       <div class="archive-intro-actions">
-        <a class="button button-primary" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open a saved proof case</a>
-        <a class="button button-secondary" href="visitor/">Write and check your own Lean case</a>
-        <a class="button button-secondary" href="work.html">Read the full work ledger</a>
+        <a class="button button-primary" href="tools.html#collatz-tool">Try 239</a>
+        <a class="button button-secondary" href="tools.html#triangle-game">Color a graph</a>
+        <a class="button button-secondary" href="tools.html#fraction-identity">Check 4/21</a>
+        <a class="button button-secondary" href="frontier.html">See six research questions</a>
       </div>
     </section>
-    <section class="case-card-page" id="local-launcher" aria-labelledby="local-launcher-title">
-      <span class="case-status pass">Local Python · bounded checks</span>
-      <h2 id="local-launcher-title">Run a public case from a clone</h2>
-      <p>One command lists ten routes. Choose a case ID to run its documented calculation or Lean check; each run writes fresh logs and receipts in a new local output folder. No inference model is called.</p>
+    <details class="case-card-page local-launcher" id="local-launcher">
+      <summary>For people rerunning checks from a MathCase clone</summary>
+      <div class="local-launcher-content">
+      <h2 id="local-launcher-title">Re-run saved checks on your computer</h2>
+      <p>This optional command-line route lists ten saved checks. Choose one to run its documented calculation or Lean check; each run writes fresh logs and receipts in a new folder. No model is called.</p>
       <pre>python scripts/run_public_case.py list
 python scripts/run_public_case.py collatz
 python scripts/run_public_case.py ramsey66</pre>
       <p>The prime-to-√2 route needs pinned Mathlib or an explicit bootstrap directory. The Riemann route fetches only four hash-pinned upstream files. A visitor-owned Lean file is checked locally with the pinned toolchain.</p>
       <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/blob/main/scripts/run_public_case.py">Read the launcher source ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/CASE_CATALOG.md">Read the case IDs and limits ↗</a></div>
-    </section>
+      </div>
+    </details>
     <div class="case-grid" aria-label="Public mathematics cases">
       <article class="case-card-page" id="prime-divisibility">
         <span class="case-status pass">Saved model attempt + Lean check</span>
@@ -66,19 +79,19 @@ python scripts/run_public_case.py ramsey66</pre>
         <p><strong>Plain claim:</strong> the unrestricted rule “a divisor of a square divides its root” is false.</p>
         <p class="case-formula">4 ∣ 2², but 4 ∤ 2</p>
         <p>The saved reader demonstrates this one exact counterexample. It was not a failed model response and it does not imply a general theorem.</p>
-        <div class="case-actions"><a href="reader.html?scope=public#case/hero-composite-counterexample-r1">Run the exact local example →</a><a href="tools.html#divisibility-tool">Try another integer example →</a></div>
+        <div class="case-actions"><a href="reader.html?scope=public#case/hero-composite-counterexample-r1">Run the exact local example →</a><a href="visitor/lesson.html">Try the guided lesson →</a></div>
       </article>
       <article class="case-card-page" id="sqrt2-child">
         <span class="case-status candidate">Pinned local parent-to-child replay · candidate-only</span>
         <h2>Prime lemma reused in the √2 descent</h2>
         <p><strong>Plain claim:</strong> the public child source uses the prime-divisibility lemma at the prime two inside a classical infinite-descent proof of the irrationality of √2.</p>
         <p>The public replay compiled the exact parent source and then the child from pinned Lean 4.33.1 and Mathlib bytes, checked both formal targets, and rejected a negative control with primality removed. The recorded axioms are <code>[Classical.choice, Quot.sound, propext]</code>.</p>
-        <p>This source replay does not create a new M0 review, grant proof-use rights, create a standard M4 receipt, or promote any dossier gate. The saved child remains candidate-only.</p>
+        <p>This is a fresh check of the published source. It does not replace a human review of the statement, establish a new result, or amount to independent acceptance of the dossier.</p>
         <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/prime-sqrt2-source-replay-v1">Read the replay instructions and receipt ↗</a></div>
       </article>
       <article class="case-card-page" id="collatz-twelve-of-twenty">
-        <span class="case-status pass">Fresh public Lean-core replay</span>
-        <h2>A parity-conditioned 32-step descent theorem</h2>
+        <span class="case-status pass">Collatz · number patterns · Lean checked</span>
+        <h2>When do 32 Collatz steps take a number downhill?</h2>
         <p><strong>Plain claim:</strong> if exactly 12 of a number’s first 20 accelerated Collatz inputs are odd, its value after 32 ordinary steps is smaller than its start. This holds for every number in each qualifying residue progression.</p>
         <p class="case-formula">125,970 of 1,048,576 residues satisfy the condition; Lean proves the exact count and the descent for every progression member.</p>
         <p>The result covers a fixed parity pattern, not every starting value; it proves no global convergence and makes no priority claim.</p>
