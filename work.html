@@ -62,6 +62,7 @@
     <nav class="archive-nav" aria-label="Research sections">
       <a href="#proof-workbench">Saved proof case</a>
       <a href="#collatz-main">Collatz theorem</a>
+      <a href="#collatz-13-of-22">13-of-22 Collatz rule</a>
       <a href="#coefficient-audit">Coefficient calculator</a>
       <a href="#collatz-shared-structure">Shared Collatz structure</a>
       <a href="#collatz-coverage">Residue coverage</a>
@@ -200,6 +201,19 @@
         <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-descent.md" target="_blank" rel="noopener noreferrer">Read the scope notes ↗</a>
       </div>
       <p class="file-location"><strong>Saved receipt location:</strong> <code>proofs/collatz/remaining-residues/bounded-descent-receipt.json</code> in the MathCase repository.</p>
+    </section>
+
+    <section class="record-section" id="collatz-13-of-22" aria-labelledby="collatz-13-of-22-title">
+      <span class="record-label public">Lean 4.33.1 · fresh-source replay · bounded first descent</span>
+      <h2 id="collatz-13-of-22-title">At most 13 odd inputs in 22 accelerated steps imply a drop by step 35.</h2>
+      <p><strong>Plain statement:</strong> repeat 22 shortcut moves: halve an even number; for an odd number, calculate <code>3n+1</code> and halve. If a start <code>n ≥ 3</code> begins at most 13 of these moves on odd numbers, a regular Collatz step takes it below <code>n</code> by step 35.</p>
+      <p>The exact count is <strong>3,593,934 of 4,194,304</strong> possible 22-step parity patterns (85.6861%). A shortcut move on an odd number corresponds to two regular Collatz steps, which accounts for the endpoint <code>22+h</code>.</p>
+      <p class="record-note"><strong>Limits:</strong> this is a separate parity filter from the 20-step and 21-step theorems, with non-nested classes. It guarantees one bounded first drop for qualifying starts; it does not cover every start, prove convergence, or make a novelty claim.</p>
+      <div class="record-links">
+        <a href="collatz.html#at-most-thirteen-of-twenty-two">Read the explanation and exact scope</a>
+        <a href="cases.html#collatz-at-most-thirteen-22">Open the runnable public case</a>
+        <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-two-v2" target="_blank" rel="noopener noreferrer">Open sources and replay instructions ↗</a>
+      </div>
     </section>
 
     <section class="record-section" id="m31-bound" aria-labelledby="m31-bound-title">

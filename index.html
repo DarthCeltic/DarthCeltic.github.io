@@ -175,11 +175,12 @@
     <section class="latest-update shell" aria-labelledby="latest-title">
       <div>
         <p class="eyebrow">New checked result · Nov 23, 2026</p>
-        <h2 id="latest-title">A precise Collatz pattern gives a checked way downhill.</h2>
-        <p>If exactly 12 of the first 20 accelerated steps start with an odd number, then 32 ordinary Collatz steps end below the starting number. Lean proves this for every number in each matching residue class, and proves exactly 125,970 of the 1,048,576 classes match. This is a bounded result; it does not prove every Collatz sequence reaches 1. The earlier 2,652-family replay and finite Ramsey checks remain in the results record.</p>
+        <h2 id="latest-title">A 22-step parity pattern gives a bounded first drop.</h2>
+        <p>Take 22 shortcut steps: halve an even number; for an odd number, calculate 3n+1 and then halve. For every start of at least 3, if no more than 13 shortcut steps begin on odd numbers, a regular Collatz step takes the number below its start by step 35. Lean checks this for 3,593,934 of 4,194,304 possible 22-step parity patterns. It does not prove that every Collatz sequence reaches 1.</p>
       </div>
       <div class="hero-actions">
-        <a class="button button-primary" href="collatz.html#twelve-of-twenty">Read the theorem and try an example <span aria-hidden="true">→</span></a>
+        <a class="button button-primary" href="collatz.html#at-most-thirteen-of-twenty-two">Read the new theorem and limits <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="collatz.html#twelve-of-twenty">Try the earlier number example</a>
         <a class="button button-secondary" href="frontier.html">Explore all six math questions <span aria-hidden="true">→</span></a>
         <a class="button button-secondary" href="work.html">Browse earlier results and evidence <span aria-hidden="true">→</span></a>
       </div>

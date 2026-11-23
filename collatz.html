@@ -50,6 +50,7 @@
         <a class="button button-primary" href="tools.html#collatz-tool">Try the number 239</a>
         <a class="button button-secondary" href="#at-most-twelve-of-twenty">See the broader 20-step rule</a>
         <a class="button button-secondary" href="#at-most-thirteen-of-twenty-one">See the 21-step rule</a>
+        <a class="button button-secondary" href="#at-most-thirteen-of-twenty-two">See the 22-step rule</a>
         <a class="button button-secondary" href="#exact-statement">See the exact statement</a>
         <a class="button button-secondary" href="#coefficient-check">Check a listed family</a>
         <a class="button button-secondary" href="frontier.html">See the other math questions</a>
@@ -117,6 +118,24 @@
       <pre class="record-command">python scripts/run_public_case.py collatz-at-most-thirteen</pre>
       <p class="file-location">The command recompiles all five Lean-core modules from a fresh temporary directory, checks complete axiom reports, and independently enumerates all 2²¹ residues. It makes no model or network call.</p>
     </section>
+
+    <section class="record-section" id="at-most-thirteen-of-twenty-two" aria-labelledby="at-most-thirteen-22-title">
+      <span class="record-label public">New Lean 4.33.1 core result · fresh-source replay</span>
+      <h2 id="at-most-thirteen-22-title">A second parity pattern that guarantees a first drop</h2>
+      <p><strong>Start with the shortcut:</strong> for an even number, halve it. For an odd number, calculate <code>3n+1</code> and halve once. Repeat that rule 22 times.</p>
+      <p><strong>Plain statement:</strong> for every start <code>n ≥ 3</code>, if no more than 13 of those 22 shortcut moves begin on odd numbers, a regular Collatz step takes the number below its start by step 35.</p>
+      <p class="record-formula">If <code>h</code> of the 22 shortcut moves begin on odd numbers, the exact claim is <code>C^(22+h)(n) &lt; n</code> whenever <code>h ≤ 13</code>. An odd shortcut move represents two regular steps; an even move represents one.</p>
+      <p>Lean proves the claim for exactly <strong>3,593,934 of 4,194,304</strong> possible 22-step parity patterns (85.6861%). This is a separate family from the 20- and 21-step results: their pattern sets are not nested, so the percentages are not a direct improvement comparison.</p>
+      <details><summary>See one example starting at 7</summary><p>The shortcut path begins <code>7 → 11 → 17 → 26 → 13 → 20 → 10 → 5 → 8 → 4 → 2 → 1</code>. That illustrates the rule for one input; it is not the proof. The Lean theorem checks every qualifying parity pattern and every natural start covered by it.</p></details>
+      <p class="record-note"><strong>Limits:</strong> this is a parity-conditioned first drop, not a rule for every input. It does not show that every sequence reaches 1, solve Collatz, or make a novelty claim.</p>
+      <pre class="record-command">python scripts/run_public_case.py collatz-at-most-thirteen-22</pre>
+      <p class="file-location">The local command compiles four fresh Lean-core modules, checks the exact axiom reports, and runs a separate integer audit. It makes no model or network call.</p>
+      <div class="record-links">
+        <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-two-v2" target="_blank" rel="noopener noreferrer">Read the plain-language proof guide, replay protocol, and results ↗</a>
+        <a href="cases.html#collatz-at-most-thirteen-22">Open the runnable case and command ↗</a>
+      </div>
+    </section>
+
     <section class="record-section" id="exact-statement" aria-labelledby="statement-title">
       <span class="record-label public">Lean source replay · exact scope</span>
       <h2 id="statement-title">The proved claim</h2>

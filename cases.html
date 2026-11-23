@@ -117,7 +117,17 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <p>A separate Lean boundary statement shows that every 14-odd residue has a representative that is not smaller at the corresponding step 35. This bounds this uniform rule; it does not say every such trajectory fails to descend later. No convergence or novelty claim is made.</p>
         <pre>python scripts/run_public_case.py collatz-at-most-thirteen</pre>
         <div class="case-actions"><a href="collatz.html#at-most-thirteen-of-twenty-one">Read the theorem and limits</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-one-v1">Open the proof, wrapped-axiom audit, and 21-bit census ↗</a></div>
-      </article>      <article class="case-card-page" id="collatz-listed-families">
+      </article>
+      <article class="case-card-page" id="collatz-at-most-thirteen-22">
+        <span class="case-status pass">Collatz · parity patterns · Lean checked</span>
+        <h2>Can 22 parity steps guarantee a first drop?</h2>
+        <p><strong>Plain claim:</strong> repeat this shortcut 22 times: halve even numbers; for odd numbers, do <code>3n+1</code> and halve. For every start <code>n ≥ 3</code> whose shortcut path begins on an odd number at most 13 times, a regular Collatz step takes it below its start by step 35.</p>
+        <p class="case-formula">The Lean-checked count is 3,593,934 of 4,194,304 possible 22-step parity patterns (85.6861%).</p>
+        <p>Example: starting at 7, the shortcut path begins <code>7 → 11 → 17 → 26 → 13 → 20 → 10 → 5 → 8 → 4 → 2 → 1</code>. This is one example, not the proof. The theorem covers every qualifying start, but does not prove every Collatz sequence reaches 1 or make a novelty claim. Its pattern set differs from the 20- and 21-step results.</p>
+        <pre>python scripts/run_public_case.py collatz-at-most-thirteen-22</pre>
+        <div class="case-actions"><a href="collatz.html#at-most-thirteen-of-twenty-two">Read the theorem in plain language</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-two-v2">Open the source, replay protocol, and limits ↗</a></div>
+      </article>
+      <article class="case-card-page" id="collatz-listed-families">
         <span class="case-status pass">Compact Lean replay · separate from historical 363-module replay</span>
         <h2>The 2,652 listed Collatz progressions</h2>
         <p><strong>Plain claim:</strong> for each of the 2,652 published coefficient pairs and every natural <code>k</code>, 32 ordinary steps take <code>1,048,576k+r</code> to <code>531,441k+q</code>, which is smaller.</p>
