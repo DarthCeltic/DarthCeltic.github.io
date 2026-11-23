@@ -109,7 +109,15 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <pre>python scripts/run_public_case.py collatz-at-most-twelve</pre>
         <div class="case-actions"><a href="collatz.html#at-most-twelve-of-twenty">Read the statement and its limits</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-twelve-v1">Open the proof and replay package</a></div>
       </article>
-      <article class="case-card-page" id="collatz-listed-families">
+      <article class="case-card-page" id="collatz-at-most-thirteen">
+        <span class="case-status pass">Collatz · parity patterns · Lean checked</span>
+        <h2>Can 21 parity steps guarantee a first drop?</h2>
+        <p><strong>Plain claim:</strong> for every start at least 3, if no more than 13 of its first 21 accelerated inputs are odd, one ordinary iterate at step 21 through 34 is smaller than the start.</p>
+        <p class="case-formula">1,898,712 of 2,097,152 residue classes qualify (90.5376%). Lean proves the exact count and the descent for every member of each qualifying progression.</p>
+        <p>A separate Lean boundary statement shows that every 14-odd residue has a representative that is not smaller at the corresponding step 35. This bounds this uniform rule; it does not say every such trajectory fails to descend later. No convergence or novelty claim is made.</p>
+        <pre>python scripts/run_public_case.py collatz-at-most-thirteen</pre>
+        <div class="case-actions"><a href="collatz.html#at-most-thirteen-of-twenty-one">Read the theorem and limits</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-one-v1">Open the proof, wrapped-axiom audit, and 21-bit census ↗</a></div>
+      </article>      <article class="case-card-page" id="collatz-listed-families">
         <span class="case-status pass">Compact Lean replay · separate from historical 363-module replay</span>
         <h2>The 2,652 listed Collatz progressions</h2>
         <p><strong>Plain claim:</strong> for each of the 2,652 published coefficient pairs and every natural <code>k</code>, 32 ordinary steps take <code>1,048,576k+r</code> to <code>531,441k+q</code>, which is smaller.</p>

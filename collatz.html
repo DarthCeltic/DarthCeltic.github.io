@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Lean-checked bounded Collatz descent for 2,652 listed progressions and a parity-conditioned family covering 910,596 of 1,048,576 residue classes.">
+  <meta name="description" content="Lean-checked bounded Collatz descent for 2,652 listed progressions and Lean-checked parity-conditioned Collatz descent families.">
   <meta name="theme-color" content="#0b1823">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>A bounded Collatz theorem | MathCase</title>
@@ -49,6 +49,7 @@
       <div class="research-actions">
         <a class="button button-primary" href="tools.html#collatz-tool">Try the number 239</a>
         <a class="button button-secondary" href="#at-most-twelve-of-twenty">See the broader 20-step rule</a>
+        <a class="button button-secondary" href="#at-most-thirteen-of-twenty-one">See the 21-step rule</a>
         <a class="button button-secondary" href="#exact-statement">See the exact statement</a>
         <a class="button button-secondary" href="#coefficient-check">Check a listed family</a>
         <a class="button button-secondary" href="frontier.html">See the other math questions</a>
@@ -101,6 +102,21 @@
       <p class="file-location">This local command recompiles the Lean sources from a fresh temporary directory and enumerates the 1,048,576 residues. It makes no model or network call.</p>
     </section>
 
+    <section class="record-section" id="at-most-thirteen-of-twenty-one" aria-labelledby="at-most-thirteen-title">
+      <span class="record-label public">Fresh-source Lean replay · full residue census</span>
+      <h2 id="at-most-thirteen-title">What if thirteen or fewer inputs are odd?</h2>
+      <p><strong>Plain statement:</strong> for every start <code>n ≥ 3</code>, if at most 13 of its first 21 accelerated Collatz inputs are odd, then the ordinary iterate at step <code>21+h</code> is smaller than <code>n</code>, where <code>h</code> is the odd-input count.</p>
+      <p class="record-formula"><code>1,898,712 / 2,097,152</code> residue classes modulo <code>2²¹</code> qualify (90.5376%). The proved endpoint is between steps 21 and 34, depending on <code>h</code>.</p>
+      <p>Lean lifts the result to every <code>2²¹k+r ≥ 3</code> whose residue has at most 13 odd inputs. A separate boundary theorem proves that each residue with exactly 14 odd inputs has a representative <code>2²¹+r</code> that is not smaller at step 35.</p>
+      <p class="record-note"><strong>Limits:</strong> this is a parity-conditioned first drop. The 90.5376% is a share of residue classes, not a percentage of Collatz solved. It proves no global convergence and makes no novelty claim.</p>
+      <div class="record-links">
+        <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-one-v1" target="_blank" rel="noopener noreferrer">Read the theorem, source, receipt, and census ↗</a>
+        <a href="cases.html#collatz-at-most-thirteen">Open this runnable public case</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/main/scripts/run_public_case.py" target="_blank" rel="noopener noreferrer">Open the MathCase command launcher</a>
+      </div>
+      <pre class="record-command">python scripts/run_public_case.py collatz-at-most-thirteen</pre>
+      <p class="file-location">The command recompiles all five Lean-core modules from a fresh temporary directory, checks complete axiom reports, and independently enumerates all 2²¹ residues. It makes no model or network call.</p>
+    </section>
     <section class="record-section" id="exact-statement" aria-labelledby="statement-title">
       <span class="record-label public">Lean source replay · exact scope</span>
       <h2 id="statement-title">The proved claim</h2>
