@@ -83,6 +83,7 @@
 .replay-output-panel > summary { color:#e9cf9f; font-size:12px; font-weight:850; cursor:pointer; }
 .replay-output-note { max-width:760px; margin:12px 0; color:#bac8ca; font-size:11px; line-height:1.65; }
 .replay-output-text { max-height:620px; margin:12px 0 0; padding:13px; overflow:auto; border:1px solid #d7ae7125; border-radius:8px; background:#02090e; color:#d9e3df; font:10px/1.5 ui-monospace,Consolas,monospace; white-space:pre; }
+.record-command { max-width:100%; white-space:pre-wrap; overflow-wrap:anywhere; }
 .replay-output-text:focus-visible { outline:2px solid var(--gold); outline-offset:2px; }
 .replay-boundary code,.file-location code { overflow-wrap:anywhere; word-break:break-word; }
 @media(max-width:660px) {

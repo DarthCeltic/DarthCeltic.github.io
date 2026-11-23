@@ -10,9 +10,11 @@ The hosted Pages copy is not byte-for-byte identical to that upstream directory.
 
 The disclosure says the optional web-editor action sends Lean source to `live.lean-lang.org`, does not check the workbench's target proposition, and does not create a MathCase receipt. Imported receipts remain visitor-supplied compiler evidence.
 
+The later [`teacher-answer-arithmetic-copy-2026-11-23-r1.json`](teacher-answer-arithmetic-copy-2026-11-23-r1.json) records a copy-only correction to the readable teacher answer and its Markdown download. It binds the Pages base and updated file hashes; the pinned MathCase source manifest and earlier overlay receipts remain unchanged.
+
 ## Differences already present at the Pages base
 
-At Pages commit `1c46af8cec7c15915c07f8ee1a7a0bfec7bbb688`, three files already differed from the pinned source manifest. They are unchanged by this update:
+At Pages commit `1c46af8cec7c15915c07f8ee1a7a0bfec7bbb688`, three files already differed from the pinned source manifest. The table preserves those historical base hashes; later copy changes are bound by their own overlay records:
 
 | File | Pinned source SHA-256 | Pages base SHA-256 |
 | --- | --- | --- |
@@ -20,4 +22,4 @@ At Pages commit `1c46af8cec7c15915c07f8ee1a7a0bfec7bbb688`, three files already 
 | `visitor/model-workflow.html` | `df097c55a150e97e320197899ef94c39e34d78161a61b7824625764fb9e78674` | `c40ede97e2742afa720404d96d6becdd5ad4f4a3e7837148bde50f251466ffae` |
 | `visitor/teacher-guide.md` | `d25b309995dce485a23478a61fc09eb0b6bbf83a6e33774adcf69b47e577bf20` | `08625cc408dd16aaad05bfca1f3deac81edfbf27c98f1cd67cbc482276c9f9cc` |
 
-The other pinned visitor files match the source manifest. The manifest itself remains unchanged.
+The other pinned visitor files matched the source manifest at that base. The manifest itself remains unchanged.

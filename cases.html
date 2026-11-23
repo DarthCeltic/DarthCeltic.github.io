@@ -56,9 +56,10 @@
       <summary>For people rerunning checks from a MathCase clone</summary>
       <div class="local-launcher-content">
       <h2 id="local-launcher-title">Re-run saved checks on your computer</h2>
-      <p>This optional command-line route lists ten saved checks. Choose one to run its documented calculation or Lean check; each run writes fresh logs and receipts in a new folder. No model is called.</p>
+      <p>This optional command-line route lists eleven saved checks. Choose one to run its documented calculation or Lean check; each run writes fresh logs and receipts in a new folder. No model is called.</p>
       <pre>python scripts/run_public_case.py list
 python scripts/run_public_case.py collatz
+python scripts/run_public_case.py collatz-at-most-twelve
 python scripts/run_public_case.py ramsey66</pre>
       <p>The prime-to-√2 route needs pinned Mathlib or an explicit bootstrap directory. The Riemann route fetches only four hash-pinned upstream files. A visitor-owned Lean file is checked locally with the pinned toolchain.</p>
       <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/blob/main/scripts/run_public_case.py">Read the launcher source ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/CASE_CATALOG.md">Read the case IDs and limits ↗</a></div>
@@ -98,6 +99,15 @@ python scripts/run_public_case.py ramsey66</pre>
         <pre>py -3 -B reproduction/collatz-twelve-of-twenty-v1/check_word_bound.py
 py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <div class="case-actions"><a href="collatz.html#twelve-of-twenty">Try two exact browser calculations →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-twelve-of-twenty-v1">Open source, axiom audits, and replay steps ↗</a></div>
+      </article>
+      <article class="case-card-page" id="collatz-at-most-twelve">
+        <span class="case-status pass">Collatz · parity patterns · Lean checked</span>
+        <h2>Do twelve or fewer odd inputs lead to a drop?</h2>
+        <p><strong>Plain claim:</strong> for every start at least 3, if no more than 12 of its first 20 accelerated inputs are odd, one ordinary iterate at step 20 through 32 is smaller than the start.</p>
+        <p class="case-formula">910,596 of 1,048,576 residue classes qualify. The exact step is 20 plus the odd-input count.</p>
+        <p>The Lean theorem covers every member of each qualifying progression. A separate 13-odd theorem marks the limit of this all-members guarantee at its corresponding endpoint. No convergence or novelty claim is made.</p>
+        <pre>python scripts/run_public_case.py collatz-at-most-twelve</pre>
+        <div class="case-actions"><a href="collatz.html#at-most-twelve-of-twenty">Read the statement and its limits</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-twelve-v1">Open the proof and replay package</a></div>
       </article>
       <article class="case-card-page" id="collatz-listed-families">
         <span class="case-status pass">Compact Lean replay · separate from historical 363-module replay</span>

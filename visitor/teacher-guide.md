@@ -4,7 +4,7 @@ This is the downloadable copy of the readable [teacher answer page](teacher-guid
 
 ## Start with the hand calculation
 
-Two squared is four. Four goes into four exactly once. Four does not go into two a whole number of times, so at n = 2 the rule fails. This disproves the unrestricted claim that a divisor of a square must divide its root. It does not show that every composite divisor fails.
+Two squared is four. Four goes into four exactly once. Four does not go into two a whole number of times. So at n = 2 the rule fails. This disproves the unrestricted claim that a divisor of a square must divide its root. It does not show that every composite divisor fails.
 
 ## Transfer challenge
 

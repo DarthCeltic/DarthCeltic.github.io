@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A precise, replayed Lean theorem for 2,652 listed Collatz progressions, with exact scope, receipts, a coefficient check, and limits.">
+  <meta name="description" content="Lean-checked bounded Collatz descent for 2,652 listed progressions and a parity-conditioned family covering 910,596 of 1,048,576 residue classes.">
   <meta name="theme-color" content="#0b1823">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>A bounded Collatz theorem | MathCase</title>
@@ -48,6 +48,7 @@
       <p>For 2,652 checked number patterns, the value after 32 standard steps is smaller than the start. This proves a bounded rule for those listed patterns; it does not prove that every Collatz sequence reaches 1.</p>
       <div class="research-actions">
         <a class="button button-primary" href="tools.html#collatz-tool">Try the number 239</a>
+        <a class="button button-secondary" href="#at-most-twelve-of-twenty">See the broader 20-step rule</a>
         <a class="button button-secondary" href="#exact-statement">See the exact statement</a>
         <a class="button button-secondary" href="#coefficient-check">Check a listed family</a>
         <a class="button button-secondary" href="frontier.html">See the other math questions</a>
@@ -78,6 +79,26 @@
         <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-twelve-of-twenty-v1" target="_blank" rel="noopener noreferrer">Read the exact Lean sources, receipts, and commands ↗</a>
         <a href="cases.html#collatz-twelve-of-twenty">Open the public case catalog</a>
       </div>
+    </section>
+
+    <section class="record-section" id="at-most-twelve-of-twenty" aria-labelledby="at-most-twelve-title">
+      <span class="record-label public">Supplemental Lean-core theorem · fresh-source replay</span>
+      <h2 id="at-most-twelve-title">What if twelve or fewer inputs are odd?</h2>
+      <p><strong>Plain statement:</strong> for every starting number <code>n ≥ 3</code>, if at most 12 of its first 20 accelerated Collatz inputs are odd, then one specific ordinary iterate is smaller than <code>n</code>.</p>
+      <p class="record-formula">Let <code>h</code> be the odd-input count. Lean proves <code>C^(20+h)(n) &lt; n</code> for <code>0 ≤ h ≤ 12</code>; the checked step is between 20 and 32.</p>
+      <p>The qualifying condition covers exactly <strong>910,596 of 1,048,576</strong> residue classes modulo <code>2²⁰</code> (86.8412%). Every number at least 3 in those classes has the stated drop. This gives a lower bound on the natural density of starts that drop at one of steps 20 through 32; it does not claim a drop at step 32 for all of them.</p>
+      <details class="record-note">
+        <summary>Why the uniform cutoff stops at twelve odd inputs</summary>
+        <p>For any residue with exactly 13 odd inputs in the first 20 accelerated steps, Lean proves that some member of its full residue family is not smaller at ordinary step 33. This rules out extending the all-members guarantee to every 13-odd family at that endpoint; it does not say every 13-odd start fails to descend.</p>
+      </details>
+      <p class="record-note"><strong>Limits:</strong> the step depends on the odd-input count. This is bounded descent, not a convergence argument, and it makes no novelty or priority claim. The starts 1 and 2 are excluded: their step-30 values are not smaller than their starts.</p>
+      <div class="record-links">
+        <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-twelve-v1" target="_blank" rel="noopener noreferrer">Read the Lean sources, replay instructions, and finite census</a>
+        <a href="cases.html#collatz-at-most-twelve">Open this runnable public case</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/main/scripts/run_public_case.py" target="_blank" rel="noopener noreferrer">Open the MathCase command launcher</a>
+      </div>
+      <pre class="record-command">python scripts/run_public_case.py collatz-at-most-twelve</pre>
+      <p class="file-location">This local command recompiles the Lean sources from a fresh temporary directory and enumerates the 1,048,576 residues. It makes no model or network call.</p>
     </section>
 
     <section class="record-section" id="exact-statement" aria-labelledby="statement-title">
