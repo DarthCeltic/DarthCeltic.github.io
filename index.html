@@ -86,7 +86,7 @@
         <div>
           <p class="eyebrow">Try the Case Desk</p>
           <h2 id="desk-title">Start with a real saved case.</h2>
-          <p>Open either case to inspect its statement, step through the saved result, and try the exact-integer counterexample. Nothing dispatches a model or starts a proof run.</p>
+          <p>Two public examples show different things: one exact counterexample and one saved proof checked by Lean. Open either to see what was tested. Nothing starts just because you visit the page.</p>
         </div>
         <a class="button button-secondary" data-case-desk-launch="hero-prime-divisibility-r1" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open the saved Case Desk <span aria-hidden="true">→</span></a>
       </div>
@@ -110,15 +110,8 @@
           <a class="case-open" data-case-desk-launch="hero-prime-divisibility-r1" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open this saved case <span aria-hidden="true">→</span></a>
         </article>
 
-        <article class="case-card case-card-held">
-          <p class="case-kicker">Public coverage gap</p>
-          <h3>A third unrestricted case is not packaged yet</h3>
-          <p class="case-plain">The current bundle has two suitable saved examples for this public walkthrough. Its other bundled case is not cleared for this view, and no replacement case with the same statement–failure–Lean evidence chain is available in the public dataset.</p>
-          <p class="case-scope"><strong>Next needed:</strong> a separately reviewed public case with its own statement and saved evidence. No substitute has been invented.</p>
-          <span class="case-open case-open-disabled">Not available in this public walkthrough</span>
-        </article>
       </div>
-      <p class="desk-footnote">The saved reader preserves the original two public cases. Evidence file locations are shown in the reader; individual machine-readable records are not linked as the visitor experience.</p>
+      <p class="desk-footnote">These are the two public saved cases. For hands-on number, graph, and fraction questions, <a href="frontier.html">try the six current math activities</a>.</p>
     </section>
 
     <section class="proof-story shell" id="your-workspace" aria-labelledby="workspace-title">
@@ -181,16 +174,15 @@
 
     <section class="latest-update shell" aria-labelledby="latest-title">
       <div>
-        <p class="eyebrow">Latest research update · Nov 20, 2026</p>
-        <h2 id="latest-title">The bounded Collatz replay sits beside two finite Ramsey checks.</h2>
-        <p>MathCase publishes a Lean proof of the known lower bound R(5,5) ≥ 43 from a 42-vertex graph, plus a separate two-checker finite certificate for the known lower bound R(6,6) ≥ 102 from a 101-vertex graph. The R(6,6) check is computational evidence, not Lean-checked and not a new construction. The Collatz result remains exact and bounded: 2,652 listed progressions descend after 32 ordinary steps, with two agreeing source replays. The R(5,5) Lean package still awaits a fresh-checkout rebuild.</p>
+        <p class="eyebrow">New checked result · Nov 23, 2026</p>
+        <h2 id="latest-title">A precise Collatz pattern gives a checked way downhill.</h2>
+        <p>If exactly 12 of the first 20 accelerated steps start with an odd number, then 32 ordinary Collatz steps end below the starting number. Lean proves this for every number in each matching residue class, and proves exactly 125,970 of the 1,048,576 classes match. This is a bounded result; it does not prove every Collatz sequence reaches 1. The earlier 2,652-family replay and finite Ramsey checks remain in the results record.</p>
       </div>
-          <div class="hero-actions">
-            <a class="button button-secondary" href="work.html#collatz-main">Read the exact theorem and evidence <span aria-hidden="true">→</span></a>
-            <a class="button button-secondary" href="replay.html">Explore the replay hashes <span aria-hidden="true">→</span></a>
-            <a class="button button-secondary" href="work.html#ramsey">Read the R(5,5) Lean evidence <span aria-hidden="true">→</span></a>
-            <a class="button button-secondary" href="work.html#ramsey-r66">Read the R(6,6) finite certificate <span aria-hidden="true">→</span></a>
-          </div>
+      <div class="hero-actions">
+        <a class="button button-primary" href="collatz.html#twelve-of-twenty">Read the theorem and try an example <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="frontier.html">Explore all six math questions <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="work.html">Browse earlier results and evidence <span aria-hidden="true">→</span></a>
+      </div>
     </section>
 
     <section class="browse-work shell" aria-labelledby="browse-title">
