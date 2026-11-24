@@ -9,7 +9,7 @@
   <link rel="canonical" href="https://darthceltic.github.io/projects/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Ryan Gurganious · AI systems and research software">
-  <meta property="og:description" content="Try a small MathCase example, then explore Ryan's public research and engineering work.">
+  <meta property="og:description" content="Meet Ryan, try MathCase, and inspect his merged work on AI accelerators and scroll research tools.">
   <meta property="og:url" content="https://darthceltic.github.io/projects/">
   <meta property="og:image" content="https://darthceltic.github.io/assets/mathcase-branding-kit/mathcase-lockup-960.png">
   <meta property="og:image:alt" content="MathCase wordmark">
@@ -35,20 +35,20 @@
     <section class="hero" id="top" aria-labelledby="page-title">
       <div class="hero-copy">
         <p class="eyebrow">AI systems &amp; research software</p>
-        <h1 id="page-title">What did the AI <em>actually prove?</em></h1>
-        <p class="hero-lede">Start with a small claim: try the example, inspect a saved proof, or make a case of your own. MathCase keeps the question, the AI's attempt, and the proof-checker's result together.</p>
+        <h1 id="page-title">Ryan <em>Gurganious</em></h1>
+        <p class="hero-lede">I built MathCase so you can see where an AI proof failed and what Lean accepted. I also write code for AI accelerators and tools used to study ancient scrolls.</p>
         <div class="hero-actions">
-          <a class="button button-primary" href="../visitor/lesson.html">Try the MathCase lesson</a>
-          <a class="text-link" href="#projects">Explore my projects <span aria-hidden="true">↓</span></a>
+          <a class="button button-primary" href="mailto:darthceltic1985@gmail.com">Email Ryan</a>
+          <a class="text-link" href="https://github.com/DarthCeltic/MathCase">MathCase source ↗</a>
         </div>
-        <p class="hero-note">The example makes the difference between a false premise and a counterexample concrete.</p>
+        <p class="hero-note">As <a href="https://github.com/DarthCeltic">@DarthCeltic</a>, I earned the CORE-ET award for Most Validated Model Ports. <a href="#contributions">See the organizer’s credit and my merged changes ↓</a></p>
       </div>
 
       <figure class="math-board" aria-labelledby="board-question">
         <div class="board-brand">
           <img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" width="42" height="42" alt="">
           <span>MathCase</span>
-          <span class="board-tag">Try it here</span>
+          <a class="board-tag" href="../">Open MathCase →</a>
         </div>
         <figcaption id="board-question">If 4 divides a square, must it divide the number you squared?</figcaption>
         <p class="formula" id="formula" aria-live="polite">2² = 4</p>
@@ -60,48 +60,30 @@
           <button type="button" data-n="4" aria-pressed="false">4</button>
           <button type="button" data-n="6" aria-pressed="false">6</button>
         </div>
-        <p class="board-limit"><strong>Local arithmetic only.</strong> This small calculation is separate from the saved AI attempt and Lean check.</p>
+        <p class="board-limit">These buttons calculate in your browser. <a href="../reader.html?scope=public#case/hero-prime-divisibility-r1">Read the related saved Lean proof →</a></p>
       </figure>
     </section>
 
-    <section class="mathcase-paths" aria-labelledby="paths-title">
+    <section class="contributions-section" id="contributions" aria-labelledby="contributions-title">
       <div class="section-heading">
-        <p class="eyebrow">Choose your path</p>
-        <h2 id="paths-title">One small claim. Four ways in.</h2>
+        <h2 id="contributions-title">Open-source contributions</h2>
       </div>
-      <div class="path-grid">
-        <a class="path-card" href="../visitor/lesson.html">
-          <span class="path-audience">New to proof</span>
-          <strong>Take the guided lesson</strong>
-          <span>Move from a counterexample to a theorem, then try a related statement.</span>
-          <span class="card-action">Start the lesson <span aria-hidden="true">→</span></span>
-        </a>
-        <a class="path-card" href="../reader.html?scope=public#case/hero-prime-divisibility-r1">
-          <span class="path-audience">Engineer or reviewer</span>
-          <strong>Inspect the saved rejection</strong>
-          <span>Open the exact model attempt, Lean’s rejection, and the checked repair.</span>
-          <span class="card-action">Open the saved proof <span aria-hidden="true">→</span></span>
-        </a>
-        <div class="path-card">
-          <span class="path-audience">Teacher</span>
-          <strong>Use the classroom exercise</strong>
-          <span>Give learners the prompt and exchange assignment files locally.</span>
-          <span class="card-action"><a href="../visitor/classroom.html">Open the classroom handoff →</a></span>
-          <span class="card-action"><a href="../visitor/teacher-guide.html">Open the worked answer →</a></span>
-        </div>
-        <a class="path-card" href="../visitor/">
-          <span class="path-audience">Have your own claim?</span>
-          <strong>Open the visitor workbench</strong>
-          <span>Edit a Lean statement and choose whether to use an optional checker route.</span>
-          <span class="card-action">Bring a claim <span aria-hidden="true">→</span></span>
-        </a>
+      <div class="contribution-list">
+        <article class="contribution">
+          <div class="contribution-title"><span class="contribution-kind">AIFoundry · CORE-ET Hackathon</span><h3>Most Validated Model Ports</h3></div>
+          <div class="contribution-copy">
+            <p>The organizers credited me with 16 validated model variants across 15 families. My merged changes freed YOLO accumulator registers from fixed assignments and moved a repeated vector-mask operation out of a loop.</p>
+            <div class="project-links"><a href="https://github.com/aifoundry-org/hf-hackathon/pull/61" target="_blank" rel="noopener noreferrer">PR #61 · register assignment ↗</a><a href="https://github.com/aifoundry-org/hf-hackathon/pull/115" target="_blank" rel="noopener noreferrer">PR #115 · vector-mask optimization ↗</a><a href="https://blog.aifoundry.org/p/the-people-the-drama-the-kernels" target="_blank" rel="noopener noreferrer">Read the organizer’s award recap ↗</a></div>
+          </div>
+        </article>
+        <article class="contribution">
+          <div class="contribution-title"><span class="contribution-kind">ScrollPrize · Villa</span><h3>Dataset selection and reliable transfers</h3></div>
+          <div class="contribution-copy">
+            <p>Villa merged my fixes for choosing the active volume’s dataset before startup and handling stalled binary downloads during long transfers.</p>
+            <div class="project-links"><a href="https://github.com/ScrollPrize/villa/pull/1439" target="_blank" rel="noopener noreferrer">PR #1439 · dataset resolution ↗</a><a href="https://github.com/ScrollPrize/villa/pull/1440" target="_blank" rel="noopener noreferrer">PR #1440 · binary transfer handling ↗</a></div>
+          </div>
+        </article>
       </div>
-      <div class="evidence-note">
-        <div><strong>Live arithmetic</strong><span>The buttons above calculate small examples in this browser. No model or Lean call runs.</span></div>
-        <div><strong>Saved model run</strong><span>The reader shows stored evidence for one model attempt and its repair. Opening it does not rerun anything.</span></div>
-        <div><strong>Optional Lean check</strong><span>The workbench can hand source to an external Lean editor or the visitor’s own Codespace after the visitor chooses that route.</span></div>
-      </div>
-      <p class="research-link">Want the research record? <a href="../work.html">Browse MathCase research cases</a>. The full project film is also <a href="https://youtu.be/-zTEJr35Q2k" target="_blank" rel="noopener noreferrer">available here</a>.</p>
     </section>
 
     <section class="projects-section" id="projects" aria-labelledby="projects-title">
@@ -110,35 +92,34 @@
           <p class="eyebrow">Selected public work</p>
           <h2 id="projects-title">Projects</h2>
         </div>
-        <p>See a working example, a specific change, or the source itself.</p>
       </div>
       <div class="project-grid">
         <article class="project-card project-featured">
-          <div class="project-topline"><span class="project-kind">Featured · formal methods</span><span class="project-number">01</span></div>
+          <div class="project-topline"><span class="project-kind">Featured · formal methods</span></div>
           <h3>MathCase</h3>
-          <p>A proof workbench where you can challenge a claim, inspect a saved AI attempt, and see exactly what Lean checked. The featured cases are known facts and bounded examples, not claims of open-problem solutions.</p>
-          <div class="project-links"><a href="../visitor/lesson.html">Try the lesson</a><a href="../work.html">Research record</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">Source ↗</a></div>
+          <p>My proof workbench keeps a question, an AI’s attempt, and Lean’s verdict together. Open a saved case to read each step.</p>
+          <div class="project-links"><a href="../">Play the triangle puzzle</a><a href="../work.html">Research record</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">Source ↗</a></div>
         </article>
         <article class="project-card">
-          <div class="project-topline"><span class="project-kind">AI systems</span><span class="project-number">02</span></div>
+          <div class="project-topline"><span class="project-kind">AI systems</span></div>
           <h3>Determinex</h3>
           <p>A local-first coding agent that iterates on proposed changes and lets the compiler and tests judge whether they work.</p>
           <div class="project-links"><a href="https://github.com/DarthCeltic/Determinex" target="_blank" rel="noopener noreferrer">Inspect the source ↗</a></div>
         </article>
         <article class="project-card">
-          <div class="project-topline"><span class="project-kind">Research software</span><span class="project-number">03</span></div>
+          <div class="project-topline"><span class="project-kind">Research software</span></div>
           <h3>ARGUS</h3>
           <p>A provenance-aware local instrument for CT workflows on Herculaneum scrolls.</p>
           <div class="project-links"><a href="https://github.com/DarthCeltic/argus" target="_blank" rel="noopener noreferrer">Explore the workbench ↗</a></div>
         </article>
         <article class="project-card">
-          <div class="project-topline"><span class="project-kind">Open-source tools</span><span class="project-number">04</span></div>
+          <div class="project-topline"><span class="project-kind">Open-source tools</span></div>
           <h3>Herculaneum Scroll Tools</h3>
           <p>Tools for dual-energy ink contrast and cross-scan registration to compare aligned scans of Herculaneum scrolls.</p>
           <div class="project-links"><a href="https://github.com/DarthCeltic/herculaneum-scroll-tools" target="_blank" rel="noopener noreferrer">Inspect the tools ↗</a></div>
         </article>
         <article class="project-card">
-          <div class="project-topline"><span class="project-kind">Early project · archived</span><span class="project-number">05</span></div>
+          <div class="project-topline"><span class="project-kind">Early project · archived</span></div>
           <h3>Python Text Calculator</h3>
           <p>A small text-based Python calculator, organized into modules for arithmetic, factorials, area, and volume.</p>
           <div class="project-links"><a href="https://github.com/DarthCeltic/Python-Text-Calculator" target="_blank" rel="noopener noreferrer">Read the archived source ↗</a></div>
@@ -146,37 +127,18 @@
       </div>
     </section>
 
-    <section class="contributions-section" id="contributions" aria-labelledby="contributions-title">
-      <div class="section-heading section-heading-row">
-        <div>
-          <p class="eyebrow">Specific upstream changes</p>
-          <h2 id="contributions-title">Work that landed elsewhere</h2>
-        </div>
-        <p>These links open the original pull requests, so authorship, review, and merge status are checkable at the source.</p>
-      </div>
-      <div class="contribution-list">
-        <article class="contribution">
-          <div class="contribution-title"><span class="contribution-kind">AIFoundry × OpenHW</span><h3>Model ports and accelerator work</h3></div>
-          <div class="contribution-copy">
-            <p>Two merged changes: unbinding YOLO accumulator registers, and hoisting a vector-mask operation in the shared Q8_0 path. The organizer recap records 16 validated model variants across 15 families and lists me for “Most Validated Model Ports.”</p>
-            <div class="project-links"><a href="https://github.com/aifoundry-org/hf-hackathon/pull/61" target="_blank" rel="noopener noreferrer">PR #61 · register assignment ↗</a><a href="https://github.com/aifoundry-org/hf-hackathon/pull/115" target="_blank" rel="noopener noreferrer">PR #115 · vector-mask optimization ↗</a><a href="https://blog.aifoundry.org/p/the-people-the-drama-the-kernels" target="_blank" rel="noopener noreferrer">Organizer recap ↗</a></div>
-          </div>
-        </article>
-        <article class="contribution">
-          <div class="contribution-title"><span class="contribution-kind">ScrollPrize · Villa</span><h3>Dataset selection and reliable transfers</h3></div>
-          <div class="contribution-copy">
-            <p>Two merged changes to the Villa project: resolve the active volume’s dataset before service startup, and handle stalled binary HTTP transfers without an arbitrary hard deadline.</p>
-            <div class="project-links"><a href="https://github.com/ScrollPrize/villa/pull/1439" target="_blank" rel="noopener noreferrer">PR #1439 · dataset resolution ↗</a><a href="https://github.com/ScrollPrize/villa/pull/1440" target="_blank" rel="noopener noreferrer">PR #1440 · binary transfer handling ↗</a></div>
-          </div>
-        </article>
-      </div>
+    <section class="portfolio-extra" aria-labelledby="paths-title">
+      <details>
+        <summary id="paths-title">MathCase for learners and teachers</summary>
+        <p>Start with the <a href="../visitor/lesson.html">guided lesson</a> or <a href="../visitor/">bring a claim to the workbench</a>. For a group, use the <a href="../visitor/classroom.html">classroom exercise</a> and <a href="../visitor/teacher-guide.html">worked answer</a>.</p>
+        <p><a href="https://youtu.be/-zTEJr35Q2k">Watch the MathCase project film</a></p>
+      </details>
     </section>
   </main>
 
   <footer class="contact-section" id="contact">
     <div>
-      <p class="eyebrow">Work with me</p>
-      <h2>Build something you can inspect.</h2>
+      <h2>Contact Ryan</h2>
       <p>I’m interested in AI systems, formal methods, and research software.</p>
       <p class="portfolio-credit">I led frontend development and its integration with a backend API for a multi-agent research application.</p>
     </div>
@@ -185,7 +147,7 @@
       <a href="mailto:darthceltic1985@gmail.com">Email Ryan</a>
       <a href="https://github.com/DarthCeltic" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
     </div>
-    <p class="footer-note"><a href="../">Back to the MathCase guide →</a></p>
+    <p class="footer-note"><a href="../">Back to MathCase →</a></p>
   </footer>
 </body>
 </html>

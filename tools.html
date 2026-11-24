@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Run exact, bounded Collatz and Erdős-Straus calculations in your own browser and save hash-bound receipts.">
+  <meta name="description" content="Color a six-dot Ramsey graph, explore a Collatz sequence, or test a fraction identity in your browser.">
   <meta name="theme-color" content="#0b1823">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
   <title>Try a finite math check | MathCase</title>
@@ -11,8 +11,9 @@
   <link rel="stylesheet" href="judging.css">
   <link rel="stylesheet" href="research.css">
   <link rel="stylesheet" href="visitor-tools.css">
+  <link rel="stylesheet" href="triangle.css">
   <script defer src="activities-core.js"></script>
-  <script defer src="triangle-game.js"></script>
+  <script defer src="triangle-game.js?v=20261124-graph"></script>
   <script defer src="egyptian-identity.js"></script>
   <script defer src="visitor-tools.js?v=20261123-human-receipt"></script>
 </head>
@@ -106,14 +107,34 @@
       <article class="visitor-tool-card" id="triangle-game" aria-labelledby="triangle-game-title">
         <p class="eyebrow">Graph coloring</p>
         <h2 id="triangle-game-title">Can you color six vertices without a single-color triangle?</h2>
-        <p class="tool-plain">Color each of the 15 connections red or blue. Click an edge to cycle its color. The checker examines all 20 groups of three vertices in this one coloring.</p>
-        <div class="triangle-edges" id="triangle-edges" aria-label="The 15 edges to color"></div>
-        <div class="visitor-actions">
-          <button class="button button-secondary" id="triangle-sample" type="button">Load a sample coloring</button>
-          <button class="button button-primary" id="triangle-check" type="button">Check this coloring</button>
+        <p class="tool-plain" id="triangle-help">Color every line red or blue. Tap an uncolored line to make it red, then tap to switch colors. You can also edit lines by number.</p>
+        <div class="triangle-widget">
+          <svg id="triangle-graph" viewBox="0 0 320 250" role="group" aria-label="Six numbered dots and 15 editable lines" aria-describedby="triangle-help">
+            <g id="triangle-lines"></g>
+            <g id="triangle-highlight" aria-hidden="true"></g>
+            <g id="triangle-vertices" aria-hidden="true"></g>
+          </svg>
+          <div class="triangle-key" aria-hidden="true"><span class="key-red">Red</span><span class="key-blue">Blue</span></div>
+          <div class="triangle-controls">
+            <div class="triangle-actions">
+              <button class="button button-primary" id="triangle-check" type="button">Check this coloring</button>
+              <button class="button button-secondary" id="triangle-sample" type="button">Load a sample coloring</button>
+            </div>
+            <p id="triangle-status" role="status" aria-live="polite" aria-atomic="true">Color the 15 lines or load a sample to begin.</p>
+            <details class="triangle-list">
+              <summary>Edit lines by number</summary>
+              <div class="triangle-edges" id="triangle-edges" role="group" aria-label="Choose a line to change its color"></div>
+            </details>
+            <details class="triangle-list triangle-explanation">
+              <summary>Why is a triangle unavoidable?</summary>
+              <p>Pick any dot. At least three of its five lines share a color. Suppose that color is red.</p>
+              <p>Look at the three dots on the other ends of those red lines. If any two are joined by red, they make a red triangle with your first dot. Otherwise all three lines between them are blue, so those three dots make a blue triangle.</p>
+              <p>The same argument works with the colors reversed.</p>
+            </details>
+          </div>
+          <noscript><p>Enable JavaScript to color the graph and check it in your browser.</p></noscript>
         </div>
-        <p class="visitor-status" id="triangle-status" role="status" aria-live="polite">Color the edges yourself, or load a sample, then check it.</p>
-        <p class="tool-limit"><strong>What this shows:</strong> whether your chosen coloring contains a single-color triangle. It checks one coloring, not all possible colorings; it is a small exploration of the known R(3,3)=6 result.</p>
+        <p class="tool-limit">The checker looks for one triangle among the 20 triples of dots in your coloring. Ramsey’s theorem guarantees a one-color triangle in every red–blue coloring of six dots.</p>
       </article>
 
       <article class="visitor-tool-card" id="fraction-identity" aria-labelledby="fraction-identity-title">

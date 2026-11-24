@@ -3,210 +3,139 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="MathCase is a proof workbench where AI suggestions are checked in Lean and the evidence stays inspectable.">
+  <meta name="description" content="Play a six-dot coloring puzzle, then inspect a saved proof checked by Lean. A math workbench by Ryan Gurganious.">
   <meta name="theme-color" content="#0b1823">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>MathCase — Proofs you can inspect</title>
+  <title>MathCase | Play with a claim. Inspect a proof.</title>
+  <link rel="canonical" href="https://darthceltic.github.io/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MathCase | Play with a claim. Inspect a proof.">
+  <meta property="og:description" content="Play a six-dot coloring puzzle, then inspect a saved proof checked by Lean. A math workbench by Ryan Gurganious.">
+  <meta property="og:url" content="https://darthceltic.github.io/">
+  <meta property="og:image" content="https://darthceltic.github.io/assets/mathcase-branding-kit/mathcase-lockup-960.png">
+  <meta property="og:image:alt" content="MathCase wordmark">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MathCase | Play with a claim. Inspect a proof.">
+  <meta name="twitter:description" content="Play a six-dot coloring puzzle, then inspect a saved proof checked by Lean. A math workbench by Ryan Gurganious.">
+  <meta name="twitter:image" content="https://darthceltic.github.io/assets/mathcase-branding-kit/mathcase-lockup-960.png">
+  <meta name="twitter:image:alt" content="MathCase wordmark">
   <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="triangle.css">
+  <link rel="stylesheet" href="home.css">
+  <script defer src="activities-core.js"></script>
+  <script defer src="triangle-game.js?v=20261124-graph"></script>
   <script defer src="case-desk-launch.js?v=20261123-case-routing"></script>
 </head>
-<body>
-  <header class="site-header shell">
-    <a class="brand" href="index.html" aria-label="MathCase home">
-      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
-      <span>MathCase<small>Proofs you can inspect</small></span>
-    </a>
+<body class="home">
+  <a class="home-skip" href="#try-math">Skip to the challenge</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
     <nav aria-label="Main navigation">
-      <a class="current" aria-current="page" href="index.html">Home</a>
-      <a href="tools.html">Try math</a>
-      <a href="cases.html">Examples</a>
-      <a href="work.html">Results</a>
-      <a href="visitor/">Your proof</a>
-      <a href="visitor/teacher-guide.html">For teachers</a>
-      <details class="nav-more">
+      <a href="tools.html">Activities</a>
+      <a href="cases.html">Proofs</a>
+      <details class="home-menu">
         <summary>More</summary>
-        <div class="nav-more-links">
+        <div>
+          <a href="work.html">Research results</a>
+          <a href="visitor/">Your proof</a>
+          <a href="visitor/teacher-guide.html">For teachers</a>
           <a href="frontier.html">Frontier math</a>
-          <a href="collatz.html">Collatz result</a>
-          <a href="roadmap.html">Research plan</a>
           <a href="timeline.html">Timeline</a>
-          <a href="replay.html">Replay records</a>
-          <a href="projects/">Projects</a>
-          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+          <a href="roadmap.html">Research plan</a>
+          <a href="replay.html">Replay explorer</a>
+          <a href="#hero-title">Judge’s guide</a>
+          <a href="projects/">About Ryan</a>
         </div>
       </details>
     </nav>
   </header>
 
-  <main>
-    <section class="quick-start quick-start-front shell" id="try-math" aria-label="Start with a quick math check">
-      <p class="eyebrow">Try a math question</p>
-      <div class="quick-start-grid">
-        <a class="quick-start-card" href="tools.html#collatz-tool">
-          <span>Collatz · number patterns</span><strong>Will 239 fall below itself?</strong><small>Check its steps in your browser.</small>
-        </a>
-        <a class="quick-start-card" href="tools.html#triangle-game">
-          <span>Ramsey · dots and lines</span><strong>Can six dots avoid a one-color triangle?</strong><small>Color 15 lines and inspect the result.</small>
-        </a>
-        <a class="quick-start-card" href="tools.html#fraction-identity">
-          <span>Erdős–Straus · fractions</span><strong>Can 4/21 be split into three unit fractions?</strong><small>Check one exact example.</small>
-        </a>
+  <main class="home-width">
+    <section class="puzzle" id="try-math" aria-labelledby="puzzle-title">
+      <div class="puzzle-intro">
+        <p class="home-kicker">Ramsey’s triangle puzzle</p>
+        <h1 id="puzzle-title">Can six dots avoid a <em><span>one-color</span> triangle?</em></h1>
+        <p class="puzzle-question">Every pair of dots is connected. Can you color the lines so that every triangle uses both red and blue?</p>
+        <p id="triangle-help">Tap a line to switch its color, then check your work. You can also edit each line by number.</p>
+        <p class="byline">MathCase by <a href="projects/">Ryan Gurganious</a></p>
       </div>
-      <p class="quick-start-more"><a href="frontier.html">See all six active math questions</a> · <a href="collatz.html#at-most-fourteen-of-twenty-three">Read the new 23-step Collatz result</a> · <a href="#hero-title">Read the judge’s guide</a></p>
-    </section>
-
-    <section class="hero hero-judging shell" aria-labelledby="hero-title">
-      <div class="hero-copy">
-        <p class="eyebrow">Nebius × NVIDIA Global AI Hackathon · judge's guide</p>
-        <h1 id="hero-title">Question an AI proof, check it in Lean, and build on what holds.</h1>
-        <p class="hero-lede">MathCase keeps a proof attempt's story together: the claim, the AI's candidate, Lean's response, and the limits of what the saved evidence establishes.</p>
-        <div class="hero-actions">
-          <a class="button button-primary" href="visitor/">Make a case <span aria-hidden="true">→</span></a>
-          <a class="button button-secondary" href="#case-desk">Open a saved case <span aria-hidden="true">↓</span></a>
-          <a class="button button-secondary" href="work.html">Explore all work <span aria-hidden="true">→</span></a>
-          <a class="button button-secondary" href="tools.html">Try the finite math tools</a>
-          <a class="button button-secondary" href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">MathCase on Devpost ↗</a>
-        </div>
-        <p class="hero-note">Hackathon judging: Nov 16, 2026 at 9:00 AM PST–Dec 4, 2026 at noon PST · winners Jan 25, 2027 at noon PST. <a href="https://nebiusglobalaihackathon.devpost.com/details/dates">Official schedule</a>.</p>
-      </div>
-      <aside class="judge-card" aria-label="Quick guide for judges">
-        <p class="eyebrow">A three-minute review</p>
-        <ol>
-          <li><span>01</span><div><strong>Read the claim</strong><small>Start with an ordinary-language statement.</small></div></li>
-          <li><span>02</span><div><strong>See the failed attempt</strong><small>Lean's rejection remains part of the story.</small></div></li>
-          <li><span>03</span><div><strong>Check the limits</strong><small>Separate a known theorem from a new result.</small></div></li>
-        </ol>
-        <p class="judge-card-note">Opening this page makes no AI or Lean call. In the separate workbench, Lean runs only when you choose it; that check uses the Lean web editor or your own Codespace.</p>
-      </aside>
-    </section>
-
-    <section class="case-desk-section shell" id="case-desk" aria-labelledby="desk-title">
-      <div class="section-heading desk-heading">
-        <div>
-          <p class="eyebrow">Try the Case Desk</p>
-          <h2 id="desk-title">Start with a real saved case.</h2>
-          <p>Two public examples show different things: one exact counterexample and one saved proof checked by Lean. Open either to see what was tested. Nothing starts just because you visit the page.</p>
-        </div>
-        <a class="button button-secondary" data-case-desk-launch="hero-prime-divisibility-r1" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open the saved Case Desk <span aria-hidden="true">→</span></a>
-      </div>
-
-      <div class="case-card-grid">
-        <article class="case-card">
-          <p class="case-kicker">Saved local calculation</p>
-          <h3>A counterexample narrows the claim</h3>
-          <p class="case-plain">A composite number can divide a square without dividing its root: the saved example uses 4 and 2.</p>
-          <p class="case-math" aria-label="Four divides two squared, but four does not divide two">4 ∣ 2², but 4 ∤ 2</p>
-          <p class="case-scope"><strong>It shows:</strong> this unrestricted statement has a counterexample. <strong>It does not show:</strong> a general theorem or a failed AI response.</p>
-          <a class="case-open" data-case-desk-launch="hero-composite-counterexample-r1" href="reader.html?scope=public#case/hero-composite-counterexample-r1">Open this saved case <span aria-hidden="true">→</span></a>
-        </article>
-
-        <article class="case-card case-card-featured">
-          <p class="case-kicker">Saved model attempt + Lean check</p>
-          <h3>Adding primality makes a known result</h3>
-          <p class="case-plain">If a natural prime p divides n squared, then p divides n.</p>
-          <p class="case-math">p prime, p ∣ n² ⟹ p ∣ n</p>
-          <p class="case-scope"><strong>It shows:</strong> Lean rejected the first candidate and accepted the saved correction for this statement. <strong>It does not show:</strong> a new theorem or broad solving ability.</p>
-          <a class="case-open" data-case-desk-launch="hero-prime-divisibility-r1" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open this saved case <span aria-hidden="true">→</span></a>
-        </article>
-
-      </div>
-      <p class="desk-footnote">The Case Desk contains two saved proof examples. A third source-backed Lean replay for the 23/14 Collatz theorem is in the <a href="cases.html#collatz-parity-envelope-23-14">public case catalog</a>. For hands-on number, graph, and fraction questions, <a href="frontier.html">try the six current math activities</a>.</p>
-    </section>
-
-    <section class="proof-story shell" id="your-workspace" aria-labelledby="workspace-title">
-      <div class="story-heading">
-        <div>
-          <p class="eyebrow">Make your own case</p>
-          <h2 id="workspace-title">Bring a claim. Edit Lean. Check the exact file.</h2>
-          <p>The visitor workbench keeps drafts in your browser, lets you import or download a <code>.lean</code> file, and compares a checker receipt with the source digest. New to Lean? Start with the <a href="visitor/lesson.html">10-minute worked lesson</a>. The workbench does not yet translate arbitrary plain English into Lean or run Lean inside this page; its optional web-editor check goes to live.lean-lang.org.</p>
-          <p>The hosted workbench is based on the <a href="https://github.com/DarthCeltic/MathCase/tree/17174a4a6311eb2e32556d9e4fb38255290a36be/visitor" target="_blank" rel="noopener noreferrer">pinned public MathCase visitor source at commit 17174a4</a>. The source manifest records the upstream file hashes. This Pages copy includes documented site-specific changes, including the disclosure and visible receipt-import control. <a href="evidence/visitor-workbench/overlays/README.md">Read what changed and how it is bound.</a></p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="visitor/">Open the MathCase workbench <span aria-hidden="true">→</span></a>
-            <a class="button button-secondary" href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">Open the public source ↗</a>
+      <div class="puzzle-board" data-start-coloring="sample">
+        <div class="triangle-widget">
+          <svg id="triangle-graph" viewBox="0 0 320 250" role="group" aria-label="Six numbered dots and 15 editable lines" aria-describedby="triangle-help">
+            <g id="triangle-lines"></g>
+            <g id="triangle-highlight" aria-hidden="true"></g>
+            <g id="triangle-vertices" aria-hidden="true"></g>
+          </svg>
+          <div class="triangle-key" aria-hidden="true"><span class="key-red">Red</span><span class="key-blue">Blue</span></div>
+          <div class="triangle-controls">
+            <div class="triangle-actions">
+              <button class="button button-primary" id="triangle-check" type="button">Check this coloring</button>
+              <button class="button button-secondary" id="triangle-sample" type="button">Load a sample coloring</button>
+            </div>
+            <p id="triangle-status" role="status" aria-live="polite" aria-atomic="true">Color the 15 lines or load a sample to begin.</p>
+            <details class="triangle-list">
+              <summary>Edit lines by number</summary>
+              <div class="triangle-edges" id="triangle-edges" role="group" aria-label="Choose a line to change its color"></div>
+            </details>
+            <details class="triangle-list triangle-explanation">
+              <summary>Why is a triangle unavoidable?</summary>
+              <p>Pick any dot. At least three of its five lines share a color. Suppose that color is red.</p>
+              <p>Look at the three dots on the other ends of those red lines. If any two are joined by red, they make a red triangle with your first dot. Otherwise all three lines between them are blue, so those three dots make a blue triangle.</p>
+              <p>The same argument works with the colors reversed.</p>
+            </details>
           </div>
+          <noscript><p>Enable JavaScript to color the graph and check it in your browser.</p></noscript>
         </div>
-        <aside class="statement-card">
-          <span class="card-label">What stays local</span>
-          <p class="plain-statement">Your draft and saved cases stay in your browser unless you choose a checker route.</p>
-          <p class="statement-limit"><strong>Lean web editor:</strong> the source is sent only after you click Run.<br><strong>Your Codespace:</strong> it uses your GitHub account’s Codespaces allowance and downloads the pinned Lean toolchain on first setup.<br><strong>Compiler receipt:</strong> records acceptance, version, diagnostics, and a source hash; it does not audit axioms or dependencies.</p>
-        </aside>
       </div>
     </section>
 
-    <section class="proof-story shell" id="proof-story" aria-labelledby="proof-title">
-      <div class="story-heading">
-        <div>
-          <p class="eyebrow">How to read a result</p>
-          <h2 id="proof-title">A check applies to one exact statement.</h2>
-          <p>For the prime-divisibility example, the saved record includes an actual Lean rejection and a repaired candidate. That makes the proof process inspectable without turning a known theorem into a discovery claim.</p>
-        </div>
-        <div class="statement-card">
-          <span class="card-label">In plain language</span>
-          <p class="plain-statement">If a natural prime p divides n squared, then p divides n.</p>
-          <p class="formula">p prime, p ∣ n² ⟹ p ∣ n</p>
-          <p class="statement-limit"><strong>What it proves:</strong> the exact formal theorem was accepted by the saved Lean check.<br><strong>What it does not prove:</strong> novelty, independent review of every explanation, or open-problem capability.</p>
-        </div>
-      </div>
-
-      <ol class="proof-steps">
-        <li class="step-rejected">
-          <span class="step-number">01</span>
-          <div><h3>The first candidate was rejected</h3><p>It supplied the divisibility assumption where Lean required the primality assumption. The failed attempt remains available in the saved case.</p></div>
-          <span class="step-state">Failure preserved</span>
-        </li>
-        <li class="step-accepted">
-          <span class="step-number">02</span>
-          <div><h3>The repaired candidate used both assumptions</h3><p>The saved proof applies the known result <code>Nat.Prime.dvd_of_dvd_pow</code>. Its recorded Lean check passed.</p></div>
-          <span class="step-state">Saved check passed</span>
-        </li>
-        <li>
-          <span class="step-number">03</span>
-          <div><h3>The evidence stays in its lane</h3><p>A kernel check validates the formal proof for its formal target. It does not establish that the theorem is new or that a finite search proves a general conjecture.</p></div>
-          <span class="step-state">Limits stated</span>
-        </li>
-      </ol>
-      <div class="story-foot">
-        <p>Read the result, failure, and saved proof in the Case Desk. The webpage itself makes no live proof claim.</p>
-        <a class="text-link" href="work.html#proof-workbench">See the wider evidence map <span aria-hidden="true">→</span></a>
+    <section class="home-section" id="case-desk" aria-labelledby="desk-title">
+      <h2 id="desk-title">Try another question</h2>
+      <div class="home-paths">
+        <article id="proof-story">
+          <p class="home-kicker">Saved Lean proof</p>
+          <h3 id="proof-title">If a prime divides a square, must it divide the root?</h3>
+          <p>Lean rejected the first AI attempt. Read the error and the corrected proof it accepted for this known theorem.</p>
+          <a data-case-desk-launch="hero-prime-divisibility-r1" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open the saved proof <span aria-hidden="true">→</span></a>
+        </article>
+        <article>
+          <p class="home-kicker">Hands-on arithmetic</p>
+          <h3>Can three unit fractions add up to 4/21?</h3>
+          <p>Each fraction has a 1 on top. Choose three different denominators and check their sum exactly.</p>
+          <a href="tools.html#fraction-identity">Try the fraction puzzle <span aria-hidden="true">→</span></a>
+        </article>
       </div>
     </section>
 
-    <section class="latest-update shell" aria-labelledby="latest-title">
+    <section class="home-section research-strip" aria-labelledby="latest-title">
       <div>
-        <p class="eyebrow">New checked theorem · Nov 24, 2026</p>
-        <h2 id="latest-title">A 23-step parity rule gives a first drop by step 37.</h2>
-        <p>For every start <code>n ≥ 3</code>, if no more than 14 of its first 23 shortcut moves start on an odd number, an ordinary Collatz step takes it below its start at step <code>23+h</code>, at most step 37. Lean counts exactly 7,507,638 of 8,388,608 possible 23-step parity classes. This bounded result does not show that every sequence reaches 1 or solve Collatz. The three adjacent parameter cases remain exploratory and have not had Ryan's statement review.</p>
+        <p class="home-kicker">From the research notebook · November 24, 2026</p>
+        <h2 id="latest-title">A first drop by Collatz step 37</h2>
+        <p>Start at any integer of 3 or more. If at most 14 of the first 23 shortcut moves start on an odd number, the sequence falls below its starting point within 37 ordinary steps. Lean counts 7,507,638 of the 8,388,608 possible parity classes under this condition. Whether every starting number reaches 1 remains open.</p>
+        <a href="collatz.html#at-most-fourteen-of-twenty-three">Read the theorem and its limits <span aria-hidden="true">→</span></a>
       </div>
-      <div class="hero-actions">
-        <a class="button button-primary" href="collatz.html#at-most-fourteen-of-twenty-three">Read the theorem and limits <span aria-hidden="true">→</span></a>
-        <a class="button button-secondary" href="cases.html#collatz-parity-envelope-23-14">Open the source-and-replay case</a>
-        <a class="button button-secondary" href="tools.html#collatz-tool">Try a Collatz calculation</a>
-        <a class="button button-secondary" href="frontier.html">Explore all six math questions <span aria-hidden="true">→</span></a>
-        <a class="button button-secondary" href="work.html">Browse the full work and evidence <span aria-hidden="true">→</span></a>
-      </div>
+      <div class="research-notation" aria-hidden="true"><span>14 <i>of</i> 23</span><small>odd shortcut inputs at most</small></div>
     </section>
 
-    <section class="browse-work shell" aria-labelledby="browse-title">
-      <div class="section-heading">
-        <p class="eyebrow">Beyond the judging walkthrough</p>
-        <h2 id="browse-title">Browse the work by question.</h2>
+    <section class="home-section home-library" aria-labelledby="browse-title">
+      <h2 id="browse-title">Explore MathCase</h2>
+      <div class="home-links">
+        <div id="your-workspace"><a id="workspace-title" href="visitor/">Bring your own proof <span aria-hidden="true">→</span></a><p>Edit a Lean statement and choose how to check it.</p></div>
+        <div><a href="work.html">Browse the research <span aria-hidden="true">→</span></a><p>Find theorem statements, experiments and replay records.</p></div>
       </div>
-      <div class="browse-grid">
-        <a href="work.html#collatz-public"><span>01 · Bounded proof</span><strong>What has Lean checked for Collatz?</strong><small>Read the finite scope and the whole-conjecture limits.</small></a>
-        <a href="work.html#egyptian"><span>02 · Exact computation</span><strong>What did the Egyptian-fraction campaign find?</strong><small>See the recorded range, witnesses, misses, and limits.</small></a>
-        <a href="work.html#knowledge-graph"><span>03 · Search the evidence</span><strong>Can I inspect the exact theorem records?</strong><small>Verify and search a public slice of the Lean statement graph.</small></a>
-        <a href="timeline.html"><span>04 · Project history</span><strong>How did the work grow?</strong><small>Follow the saved milestones, what each established, and what remains open.</small></a>
-        <a href="roadmap.html"><span>05 · What comes next</span><strong>What would make the evidence stronger?</strong><small>See the next steps and the concrete conditions for finishing them.</small></a>
-        <a href="replay.html"><span>06 · Replay explorer</span><strong>Do both proof replays agree?</strong><small>Search the module records and inspect the exact phase hashes.</small></a>
-      </div>
+      <details class="judge-disclosure">
+        <summary>Hackathon judge’s guide</summary>
+        <p id="hero-title">MathCase pairs an AI proof attempt with Lean’s response. For a three-minute walkthrough, use the saved prime-divisibility case.</p>
+        <ol>
+          <li><a href="reader.html?scope=public#case/hero-prime-divisibility-r1">Read the claim and the rejected attempt.</a> The candidate supplied divisibility where Lean expected primality.</li>
+          <li>Inspect the repaired proof in the same record. It uses the known Lean theorem <code>Nat.Prime.dvd_of_dvd_pow</code>.</li>
+          <li><a href="reader.html?scope=public#case/hero-composite-counterexample-r1">Remove the prime assumption.</a> The saved arithmetic example shows what fails when the divisor is 4.</li>
+        </ol>
+        <p><a href="https://devpost.com/software/mathcase">MathCase on Devpost</a> · <a href="https://nebiusglobalaihackathon.devpost.com/details/dates">Official judging schedule</a></p>
+      </details>
     </section>
   </main>
-
-  <footer class="site-footer shell">
-    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="cases.html">Cases</a><a href="work.html">All work</a>
-      <a href="tools.html">Try math</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a><a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost entry</a></nav>
-    <span>Saved research + visitor-owned workbench · no automatic model calls</span>
-  </footer>
+  <footer class="home-footer home-width"><span>MathCase · Ryan Gurganious</span><nav aria-label="Footer"><a href="projects/">Portfolio</a><a href="https://github.com/DarthCeltic/MathCase">Source on GitHub</a></nav></footer>
 </body>
 </html>

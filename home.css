@@ -1,0 +1,65 @@
+.home { background: #101e23; }
+.home-width { width: min(calc(100% - 3rem), 69rem); margin-inline: auto; }
+.home a { text-underline-offset: .23em; }
+.home-skip { position: absolute; left: .5rem; top: -5rem; background: #fbe4bb; color: #102027; padding: .7rem; z-index: 2; }
+.home-skip:focus { top: .5rem; }
+.home-header, .home-header nav, .home-footer, .home-footer nav { display: flex; align-items: center; }
+.home-header, .home-footer { justify-content: space-between; border-bottom: 1px solid #50615b; padding-block: 1rem; }
+.home-header .brand { gap: .65rem; }
+.home-header .brand img { border: 0; }
+.home-header nav, .home-footer nav { gap: clamp(.7rem, 2.3vw, 1.8rem); }
+.home-header nav a, .home-header summary { display: inline-block; padding: .6rem 0; color: #dbdfd5; text-decoration: none; font-size: .92rem; }
+.home-header nav a:hover, .home-header summary:hover, .home-footer a:hover { color: #ffdaaa; text-decoration: underline; }
+.home-menu { position: relative; }
+.home-header summary { display: list-item; cursor: pointer; }
+.home-menu > div { position: absolute; z-index: 4; top: 100%; right: 0; display: grid; width: 13rem; padding: .5rem .85rem; border: 1px solid #767e72; border-radius: .35rem; background: #192b30; box-shadow: 0 .8rem 2rem #0005; }
+.home-menu:not([open]) > div { display: none; }
+.home-kicker { margin: 0 0 .75rem; color: #f4bc88; font: 650 .76rem/1.4 ui-sans-serif,system-ui,sans-serif; text-transform: uppercase; letter-spacing: .13em; }
+.puzzle { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.7rem, 5.5vw, 5.5rem); align-items: center; padding: clamp(2rem, 5vw, 4.5rem) 0; }
+.puzzle h1 { max-width: 13ch; text-wrap: balance; margin: .5rem 0 1rem; color: #fff4e1; font: 400 clamp(3rem, 5.7vw, 5.25rem)/1 Georgia,serif; letter-spacing: -.052em; }
+.puzzle h1 span { white-space: nowrap; }
+.puzzle h1 em { color: #f0bf92; font-weight: 400; }
+.puzzle-question { margin: 0 0 .85rem; max-width: 41ch; color: #e2e5dc; font-size: clamp(1.02rem, 1.65vw, 1.23rem); line-height: 1.55; }
+.puzzle-intro #triangle-help { max-width: 44ch; margin: 0; font-size: .97rem; line-height: 1.55; color: #b4c5bf; }
+.byline { margin: 1.5rem 0 0; color: #b5c5bf; font-size: .9rem; }
+.byline a, .home-section a { color: #f7c797; }
+.puzzle-board { min-width: 0; padding: clamp(.85rem, 2.25vw, 1.55rem) clamp(.85rem, 2.25vw, 1.55rem) .2rem; border: 1px solid #61786c; border-radius: .65rem; background: #1c3430; box-shadow: inset 0 0 0 .25rem #203932; }
+.home-section { border-top: 1px solid #57645d; padding: clamp(1.6rem, 3.6vw, 2.8rem) 0; }
+.home-section h2 { margin: 0 0 1.2rem; color: #fcf2df; font: 400 clamp(1.85rem, 3vw, 2.8rem)/1.12 Georgia,serif; letter-spacing: -.035em; }
+.home-section p:not(.home-kicker), .judge-disclosure li { color: #c6d1cb; line-height: 1.6; }
+.home-paths, .home-links { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 5.5vw, 5.5rem); }
+.home-paths article { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
+.home-paths h3 { max-width: 27ch; margin: 0 0 .65rem; color: #f3ecdd; font: 400 clamp(1.35rem, 2vw, 1.65rem)/1.18 Georgia,serif; }
+.home-paths p:not(.home-kicker), .research-strip p:not(.home-kicker) { max-width: 66ch; margin: 0 0 .8rem; }
+.home-paths a { margin-top: auto; }
+.home-section a { font-weight: 600; }
+.research-strip { display: grid; grid-template-columns: 2fr 1fr; align-items: center; gap: 2rem; }
+.research-strip h2 { margin-bottom: .7rem; }
+.research-notation { display: grid; justify-content: center; gap: .45rem; padding: 1.5rem .5rem; text-align: center; border-left: 1px solid #4c605a; }
+.research-notation span { color: #ecd1a7; font: 400 clamp(2.5rem, 5vw, 4rem)/1 Georgia,serif; }
+.research-notation i { color: #bccabf; font-size: .6em; }
+.research-notation small { color: #bbc5bd; font-size: .85rem; }
+.home-links p { margin: .4rem 0; }
+.judge-disclosure { margin: 1.5rem 0 0; padding: .7rem 0; border-block: 1px solid #3c514c; }
+.judge-disclosure summary { width: fit-content; padding: .45rem 0; cursor: pointer; color: #d3dcd2; }
+.judge-disclosure p, .judge-disclosure ol { max-width: 75ch; }
+.judge-disclosure p { margin: 1rem 0; }
+.judge-disclosure li { margin: .4rem 0; }
+.home-footer { border-top: 1px solid #57645d; border-bottom: 0; margin-bottom: .5rem; color: #becac0; font-size: .85rem; }
+@media (max-width: 45rem) {
+  .home-width { width: min(calc(100% - 2rem), 34rem); }
+  .puzzle, .home-paths, .research-strip, .home-links { grid-template-columns: 1fr; }
+  .home-header { padding-block: .5rem; }
+  .home-header img { width: 33px; height: 33px; }
+  .home-header .brand { font-size: 1.25rem; }
+  .home-header nav a, .home-header summary { font-size: .85rem; }
+  .puzzle { gap: 1.1rem; padding: 1.6rem 0; }
+  .puzzle h1 { max-width: 15ch; font-size: clamp(2.65rem, 9vw, 3.8rem); }
+  .puzzle .home-kicker { margin-bottom: .45rem; }
+  .puzzle-question { margin-bottom: .4rem; }
+  .byline { margin-top: .65rem; }
+  .home-paths, .home-links { gap: 1.35rem; }
+  .research-notation { display: none; }
+  .home-footer { flex-wrap: wrap; gap: .7rem; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

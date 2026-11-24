@@ -163,3 +163,17 @@ h2 { font-size: clamp(2rem, 4.2vw, 3rem); font-weight: 400; letter-spacing: -.04
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+
+.hero h1 { max-width: 100%; }
+.hero h1 em { display: block; }
+.hero-note a, .board-limit a { color: var(--copper); }
+.board-brand a { text-underline-offset: .2em; }
+.portfolio-extra { margin: 0 0 2.4rem; padding: 1rem 0; border-block: 1px solid var(--rule); }
+.portfolio-extra summary { width: fit-content; cursor: pointer; color: var(--copper); }
+.portfolio-extra summary:focus-visible { outline: 3px solid #ffde95; outline-offset: 4px; }
+.portfolio-extra p { max-width: 64ch; margin-top: 1rem; color: var(--muted); line-height: 1.6; }
+.contribution-list .contribution:first-child .contribution-title h3 { color: #ffd6a5; }
+.project-featured { padding-left: 1rem; }
+@media (max-width: 39rem) {
+  .project-card.project-featured { padding-inline: .8rem; }
+}
