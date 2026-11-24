@@ -6,6 +6,8 @@ The hosted Pages copy is not byte-for-byte identical to that upstream directory.
 
 ## Added in this Pages update
 
+The [visitor notebook and lesson update](visitor-first-use-pages-2026-11-24-r1.json) records the Pages HTML and CSS for the 4-and-2 lesson, proof notebook, and local file tools. It binds the previous and updated bytes for each of the nine files.
+
 The [`visitor-guided-target-bound-workbench-2026-11-23-r1.json`](visitor-guided-target-bound-workbench-2026-11-23-r1.json) overlay records the Nov 23 human-guided workbench update. It starts from the 4-and-2 counterexample, lets visitors choose beginner, math, or Lean directions, makes the embedded Lean editor the primary action, and keeps a separate-window option available only on request. The local case checker binds the plain claim, exact Lean target, named declaration, proof source, compiler output, and reported axioms in a receipt.
 
 The embedded editor is still the public `live.lean-lang.org` service. Opening it sends the displayed Lean code and generated exact-target check to that service; it does not create a MathCase receipt. The local checker is a separate path. A person must still review whether the plain-language claim means the Lean proposition. The overlay record pins the Pages baseline, MathCase source commit, and hashes for the three served files. The original source manifest and earlier overlay records remain unchanged.

@@ -93,3 +93,13 @@
   .triangle-edges { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .fraction-denominators { grid-template-columns: minmax(0,1fr); }
 }
+
+.activities-page .activity-panel { max-width: 43rem; padding: .4rem 0 1.5rem; scroll-margin-top: .85rem; }
+.activity-panel h2 { margin: .2rem 0 .7rem; color: #faedd8; font: 400 clamp(1.35rem,2.5vw,1.9rem)/1.2 Georgia,serif; }
+.activity-panel .tool-plain,.activity-panel .tool-limit,.activities-page .level-reader p { font-size: .95rem; line-height: 1.55; color: #c9d6cf; }
+.activity-panel .tool-limit a,.activities-page .level-reader a { color: #ffd19f; }
+.activity-panel .visitor-field,.activity-panel .visitor-status,.activity-panel .visitor-result p { font-size: .88rem; }
+.activity-panel .visitor-result { margin-top: .8rem; }
+.activity-panel .visitor-result details summary { cursor: pointer; color: #f3cc96; font-size: .9rem; }
+.activity-panel .triangle-widget { max-width: 34rem; padding: .75rem .8rem .2rem; border: 1px solid #657f71; border-radius: .45rem; background: #1c3430; }
+.activities-page > .level-reader { margin-bottom: 2.5rem; }

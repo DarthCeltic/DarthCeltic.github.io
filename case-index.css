@@ -61,3 +61,11 @@
 .roadmap-reading .subject-map { margin: .85rem 0; }
 .roadmap-future { padding-top: 1.4rem; border-top: 1px solid #51675c; }
 .roadmap-future > p { max-width: 75ch; color: #c6d3cd; line-height: 1.6; }
+
+.case-record-list { margin: 1.2rem 0; border-top: 1px solid #53665d; }
+.case-record { border-bottom: 1px solid #40544c; }
+.case-record > summary { min-height: 44px; padding: .75rem 0; color: #eddbbb; font-size: 1rem; cursor: pointer; }
+.case-record > summary:focus-visible { outline: 2px solid #f8d29e; outline-offset: 2px; }
+.case-record .case-card-page { max-width: 76ch; padding: .25rem 1rem 1rem; border: 0; border-left: 2px solid #5d7367; border-radius: 0; background: none; }
+.case-record .case-card-page p { font-size: .95rem; }
+.case-record .case-actions a { font-size: .87rem; }

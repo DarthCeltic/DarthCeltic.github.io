@@ -21,9 +21,17 @@ A static GitHub Pages site. No backend, no accounts. Opening a saved case makes 
 - `/reader.html` — Saved Case Desk: two saved cases, a counterexample and a checked lemma
 - `/saved-demo/` — the saved data files behind the reader; its index redirects to `/reader.html`
 - `/visitor/` — visitor workbench: make your own case
-- `/work.html` — evidence ledger
+- `/work.html` — results by subject, with worked examples and the records behind each answer
 - `/projects/` — portfolio
 - `/collatz.html`, `/replay.html`, `/timeline.html`, `/roadmap.html`, `/tools.html` — theorem, replay, timeline, roadmap, tools
+
+## Adding a research result
+
+Name the subject and ask the mathematical question in the heading. Start with a number, diagram, or calculation a reader can follow. Explain what the result adds, which examples it covers, and one thing the reader can try next. When two studies count steps differently, show both on the same starting number.
+
+Label a count from a sample as a count. State the conditions for a proof. Keep the exact theorem, run identifiers, hashes, and historical corrections in a labeled disclosure with a permanent link. A direct link to a result should open the relevant section.
+
+Run `python tests/public_reading.py` to check that research identifiers stay in the technical view, and `node --test tests/public-case-routing.cjs` to check saved case links.
 
 ## License
 

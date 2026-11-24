@@ -6,70 +6,59 @@
   <meta name="description" content="Color a six-dot Ramsey graph, explore a Collatz sequence, or test a fraction identity in your browser.">
   <meta name="theme-color" content="#0b1823">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>Try a finite math check | MathCase</title>
+  <title>Math activities | MathCase</title>
   <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="judging.css">
   <link rel="stylesheet" href="research.css">
   <link rel="stylesheet" href="visitor-tools.css">
   <link rel="stylesheet" href="triangle.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="case-index.css">
   <script defer src="activities-core.js"></script>
   <script defer src="triangle-game.js?v=20261124-line-picking"></script>
   <script defer src="egyptian-identity.js"></script>
-  <script defer src="visitor-tools.js?v=20261123-human-receipt"></script>
+  <script defer src="visitor-tools.js?v=20261124-results"></script>
 </head>
-<body>
-  <header class="site-header shell">
-    <a class="brand" href="index.html" aria-label="MathCase home">
-      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
-      <span>MathCase<small>Proofs you can inspect</small></span>
-    </a>
+<body class="home">
+  <a class="home-skip" href="#top">Skip to the activities</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
     <nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a class="current" aria-current="page" href="tools.html">Try math</a>
-      <a href="cases.html">Examples</a>
-      <a href="work.html">Results</a>
-      <a href="visitor/">Your proof</a>
-      <a href="visitor/teacher-guide.html">For teachers</a>
-      <details class="nav-more">
+      <a aria-current="page" href="tools.html">Activities</a>
+      <a href="cases.html">Math guide</a>
+      <details class="home-menu">
         <summary>More</summary>
-        <div class="nav-more-links">
+        <div>
+          <a href="work.html">Research results</a>
+          <a href="visitor/">Your proof</a>
+          <a href="visitor/teacher-guide.html">For teachers</a>
           <a href="frontier.html">Frontier math</a>
-          <a href="collatz.html">Collatz result</a>
-          <a href="roadmap.html">Research plan</a>
           <a href="timeline.html">Timeline</a>
-          <a href="replay.html">Replay records</a>
-          <a href="projects/">Projects</a>
-          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+          <a href="roadmap.html">Open questions</a>
+          <a href="replay.html">Replay explorer</a>
+          <a href="index.html#hero-title">Judge’s guide</a>
+          <a href="projects/">About Ryan</a>
         </div>
       </details>
     </nav>
   </header>
-
-  <main class="shell research-page">
-    <section class="research-hero tools-hero" aria-labelledby="tools-title">
-      <p class="eyebrow">Try the examples · change an input</p>
-      <h1 id="tools-title">Pick a question. Check the answer in your browser.</h1>
-      <p>Start with 239, color a small graph, or test whether three unit fractions add to 4/21. Each activity shows what its one check means.</p>
-      <div class="runtime-note" role="note">
-        <strong>Where your work goes:</strong> these number and fraction checks run in this browser. They do not send your inputs anywhere or call a model. For your own proof, use <a href="visitor/">Your proof</a>; for the saved results and their limits, open <a href="frontier.html">the six math questions</a>.
-      </div>
-      <div class="tools-actions">
-        <a class="button button-primary" href="#collatz-tool">Try 239</a>
-        <a class="button button-secondary" href="#triangle-game">Color a graph</a>
-        <a class="button button-secondary" href="#fraction-identity">Check 4/21</a>
-      </div>
-    </section>
-
-    <section class="visitor-tool-grid" aria-label="Finite math tools">
-      <article id="collatz-tool" class="visitor-tool-card" aria-labelledby="collatz-tool-title">
-        <p class="eyebrow">Number patterns</p>
-        <h2 id="collatz-tool-title">Will 239 fall below itself?</h2>
-        <p class="tool-plain">Follow the rule: halve an even number; triple an odd number and add one. The checker stops at the first value below 239 or at the step limit.</p>
+  <main class="home-width case-index activities-page" id="top">
+    <header class="map-intro">
+      <p class="home-kicker">Math activities</p>
+      <h1 id="tools-title">Pick a question to try.</h1>
+      <p>Change a number or color a line and check what happens in your browser.</p>
+    </header>
+    <section class="subject-map activities-map" aria-label="Math activities">
+      <details>
+        <summary><span>Collatz · Number sequences</span><strong>Will a number fall below where it started?</strong></summary>
+      <article id="collatz-tool" class="activity-panel" aria-labelledby="collatz-tool-title">
+        <h2 id="collatz-tool-title">Start with 239</h2>
+        <p class="tool-plain">Halve an even number. Triple an odd number and add 1. Follow one start until it drops below where it began or reaches the step limit.</p>
         <p class="tool-formula">239 → 718 → 359 → 1078 → 539</p>
         <form id="visitor-collatz-form" class="visitor-form">
           <label class="visitor-field"><span>Starting whole number</span><input id="collatz-start" type="text" inputmode="numeric" value="239" maxlength="300" autocomplete="off"></label>
           <details class="activity-advanced">
-            <summary>Change the step limit or use a residue example</summary>
+            <summary>Change the step limit or choose a number pattern</summary>
             <label class="visitor-field"><span>Input type</span><select id="collatz-mode"><option value="direct">One starting number</option><option value="residue">One residue example</option></select></label>
           <div id="collatz-direct-fields" class="field-row">
             <p class="tool-plain">The starting number is the whole number above.</p>
@@ -99,14 +88,16 @@
             <button class="button button-secondary" id="collatz-save" type="button" disabled>Save in this browser</button>
           </div>
         </form>
-        <p id="collatz-status" class="visitor-status" role="status" aria-live="polite">Ready. Nothing runs until you submit the form.</p>
+        <p id="collatz-status" class="visitor-status" role="status" aria-live="polite">Ready to check your starting number.</p>
         <div id="collatz-result" class="visitor-result" aria-live="polite"></div>
-        <p class="tool-limit"><strong>What this shows:</strong> whether this one starting number drops below itself within the chosen limit. It says nothing about every number or eventual stopping.</p>
+        <p class="tool-limit">This check follows one starting number. <a href="work.html#collatz-23-of-14">When does a proof guarantee a drop?</a></p>
       </article>
+      </details>
 
-      <article class="visitor-tool-card" id="triangle-game" aria-labelledby="triangle-game-title">
-        <p class="eyebrow">Graph coloring</p>
-        <h2 id="triangle-game-title">Can you color six vertices without a single-color triangle?</h2>
+      <details>
+        <summary><span>Ramsey · Graphs</span><strong>Can six dots avoid a one-color triangle?</strong></summary>
+      <article class="activity-panel" id="triangle-game" aria-labelledby="triangle-game-title">
+        <h2 id="triangle-game-title">Color the six-dot graph</h2>
         <p class="tool-plain" id="triangle-help">Color every line red or blue. Tap an uncolored line to make it red, then tap to switch colors. You can also edit lines by number.</p>
         <div class="triangle-widget">
           <svg id="triangle-graph" viewBox="0 0 320 250" role="group" aria-label="Six numbered dots and 15 editable lines" aria-describedby="triangle-help">
@@ -136,11 +127,13 @@
         </div>
         <p class="tool-limit">The checker looks for one triangle among the 20 triples of dots in your coloring. Ramsey’s theorem guarantees a one-color triangle in every red–blue coloring of six dots.</p>
       </article>
+      </details>
 
-      <article class="visitor-tool-card" id="fraction-identity" aria-labelledby="fraction-identity-title">
-        <p class="eyebrow">Fractions</p>
-        <h2 id="fraction-identity-title">Can 4/21 be three fractions with 1 on top?</h2>
-        <p class="tool-plain">Try the worked example. The checker multiplies through by the denominators, so it uses exact whole-number arithmetic.</p>
+      <details>
+        <summary><span>Erdős–Straus · Fractions</span><strong>Can three unit fractions add up to 4/21?</strong></summary>
+      <article class="activity-panel" id="fraction-identity" aria-labelledby="fraction-identity-title">
+        <h2 id="fraction-identity-title">Try three denominators</h2>
+        <p class="tool-plain">A unit fraction has 1 on top. Choose three different bottom numbers and see whether the sum is exactly 4/21.</p>
         <form id="fraction-form" class="visitor-form">
           <div class="field-row fraction-denominators">
             <label class="visitor-field"><span>First denominator</span><input id="fraction-x" inputmode="numeric" value="7" maxlength="100"></label>
@@ -154,12 +147,14 @@
         </form>
         <p class="visitor-status" id="fraction-status" role="status" aria-live="polite">Example: 4/21 = 1/7 + 1/22 + 1/462.</p>
         <details class="activity-advanced"><summary>Why the exact check works</summary><p class="tool-formula">4xyz = 21(xy + xz + yz)</p><p class="tool-plain">For positive increasing denominators x, y, z, this integer equality is exactly equivalent to 4/21 = 1/x + 1/y + 1/z.</p></details>
-        <p class="tool-limit"><strong>What this shows:</strong> whether these three chosen fractions add exactly to 4/21. It does not prove a formula for every denominator or solve the full Erdős–Straus conjecture.</p>
+        <p class="tool-limit">This checks one sum. <a href="frontier.html#egyptian-28k-21">See a formula for a whole family of denominators.</a></p>
       </article>
+      </details>
 
-      <article class="visitor-tool-card" aria-labelledby="egypt-tool-title">
-        <p class="eyebrow">More exploration</p>
-        <h2 id="egypt-tool-title">Search within chosen fraction bounds</h2>
+      <details>
+        <summary><span>Erdős–Straus · Further exploration</span><strong>Can you find a sum for another denominator?</strong></summary>
+      <article class="activity-panel" aria-labelledby="egypt-tool-title">
+        <h2 id="egypt-tool-title">Choose a finite search range</h2>
         <p class="tool-plain">For n = 12d+1, MathCase searches your finite denominator bounds for positive, strictly increasing x, y, z that satisfy the exact equation.</p>
         <p class="tool-formula">4/n = 1/x + 1/y + 1/z</p>
         <form id="visitor-egypt-form" class="visitor-form">
@@ -194,27 +189,15 @@
         <div id="egypt-result" class="visitor-result" aria-live="polite"></div>
         <p class="tool-limit"><strong>What a witness means:</strong> the displayed tuple satisfies the exact integer identity for this one n. A bounded miss means only that no witness appeared within the searched bounds; it is not a counterexample to the conjecture.</p>
       </article>
+      </details>
     </section>
 
-    <section class="visitor-tool-note">
-      <h2>About the receipts</h2>
-      <p>Each receipt records its inputs, finite bound, exact result, and a SHA-256 digest over the canonical result fields. Downloading saves a JSON file to your device. Saving stores the receipt in this browser's local storage only; it is not uploaded or shared.</p>
-      <p>This tools page does not compile Lean or present arithmetic as a kernel-checked proof. The separate visitor workbench edits Lean source and supports a compiler-only receipt; that receipt can still rely on declared axioms and does not contain an axiom audit. Use the pinned compiler in your own Codespace when you want the reproducible local route.</p>
-    </section>
+    <details class="level-reader">
+      <summary>What does saving a result do?</summary>
+      <p>You can download the inputs and result as a file or save a copy in this browser. The file includes a fingerprint so you can check whether the result changed. These calculations use exact arithmetic. For a mathematical proof, <a href="visitor/">open the Lean workbench</a>.</p>
+    </details>
   </main>
 
-  <footer class="site-footer shell">
-    <nav aria-label="Footer navigation">
-      <a href="index.html">Home</a>
-      <a href="visitor/">Make a case</a>
-      <a href="work.html">All work</a>
-      <a href="tools.html">Try math</a>
-      <a href="timeline.html">Timeline</a>
-      <a href="roadmap.html">Roadmap</a>
-      <a href="replay.html">Replay</a>
-      <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a>
-    </nav>
-    <span>Local exact calculations · no model calls · no Lean proof execution</span>
-  </footer>
+  <footer class="home-footer home-width"><span>MathCase · Ryan Gurganious</span><nav aria-label="Footer"><a href="cases.html">Math guide</a><a href="work.html">Research results</a><a href="projects/">Portfolio</a></nav></footer>
 </body>
 </html>

@@ -35,22 +35,16 @@
 
   function showReceipt(container, receipt) {
     container.replaceChildren();
-    const title = document.createElement("h3");
-    title.textContent = receipt.outcome === "PASS_CONCRETE_DESCENT" || receipt.outcome === "WITNESS_FOUND"
-      ? "Exact result recorded"
-      : "Bounded result recorded";
-    const summary = document.createElement("p");
-    summary.textContent = receipt.summary;
     const details = document.createElement("details");
     details.className = "receipt-details";
     const detailsSummary = document.createElement("summary");
-    detailsSummary.textContent = "Show the receipt and technical details";
+    detailsSummary.textContent = "Inspect the calculation record";
     const digestLine = document.createElement("p");
     digestLine.textContent = "Receipt SHA-256: " + receipt.receipt_sha256;
     const pre = document.createElement("pre");
     pre.textContent = JSON.stringify(receipt, null, 2);
     details.append(detailsSummary, digestLine, pre);
-    container.append(title, summary, details);
+    container.append(details);
   }
 
   function attachReceiptButtons(prefix, getReceipt) {
@@ -179,7 +173,10 @@
       showReceipt(result, latestCollatz);
       download.disabled = false;
       save.disabled = false;
-      setStatus(status, latestCollatz.summary, firstDescentStep === null ? "ready" : "success");
+      const explanation = firstDescentStep === null
+        ? `Starting at ${start}, no smaller value appeared in ${maxSteps} ordinary steps. The last value checked was ${value}.`
+        : `Starting at ${start}, the first smaller value was ${value}, after ${firstDescentStep} ordinary ${firstDescentStep === 1 ? "step" : "steps"}.`;
+      setStatus(status, explanation, firstDescentStep === null ? "ready" : "success");
     } catch (error) {
       setStatus(status, error instanceof Error ? error.message : "The finite trajectory check failed.", "error");
     }
@@ -307,7 +304,9 @@
       showReceipt(result, latestEgypt);
       download.disabled = false;
       save.disabled = false;
-      setStatus(status, latestEgypt.summary, found ? "success" : "ready");
+      setStatus(status, found
+        ? `4/${n} = 1/${found.x} + 1/${found.y} + 1/${found.z}. The sum was checked exactly.`
+        : latestEgypt.summary, found ? "success" : "ready");
     } catch (error) {
       setStatus(status, error instanceof Error ? error.message : "The bounded search failed.", "error");
     } finally {

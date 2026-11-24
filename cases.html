@@ -47,7 +47,7 @@
       <details>
         <summary><span>Number theory</span><strong>When a prime divides a square, what else must it divide?</strong></summary>
         <div class="subject-body" id="subject-primes">
-          <p>Start with a small number, then follow a worked lesson about why the divisor matters. Lean accepted a corrected proof for every prime divisor. The example with 4 and 2 is a separate arithmetic counterexample.</p>
+          <p>Start with a small number, then follow a worked lesson about why the divisor matters. Lean, a program that checks proofs, accepted the corrected argument for every prime divisor. The example with 4 and 2 is a separate arithmetic counterexample.</p>
           <details class="level-reader">
             <summary id="level-reader-title">Read the same proof at five levels</summary>
             <p id="five-levels">These explanations were written for this page. Each explains the same statement. Lean checked the saved formal proof. The five explanations have not had independent teaching review.</p>
@@ -61,9 +61,9 @@
         </div>
       </details>
       <details>
-        <summary><span>Graph theory</span><strong>Can you avoid a triangle whose lines are all one color?</strong></summary>
+        <summary><span>Graph coloring · Ramsey</span><strong>Can you avoid a triangle whose lines are all one color?</strong></summary>
         <div class="subject-body" id="subject-graphs">
-          <p>Try six dots and two colors. The board checks the lines you chose. A short written proof explains why every such coloring contains a triangle. On larger graphs, specific checked colorings give lower bounds for the Ramsey numbers.</p>
+          <p>Try six dots and two colors. The board checks the lines you chose. A short written proof explains why every such coloring contains a triangle. On larger graphs, a coloring that avoids a one-color group shows you need more dots before such a group is guaranteed.</p>
           <div class="subject-links"><a href="tools.html#triangle-game">Play and read the hand proof</a><a href="#ramsey">See the 42-dot Lean result</a><a href="#ramsey66">Inspect the 101-dot computer check</a><a href="frontier.html#ramsey-3-3-3-3">Try the four-color question</a></div>
         </div>
       </details>
@@ -75,14 +75,14 @@
         </div>
       </details>
       <details>
-        <summary><span>Fractions &amp; algebra</span><strong>When can 4/n be split into three fractions with 1 on top?</strong></summary>
+        <summary><span>Fractions · Erdős–Straus</span><strong>When can 4/n be split into three fractions with 1 on top?</strong></summary>
         <div class="subject-body" id="subject-fractions">
           <p>Try three denominators for 4/21 and check the sum exactly. The formula explanation extends examples to whole families, including numbers of the form 28k + 21. The finite search records more examples. The Erdős–Straus conjecture for all integers n ≥ 2 remains open.</p>
           <div class="subject-links"><a href="tools.html#fraction-identity">Try the fraction puzzle</a><a href="frontier.html#egyptian-28k-21">Read two identities and their Lean source</a><a href="work.html#shift7-identity">Follow an algebraic derivation</a><a href="#erdos-straus">See the search record</a></div>
         </div>
       </details>
       <details>
-        <summary><span>Additive combinatorics</span><strong>Can coloring whole numbers hide a pattern?</strong></summary>
+        <summary><span>Number patterns · Schur &amp; van der Waerden</span><strong>Can coloring whole numbers hide a pattern?</strong></summary>
         <div class="subject-body" id="subject-colorings">
           <p>Look for equally spaced numbers of one color, or a same-color sum such as 2 + 3 = 5. The worked research notes explain which finite colorings avoided a pattern and where extensions failed. A failed extension of one coloring leaves other starting colorings open.</p>
           <div class="subject-links"><a href="frontier.html#vdw-2-7">Seven equally spaced numbers</a><a href="frontier.html#vdw-5-3">Three equally spaced numbers</a><a href="frontier.html#ws-5">A same-color sum</a></div>
@@ -91,7 +91,7 @@
       <details>
         <summary><span>Logic &amp; discrete structures</span><strong>What does it mean to belong to a two-item list?</strong></summary>
         <div class="subject-body" id="subject-lists">
-          <p>A value belongs to [b, c] exactly when it equals b or equals c. For example, 5 belongs to [2, 5] because it equals the second entry. The public prototype identifies five saved draft explanations of this known theorem, from high school through doctorate. None has an accepted independent teaching review.</p>
+          <p>A value belongs to [b, c] exactly when it equals b or equals c. For example, 5 belongs to [2, 5] because it equals the second entry. The prototype records five draft explanations of this known theorem, from high school through doctorate. Independent teaching review remains open.</p>
           <div class="subject-links"><a href="https://github.com/DarthCeltic/MathCase/blob/46c502ae90554e646265d39a6a52dd6060c4779c/ui/prototype/index.html#L888-L897">Inspect the prototype source and draft status</a></div>
         </div>
       </details>
@@ -119,34 +119,45 @@ python scripts/run_public_case.py ramsey66</pre>
       <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/blob/main/scripts/run_public_case.py">Read the launcher source ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/CASE_CATALOG.md">Read the case IDs and limits ↗</a></div>
       </div>
     </details>
-    <div class="case-grid" aria-label="Public mathematics cases">
+    <div class="case-record-list" aria-label="Public mathematics cases">
+      <details class="case-record">
+        <summary>Prime divisibility</summary>
       <article class="case-card-page" id="prime-divisibility">
         <span class="case-status pass">Saved model attempt + Lean check</span>
-        <h2>Prime divisibility</h2>
+
         <p><strong>Plain claim:</strong> when a natural prime divides a square, it divides the number being squared.</p>
         <p class="case-formula">p prime and p ∣ n² ⇒ p ∣ n</p>
         <p>The saved case preserves a rejected first candidate and the checked correction. This is a known theorem and a historical saved run, not a new proof attempt or a broad capability claim.</p>
         <div class="case-actions"><a href="reader.html?scope=public#case/hero-prime-divisibility-r1">Inspect the saved statement and Lean result →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/proofs/first-rung">Find the source files ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>A composite-divisor counterexample</summary>
       <article class="case-card-page" id="counterexample">
         <span class="case-status">Saved local arithmetic check</span>
-        <h2>A composite-divisor counterexample</h2>
+
         <p><strong>Plain claim:</strong> the unrestricted rule “a divisor of a square divides its root” is false.</p>
         <p class="case-formula">4 ∣ 2², but 4 ∤ 2</p>
         <p>The saved reader demonstrates this one exact counterexample. It was not a failed model response and it does not imply a general theorem.</p>
         <div class="case-actions"><a href="reader.html?scope=public#case/hero-composite-counterexample-r1">Run the exact local example →</a><a href="visitor/lesson.html">Try the guided lesson →</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Prime lemma reused in the √2 descent</summary>
       <article class="case-card-page" id="sqrt2-child">
         <span class="case-status candidate">Pinned local parent-to-child replay · candidate-only</span>
-        <h2>Prime lemma reused in the √2 descent</h2>
+
         <p><strong>Plain claim:</strong> the public child source uses the prime-divisibility lemma at the prime two inside a classical infinite-descent proof of the irrationality of √2.</p>
         <p>The public replay compiled the exact parent source and then the child from pinned Lean 4.33.1 and Mathlib bytes, checked both formal targets, and rejected a negative control with primality removed. The recorded axioms are <code>[Classical.choice, Quot.sound, propext]</code>.</p>
         <p>This is a fresh check of the published source. It does not replace a human review of the statement, establish a new result, or amount to independent acceptance of the dossier.</p>
         <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/prime-sqrt2-source-replay-v1">Read the replay instructions and receipt ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>When do 32 Collatz steps take a number downhill?</summary>
       <article class="case-card-page" id="collatz-twelve-of-twenty">
         <span class="case-status pass">Collatz · number patterns · Lean checked</span>
-        <h2>When do 32 Collatz steps take a number downhill?</h2>
+
         <p><strong>Plain claim:</strong> if exactly 12 of a number’s first 20 accelerated Collatz inputs are odd, its value after 32 ordinary steps is smaller than its start. This holds for every number in each qualifying residue progression.</p>
         <p class="case-formula">125,970 of 1,048,576 residues satisfy the condition; Lean proves the exact count and the descent for every progression member.</p>
         <p>The result covers a fixed parity pattern, not every starting value; it proves no global convergence and makes no priority claim.</p>
@@ -154,36 +165,48 @@ python scripts/run_public_case.py ramsey66</pre>
 py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <div class="case-actions"><a href="collatz.html#twelve-of-twenty">Try two exact browser calculations →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-twelve-of-twenty-v1">Open source, axiom audits, and replay steps ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Do twelve or fewer odd inputs lead to a drop?</summary>
       <article class="case-card-page" id="collatz-at-most-twelve">
         <span class="case-status pass">Collatz · parity patterns · Lean checked</span>
-        <h2>Do twelve or fewer odd inputs lead to a drop?</h2>
+
         <p><strong>Plain claim:</strong> for every start at least 3, if no more than 12 of its first 20 accelerated inputs are odd, one ordinary iterate at step 20 through 32 is smaller than the start.</p>
         <p class="case-formula">910,596 of 1,048,576 residue classes qualify. The exact step is 20 plus the odd-input count.</p>
         <p>The Lean theorem covers every member of each qualifying progression. A separate 13-odd theorem marks the limit of this all-members guarantee at its corresponding endpoint. No convergence or novelty claim is made.</p>
         <pre>python scripts/run_public_case.py collatz-at-most-twelve</pre>
         <div class="case-actions"><a href="collatz.html#at-most-twelve-of-twenty">Read the statement and its limits</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-twelve-v1">Open the proof and replay package</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Can 21 parity steps guarantee a first drop?</summary>
       <article class="case-card-page" id="collatz-at-most-thirteen">
         <span class="case-status pass">Collatz · parity patterns · Lean checked</span>
-        <h2>Can 21 parity steps guarantee a first drop?</h2>
+
         <p><strong>Plain claim:</strong> for every start at least 3, if no more than 13 of its first 21 accelerated inputs are odd, one ordinary iterate at step 21 through 34 is smaller than the start.</p>
         <p class="case-formula">1,898,712 of 2,097,152 residue classes qualify (90.5376%). Lean proves the exact count and the descent for every member of each qualifying progression.</p>
         <p>A separate Lean boundary statement shows that every 14-odd residue has a representative that is not smaller at the corresponding step 35. This bounds this uniform rule; it does not say every such trajectory fails to descend later. No convergence or novelty claim is made.</p>
         <pre>python scripts/run_public_case.py collatz-at-most-thirteen</pre>
         <div class="case-actions"><a href="collatz.html#at-most-thirteen-of-twenty-one">Read the theorem and limits</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-one-v1">Open the proof, wrapped-axiom audit, and 21-bit census ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Can 22 parity steps guarantee a first drop?</summary>
       <article class="case-card-page" id="collatz-at-most-thirteen-22">
         <span class="case-status pass">Collatz · parity patterns · Lean checked</span>
-        <h2>Can 22 parity steps guarantee a first drop?</h2>
+
         <p><strong>Plain claim:</strong> repeat this shortcut 22 times: halve even numbers; for odd numbers, do <code>3n+1</code> and halve. For every start <code>n ≥ 3</code> whose shortcut path begins on an odd number at most 13 times, a regular Collatz step takes it below its start by step 35.</p>
         <p class="case-formula">The Lean-checked count is 3,593,934 of 4,194,304 possible 22-step parity patterns (85.6861%).</p>
         <p>Example: starting at 7, the shortcut path begins <code>7 → 11 → 17 → 26 → 13 → 20 → 10 → 5 → 8 → 4 → 2 → 1</code>. This is one example, not the proof. The theorem covers every qualifying start, but does not prove every Collatz sequence reaches 1 or make a novelty claim. Its pattern set differs from the 20- and 21-step results.</p>
         <pre>python scripts/run_public_case.py collatz-at-most-thirteen-22</pre>
         <div class="case-actions"><a href="collatz.html#at-most-thirteen-of-twenty-two">Read the theorem in plain language</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-two-v2">Open the source, replay protocol, and limits ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Can a number fall below itself within 44 steps?</summary>
       <article class="case-card-page" id="collatz-at-most-seventeen-27">
         <span class="case-status pass">Collatz · Lean checked</span>
-        <h2>Can a number fall below itself within 44 steps?</h2>
+
         <p><strong>The rule:</strong> halve an even number. For an odd number, triple it, add 1, and halve once. Repeat 27 times.</p>
         <p><strong>Plain claim:</strong> for every start <code>n ≥ 26,018</code> with at most 17 odd moves, the ordinary Collatz value at step <code>27+h</code> is below its start, no later than step 44.</p>
         <p>Example: <code>26,018</code> has 12 odd moves and falls below its start after 39 ordinary steps, reaching <code>107</code>. That example illustrates the rule; it is not the proof.</p>
@@ -196,9 +219,12 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
           <p><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-seventeen-of-twenty-seven-v1" target="_blank" rel="noopener noreferrer">Open the proof guide and replay files ↗</a></p>
         </details>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Can 23 shortcut moves force a first drop?</summary>
       <article class="case-card-page" id="collatz-parity-envelope-23-14">
         <span class="case-status pass">Collatz · reviewed statement · Lean checked</span>
-        <h2>Can 23 shortcut moves force a first drop?</h2>
+
         <p><strong>Plain claim:</strong> for every start <code>n ≥ 3</code>, if at most 14 of the first 23 shortcut moves begin on an odd number, a regular Collatz step takes it below its start at step <code>23+h</code>, no later than step 37.</p>
         <p>Lean counted exactly <strong>7,507,638 of 8,388,608</strong> residue classes modulo <code>2²³</code>. The descent theorem reports <code>[propext, Quot.sound]</code>; the count and combined theorem report <code>[Classical.choice, propext, Quot.sound]</code>. No <code>sorryAx</code> was reported.</p>
         <p>This is one bounded first-drop result. It does not show that every sequence reaches 1, prove Collatz, or claim novelty. Three neighboring parameter cases remain exploratory.</p>
@@ -206,48 +232,66 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <p>The runner is prepared to compile the sources in fresh output, but was not run during this publication session. The linked receipt is from the earlier exact source-to-kernel check.</p>
         <div class="case-actions"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the theorem and limits →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1">Open source, receipts, and replay code ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/collatz-parity-envelopes-2026-11-v1/evidence/receipt-23-14.json">Open the hash-bound receipt ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>The 2,652 listed Collatz progressions</summary>
       <article class="case-card-page" id="collatz-listed-families">
         <span class="case-status pass">Compact Lean replay · separate from historical 363-module replay</span>
-        <h2>The 2,652 listed Collatz progressions</h2>
+
         <p><strong>Plain claim:</strong> for each of the 2,652 published coefficient pairs and every natural <code>k</code>, 32 ordinary steps take <code>1,048,576k+r</code> to <code>531,441k+q</code>, which is smaller.</p>
         <p>The five-module Lean-core replay also checks a prespecified sample of 456 rows.</p>
         <p>A full local rebuild of the historical proof compiled all 363 modules from public sources. The public replay guide includes a smoke-test receipt. Independent replication of the full build remains open.</p>
         <pre>py -3 -B reproduction/collatz-affine-family-replay-v1/verify_parity.py</pre>
         <div class="case-actions"><a href="collatz.html#exact-statement">Read the exact theorem and scope →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-affine-family-replay-v1">Open compact proof sources and receipt ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/ORIGINAL_REPLAY.md">Open the 363-module public-source replay guide ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/runs/smoke/status.json">Read the public smoke-test receipt ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Does saved Collatz context help the proof writer?</summary>
       <article class="case-card-page" id="transfer-pilot">
         <span class="case-status">One matched pair · no observed uplift</span>
-        <h2>Does saved Collatz context help the proof writer?</h2>
+
         <p><strong>Plain finding:</strong> the control and library-assisted responses returned identical predictors and tied on each recorded test group.</p>
         <p>Both arms scored 681/681 held rows, 4,096/4,096 outside probes, and 96/96 boundary cases; both exact Lean audits passed. This single pair found no benefit. It is not enough data to estimate average performance, and Codex credit use was not exposed.</p>
         <pre>py -3 -B research/collatz-library-transfer-pilot-v1/replay_pilot.py</pre>
         <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/research/collatz-library-transfer-pilot-v1">Inspect the paired result and replay source ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Ramsey R(5,5)</summary>
       <article class="case-card-page" id="ramsey">
         <span class="case-status candidate">Known finite lower bound · source replay status shown</span>
-        <h2>Ramsey R(5,5)</h2>
+
         <p><strong>Plain claim:</strong> a known 42-vertex graph has no monochromatic five-clique, witnessing the established bound R(5,5) ≥ 43.</p>
         <p>The standard graph6 export and its browser decoder now agree with the Lean adjacency masks; an exhaustive local checker examines all 850,668 five-vertex subsets. The Lean proof still has its recorded warm-cache receipt; a fresh-checkout Lean build and independent review remain open.</p>
         <div class="case-actions"><a href="work.html#ramsey">Run the browser finite graph check →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1/graph6-interoperability">Read the standard graph6 correction and checker ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1">Read Lean sources and receipts ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Ramsey R(6,6)</summary>
       <article class="case-card-page" id="ramsey66">
         <span class="case-status">Independent finite check · not Lean-checked</span>
-        <h2>Ramsey R(6,6)</h2>
+
         <p><strong>Plain claim:</strong> a 101-vertex Paley graph is presented as a finite witness for the known lower bound R(6,6) ≥ 102.</p>
         <p>The local Python checker independently searches all 101 vertices and the complement for six-cliques. This finite certificate check supports the known lower bound; it is not a Lean proof and does not determine the exact Ramsey number.</p>
         <pre>python scripts/run_public_case.py ramsey66</pre>
         <div class="case-actions"><a href="work.html#ramsey-r66">Inspect the saved graph certificate →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-paley101-v1">Open the checker and certificate ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Erdős–Straus</summary>
       <article class="case-card-page" id="erdos-straus">
         <span class="case-status">Finite search and one identity family</span>
-        <h2>Erdős–Straus</h2>
+
         <p><strong>Plain claim:</strong> the public campaign records exact bounded denominator witnesses and an identity for one arithmetic progression.</p>
         <p>The finite witnesses and the one identity are different kinds of evidence. They do not establish the Erdős–Straus conjecture for all integers.</p>
         <div class="case-actions"><a href="work.html#egyptian">Read the identity, search record, and limits →</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Riemann Hypothesis source audit</summary>
       <article class="case-card-page" id="riemann-source-audit">
         <span class="case-status">External result · source provenance check only</span>
-        <h2>Riemann Hypothesis source audit</h2>
+
         <p><strong>Plain statement:</strong> every nontrivial zero of the Riemann zeta function has real part ½.</p>
         <p>Levent Alpöge published the Claude-assisted proof; the Lean FRO and Mathlib Initiative coordinated independent checks. The result and proof belong to the upstream authors and community, not MathCase.</p>
         <p>MathCase’s small checker pins four public source files and verifies their byte counts and SHA-256 values. It does not download the proof export, elaborate the target, replay the proof, or independently validate the theorem.</p>
@@ -257,12 +301,16 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <pre>py -3 -B reproduction/riemann-source-audit-v1/check_sources.py</pre>
         <div class="case-actions"><a href="https://github.com/leanprover-community/riemann-hypothesis">Open the upstream project and attribution ↗</a><a href="https://math.mit.edu/~drew/grh/">Read upstream verification files and reproduction instructions ↗</a><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/NumberTheory/LSeries/RiemannZeta.lean">Read the pinned Mathlib target ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/riemann-source-audit-v1">Read the MathCase source-only checker ↗</a></div>
       </article>
+      </details>
+      <details class="case-record">
+        <summary>Bring your own theorem</summary>
       <article class="case-card-page" id="own-claim">
         <span class="case-status">Visitor-owned work</span>
-        <h2>Bring your own theorem</h2>
+
         <p><strong>Plain route:</strong> write the statement in Lean, save the source, and ask the configured checker to compile it. A successful compile certifies that exact formal target, not that it matches your informal wording.</p>
         <div class="case-actions"><a href="visitor/">Open the workbench →</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/scripts/check_visitor_case.py">Read the local receipt command ↗</a></div>
       </article>
+      </details>
     </div>
     <p class="record-note"><strong>How to read these labels:</strong> “saved” means an earlier result is displayed; “local calculation” runs bounded arithmetic in your browser; “Lean replay” compiles source locally when you run the command. The public site does not run arbitrary Lean in the browser. No model calls or external inference API calls are triggered by this catalog.</p>
     </details>

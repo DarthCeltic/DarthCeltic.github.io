@@ -34,15 +34,13 @@
     </nav>
   </div></header>
   <main class="tool-page">
-    <h1>Share an exercise by file.</h1>
-    <p class="tool-lede">A teacher can make a prompt file, a learner can return proof code and notes, and the teacher can review the response. The files stay on the devices where they are downloaded.</p>
-    <div class="tool-note"><strong>Self-hosted option:</strong> the Go prototype listens on your computer only by default. It stores accounts, assignments, and submissions in a local data directory. It does not send work to MathCase, check Lean proofs, or create evidence receipts. Read the <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/private-classroom-service.md">setup and security limits</a> before using it. Do not expose it to the public internet.</div>
-    <h2>Make a prompt, return work, leave feedback</h2>
-    <p class="tool-lede">The assignment, learner response, and teacher review are separate files. No account or upload is involved.</p>
+    <h1>Share a proof exercise</h1>
+    <p class="tool-lede">Make an assignment, return a proof, or give feedback. Each step saves a file you share yourself. This page reads files on your device and never runs student code.</p>
+    <nav class="lesson-actions" aria-label="Choose your task"><a href="#make">Make an assignment</a><a href="#return">Return your work</a><a href="#review">Review a submission</a></nav>
     <section class="tool-grid">
       <article class="tool-card">
-        <h2>Teacher · make an assignment</h2>
-        <p>Import a full case packet from the workbench. The exported assignment carries the exact target and hash, plus the prompt. It omits the teacher's proof source and receipt.</p>
+        <h2 id="make">Make an assignment</h2>
+        <p>Choose “Save the whole claim” in <a href="index.html">your notebook</a>, then open that file here. The assignment includes your prompt and the exact statement. Your own proof stays out of the assignment.</p>
         <div class="upload-row"><label for="teacher-case">Case packet</label><input id="teacher-case" type="file" accept=".json,application/json"></div>
         <label for="assignment-prompt">Learner prompt</label>
         <textarea id="assignment-prompt" class="statement" rows="5">Review the plain statement against the exact Lean proposition. Then write a proof attempt and explain your main step.</textarea>
@@ -50,8 +48,8 @@
         <button class="tool-action" id="make-assignment" type="button" disabled>Download assignment JSON</button>
       </article>
       <article class="tool-card">
-        <h2>Learner · submit work</h2>
-        <p>Import the assignment file. Your work stays in this tab until you download the submission.</p>
+        <h2 id="return">Return your work</h2>
+        <p>Open the file your teacher gave you. Add your work, then download it to send back.</p>
         <div class="upload-row"><label for="assignment-file">Assignment JSON</label><input id="assignment-file" type="file" accept=".json,application/json"></div>
         <p id="assignment-status" role="status">No assignment loaded.</p>
         <div id="learner-assignment" class="assignment-brief" aria-live="polite"></div>
@@ -60,8 +58,8 @@
         <button class="tool-action" id="make-submission" type="button" disabled>Download submission JSON</button>
       </article>
       <article class="tool-card">
-        <h2>Teacher · review a submission</h2>
-        <p>Load the original assignment and the learner's returned submission. The page checks both the assignment ID and exact-target hash before enabling review export.</p>
+        <h2 id="review">Review a submission</h2>
+        <p>Open the original assignment and the learner’s response. The page checks that the assignment and statement match before you can save feedback.</p>
         <div class="upload-row"><label for="review-assignment">Original assignment</label><input id="review-assignment" type="file" accept=".json,application/json"></div>
         <div class="upload-row"><label for="submission-file">Submission JSON</label><input id="submission-file" type="file" accept=".json,application/json"></div>
         <p id="review-status" role="status">Load the assignment and submission.</p>
@@ -72,7 +70,10 @@
         <button class="tool-action" id="make-review" type="button" disabled>Download review JSON</button>
       </article>
     </section>
-    <p class="tool-footer">Files are local to your device. The review packet binds feedback to the imported submission's SHA-256, but does not authenticate either participant or constitute a signature.</p>
+    <details class="lesson-followup"><summary>About review files and self-hosting</summary>
+      <p>A review includes a fingerprint of the learner’s submitted file. It identifies which file received feedback. It does not verify anyone’s identity.</p>
+      <p>The optional Go classroom service stores accounts, assignments, and responses locally. It does not check proofs or create receipts. Keep it on your computer and read the <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/private-classroom-service.md">setup and security limits</a> before use.</p>
+    </details>
   </main>
 </body>
 </html>

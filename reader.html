@@ -10,9 +10,10 @@
   <link rel="icon" href="/assets/mathcase-branding-kit/favicon.ico" sizes="any">
   <link rel="stylesheet" href="/app.css">
   <script defer src="/saved-demo/public-reader-data.js"></script>
-  <script defer src="/app.js?v=20261123-case-routing"></script>
+  <script defer src="/app.js?v=20261124-reading"></script>
 </head>
-<body>
+<body class="proof-reader">
+  <a class="skip-reader" id="skip-reader" href="#case-stage">Skip to the proof</a>
   <div class="page">
     <header class="topbar">
       <a class="brand" href="/#case-desk" aria-label="MathCase saved demo home">
@@ -21,39 +22,33 @@
       </a>
       <nav class="reader-nav" aria-label="Site navigation">
         <a href="/">Home</a>
-        <a href="/visitor/">Make a case</a>
-        <a href="/cases.html">Cases</a>
-        <a href="/work.html">All work</a>
-        <a href="/collatz.html">Collatz theorem</a>
-        <a href="/timeline.html">Timeline</a>
-        <a href="/roadmap.html">Roadmap</a>
-        <a href="/replay.html">Replay</a>
-        <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+        <a href="/cases.html">Math guide</a>
+        <a href="/work.html">Results</a>
+        <a href="/visitor/">Try your own proof</a>
       </nav>
-      <span class="mode"><span class="mode-dot"></span> Saved execution · read only</span>
     </header>
 
     <section class="intro" aria-labelledby="intro-title">
       <div>
-        <p class="eyebrow">Explore a saved counterexample and a checked proof</p>
-        <h1 id="intro-title">Where a proof <em>earns</em> its next step.</h1>
-        <p class="intro-copy">Start with a counterexample, then inspect a known theorem where Lean rejected the first proof candidate and accepted a correction. Every result shown here is saved evidence; opening this reader makes no model, Lean, or search call.</p>
+        <p class="eyebrow">Saved cases · Number theory</p>
+        <h1 id="intro-title">What can a square tell you about its factors?</h1>
+        <p class="intro-copy">Try it with 4 and 2. Then see how Lean, a proof checker, caught a mistake in an AI’s argument about primes.</p>
       </div>
-      <img class="lockup" src="/assets/mathcase-branding-kit/mathcase-lockup-960.png" alt="MathCase" width="960" height="640">
     </section>
 
     <nav class="case-nav" id="case-nav" aria-label="Saved cases"></nav>
 
-    <main class="case-stage" id="case-stage" aria-live="polite"></main>
+    <main class="case-stage" id="case-stage" tabindex="-1"></main>
+    <noscript><p><a href="/cases.html#five-levels">Read the prime-number explanation</a>. Turn on JavaScript to step through the saved attempts.</p></noscript>
 
     <details class="tavily" id="tavily-panel">
-      <summary><span>Separate saved Tavily runtime</span><span class="disclosure-mark" aria-hidden="true">+</span></summary>
+      <summary><span>Source search for a separate addition problem</span><span class="disclosure-mark" aria-hidden="true">+</span></summary>
       <div class="tavily-body" id="tavily-body"></div>
     </details>
 
     <footer>
       <span>MathCase · Saved Case Desk reader</span>
-      <span>One saved local counterexample and one known theorem check. No broad solver claim.</span>
+      <a href="/roadmap.html">What else can I investigate?</a>
     </footer>
   </div>
 </body>

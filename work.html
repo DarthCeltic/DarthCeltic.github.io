@@ -3,419 +3,493 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="MathCase's human-readable math ledger: exact bounded theorems, finite computations, replay receipts, failures, and open limits.">
+  <meta name="description" content="Explore Collatz numbers, Ramsey graphs, unit fractions and a saved AI proof mistake. Try a worked example and inspect the source behind each result.">
   <meta name="theme-color" content="#0b1823">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>MathCase — All work</title>
+  <title>MathCase | Math results and worked examples</title>
   <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="results.css">
+  <script defer src="collatz-step-example.js"></script>
   <script defer src="public-evidence.js"></script>
   <script defer src="collatz-coefficient.js"></script>
   <script defer src="egyptian-shift7.js"></script>
   <script defer src="ramsey-certificate.js"></script>
   <script defer src="ramsey66-certificate.js"></script>
 </head>
-<body>
-  <header class="site-header shell">
-    <a class="brand" href="index.html" aria-label="MathCase home">
-      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
-      <span>MathCase<small>Work and evidence</small></span>
-    </a>
+<body class="home">
+  <a class="home-skip" href="#top">Skip to the results</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
     <nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="tools.html">Try math</a>
-      <a href="cases.html">Examples</a>
-      <a class="current" aria-current="page" href="work.html">Results</a>
-      <a href="visitor/">Your proof</a>
-      <a href="visitor/teacher-guide.html">For teachers</a>
-      <details class="nav-more">
+      <a href="tools.html">Activities</a>
+      <a href="cases.html">Math guide</a>
+      <details class="home-menu">
         <summary>More</summary>
-        <div class="nav-more-links">
+        <div>
+          <a aria-current="page" href="work.html">Research results</a>
+          <a href="visitor/">Your proof</a>
+          <a href="visitor/teacher-guide.html">For teachers</a>
           <a href="frontier.html">Frontier math</a>
-          <a href="collatz.html">Collatz result</a>
-          <a href="roadmap.html">Research plan</a>
           <a href="timeline.html">Timeline</a>
-          <a href="replay.html">Replay records</a>
-          <a href="projects/">Projects</a>
-          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+          <a href="roadmap.html">Open questions</a>
+          <a href="replay.html">Replay explorer</a>
+          <a href="index.html#hero-title">Judge’s guide</a>
+          <a href="projects/">About Ryan</a>
         </div>
       </details>
     </nav>
   </header>
-
-  <main class="shell" id="top">
-    <section class="archive-intro" aria-labelledby="work-title">
-      <p class="eyebrow">MathCase work map · updated November 24, 2026</p>
-      <h1 id="work-title">Question an AI proof, check it in Lean, and build on what holds.</h1>
-      <p>This ledger separates formal proofs, finite computations, and saved engineering evidence. Each result starts in ordinary language, then shows the exact scope and the limits.</p>
-      <div class="archive-intro-actions">
-        <a class="button button-primary" href="tools.html#collatz-tool">Try 239</a>
-        <a class="button button-secondary" href="tools.html#triangle-game">Color six dots</a>
-        <a class="button button-secondary" href="tools.html#fraction-identity">Check 4/21</a>
-        <a class="button button-secondary" href="frontier.html">See six research questions</a>
+  <main class="home-width results-page" id="top">
+    <header class="results-heading">
+      <p class="home-kicker">MathCase results</p>
+      <h1 id="work-title">What has the math shown?</h1>
+      <p>Follow a number, color a graph, or inspect a proof. Each question below has an example you can try and a record of exactly what was checked.</p>
+      <nav class="results-nav" aria-label="Choose a subject"><a href="#collatz-23-of-14">Collatz sequences</a><a href="#egyptian">Erdős–Straus fractions</a><a href="#ramsey">Ramsey graphs</a><a href="#proof-workbench">Prime numbers</a></nav>
+    </header>
+    <section class="result-chapter" id="collatz-23-of-14" aria-labelledby="collatz-23-of-14-title">
+      <p class="home-kicker">Number sequences · Collatz</p>
+      <div class="result-reading">
+        <div>
+          <h2 id="collatz-23-of-14-title">When must a number fall below its start?</h2>
+          <p>Start with a whole number. If it’s even, halve it. If it’s odd, triple it and add 1. Each of those is one ordinary step.</p>
+          <p>A shortcut combines the odd step and the next halving. For a start of 3 or more, count how many of the first 23 shortcuts begin on an odd number. If the count is 14 or fewer, the sequence falls below its start within <strong>37 ordinary steps</strong>. Lean, a mathematical proof checker, verified that guarantee. Whether every positive start eventually reaches 1 remains open.</p>
+          <a class="result-next" href="tools.html#collatz-tool">Follow 239 step by step <span aria-hidden="true">→</span></a>
+        </div>
+        <aside class="number-example" aria-label="Compare three ways of counting from 5">
+          <p class="example-label">When does 5 first drop below 5?</p>
+          <fieldset id="step-options" hidden>
+            <legend>Count by</legend>
+            <label><input type="radio" name="step-kind" value="ordinary" checked> Ordinary</label>
+            <label><input type="radio" name="step-kind" value="shortcut"> Shortcut</label>
+            <label><input type="radio" name="step-kind" value="odd"> Odd-to-odd</label>
+          </fieldset>
+          <div role="status" aria-live="polite" aria-atomic="true">
+            <p class="number-line" id="example-path">5 → 16 → 8 → 4</p>
+            <p id="example-meaning">Three ordinary steps. The first value below 5 is 4.</p>
+          </div>
+          <p id="step-fallback">In shortcuts, 5 → 8 → 4 takes two moves. In odd-to-odd counting, 5 → 1 takes one move because all the halvings are grouped together.</p>
+        </aside>
       </div>
-      <p class="record-note">No model calls are running; external spend is $0. This website shows saved evidence and does not run Lean in the browser.</p>
+      <details class="result-detail">
+      <summary>See exactly which starts the 23-move theorem covers</summary>
+      <div class="result-detail-body">
+        <p><strong>Plain statement:</strong> for every start <code>n ≥ 3</code>, if at most 14 of the first 23 accelerated inputs are odd, the ordinary Collatz iterate at step <code>23+h</code> is smaller than <code>n</code>, where <code>h</code> is the exact odd-input count.</p>
+              <p>The Lean count is <strong>7,507,638 of 8,388,608</strong> residue classes modulo <code>2^23</code>. The descent theorem reports <code>[propext, Quot.sound]</code>; its count and combined theorem report <code>[Classical.choice, propext, Quot.sound]</code>. No <code>sorryAx</code> was reported. Reviewed statement file, SHA-256: <code>cab441ca8079f71a6c9dbaadcea53a8e38cc8d4e9ee68f18f874f6bf39fb66bb</code>. The bound is at most 37 ordinary steps.</p>
+              <p class="record-note"><strong>Limits:</strong> this is one parity-conditioned first drop. It does not prove convergence for every start, novelty, or closure of the smaller-basis search.</p>
+              <details class="record-note">
+                <summary>Show the exploratory companion counts</summary>
+                <ul>
+                  <li>24/15: 15,505,590 of 16,777,216 classes; at most 39 ordinary steps; exploratory, wording review remains open.</li>
+                  <li>31/19: 1,986,838,144 of 2,147,483,648; at most 50 steps; separate audit passed with <code>[Classical.choice, propext, Quot.sound]</code>. The original receipt remains <code>FAIL_AUDIT</code>; exploratory, wording review remains open.</li>
+                  <li>32/20: 4,058,348,603 of 4,294,967,296; at most 52 steps; exploratory, wording review remains open.</li>
+                </ul>
+                <p>The exact union of five conditions is 4,138,588,909 of 4,294,967,296 length-32 parity words by two agreeing Python counting methods. The first faulty count and its correction are both retained. This does not make one combined Lean theorem or close the basis search.</p>
+              </details>
+              <div class="record-links"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the plain explanation</a><a href="cases.html#collatz-parity-envelope-23-14">Open the source-and-replay case</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1" target="_blank" rel="noopener noreferrer">Open source and receipt bundle ↗</a></div>
+      </div>
+    </details>
+      <details class="result-detail">
+      <summary>What happened in a sample of 23.6 million odd starts?</summary>
+      <div class="result-detail-body">
+        <article id="m31-step34-crlf-binding" aria-labelledby="m31-step34-crlf-title">
+          <h3 id="m31-step34-crlf-title">How many of the sampled numbers dropped within 34 moves?</h3>
+          <p>Two calculations agreed. Of the 23,642,078 odd starting numbers in the sample, <strong>18,391,741</strong> reached a smaller number within 34 odd-to-odd moves.</p>
+          <p>This study counts moves from one odd number to the next. Start at 5, triple it and add 1 to get 16, then halve until the next odd number, 1. Here that entire journey counts as one move. The calculation used one starting number from each selected group. Other numbers in the same groups can behave differently.</p>
+          <details class="result-detail">
+          <summary>Inspect the sample, independent check and original file-format issue</summary>
+          <div class="result-detail-body">
+            <p>In the files, M31 means grouping numbers by their remainder after division by 2³¹ (2,147,483,648). Here “step 34” counts odd-to-odd moves.</p>
+            <p>The original package failed a formatting check because its protocol files used Windows line endings (CRLF). The original CRLF input bytes are now matched to the exact hashes in the primary attempt record and independent verification receipt. The normalized Markdown copies are documentation derivatives. No large calculation was rerun.</p>
+                  <p class="record-note"><strong>Limits:</strong> this counts one chosen representative per odd residue class. It proves no rule for every number in a class and does not establish eventual descent or Collatz convergence. The original packaging failure remains part of the record.</p>
+                  <div class="record-links"><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m31-step34-crlf-binding-v1/README.md" target="_blank" rel="noopener noreferrer">Read the failure and byte-binding record ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/m31-step34-crlf-binding-v1" target="_blank" rel="noopener noreferrer">Open the copied receipts and exact protocol bytes ↗</a></div>
+          </div>
+        </details>
+        </article>
+      </div>
+    </details>
+    <details class="result-detail">
+      <summary>Other Collatz results and the starting-number calculator</summary>
+      <div class="result-detail-body">
+        <details class="result-detail">
+          <summary>Why do 2,652 number patterns drop after 32 ordinary steps?</summary>
+          <div class="result-detail-body">
+            <article id="collatz-main" aria-label="Why do 2,652 number patterns drop after 32 ordinary steps?"><div id="collatz-main-title">
+          <p>Start with 239. After 32 ordinary steps it reaches 122. The proof covers 239 plus any multiple of 1,048,576 and 2,651 other patterns of starting numbers.</p>
+            <p><strong>Plain statement:</strong> for each exact pair <code>(r,q)</code> listed in the checked Lean source and every natural <code>k</code>, start at <code>1,048,576k+r</code>. After exactly 32 ordinary Collatz steps, the value is <code>531,441k+q</code>, and that endpoint is smaller than the start.</p>
+                  <p class="record-formula">C³²(2²⁰k + r) = 3¹²k + q &lt; 2²⁰k + r, for each of the 2,652 source-listed (r,q) pairs</p>
+                  <p>The Lean theorem states the equality and the strict inequality together. The map <code>C</code> sends even <code>n</code> to <code>n/2</code> and odd <code>n</code> to <code>3n+1</code>. A separate exact coefficient audit finds <code>start − endpoint = 517,135k + (r−q)</code>; every listed intercept gap is positive, with minimum 117.</p>
+                  <div class="record-statline"><strong>Two agreeing replays</strong><span>363 Lean files each · 23 axiom groups · 4,262 queries · zero sorryAx reports</span></div>
+                  <p>The final theorem reports only <code>propext</code> and <code>Quot.sound</code>. Across both phases, all source, expected/produced OLEAN, stdout, stderr, and Lean exit-code hashes agree; timing and run-metadata hashes vary. This is a bounded first-descent result for the listed progressions, not a proof that every Collatz trajectory reaches 1.</p>
+                  <p class="record-note"><strong>Replay boundary:</strong> the runs used two fresh isolated workspaces, not two separate Git clones. The pinned Lean image supplied 346 Mathlib dependency OLEANs. The Phase 1 runner completed all Lean and axiom checks, but its Docker wrapper returned 124 when an added two-hour watchdog expired; Docker did not report OOM. Phase 2 returned 0.</p>
+                  <div class="record-links">
+                    <a href="evidence/collatz/m20-source-replay-2026-11-18/README.md">Read the two-phase replay report</a>
+                    <a href="replay.html">Search the module-by-module replay evidence</a>
+                    <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/CORRECTION.md">Read the 2,652-family archive correction</a>
+                    <a href="evidence/collatz/m15-m20-pinned-replay/README.md">See how the shard evidence is packaged</a>
+                    <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/attempt-history.md">Read the preserved composition attempt history</a>
+                  </div>
+                  <details class="file-location"><summary>Inspect the source and receipt locations</summary><p>The archived Lean source is named <code>M20CompositionAllFamiliesV1.lean</code>; here, “M20” means the residue tier modulo 2<sup>20</sup>, or 1,048,576 classes. Phase hash tables and axiom outputs are under <code>evidence/collatz/m20-source-replay-2026-11-18/phase-1/</code> and <code>phase-2/</code>.</p></details>
+                  <a class="text-link" href="#coefficient-audit">Try the exact coefficient calculation <span aria-hidden="true">↓</span></a>
+            </div></article>
+          </div>
+        </details>
+        <details class="result-detail">
+          <summary>Calculate the gap between a starting number and its endpoint</summary>
+          <div class="result-detail-body">
+            <article id="coefficient-audit" aria-label="Calculate the gap between a starting number and its endpoint"><div id="coefficient-title">
+          <p>For example, a start of 239 reaches 122 after 32 steps. Subtract them to get 117. Choose a row below to make the same comparison for another start.</p>
+            <p><strong>Plain statement:</strong> for every one of the 2,652 listed pairs and every natural number <code>k</code>, the starting expression exceeds the recorded endpoint expression by a positive amount of at least 117.</p>
+                  <p class="record-formula">(1,048,576k+r) − (531,441k+q) = 517,135k + (r−q), with every listed r−q ≥ 117</p>
+                  <p>The checker verifies the extracted table and computes one selected pair with exact integers. The source theorem separately checks that 32 Collatz steps really reach the endpoint.</p>
+                  <div class="coefficient-audit-panel">
+                    <p class="coefficient-local-note">This calculation runs in your browser. It does not start Lean, call a model, or send your input to a service.</p>
+                    <p id="coefficient-status" class="coefficient-status" role="status" aria-live="polite">Checking the saved list of starting numbers…</p>
+                    <form id="coefficient-form" class="coefficient-form">
+                      <label for="coefficient-pair">Listed pair row (1–2,652)
+                        <input id="coefficient-pair" type="text" inputmode="numeric" autocomplete="off" maxlength="4" value="1" disabled>
+                      </label>
+                      <label for="coefficient-k">Natural number k (0 or larger)
+                        <input id="coefficient-k" type="text" inputmode="numeric" autocomplete="off" maxlength="1000" value="0" disabled>
+                      </label>
+                      <button id="coefficient-run" type="submit" disabled>Calculate exact values</button>
+                    </form>
+                    <div id="coefficient-result" class="coefficient-result" aria-live="polite"></div>
+                  </div>
+                  <div class="record-note">
+                    <p><strong>Arithmetic boundary:</strong> the data audit parses the listed proposition rows and confirms the count, distinct pairs, positive intercepts, and minimum gap. It does not recompute the trajectories, cover unlisted residues, or prove Collatz convergence.</p>
+                    <p><strong>Source and method:</strong> the pair rows and generator live in <code>evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/</code>. <a href="evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/README.md">Read the human audit and reproduction steps</a>.</p>
+                  </div>
+            </div></article>
+          </div>
+        </details>
+        <details class="result-detail">
+          <summary>A drop by step 35 under a 22-move condition</summary>
+          <div class="result-detail-body">
+            <article id="collatz-13-of-22" aria-label="A drop by step 35 under a 22-move condition"><div id="collatz-13-of-22-title">
+            <p><strong>Plain statement:</strong> repeat 22 shortcut moves: halve an even number; for an odd number, calculate <code>3n+1</code> and halve. If a start <code>n ≥ 3</code> begins at most 13 of these moves on odd numbers, a regular Collatz step takes it below <code>n</code> by step 35.</p>
+                  <p>The exact count is <strong>3,593,934 of 4,194,304</strong> possible 22-step parity patterns (85.6861%). A shortcut move on an odd number corresponds to two regular Collatz steps, which accounts for the endpoint <code>22+h</code>.</p>
+                  <p class="record-note"><strong>Limits:</strong> this is a separate parity filter from the 20-step and 21-step theorems, with non-nested classes. It guarantees one bounded first drop for qualifying starts; it does not cover every start, prove convergence, or make a novelty claim.</p>
+                  <div class="record-links">
+                    <a href="collatz.html#at-most-thirteen-of-twenty-two">Read the explanation and exact scope</a>
+                    <a href="cases.html#collatz-at-most-thirteen-22">Open the runnable public case</a>
+                    <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-two-v2" target="_blank" rel="noopener noreferrer">Open sources and replay instructions ↗</a>
+                  </div>
+            </div></article>
+          </div>
+        </details>
+        <details class="result-detail">
+          <summary>A drop by step 44 under a 27-move condition</summary>
+          <div class="result-detail-body">
+            <article id="collatz-17-of-27" aria-label="A drop by step 44 under a 27-move condition"><div id="collatz-17-of-27-title">
+            <p><strong>Plain statement:</strong> for every <code>n ≥ 26,018</code>, if at most 17 of the first 27 shortcut inputs are odd, then the ordinary Collatz iterate after <code>27+h</code> steps is smaller than <code>n</code>, where <code>h</code> is the exact odd-input count.</p>
+                  <p>The arithmetic audit counts 126,025,204 of 134,217,728 qualifying residue classes modulo <code>2^27</code> (93.8961%). Lean checks the residue-count/parity-word recurrence; the final numeric sum is independently checked by Pascal recurrence and binomial coefficients, not stated as a separate Lean numeral theorem.</p>
+                  <p>This is a bounded, parity-conditioned first drop for the stated range. It does not establish global convergence, natural density, novelty, or priority.</p>
+                  <div class="record-links"><a href="collatz.html#at-most-seventeen-of-twenty-seven">Read the plain explanation</a><a href="cases.html#collatz-at-most-seventeen-27">Open the runnable case</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-seventeen-of-twenty-seven-v1" target="_blank" rel="noopener noreferrer">Open proof sources and replay guide ↗</a></div>
+            </div></article>
+          </div>
+        </details>
+        <details class="result-detail">
+          <summary>A drop within 21 steps for 7,825 groups of numbers</summary>
+          <div class="result-detail-body">
+            <article id="collatz-public" aria-label="A drop within 21 steps for 7,825 groups of numbers"><div id="collatz-public-title">
+            <p><strong>Plain statement:</strong> for every qualifying natural number in each of 7,825 listed residue classes, one of the first 21 ordinary Collatz steps reaches a smaller value.</p>
+                  <p class="record-formula">7,825 / 8,192 residue classes · bounded first descent within 21 steps</p>
+                  <p>This does not prove global convergence or close any whole congruence class modulo 128. Its saved source and local compile are public. A fresh independent build remains open.</p>
+                  <div class="record-links">
+                    <a href="https://github.com/DarthCeltic/MathCase/blob/main/proofs/collatz/remaining-residues/BoundedDescent8192.lean" target="_blank" rel="noopener noreferrer">Read the Lean source ↗</a>
+                    <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-descent.md" target="_blank" rel="noopener noreferrer">Read the scope notes ↗</a>
+                  </div>
+                  <p class="file-location"><strong>Saved receipt location:</strong> <code>proofs/collatz/remaining-residues/bounded-descent-receipt.json</code> in the MathCase repository.</p>
+            </div></article>
+          </div>
+        </details>
+        <details class="result-detail">
+          <summary>What can a formula prove about a whole family of starting numbers?</summary>
+          <div class="result-detail-body">
+            <article id="affine-families" aria-label="What can a formula prove about a whole family of starting numbers?"><div id="affine-families-title">
+            <p>Each line means that for every natural <code>k</code>, the ordinary Collatz map reaches the listed smaller value after the stated number of steps.</p>
+                  <table class="result-table">
+                    <thead><tr><th>Starting values</th><th>Step count and endpoint</th><th>Strict gap</th></tr></thead>
+                    <tbody>
+                      <tr><td>2³¹k + 111</td><td>50 steps → 1,162,261,467k + 61</td><td>985,222,181k + 50</td></tr>
+                      <tr><td>2³¹k + 223</td><td>50 steps → 1,162,261,467k + 122</td><td>985,222,181k + 101</td></tr>
+                      <tr><td>2²⁹k + 167</td><td>47 steps → 387,420,489k + 122</td><td>149,450,423k + 45</td></tr>
+                    </tbody>
+                  </table>
+                  <p>The saved local Lean receipts report exit code 0 and axioms <code>[propext, Quot.sound]</code>. These are three infinite arithmetic progressions, not all integers. The upstream arithmetic scans were exploratory; the certificates do not prove a global descent premise or settle Collatz.</p>
+                  <a class="text-link" href="evidence/collatz/affine-trace-families/README.md">Read the source and receipt map <span aria-hidden="true">→</span></a>
+                  <p class="file-location"><strong>Files:</strong> <code>evidence/collatz/affine-trace-families/sources/</code> contains the generic trace and family sources; saved receipts are in the adjacent <code>receipts/</code> directory. These local records cover the compiler checks. Independent review of the mathematical statement remains open.</p>
+            </div></article>
+          </div>
+        </details>
+        <details class="result-detail">
+          <summary>How were groups of starting numbers counted?</summary>
+          <div class="result-detail-body">
+            <article id="collatz-coverage" aria-label="How were groups of starting numbers counted?"><div id="collatz-coverage-title">
+          <p>Group numbers by the remainder they leave after division. For example, 3 and 11 both leave 3 when divided by 8. This table counts groups in one specified list.</p>
+            <p><strong>Plain statement:</strong> among the 1,048,576 residue classes modulo <code>2²⁰</code>, the largest recorded power-of-two tier has checked bounded-descent certificates for 1,021,248 classes.</p>
+                  <div class="record-statline"><strong>1,021,248 / 1,048,576</strong><span>97.393798828125% · rounds to 97.394%</span></div>
+                  <table class="result-table">
+                    <thead><tr><th>Modulus</th><th>Residue space</th><th>Checked descent classes</th><th>Finite share</th></tr></thead>
+                    <tbody>
+                      <tr><td>2<sup>15</sup></td><td>32,768</td><td>31,473</td><td>96.048%</td></tr>
+                      <tr><td>2<sup>16</sup></td><td>65,536</td><td>63,422</td><td>96.774%</td></tr>
+                      <tr><td>2<sup>18</sup></td><td>262,144</td><td>254,649</td><td>97.141%</td></tr>
+                      <tr><td>2<sup>20</sup></td><td>1,048,576</td><td>1,021,248</td><td>97.394%</td></tr>
+                    </tbody>
+                  </table>
+                  <details class="record-note">
+                    <summary>How to read this percentage and the old shorthand</summary>
+                    <p>The table counts residue classes for the displayed power-of-two moduli. Older files call the 2<sup>20</sup> tier “M20.” This is a finite fraction of one residue space, not a percentage of the Collatz conjecture solved and not a natural-density statement. The 2,652-family composition theorem above is one exact theorem within the larger recorded tier; the count comes from a separate family-basis audit.</p>
+                  </details>
+                  <p>The underlying audit checked 4,262 saved family rows, 229 shard modules, 496 input bindings, and the 7,825-class M13 seed. It did not compile Lean or rescan trajectories. An older README rounds this number incorrectly as 97.395%; the correction is recorded beside the preserved historical artifact.</p>
+                  <a class="text-link" href="evidence/collatz/m15-m20-coverage-audit/README.md">Read the human coverage audit and its receipt location <span aria-hidden="true">→</span></a>
+                  <p class="file-location"><strong>Files:</strong> <code>evidence/collatz/m15-m20-coverage-audit/</code> contains the summary, run manifest, verifier receipt, and audit scripts. The exact shard statements and per-shard receipts are in <code>evidence/knowledge-graph/public-slice-v1/</code> and <code>evidence/collatz/m15-m20-pinned-replay/</code>.</p>
+            </div></article>
+          </div>
+        </details>
+        <details class="result-detail">
+          <summary>Which part of the 2,652 proofs is the same?</summary>
+          <div class="result-detail-body">
+            <article id="collatz-shared-structure" aria-label="Which part of the 2,652 proofs is the same?"><div id="collatz-shared-structure-title">
+          <p>Many starts share the same subtraction at the end of the proof. Each still needs its own argument showing how the sequence got to that endpoint.</p>
+            <p><strong>Plain statement:</strong> every listed endpoint is smaller because the shared coefficient gap is positive, once its row’s exact 32-step trajectory equality is established.</p>
+                  <p class="record-formula">start − endpoint = 517,135k + (r−q), with every listed r−q ≥ 117</p>
+                  <p>All rows share modulus 2²⁰, step count 32, and slope 3¹². The 133 modules group 132 sets of 20 rows and one set of 12. That organization and the shared algebra clarify the proof; they do not remove any row’s trajectory equality or reduce the 2,652 mathematical cases. The earlier prefix screen also found zero reduction and was not rerun.</p>
+                  <p>This is source analysis, not a new theorem or a refactored proof. It describes exactly the listed families and does not imply a general Collatz rule or convergence.</p>
+                  <a class="text-link" href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-shared-affine-structure-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the full structure review ↗</a>
+            </div></article>
+          </div>
+        </details>
+        <details class="result-detail">
+          <summary>A lower bound after three odd-to-odd moves</summary>
+          <div class="result-detail-body">
+            <article id="m31-bound" aria-label="A lower bound after three odd-to-odd moves"><div id="m31-bound-title">
+          <p>This question compares a starting odd number with the number reached three odd-to-odd moves later. An odd-to-odd move triples and adds 1, then halves until another odd number appears.</p>
+            <p><strong>Plain statement:</strong> for every positive member <code>n</code> of each saved odd class modulo <code>2³¹</code>, after three accelerated odd-to-odd steps the value satisfies <code>16*T³(n) − 27*n ≥ 19</code>.</p>
+                  <p class="record-formula">T³(n) ≥ (27n + 19) / 16 · sharp on 4,146,987 saved classes</p>
+                  <p>This compares the third iterate with the original start; it does not say the sequence increases at every individual step. The independent verifier rehashed 30 source/input bindings, checked the population count and sharp stratum, and did not rescan trajectories.</p>
+                  <p>This is an exact arithmetic corollary of recorded affine formulas, not a Lean theorem. It does not establish a fourth-step decrease, cover all odd numbers, or prove convergence.</p>
+                  <a class="text-link" href="evidence/collatz/m31-three-step-affine/README.md">Read the stratum table, verification details, and limits <span aria-hidden="true">→</span></a>
+                  <p class="file-location"><strong>Files:</strong> the portable source/input bundle is <code>evidence/collatz/m31-three-step-affine/source-bundle/</code>; the successful copied-input verification receipt is in <code>public-copy-check/</code>.</p>
+            </div></article>
+          </div>
+        </details>
+      </div>
+    </details>
     </section>
+    <section class="result-chapter" id="egyptian" aria-labelledby="egyptian-title">
+      <p class="home-kicker">Fractions · Erdős–Straus</p>
+      <div class="result-reading">
+        <div>
+          <h2 id="egyptian-title">Can three fractions with a 1 on top add up to 4/n?</h2>
+          <p>A fraction like 1/7 is called a <em>unit fraction</em>. Choose n = 21 and three of them add up to 4/21. A formula extends examples like this one to every number of the form 28k + 21 for k = 0, 1, 2, …</p>
+          <p>A separate search found exact answers for all 831,860 numbers in its filtered set. Whether every integer n ≥ 2 admits such a sum remains open.</p>
+          <a class="result-next" href="tools.html#fraction-identity">Try three denominators <span aria-hidden="true">→</span></a>
+        </div>
+        <aside class="number-example" aria-label="An exact sum of three unit fractions"><p class="example-label">One exact sum</p><p class="number-line sum-line">4/21 = 1/7 + 1/22 + 1/462</p><p>Give them all a denominator of 462. Their numerators add to 66 + 21 + 1 = 88, and 88/462 reduces to 4/21.</p><a href="frontier.html#egyptian-28k-21">Read the formula for the family</a></aside>
+      </div>
+      <details class="result-detail">
+      <summary>Read the full counts, formulas and finite search limits</summary>
+      <div class="result-detail-body">
+        <p><strong>Plain statement:</strong> for the factor-conditioned candidates in the recorded ranges through <code>d=10,000,000</code>, the campaign saved one exact Egyptian-fraction witness per candidate.</p>
+              <div class="record-statline"><strong>831,860 / 831,860</strong><span>candidate rows with witnesses · 427 base misses resolved within the fixed 65,536 offset cap</span></div>
+              <p>The largest observed first-denominator offset was 35,498. The offset trend was noisy; v9-only correlation with range was <code>r=0.067</code>. Misses varied in factor shape and finer residues. The range search itself did not identify a family; a separate algebraic derivation below gives one exact progression identity. The full conjecture remains open.</p>
+              <p>The public MathCase main branch now includes all 100 range bundles and their per-witness records through <code>d=10,000,000</code>. The aggregate audit confirms the recorded bindings and exact identities; this remains a finite, factor-filtered computation, not a proof of the full conjecture.</p>
+              <div class="record-links">
+                <a href="evidence/egyptian-fractions/v9-10m/README.md">Read the human campaign report</a>
+                <a href="evidence/egyptian-fractions/v9-10m/family-investigation.md">Read the rejected identity lead</a>
+                <a href="https://github.com/DarthCeltic/MathCase/blob/bdda68f561d852daef16c38cae8a2a5b8b1499c5/research/number-theory/egyptian-fractions/README.md" target="_blank" rel="noopener noreferrer">Open the public bundle guide ↗</a>
+                <a href="https://github.com/DarthCeltic/MathCase/blob/bdda68f561d852daef16c38cae8a2a5b8b1499c5/research/number-theory/egyptian-fractions/campaign-v9-10m-audit-v1/summary.md" target="_blank" rel="noopener noreferrer">Read the 10-million audit summary ↗</a>
+              </div>
+              <p class="file-location"><strong>Files:</strong> <code>evidence/egyptian-fractions/v9-10m/</code> contains the range maxima, aggregate audit, summary, and human-readable campaign note.</p>
 
-    <details class="work-jumps">
-      <summary>Jump to a result</summary>
-    <nav class="archive-nav" aria-label="Research sections">
-      <a href="#proof-workbench">Saved proof case</a>
-      <a href="#collatz-main">Collatz theorem</a>
-      <a href="#collatz-13-of-22">13-of-22 Collatz rule</a>
-      <a href="#collatz-23-of-14">23/14 Collatz rule</a>
-      <a href="#coefficient-audit">Coefficient calculator</a>
-      <a href="#collatz-shared-structure">Shared Collatz structure</a>
-      <a href="#collatz-coverage">Residue coverage</a>
-      <a href="#affine-families">Affine families</a>
-      <a href="#m31-bound">Three-step Collatz profile</a>
-      <a href="#egyptian">Egyptian fractions</a>
-      <a href="#ramsey">R(5,5) Lean proof</a>
-      <a href="#ramsey-r66">R(6,6) finite certificate</a>
-      <a href="#knowledge-graph">Statement index</a>
-      <a href="#limits">Open limits</a>
-    </nav>
+              <div class="shift7-panel" id="shift7-identity">
+                <span class="record-label internal">Direct algebraic identity · statement review open · no Lean attempt</span>
+                <h3>A three-fraction formula for every n = 433 + 840t.</h3>
+                <p><strong>Plain statement:</strong> for every integer <code>t ≥ 0</code>, set <code>n = 433 + 840t</code>. The formulas below give positive, strictly increasing denominators whose unit fractions add exactly to <code>4/n</code>.</p>
+                <p><strong>Formula:</strong> <code>A = n(n+7)/4</code>, <code>x = (n+7)/4</code>, <code>y = (A+5)/7</code>, and <code>z = A(A+5)/35</code>, so <code>4/n = 1/x + 1/y + 1/z</code>.</p>
+                <p>Here <code>n ≡ 1 (mod 4)</code>, <code>n ≡ 3 (mod 5)</code>, and <code>n ≡ 6 (mod 7)</code>. These make <code>x</code> and <code>A</code> integers; they also give <code>A ≡ 0 (mod 5)</code> and <code>A ≡ 2 (mod 7)</code>, so <code>y</code> and <code>z</code> are integers. Since <code>y−x = (x(n−7)+5)/7 &gt; 0</code> and <code>z/y = A/5 &gt; 1</code>, the denominators are ordered.</p>
+                <p>The identity follows by subtraction: <code>4/n − 1/x = 7/A</code>, then <code>7/A − 1/y = 1/z</code>. This covers one progression, not every integer. It does not settle Erdős–Straus. A 2026 paper studies the same first-denominator shift <code>c=7</code> in a related prime case; no novelty claim or broad literature search is made.</p>
+                <div class="shift7-panel-box">
+                  <p class="coefficient-local-note">Try a value of <code>t</code>. This checker uses browser-local BigInt arithmetic, makes no network request, and verifies the exact integer identity and denominator order for the displayed member.</p>
+                  <form class="coefficient-form" id="shift7-form">
+                    <label>Nonnegative integer t<input id="shift7-parameter" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="36" value="0" autocomplete="off"></label>
+                    <button type="submit">Check this member</button>
+                  </form>
+                  <p id="shift7-status" class="graph-status" role="status" aria-live="polite">Ready to check t = 0.</p>
+                  <div id="shift7-result" class="coefficient-result" aria-live="polite"></div>
+                </div>
+                <p class="file-location"><strong>Limits:</strong> this is an elementary algebraic identity, not a Lean-checked result. The statement has not had a human fidelity review or a Lean attempt. The campaign’s finite witness record remains a separate, factor-conditioned computation.</p>
+                <div class="record-links">
+                  <a href="evidence/egyptian-fractions/v9-10m/README.md">Read the finite campaign report</a>
+                  <a href="https://arxiv.org/abs/2608.24035" target="_blank" rel="noopener noreferrer">Read the related 2026 shift-7 paper ↗</a>
+                </div>
+              </div>
+      </div>
     </details>
 
-    <div class="record-key" aria-label="Evidence labels">
-      <span class="record-label public">Lean-checked source</span>
-      <span class="record-label internal">Bounded computation</span>
-      <span class="record-label planned">Review or reproduction open</span>
-    </div>
-
-    <section class="record-section" id="proof-workbench" aria-labelledby="proof-workbench-title">
-      <span class="record-label public">Saved public case</span>
-      <h2 id="proof-workbench-title">A failed proof attempt is part of the result.</h2>
-      <p><strong>Plain statement:</strong> if a natural prime p divides n squared, then p divides n.</p>
-      <p class="record-formula">p prime, p ∣ n² ⟹ p ∣ n</p>
-      <p>The first saved candidate was rejected by Lean because it used the divisibility assumption where the theorem required primality. The repaired candidate used both assumptions and its saved Lean check passed.</p>
-      <div class="record-statline"><strong>Known theorem</strong><span>One exact statement checked · no novelty claim</span></div>
-      <p>The useful system evidence is the visible sequence: statement, rejected attempt, checker response, repaired proof, and saved check. A pass applies only to that formal target.</p>
-      <p class="file-location"><strong>Files:</strong> use the saved reader on this site, or find the theorem source in MathCase at <code>proofs/first-rung/MathCasePrimeInfiniteDescent.lean</code>.</p>
-      <a class="text-link" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Walk through the saved case <span aria-hidden="true">→</span></a>
     </section>
-
-    <section class="record-section" id="collatz-main" aria-labelledby="collatz-main-title">
-      <span class="record-label public">Fresh source-to-kernel replay · bounded theorem</span>
-      <h2 id="collatz-main-title">A precise Collatz descent statement for 2,652 listed progressions.</h2>
-      <p><strong>Plain statement:</strong> for each exact pair <code>(r,q)</code> listed in the checked Lean source and every natural <code>k</code>, start at <code>1,048,576k+r</code>. After exactly 32 ordinary Collatz steps, the value is <code>531,441k+q</code>, and that endpoint is smaller than the start.</p>
-      <p class="record-formula">C³²(2²⁰k + r) = 3¹²k + q &lt; 2²⁰k + r, for each of the 2,652 source-listed (r,q) pairs</p>
-      <p>The Lean theorem states the equality and the strict inequality together. The map <code>C</code> sends even <code>n</code> to <code>n/2</code> and odd <code>n</code> to <code>3n+1</code>. A separate exact coefficient audit finds <code>start − endpoint = 517,135k + (r−q)</code>; every listed intercept gap is positive, with minimum 117.</p>
-      <div class="record-statline"><strong>Two agreeing replays</strong><span>363 Lean files each · 23 axiom groups · 4,262 queries · zero sorryAx reports</span></div>
-      <p>The final theorem reports only <code>propext</code> and <code>Quot.sound</code>. Across both phases, all source, expected/produced OLEAN, stdout, stderr, and Lean exit-code hashes agree; timing and run-metadata hashes vary. This is a bounded first-descent result for the listed progressions, not a proof that every Collatz trajectory reaches 1.</p>
-      <p class="record-note"><strong>Replay boundary:</strong> the runs used two fresh isolated workspaces, not two separate Git clones. The pinned Lean image supplied 346 Mathlib dependency OLEANs. The Phase 1 runner completed all Lean and axiom checks, but its Docker wrapper returned 124 when an added two-hour watchdog expired; Docker did not report OOM. Phase 2 returned 0.</p>
-      <div class="record-links">
-        <a href="evidence/collatz/m20-source-replay-2026-11-18/README.md">Read the two-phase replay report</a>
-        <a href="replay.html">Search the module-by-module replay evidence</a>
-        <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/CORRECTION.md">Read the 2,652-family archive correction</a>
-        <a href="evidence/collatz/m15-m20-pinned-replay/README.md">See how the shard evidence is packaged</a>
-        <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/attempt-history.md">Read the preserved composition attempt history</a>
-      </div>
-      <details class="file-location"><summary>Inspect the source and receipt locations</summary><p>The archived Lean source is named <code>M20CompositionAllFamiliesV1.lean</code>; here, “M20” means the residue tier modulo 2<sup>20</sup>, or 1,048,576 classes. Phase hash tables and axiom outputs are under <code>evidence/collatz/m20-source-replay-2026-11-18/phase-1/</code> and <code>phase-2/</code>.</p></details>
-      <a class="text-link" href="#coefficient-audit">Try the exact coefficient calculation <span aria-hidden="true">↓</span></a>
-    </section>
-
-    <section class="record-section coefficient-section" id="coefficient-audit" aria-labelledby="coefficient-title">
-      <span class="record-label public">Exact-integer browser calculation</span>
-      <h2 id="coefficient-title">Check how far a listed endpoint is below its start.</h2>
-      <p><strong>Plain statement:</strong> for every one of the 2,652 listed pairs and every natural number <code>k</code>, the starting expression exceeds the recorded endpoint expression by a positive amount of at least 117.</p>
-      <p class="record-formula">(1,048,576k+r) − (531,441k+q) = 517,135k + (r−q), with every listed r−q ≥ 117</p>
-      <p>The checker verifies the extracted table and computes one selected pair with exact integers. The source theorem separately checks that 32 Collatz steps really reach the endpoint.</p>
-      <div class="coefficient-audit-panel">
-        <p class="coefficient-local-note">This calculation runs in your browser. It does not start Lean, call a model, or send your input to a service.</p>
-        <p id="coefficient-status" class="coefficient-status" role="status" aria-live="polite">Loading and checking the source-pair table…</p>
-        <form id="coefficient-form" class="coefficient-form">
-          <label for="coefficient-pair">Listed pair row (1–2,652)
-            <input id="coefficient-pair" type="text" inputmode="numeric" autocomplete="off" maxlength="4" value="1" disabled>
-          </label>
-          <label for="coefficient-k">Natural number k (0 or larger)
-            <input id="coefficient-k" type="text" inputmode="numeric" autocomplete="off" maxlength="1000" value="0" disabled>
-          </label>
-          <button id="coefficient-run" type="submit" disabled>Calculate exact values</button>
-        </form>
-        <div id="coefficient-result" class="coefficient-result" aria-live="polite"></div>
-      </div>
-      <div class="record-note">
-        <p><strong>Arithmetic boundary:</strong> the data audit parses the listed proposition rows and confirms the count, distinct pairs, positive intercepts, and minimum gap. It does not recompute the trajectories, cover unlisted residues, or prove Collatz convergence.</p>
-        <p><strong>Source and method:</strong> the pair rows and generator live in <code>evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/</code>. <a href="evidence/collatz/m20-source-replay-2026-11-18/coefficient-audit/README.md">Read the human audit and reproduction steps</a>.</p>
-      </div>
-    </section>
-
-    <section class="record-section" id="collatz-shared-structure" aria-labelledby="collatz-shared-structure-title">
-      <span class="record-label internal">Source-level structure review · no new Lean run</span>
-      <h2 id="collatz-shared-structure-title">The same descent inequality serves all 2,652 rows; every 32-step trajectory equality remains.</h2>
-      <p><strong>Plain statement:</strong> every listed endpoint is smaller because the shared coefficient gap is positive, once its row’s exact 32-step trajectory equality is established.</p>
-      <p class="record-formula">start − endpoint = 517,135k + (r−q), with every listed r−q ≥ 117</p>
-      <p>All rows share modulus 2²⁰, step count 32, and slope 3¹². The 133 modules group 132 sets of 20 rows and one set of 12. That organization and the shared algebra clarify the proof; they do not remove any row’s trajectory equality or reduce the 2,652 mathematical cases. The earlier prefix screen also found zero reduction and was not rerun.</p>
-      <p>This is source analysis, not a new theorem or a refactored proof. It describes exactly the listed families and does not imply a general Collatz rule or convergence.</p>
-      <a class="text-link" href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-shared-affine-structure-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the full structure review ↗</a>
-    </section>
-
-    <section class="record-section" id="collatz-coverage" aria-labelledby="collatz-coverage-title">
-      <span class="record-label internal">Finite residue counts · arithmetic/binding audit</span>
-      <h2 id="collatz-coverage-title">The larger ledger covers 97.394% of one finite residue space.</h2>
-      <p><strong>Plain statement:</strong> among the 1,048,576 residue classes modulo <code>2²⁰</code>, the largest recorded power-of-two tier has checked bounded-descent certificates for 1,021,248 classes.</p>
-      <div class="record-statline"><strong>1,021,248 / 1,048,576</strong><span>97.393798828125% · rounds to 97.394%</span></div>
-      <table class="result-table">
-        <thead><tr><th>Modulus</th><th>Residue space</th><th>Checked descent classes</th><th>Finite share</th></tr></thead>
-        <tbody>
-          <tr><td>2<sup>15</sup></td><td>32,768</td><td>31,473</td><td>96.048%</td></tr>
-          <tr><td>2<sup>16</sup></td><td>65,536</td><td>63,422</td><td>96.774%</td></tr>
-          <tr><td>2<sup>18</sup></td><td>262,144</td><td>254,649</td><td>97.141%</td></tr>
-          <tr><td>2<sup>20</sup></td><td>1,048,576</td><td>1,021,248</td><td>97.394%</td></tr>
-        </tbody>
-      </table>
-      <details class="record-note">
-        <summary>How to read this percentage and the old shorthand</summary>
-        <p>The table counts residue classes for the displayed power-of-two moduli. Older files call the 2<sup>20</sup> tier “M20.” This is a finite fraction of one residue space, not a percentage of the Collatz conjecture solved and not a natural-density statement. The 2,652-family composition theorem above is one exact theorem within the larger recorded tier; the count comes from a separate family-basis audit.</p>
-      </details>
-      <p>The underlying audit checked 4,262 saved family rows, 229 shard modules, 496 input bindings, and the 7,825-class M13 seed. It did not compile Lean or rescan trajectories. An older README rounds this number incorrectly as 97.395%; the correction is recorded beside the preserved historical artifact.</p>
-      <a class="text-link" href="evidence/collatz/m15-m20-coverage-audit/README.md">Read the human coverage audit and its receipt location <span aria-hidden="true">→</span></a>
-      <p class="file-location"><strong>Files:</strong> <code>evidence/collatz/m15-m20-coverage-audit/</code> contains the summary, run manifest, verifier receipt, and audit scripts. The exact shard statements and per-shard receipts are in <code>evidence/knowledge-graph/public-slice-v1/</code> and <code>evidence/collatz/m15-m20-pinned-replay/</code>.</p>
-    </section>
-
-    <section class="record-section" id="affine-families" aria-labelledby="affine-families-title">
-      <span class="record-label public">Three Lean-checked infinite families</span>
-      <h2 id="affine-families-title">Three selected progressions have exact all-parameter descent proofs.</h2>
-      <p>Each line means that for every natural <code>k</code>, the ordinary Collatz map reaches the listed smaller value after the stated number of steps.</p>
-      <table class="result-table">
-        <thead><tr><th>Starting values</th><th>Step count and endpoint</th><th>Strict gap</th></tr></thead>
-        <tbody>
-          <tr><td>2³¹k + 111</td><td>50 steps → 1,162,261,467k + 61</td><td>985,222,181k + 50</td></tr>
-          <tr><td>2³¹k + 223</td><td>50 steps → 1,162,261,467k + 122</td><td>985,222,181k + 101</td></tr>
-          <tr><td>2²⁹k + 167</td><td>47 steps → 387,420,489k + 122</td><td>149,450,423k + 45</td></tr>
-        </tbody>
-      </table>
-      <p>The saved local Lean receipts report exit code 0 and axioms <code>[propext, Quot.sound]</code>. These are three infinite arithmetic progressions, not all integers. The upstream arithmetic scans were exploratory; the certificates do not prove a global descent premise or settle Collatz.</p>
-      <a class="text-link" href="evidence/collatz/affine-trace-families/README.md">Read the source and receipt map <span aria-hidden="true">→</span></a>
-      <p class="file-location"><strong>Files:</strong> <code>evidence/collatz/affine-trace-families/sources/</code> contains the generic trace and family sources; saved receipts are in the adjacent <code>receipts/</code> directory. These are local run records, not human statement approval, dossier acceptance, or independent review.</p>
-    </section>
-
-    <section class="record-section" id="collatz-public" aria-labelledby="collatz-public-title">
-      <span class="record-label public">Public MathCase repository source</span>
-      <h2 id="collatz-public-title">A smaller Lean result covers 7,825 classes modulo 8,192.</h2>
-      <p><strong>Plain statement:</strong> for every qualifying natural number in each of 7,825 listed residue classes, one of the first 21 ordinary Collatz steps reaches a smaller value.</p>
-      <p class="record-formula">7,825 / 8,192 residue classes · bounded first descent within 21 steps</p>
-      <p>This does not prove global convergence or close any whole congruence class modulo 128. Its saved source and local compile are public, but the historical local compile is not a fresh clean-checkout replay or a standard MathCase dossier receipt.</p>
-      <div class="record-links">
-        <a href="https://github.com/DarthCeltic/MathCase/blob/main/proofs/collatz/remaining-residues/BoundedDescent8192.lean" target="_blank" rel="noopener noreferrer">Read the Lean source ↗</a>
-        <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-descent.md" target="_blank" rel="noopener noreferrer">Read the scope notes ↗</a>
-      </div>
-      <p class="file-location"><strong>Saved receipt location:</strong> <code>proofs/collatz/remaining-residues/bounded-descent-receipt.json</code> in the MathCase repository.</p>
-    </section>
-
-    <section class="record-section" id="collatz-13-of-22" aria-labelledby="collatz-13-of-22-title">
-      <span class="record-label public">Lean 4.33.1 · fresh-source replay · bounded first descent</span>
-      <h2 id="collatz-13-of-22-title">At most 13 odd inputs in 22 accelerated steps imply a drop by step 35.</h2>
-      <p><strong>Plain statement:</strong> repeat 22 shortcut moves: halve an even number; for an odd number, calculate <code>3n+1</code> and halve. If a start <code>n ≥ 3</code> begins at most 13 of these moves on odd numbers, a regular Collatz step takes it below <code>n</code> by step 35.</p>
-      <p>The exact count is <strong>3,593,934 of 4,194,304</strong> possible 22-step parity patterns (85.6861%). A shortcut move on an odd number corresponds to two regular Collatz steps, which accounts for the endpoint <code>22+h</code>.</p>
-      <p class="record-note"><strong>Limits:</strong> this is a separate parity filter from the 20-step and 21-step theorems, with non-nested classes. It guarantees one bounded first drop for qualifying starts; it does not cover every start, prove convergence, or make a novelty claim.</p>
-      <div class="record-links">
-        <a href="collatz.html#at-most-thirteen-of-twenty-two">Read the explanation and exact scope</a>
-        <a href="cases.html#collatz-at-most-thirteen-22">Open the runnable public case</a>
-        <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-two-v2" target="_blank" rel="noopener noreferrer">Open sources and replay instructions ↗</a>
-      </div>
-    </section>
-
-    <section class="record-section" id="collatz-17-of-27" aria-labelledby="collatz-17-of-27-title">
-      <span class="record-label public">Public Lean 4.33.1 core result · exact integer audit reported separately</span>
-      <h2 id="collatz-17-of-27-title">A 27-step parity rule gives first descent by ordinary step 44.</h2>
-      <p><strong>Plain statement:</strong> for every <code>n ≥ 26,018</code>, if at most 17 of the first 27 shortcut inputs are odd, then the ordinary Collatz iterate after <code>27+h</code> steps is smaller than <code>n</code>, where <code>h</code> is the exact odd-input count.</p>
-      <p>The arithmetic audit counts 126,025,204 of 134,217,728 qualifying residue classes modulo <code>2^27</code> (93.8961%). Lean checks the residue-count/parity-word recurrence; the final numeric sum is independently checked by Pascal recurrence and binomial coefficients, not stated as a separate Lean numeral theorem.</p>
-      <p>This is a bounded, parity-conditioned first drop for the stated range. It does not establish global convergence, natural density, novelty, or priority.</p>
-      <div class="record-links"><a href="collatz.html#at-most-seventeen-of-twenty-seven">Read the plain explanation</a><a href="cases.html#collatz-at-most-seventeen-27">Open the runnable case</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-seventeen-of-twenty-seven-v1" target="_blank" rel="noopener noreferrer">Open proof sources and replay guide ↗</a></div>
-    </section>
-
-    <section class="record-section" id="collatz-23-of-14" aria-labelledby="collatz-23-of-14-title">
-      <span class="record-label public">Lean checked · statement reviewed · bounded first descent</span>
-      <h2 id="collatz-23-of-14-title">A 23-step parity condition gives a first drop by ordinary step 37.</h2>
-      <p><strong>Plain statement:</strong> for every start <code>n ≥ 3</code>, if at most 14 of the first 23 accelerated inputs are odd, the ordinary Collatz iterate at step <code>23+h</code> is smaller than <code>n</code>, where <code>h</code> is the exact odd-input count.</p>
-      <p>The Lean count is <strong>7,507,638 of 8,388,608</strong> residue classes modulo <code>2^23</code>. The descent theorem reports <code>[propext, Quot.sound]</code>; its count and combined theorem report <code>[Classical.choice, propext, Quot.sound]</code>. No <code>sorryAx</code> was reported. M0 packet SHA-256: <code>cab441ca8079f71a6c9dbaadcea53a8e38cc8d4e9ee68f18f874f6bf39fb66bb</code>. The bound is at most 37 ordinary steps.</p>
-      <p class="record-note"><strong>Limits:</strong> this is one parity-conditioned first drop. It does not prove convergence for every start, novelty, or closure of the smaller-basis search.</p>
-      <details class="record-note">
-        <summary>Show the exploratory companion counts</summary>
-        <ul>
-          <li>24/15: 15,505,590 of 16,777,216 classes; at most 39 ordinary steps; exploratory, not M0-reviewed.</li>
-          <li>31/19: 1,986,838,144 of 2,147,483,648; at most 50 steps; separate audit passed with <code>[Classical.choice, propext, Quot.sound]</code>. The original receipt remains <code>FAIL_AUDIT</code>; exploratory, not M0-reviewed.</li>
-          <li>32/20: 4,058,348,603 of 4,294,967,296; at most 52 steps; exploratory, not M0-reviewed.</li>
-        </ul>
-        <p>The exact union of five conditions is 4,138,588,909 of 4,294,967,296 length-32 parity words by two agreeing Python counting methods. The first faulty count and its correction are both retained. This does not make one combined Lean theorem or close the basis search.</p>
-      </details>
-      <div class="record-links"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the plain explanation</a><a href="cases.html#collatz-parity-envelope-23-14">Open the source-and-replay case</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1" target="_blank" rel="noopener noreferrer">Open source and receipt bundle ↗</a></div>
-    </section>
-
-    <section class="record-section" id="m31-step34-crlf-binding" aria-labelledby="m31-step34-crlf-title">
-      <span class="record-label internal">Finite arithmetic · original packaging failure preserved</span>
-      <h2 id="m31-step34-crlf-title">The M31 step-34 count is recorded, and the input-byte mismatch is now traceable.</h2>
-      <p><strong>Plain statement:</strong> in a fixed sample of 23,642,078 odd representatives, the recorded calculation found 18,391,741 with a below-start value by accelerated step 34. A separate arithmetic implementation matched the primary result.</p>
-      <p>The v1 package first failed its text-hygiene gate because protocol files used CRLF. The original CRLF input bytes are now matched to the exact hashes in the primary attempt record and independent verification receipt. The normalized Markdown copies are documentation derivatives. No large calculation was rerun.</p>
-      <p class="record-note"><strong>Limits:</strong> this counts one chosen representative per odd residue class. It proves no rule for every number in a class and does not establish eventual descent or Collatz convergence. The original packaging failure remains part of the record.</p>
-      <div class="record-links"><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m31-step34-crlf-binding-v1/README.md" target="_blank" rel="noopener noreferrer">Read the failure and byte-binding record ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/m31-step34-crlf-binding-v1" target="_blank" rel="noopener noreferrer">Open the copied receipts and exact protocol bytes ↗</a></div>
-    </section>
-
-    <section class="record-section" id="m31-bound" aria-labelledby="m31-bound-title">
-      <span class="record-label internal">Independent exact arithmetic check · not Lean</span>
-      <h2 id="m31-bound-title">For 23.6 million saved classes, the third accelerated iterate stays above a precise line.</h2>
-      <p><strong>Plain statement:</strong> for every positive member <code>n</code> of each saved odd class modulo <code>2³¹</code>, after three accelerated odd-to-odd steps the value satisfies <code>16*T³(n) − 27*n ≥ 19</code>.</p>
-      <p class="record-formula">T³(n) ≥ (27n + 19) / 16 · sharp on 4,146,987 saved classes</p>
-      <p>This compares the third iterate with the original start; it does not say the sequence increases at every individual step. The independent verifier rehashed 30 source/input bindings, checked the population count and sharp stratum, and did not rescan trajectories.</p>
-      <p>This is an exact arithmetic corollary of recorded affine formulas, not a Lean theorem. It does not establish a fourth-step decrease, cover all odd numbers, or prove convergence.</p>
-      <a class="text-link" href="evidence/collatz/m31-three-step-affine/README.md">Read the stratum table, verification details, and limits <span aria-hidden="true">→</span></a>
-      <p class="file-location"><strong>Files:</strong> the portable source/input bundle is <code>evidence/collatz/m31-three-step-affine/source-bundle/</code>; the successful copied-input verification receipt is in <code>public-copy-check/</code>.</p>
-    </section>
-
-    <section class="record-section" id="egyptian" aria-labelledby="egyptian-title">
-      <span class="record-label internal">Finite exact-witness campaign · CPU only</span>
-      <h2 id="egyptian-title">The Erdős–Straus campaign recorded 831,860 bounded witnesses.</h2>
-      <p><strong>Plain statement:</strong> for the factor-conditioned candidates in the recorded ranges through <code>d=10,000,000</code>, the campaign saved one exact Egyptian-fraction witness per candidate.</p>
-      <div class="record-statline"><strong>831,860 / 831,860</strong><span>candidate rows with witnesses · 427 base misses resolved within the fixed 65,536 offset cap</span></div>
-      <p>The largest observed first-denominator offset was 35,498. The offset trend was noisy; v9-only correlation with range was <code>r=0.067</code>. Misses varied in factor shape and finer residues. The range search itself did not identify a family; a separate algebraic derivation below gives one exact progression identity. The full conjecture remains open.</p>
-      <p>The public MathCase main branch now includes all 100 range bundles and their per-witness records through <code>d=10,000,000</code>. The aggregate audit confirms the recorded bindings and exact identities; this remains a finite, factor-filtered computation, not a proof of the full conjecture.</p>
-      <div class="record-links">
-        <a href="evidence/egyptian-fractions/v9-10m/README.md">Read the human campaign report</a>
-        <a href="evidence/egyptian-fractions/v9-10m/family-investigation.md">Read the rejected identity lead</a>
-        <a href="https://github.com/DarthCeltic/MathCase/blob/bdda68f561d852daef16c38cae8a2a5b8b1499c5/research/number-theory/egyptian-fractions/README.md" target="_blank" rel="noopener noreferrer">Open the public bundle guide ↗</a>
-        <a href="https://github.com/DarthCeltic/MathCase/blob/bdda68f561d852daef16c38cae8a2a5b8b1499c5/research/number-theory/egyptian-fractions/campaign-v9-10m-audit-v1/summary.md" target="_blank" rel="noopener noreferrer">Read the 10-million audit summary ↗</a>
-      </div>
-      <p class="file-location"><strong>Files:</strong> <code>evidence/egyptian-fractions/v9-10m/</code> contains the range maxima, aggregate audit, summary, and human-readable campaign note.</p>
-
-      <div class="shift7-panel" id="shift7-identity">
-        <span class="record-label internal">Direct algebraic identity · statement review open · no Lean attempt</span>
-        <h3>A three-fraction formula for every n = 433 + 840t.</h3>
-        <p><strong>Plain statement:</strong> for every integer <code>t ≥ 0</code>, set <code>n = 433 + 840t</code>. The formulas below give positive, strictly increasing denominators whose unit fractions add exactly to <code>4/n</code>.</p>
-        <p><strong>Formula:</strong> <code>A = n(n+7)/4</code>, <code>x = (n+7)/4</code>, <code>y = (A+5)/7</code>, and <code>z = A(A+5)/35</code>, so <code>4/n = 1/x + 1/y + 1/z</code>.</p>
-        <p>Here <code>n ≡ 1 (mod 4)</code>, <code>n ≡ 3 (mod 5)</code>, and <code>n ≡ 6 (mod 7)</code>. These make <code>x</code> and <code>A</code> integers; they also give <code>A ≡ 0 (mod 5)</code> and <code>A ≡ 2 (mod 7)</code>, so <code>y</code> and <code>z</code> are integers. Since <code>y−x = (x(n−7)+5)/7 &gt; 0</code> and <code>z/y = A/5 &gt; 1</code>, the denominators are ordered.</p>
-        <p>The identity follows by subtraction: <code>4/n − 1/x = 7/A</code>, then <code>7/A − 1/y = 1/z</code>. This covers one progression, not every integer. It does not settle Erdős–Straus. A 2026 paper studies the same first-denominator shift <code>c=7</code> in a related prime case; no novelty claim or broad literature search is made.</p>
-        <div class="shift7-panel-box">
-          <p class="coefficient-local-note">Try a value of <code>t</code>. This checker uses browser-local BigInt arithmetic, makes no network request, and verifies the exact integer identity and denominator order for the displayed member.</p>
-          <form class="coefficient-form" id="shift7-form">
-            <label>Nonnegative integer t<input id="shift7-parameter" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="36" value="0" autocomplete="off"></label>
-            <button type="submit">Check this member</button>
-          </form>
-          <p id="shift7-status" class="graph-status" role="status" aria-live="polite">Ready to check t = 0.</p>
-          <div id="shift7-result" class="coefficient-result" aria-live="polite"></div>
+    <section class="result-chapter" id="ramsey" aria-labelledby="ramsey-title">
+      <p class="home-kicker">Graph coloring · Ramsey</p>
+      <div class="result-reading">
+        <div>
+          <h2 id="ramsey-title">How many dots can avoid a one-color group of five?</h2>
+          <p>Connect every pair of dots. Color each line red or blue. Six dots always contain a one-color triangle. Now look for five dots whose ten connecting lines are <em>all</em> the same color.</p>
+          <p>A known arrangement of <strong>42 dots</strong> avoids every such group. Lean checked this arrangement. That shows that a guarantee for five must start at 43 dots or more. This example alone cannot tell us the exact threshold.</p>
+          <a class="result-next" href="tools.html#triangle-game">Start with the six-dot puzzle <span aria-hidden="true">→</span></a>
         </div>
-        <p class="file-location"><strong>Limits:</strong> this is an elementary algebraic identity, not a Lean-checked result. The statement has not had a human fidelity review or a Lean attempt. The campaign’s finite witness record remains a separate, factor-conditioned computation.</p>
-        <div class="record-links">
-          <a href="evidence/egyptian-fractions/v9-10m/README.md">Read the finite campaign report</a>
-          <a href="https://arxiv.org/abs/2608.24035" target="_blank" rel="noopener noreferrer">Read the related 2026 shift-7 paper ↗</a>
+
+      </div>
+      <details class="result-detail">
+      <summary>Inspect the 42-dot coloring, formal proof and checker</summary>
+      <div class="result-detail-body">
+        <p><strong>Plain statement:</strong> there is a simple graph on 42 vertices with no clique of size five, and no independent set of size five. This witnesses the established lower bound <code>R(5,5) ≥ 43</code>.</p>
+              <p><strong>Exact Lean target:</strong> <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>. Ryan reviewed that the English statement matches this target. Lean checked it in 27 separately compiled chunks plus a final composition; all returned exit 0. The recorded axiom list is <code>[propext, Classical.choice, Quot.sound]</code>, with no <code>sorryAx</code> or <code>native_decide</code> in the proof sources.</p>
+              <p>The graph is a known Exoo construction. MathCase formalized and checked this finite witness; it is not a new construction, does not determine the Ramsey number, and has yet to receive independent review. The original Lean run used a warm local cache; a fresh-checkout rebuild has not yet been verified.</p>
+              <p class="record-note"><strong>Graph6 correction:</strong> the first exported bytes used row-major ordering, which is not the standard graph6 order. The historical file and receipts remain available for audit, but the browser check and current download now use a corrected standard graph6 file that matches all 42 Lean adjacency rows. The corrected file was independently checked over all 850,668 five-vertex subsets. <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the human correction and verification note</a>.</p>
+              <div class="ramsey-certificate-panel">
+                <p class="coefficient-local-note">This check runs locally in your browser. It fetches the saved graph6 certificate from this site, verifies its pinned SHA-256, decodes the 42-vertex graph, and checks every five-vertex subset in both colors.</p>
+                <button id="ramsey-verify" type="button">Verify the 42-vertex certificate</button>
+                <p id="ramsey-status" class="graph-status" role="status" aria-live="polite">The finite check has not run in this browser yet.</p>
+                <div id="ramsey-result" class="coefficient-result" aria-live="polite"></div>
+              </div>
+              <p>A separate supplied certificate failed an order check: its metadata said 42 vertices but its graph6 bytes decoded to 41. That failed input is preserved and is not used for the passing construction.</p>
+              <div class="record-links">
+                <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the construction and checker note</a>
+                <a href="evidence/finite-graphs/ramsey-r55/exoo42.g6">Download the standard graph6 certificate</a>
+                <a href="evidence/finite-graphs/ramsey-r55/check_exoo42_graph6.py">Open the standalone checker</a>
+                <a href="https://arxiv.org/abs/2212.12630" target="_blank" rel="noopener noreferrer">Read the published construction paper ↗</a>
+                <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1" target="_blank" rel="noopener noreferrer">Open the Lean sources, receipts, and rebuild guide ↗</a>
+                <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">View the pinned FormalConjectures source ↗</a>
+              </div>
+              <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the standard graph6 browser checker, the preserved legacy encoding, and the correction record. The MathCase bundle contains all 29 Lean sources, 27 exact chunk receipts, and the final receipt. Dossier acceptance has not been granted, and the Lean proof has not been independently rebuilt from a clean checkout.</p>
+      </div>
+    </details>
+      <details class="result-detail">
+      <summary>How can a 101-dot arrangement avoid a one-color group of six?</summary>
+      <div class="result-detail-body">
+        <article id="ramsey-r66" aria-label="How can a 101-dot arrangement avoid a one-color group of six?"><div id="ramsey-r66-title">
+        <p><strong>Plain statement:</strong> there is a simple graph on 101 labeled vertices with no clique of six and no independent set of six.</p>
+              <p><strong>Exact target:</strong> <code>∃ G : SimpleGraph (Fin 101), G.CliqueFree 6 ∧ (Gᶜ).CliqueFree 6</code>. Ryan reviewed that the English statement matches this target.</p>
+              <p>The certificate is the Paley graph P(101), with 2,525 edges and degree 50 at every vertex. Two separately implemented local checkers found no six-clique and no independent six-set; both exited 0. This reproduces a known finite lower bound. It is not a Lean proof, a new Ramsey theorem, an exact value for R(6,6), or an independent mathematical review.</p>
+              <div class="ramsey-certificate-panel">
+                <p class="coefficient-local-note">Inspect the saved graph in this browser. The page checks the certificate hash and degree sequence, then displays one vertex’s neighbors. It does not rerun the exhaustive clique searches.</p>
+                <form class="coefficient-form" id="ramsey66-inspect-form">
+                  <label for="ramsey66-vertex">Vertex number (0–100)
+                    <input id="ramsey66-vertex" type="number" min="0" max="100" step="1" value="0">
+                  </label>
+                  <button id="ramsey66-inspect" type="submit">Inspect this vertex</button>
+                </form>
+                <p id="ramsey66-status" class="graph-status" role="status" aria-live="polite">The certificate is not loaded until you inspect a vertex.</p>
+                <div id="ramsey66-result" class="coefficient-result" aria-live="polite"></div>
+              </div>
+              <div class="record-links">
+                <a href="evidence/finite-graphs/ramsey-r66-paley101/README.md">Read the plain-language reproduction guide</a>
+                <a href="frontier.html#ramsey-6-6">See what MathCase checked next and what remains</a>
+                <a href="tools.html#triangle-game">Try the six-dot triangle activity</a>
+                <a href="evidence/finite-graphs/ramsey-r66-paley101/ramsey66_exact_checker.cpp">View the C++ finite checker</a>
+                <a href="evidence/finite-graphs/ramsey-r66-paley101/verify_paley101_independent.py">View the Python cross-checker</a>
+              </div>
+              <p class="file-location"><strong>Evidence files:</strong> <code>evidence/finite-graphs/ramsey-r66-paley101/</code> contains the human guide, graph certificate, both checker sources, two run receipts, and a SHA-256 manifest.</p>
+        </div></article>
+      </div>
+    </details>
+    </section>
+    <section class="result-chapter" id="proof-workbench" aria-labelledby="proof-workbench-title">
+      <p class="home-kicker">Prime numbers · Proof checking</p>
+      <div class="result-reading">
+        <div>
+          <h2 id="proof-workbench-title">What went wrong in the AI’s first proof?</h2>
+          <p>A prime that divides a square also divides the number you squared. For instance, 3 divides 36 and also divides 6. The proof had to work for every prime and every square.</p>
+          <p>The AI supplied “divides the square” when Lean first needed “is prime.” It supplied both facts in the correct order on its second attempt. Lean accepted the repaired proof of this known theorem.</p>
+          <a class="result-next" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Read the two saved attempts <span aria-hidden="true">→</span></a>
         </div>
-      </div>
-    </section>
 
-    <section class="record-section" id="ramsey" aria-labelledby="ramsey-title">
-      <span class="record-label public">Finite certificate + Lean proof · known result</span>
-      <h2 id="ramsey-title">A 42-vertex graph verifies the known lower bound R(5,5) ≥ 43.</h2>
-      <p><strong>Plain statement:</strong> there is a simple graph on 42 vertices with no clique of size five, and no independent set of size five. This witnesses the established lower bound <code>R(5,5) ≥ 43</code>.</p>
-      <p><strong>Exact Lean target:</strong> <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>. Ryan reviewed that the English statement matches this target. Lean checked it in 27 separately compiled chunks plus a final composition; all returned exit 0. The recorded axiom list is <code>[propext, Classical.choice, Quot.sound]</code>, with no <code>sorryAx</code> or <code>native_decide</code> in the proof sources.</p>
-      <p>The graph is a known Exoo construction. MathCase formalized and checked this finite witness; it is not a new construction, does not determine the Ramsey number, and has not received independent review or dossier acceptance. The original Lean run used a warm local cache; a fresh-checkout rebuild has not yet been verified.</p>
-      <p class="record-note"><strong>Graph6 correction:</strong> the first exported bytes used row-major ordering, which is not the standard graph6 order. The historical file and receipts remain available for audit, but the browser check and current download now use a corrected standard graph6 file that matches all 42 Lean adjacency rows. The corrected file was independently checked over all 850,668 five-vertex subsets. <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the human correction and verification note</a>.</p>
-      <div class="ramsey-certificate-panel">
-        <p class="coefficient-local-note">This check runs locally in your browser. It fetches the saved graph6 certificate from this site, verifies its pinned SHA-256, decodes the 42-vertex graph, and checks every five-vertex subset in both colors.</p>
-        <button id="ramsey-verify" type="button">Verify the 42-vertex certificate</button>
-        <p id="ramsey-status" class="graph-status" role="status" aria-live="polite">The finite check has not run in this browser yet.</p>
-        <div id="ramsey-result" class="coefficient-result" aria-live="polite"></div>
       </div>
-      <p>A separate supplied certificate failed an order check: its metadata said 42 vertices but its graph6 bytes decoded to 41. That failed input is preserved and is not used for the passing construction.</p>
-      <div class="record-links">
-        <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the construction and checker note</a>
-        <a href="evidence/finite-graphs/ramsey-r55/exoo42.g6">Download the standard graph6 certificate</a>
-        <a href="evidence/finite-graphs/ramsey-r55/check_exoo42_graph6.py">Open the standalone checker</a>
-        <a href="https://arxiv.org/abs/2212.12630" target="_blank" rel="noopener noreferrer">Read the published construction paper ↗</a>
-        <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1" target="_blank" rel="noopener noreferrer">Open the Lean sources, receipts, and rebuild guide ↗</a>
-        <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">View the pinned FormalConjectures source ↗</a>
+      <details class="result-detail">
+      <summary>See the formal claim and source</summary>
+      <div class="result-detail-body">
+        <p><strong>Plain statement:</strong> if a natural prime p divides n squared, then p divides n.</p>
+              <p class="record-formula">p prime, p ∣ n² ⟹ p ∣ n</p>
+              <p>The first saved candidate was rejected by Lean because it used the divisibility assumption where the theorem required primality. The repaired candidate used both assumptions and its saved Lean check passed.</p>
+              <div class="record-statline"><strong>Known theorem</strong><span>One exact statement checked · no novelty claim</span></div>
+              <p>The useful system evidence is the visible sequence: statement, rejected attempt, checker response, repaired proof, and saved check. A pass applies only to that formal target.</p>
+              <p class="file-location"><strong>Files:</strong> use the saved reader on this site, or find the theorem source in MathCase at <code>proofs/first-rung/MathCasePrimeInfiniteDescent.lean</code>.</p>
+              <a class="text-link" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Walk through the saved case <span aria-hidden="true">→</span></a>
       </div>
-      <p class="file-location"><strong>Files:</strong> <code>evidence/finite-graphs/ramsey-r55/</code> contains the standard graph6 browser checker, the preserved legacy encoding, and the correction record. The MathCase bundle contains all 29 Lean sources, 27 exact chunk receipts, and the final receipt. Dossier acceptance has not been granted, and the Lean proof has not been independently rebuilt from a clean checkout.</p>
-    </section>
+    </details>
 
-    <section class="record-section" id="ramsey-r66" aria-labelledby="ramsey-r66-title">
-      <span class="record-label internal">Finite graph certificate · two local checkers · not Lean-checked</span>
-      <h2 id="ramsey-r66-title">A checked 101-dot graph supports the known lower bound R(6,6) ≥ 102.</h2>
-      <p><strong>Plain statement:</strong> there is a simple graph on 101 labeled vertices with no clique of six and no independent set of six.</p>
-      <p><strong>Exact target:</strong> <code>∃ G : SimpleGraph (Fin 101), G.CliqueFree 6 ∧ (Gᶜ).CliqueFree 6</code>. Ryan reviewed that the English statement matches this target.</p>
-      <p>The certificate is the Paley graph P(101), with 2,525 edges and degree 50 at every vertex. Two separately implemented local checkers found no six-clique and no independent six-set; both exited 0. This reproduces a known finite lower bound. It is not a Lean proof, a new Ramsey theorem, an exact value for R(6,6), or an independent mathematical review.</p>
-      <div class="ramsey-certificate-panel">
-        <p class="coefficient-local-note">Inspect the saved graph in this browser. The page checks the certificate hash and degree sequence, then displays one vertex’s neighbors. It does not rerun the exhaustive clique searches.</p>
-        <form class="coefficient-form" id="ramsey66-inspect-form">
-          <label for="ramsey66-vertex">Vertex number (0–100)
-            <input id="ramsey66-vertex" type="number" min="0" max="100" step="1" value="0">
-          </label>
-          <button id="ramsey66-inspect" type="submit">Inspect this vertex</button>
-        </form>
-        <p id="ramsey66-status" class="graph-status" role="status" aria-live="polite">The certificate is not loaded until you inspect a vertex.</p>
-        <div id="ramsey66-result" class="coefficient-result" aria-live="polite"></div>
-      </div>
-      <div class="record-links">
-        <a href="evidence/finite-graphs/ramsey-r66-paley101/README.md">Read the plain-language reproduction guide</a>
-        <a href="frontier.html#ramsey-6-6">See what MathCase checked next and what remains</a>
-        <a href="tools.html#triangle-game">Try the six-dot triangle activity</a>
-        <a href="evidence/finite-graphs/ramsey-r66-paley101/ramsey66_exact_checker.cpp">View the C++ finite checker</a>
-        <a href="evidence/finite-graphs/ramsey-r66-paley101/verify_paley101_independent.py">View the Python cross-checker</a>
-      </div>
-      <p class="file-location"><strong>Evidence files:</strong> <code>evidence/finite-graphs/ramsey-r66-paley101/</code> contains the human guide, graph certificate, both checker sources, two run receipts, and a SHA-256 manifest.</p>
     </section>
-
-    <section class="record-section graph-section" id="knowledge-graph" aria-labelledby="knowledge-graph-title">
-      <span class="record-label public">Interactive, hash-checked data</span>
-      <h2 id="knowledge-graph-title">Search 4,262 exact Lean statements.</h2>
-      <p>This public slice records each statement, source digest, listed dependencies, axiom report, and receipt row. Search matches the literal theorem name or exact Lean text; it does not infer meaning or theorem reuse.</p>
-      <form id="public-graph-form" class="graph-form">
-        <label for="public-graph-query">Search the statement or theorem name</label>
-        <div class="graph-search-row">
-          <input id="public-graph-query" type="search" placeholder="Example: descent_mod1048576_239" disabled>
-          <button id="public-graph-load" type="button">Verify and load the index</button>
-          <button id="public-graph-submit" type="submit" disabled>Search</button>
+    <section class="result-chapter result-library" aria-labelledby="library-title">
+      <h2 id="library-title">Source records</h2>
+      <details class="result-detail">
+        <summary>Search 4,262 statements in the proof library</summary>
+        <div class="result-detail-body">
+          <article id="knowledge-graph" aria-label="Search 4,262 statements in the proof library"><div id="knowledge-graph-title">
+          <p>This public slice records each statement, source digest, listed dependencies, axiom report, and receipt row. Search matches the literal theorem name or exact Lean text; it does not infer meaning or theorem reuse.</p>
+                <form id="public-graph-form" class="graph-form">
+                  <label for="public-graph-query">Search the statement or theorem name</label>
+                  <div class="graph-search-row">
+                    <input id="public-graph-query" type="search" placeholder="Example: descent_mod1048576_239" disabled>
+                    <button id="public-graph-load" type="button">Verify and load the index</button>
+                    <button id="public-graph-submit" type="submit" disabled>Search</button>
+                  </div>
+                </form>
+                <p id="public-graph-status" class="graph-status" role="status" aria-live="polite">The data stays unloaded until you click “Verify and load the index.” No model or search service is used.</p>
+                <div id="public-graph-results" class="graph-results" aria-live="polite"></div>
+                <details class="record-note">
+                  <summary>What the hash check verifies</summary>
+                  <p>The browser checks the manifest, index, and records file against pinned SHA-256 values before searching. It also checks a displayed statement against its recorded statement digest. The 4,262 rows concern the pinned 2<sup>15</sup>–2<sup>20</sup> shard set; the wording of the individual statements has not been independently reviewed.</p>
+                </details>
+                <a class="text-link" href="evidence/knowledge-graph/README.md">Read the data scope and excluded records <span aria-hidden="true">→</span></a>
+                <p class="file-location"><strong>Files:</strong> <code>evidence/knowledge-graph/public-slice-v1/</code> contains the manifest, index, and records. The full graph contains 4,294 records. Only the linked slice is public.</p>
+          </div></article>
         </div>
-      </form>
-      <p id="public-graph-status" class="graph-status" role="status" aria-live="polite">The data stays unloaded until you click “Verify and load the index.” No model or search service is used.</p>
-      <div id="public-graph-results" class="graph-results" aria-live="polite"></div>
-      <details class="record-note">
-        <summary>What the hash check verifies</summary>
-        <p>The browser checks the manifest, index, and records file against pinned SHA-256 values before searching. It also checks a displayed statement against its recorded statement digest. The 4,262 rows concern the pinned 2<sup>15</sup>–2<sup>20</sup> shard set; individual shard statements did not receive separate human fidelity reviews, and dossier acceptance was not granted.</p>
       </details>
-      <a class="text-link" href="evidence/knowledge-graph/README.md">Read the data scope and excluded records <span aria-hidden="true">→</span></a>
-      <p class="file-location"><strong>Files:</strong> <code>evidence/knowledge-graph/public-slice-v1/</code> contains the manifest, index, and records. The full graph contains 4,294 records. Only the linked slice is public.</p>
+      <details class="result-detail">
+        <summary>How can the historical Collatz proof be rebuilt?</summary>
+        <div class="result-detail-body">
+          <article id="reproduction" aria-label="How can the historical Collatz proof be rebuilt?"><div id="reproduction-title">
+          <p>The old Docker image remains unavailable, but a local rebuild from published sources compiled all 363 modules and matched the recorded results for 4,262 axiom queries. The public receipt documents a short smoke test. An independent full rebuild remains open.</p>
+                <div class="record-links"><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/ORIGINAL_REPLAY.md">Public-source replay instructions</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/runs/smoke/status.json">Published smoke-test receipt</a><a href="evidence/REPRODUCTION_STATUS.md">Earlier inventory and historical environment notes</a></div>
+          </div></article>
+        </div>
+      </details>
+      <details class="result-detail">
+        <summary>Which mathematical and independent checks remain open?</summary>
+        <div class="result-detail-body">
+          <article id="limits" aria-label="Which mathematical and independent checks remain open?"><div id="limits-title">
+          <div class="open-work-grid">
+                  <article><h3>Independent rebuild</h3><p>The 363-module Collatz proof has a local full rebuild from public sources. Independent reproduction of the full build remains open.</p></article>
+                  <article><h3>Human and independent review</h3><p>The wording of the individual Collatz statements has not been independently reviewed. The R(5,5) wording was reviewed and has a Lean proof, but no independent review or fresh-checkout replay.</p></article>
+                  <article><h3>Learning from earlier proofs</h3><p>One matched Collatz comparison tied on every test group. Whether saved examples help on average remains open. <a href="cases.html#transfer-pilot">Read the matched comparison.</a></p></article>
+                  <article><h3>Open problems</h3><p>These results do not solve Collatz or Erdős–Straus. The finite Ramsey construction reproduces a known lower bound; it is not a new result.</p></article>
+                </div>
+                <p class="record-note">The R(5,5) source and receipt bundle is published in MathCase. The result still awaits independent review.</p>
+          </div></article>
+        </div>
+      </details>
+      <details class="result-detail">
+        <summary>Which calculations and build attempts failed?</summary>
+        <div class="result-detail-body">
+          <article id="failures" aria-label="Which calculations and build attempts failed?"><div id="failures-title">
+          <ul>
+                  <li><strong>Largest-tier composition:</strong> two Lean elaboration failures and one 200,000-heartbeat definitional-equality timeout are preserved in the attempt history. A separate earlier all-at-once run stopped after 132 shards with exit 137; Docker reported no OOM. The later chunked proof and two source replays are separate records.</li>
+                  <li><strong>Replay setup:</strong> the root guard rejected one input path before Lean parsed a theorem; stderr SHA-256 is <code>2def9b59c92924c0da78eacb2ff935fb652dede81c4186b7aec689b1c3cff0f6</code>. Phase 1's wrapper exit 124 came from the added watchdog after the inner runner completed.</li>
+                  <li><strong>2<sup>31</sup>-tier verification setup:</strong> two starts failed before reading data because the expected output directory or bound summary was missing. The later corrected public-copy audit passed; details and receipt hash are in its human report.</li>
+                  <li><strong>Finite graph input:</strong> a supplied graph6 certificate declared 42 vertices in YAML but encoded 41. It is excluded from the successful check and retained as a failed input record. The later R(5,5) Lean proof also preserves six earlier nonpassing receipt hashes beside the successful 27-chunk composition.</li>
+                  <li><strong>TruffleHog history scan:</strong> two unverified URI findings remain in historical negative-test fixtures. The current source constructs those inputs with <code>net/url</code>; an exact public exception record documents the fixture hashes and fail-closed monitoring rule. History was not rewritten and the scanner was not weakened. <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/security/trufflehog-history-exception-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the exception and verification record ↗</a>.</li>
+                  <li><strong>Separate preliminary check:</strong> a parent/import preflight stopped before a usable compatible receipt existed; no child proof was started. Restricted theorem material and source were not included here.</li>
+                </ul>
+                <p class="file-location"><strong>Failure files:</strong> <code>evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/attempt-history.md</code>, <code>legacy-aggregate-stop.json</code>, and <code>evidence/finite-graphs/ramsey-r55/graph6-order-mismatch-receipt.json</code>. Only the outcome of the preliminary check is public.</p>
+          </div></article>
+        </div>
+      </details>
     </section>
-
-    <section class="record-section" id="limits" aria-labelledby="limits-title">
-      <span class="record-label planned">Work still open</span>
-      <h2 id="limits-title">What is not established yet.</h2>
-      <div class="open-work-grid">
-        <article><h3>Clean-room Lean replay</h3><p>The pinned image is not anonymously pullable and its complete rebuild context is not published. A stranger cannot yet repeat the flagship replay from a fresh public checkout using only this site.</p></article>
-        <article><h3>Human and independent review</h3><p>Individual Collatz shard statements have not had separate human fidelity reviews, and dossier acceptance has not been granted. Independent mathematical review is open. The R(5,5) wording was reviewed and has a Lean proof, but no independent review or fresh-checkout replay.</p></article>
-        <article><h3>Transfer comparison</h3><p>The model-based library-versus-baseline evaluation is staged, not run. No model calls are running; spend is $0. No benefit claim is made.</p></article>
-        <article><h3>Open problems</h3><p>These results do not solve Collatz or Erdős–Straus. The finite Ramsey construction reproduces a known lower bound; it is not a new result.</p></article>
-      </div>
-      <p class="record-note">The R(5,5) source and receipt bundle is published in MathCase. Its result remains candidate evidence: no dossier acceptance, signature, or independent review.</p>
-    </section>
-
-    <section class="record-section" id="failures" aria-labelledby="failures-title">
-      <span class="record-label internal">Failures preserved</span>
-      <h2 id="failures-title">The record includes what did not work.</h2>
-      <ul>
-        <li><strong>Largest-tier composition:</strong> two Lean elaboration failures and one 200,000-heartbeat definitional-equality timeout are preserved in the attempt history. A separate earlier all-at-once run stopped after 132 shards with exit 137; Docker reported no OOM. The later chunked proof and two source replays are separate records.</li>
-        <li><strong>Replay setup:</strong> the root guard rejected one input path before Lean parsed a theorem; stderr SHA-256 is <code>2def9b59c92924c0da78eacb2ff935fb652dede81c4186b7aec689b1c3cff0f6</code>. Phase 1's wrapper exit 124 came from the added watchdog after the inner runner completed.</li>
-        <li><strong>2<sup>31</sup>-tier verification setup:</strong> two starts failed before reading data because the expected output directory or bound summary was missing. The later corrected public-copy audit passed; details and receipt hash are in its human report.</li>
-        <li><strong>Finite graph input:</strong> a supplied graph6 certificate declared 42 vertices in YAML but encoded 41. It is excluded from the successful check and retained as a failed input record. The later R(5,5) Lean proof also preserves six earlier nonpassing receipt hashes beside the successful 27-chunk composition.</li>
-        <li><strong>TruffleHog history scan:</strong> two unverified URI findings remain in historical negative-test fixtures. The current source constructs those inputs with <code>net/url</code>; an exact public exception record documents the fixture hashes and fail-closed monitoring rule. History was not rewritten and the scanner was not weakened. <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/security/trufflehog-history-exception-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the exception and verification record ↗</a>.</li>
-        <li><strong>Separate preliminary check:</strong> a parent/import preflight stopped before a usable compatible receipt existed; no child proof was started. Restricted theorem material and source were not included here.</li>
-      </ul>
-      <p class="file-location"><strong>Failure files:</strong> <code>evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/attempt-history.md</code>, <code>legacy-aggregate-stop.json</code>, and <code>evidence/finite-graphs/ramsey-r55/graph6-order-mismatch-receipt.json</code>. Only the outcome of the preliminary check is public.</p>
-    </section>
-
-    <section class="record-section" id="reproduction" aria-labelledby="reproduction-title">
-      <span class="record-label planned">Reproduction status</span>
-      <h2 id="reproduction-title">The files are public; the pinned runtime is still a blocker.</h2>
-      <p>The site includes human reports, source trees, hash manifests, receipt projections, exact arithmetic checkers, and selected data. It does not claim that all artifacts can currently be rebuilt from a clean anonymous checkout. The Docker image is not public-pullable, the full image-rebuild context is missing, and the large compiler-output trees for the 2<sup>20</sup> composition are represented by hashes rather than binaries.</p>
-      <a class="text-link" href="evidence/REPRODUCTION_STATUS.md">Read what a stranger can reproduce today <span aria-hidden="true">→</span></a>
-    </section>
-
-    <p class="back-home"><a class="back-top" href="index.html">← Home</a><a class="back-top" href="#top">Back to top ↑</a></p>
   </main>
-
-  <footer class="site-footer shell">
-    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="visitor/">Make a case</a><a href="cases.html">Cases</a><a href="work.html">All work</a><a href="tools.html">Try math</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
-    <span>Human-readable evidence map · no model calls · no browser-side Lean execution</span>
-  </footer>
+  <footer class="home-footer home-width"><span>MathCase · Ryan Gurganious</span><nav aria-label="Footer"><a href="cases.html">Math guide</a><a href="projects/">Portfolio</a><a href="#top">Top ↑</a></nav></footer>
 </body>
 </html>

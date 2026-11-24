@@ -41,7 +41,7 @@
     <section class="map-intro" aria-labelledby="roadmap-title">
       <p class="eyebrow">MathCase research roadmap</p>
       <h1 id="roadmap-title">Where does the math go next?</h1>
-      <p>A coloring can answer a question about one graph. A proof can explain why an answer holds for every graph of a given kind. The open work depends on which kind of answer each question needs.</p>
+      <p>Six dots are enough to force a one-color triangle. With larger graphs and different patterns, a single change can leave a question open. Explore where a proof reaches and where the next question begins.</p>
     </section>
     <section class="roadmap-reading" aria-labelledby="roadmap-overview-title">
       <h2 id="roadmap-overview-title">Ways to explore today</h2>
@@ -67,19 +67,19 @@
         <details>
           <summary><span>Collatz sequences</span><strong>Which starting numbers are guaranteed to drop?</strong></summary>
           <div class="subject-body">
-            <p>Lean checked a drop by step 37 for every start of at least 3 with at most 14 odd inputs in its first 23 shortcut moves. Exactly 7,507,638 of 8,388,608 parity classes meet this condition. A separate computer count combined five conditions. The published check does not prove a combined descent theorem for the five, or that every sequence reaches 1.</p>
+            <p>One rule guarantees a drop within 37 ordinary steps for a particular collection of starting numbers. On odd inputs it uses a shortcut that joins “triple and add 1” with a single halving. A computer count combined this rule with four others. A single proof covering that combination remains open, as does the question of whether every positive start reaches 1.</p>
             <div class="subject-links"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the checked theorem and follow-ups</a><a href="collatz.html#basis-status">Which earlier proofs can be reused?</a></div>
           </div>
         </details>
         <details>
-          <summary><span>Graphs &amp; colorings</span><strong>Could a different coloring work where this one fails?</strong></summary>
+          <summary><span>Graph coloring · Ramsey</span><strong>Could a different coloring work where this one fails?</strong></summary>
           <div class="subject-body">
-            <p>The known 42-dot coloring for R(5,5) has a saved Lean check. Independent review and a build from a fresh checkout remain open. For R(6,6), a computer checked a 101-dot coloring and ruled out adding a dot while keeping every old line fixed. That leaves other arrangements open.</p>
+            <p>A known 42-dot coloring avoids five dots whose lines are all the same color. Lean checked it. Independent review remains open. Another known coloring on 101 dots avoids a one-color group of six. A computer ruled out adding a dot while keeping the old lines fixed. Could a different arrangement work?</p>
             <div class="subject-links"><a href="work.html#ramsey">Inspect the 42-dot check</a><a href="frontier.html#ramsey-6-6">Explore the 102nd-dot question</a><a href="cases.html#subject-colorings">See pattern-avoidance questions for whole numbers</a></div>
           </div>
         </details>
         <details>
-          <summary><span>Fractions</span><strong>Which denominators admit a single formula?</strong></summary>
+          <summary><span>Fractions · Erdős–Straus</span><strong>Which denominators admit a single formula?</strong></summary>
           <div class="subject-body">
             <p>The fraction search recorded 831,860 exact examples in a filtered set. Separate algebraic formulas explain whole families, including numbers of the form 28k + 21. A formula covering every integer n ≥ 2 remains the open Erdős–Straus question.</p>
             <div class="subject-links"><a href="frontier.html#egyptian-28k-21">Read the example and its family</a><a href="work.html#egyptian">Inspect the finite search</a></div>

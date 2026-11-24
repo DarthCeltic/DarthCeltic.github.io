@@ -64,3 +64,5 @@
   .home-footer { flex-wrap: wrap; gap: .7rem; }
 }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.research-notation span { font-size: clamp(1.9rem,3.4vw,2.8rem); }

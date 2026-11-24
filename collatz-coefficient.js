@@ -84,12 +84,14 @@
 
     const card = document.createElement("div");
     card.className = "coefficient-result-card";
-    addText(card, "h3", `Pair ${row.pairNumber.toLocaleString("en-US")} · ${row.composition_module}, source line ${row.source_line}`);
-    addText(card, "p", `Listed coefficients: r = ${formatInteger(row.rBig)}, q = ${formatInteger(row.qBig)}, so r − q = ${formatInteger(row.gapBig)}.`);
-    addText(card, "p", `For k = ${formatInteger(k)}: start = ${formatInteger(start)}; recorded endpoint = ${formatInteger(endpoint)}.`);
-    addText(card, "p", `start − endpoint = ${formatInteger(difference)}; 517,135k + (r − q) = ${formatInteger(coefficientExpression)}. Exact integer identity: checked.` , "coefficient-identity");
-    addText(card, "p", `Across the verified list, every intercept is at least 117. Since k ≥ 0 and 517,135 > 0, this expression stays positive for every natural k in each listed row.`, "coefficient-bound");
-    addText(card, "p", "This arithmetic check does not re-run the 32 Collatz steps; the Lean replay is the evidence for that equality.", "coefficient-limit");
+    addText(card, "h3", `From ${formatInteger(start)} to ${formatInteger(endpoint)}`);
+    addText(card, "p", `For row ${row.pairNumber.toLocaleString("en-US")} with k = ${formatInteger(k)}, the endpoint is ${formatInteger(difference)} below the start. The calculator uses the two formulas in the saved proof.`);
+    const source = document.createElement("details");
+    addText(source, "summary", "Inspect the formula and source row");
+    addText(source, "p", `r = ${formatInteger(row.rBig)}, q = ${formatInteger(row.qBig)}, r − q = ${formatInteger(row.gapBig)}. The gap is 517,135k + (r − q) = ${formatInteger(coefficientExpression)}.`);
+    addText(source, "p", "Every listed gap is at least 117 for k ≥ 0. The Lean proof checks that the sequence reaches the listed endpoint after 32 ordinary steps.");
+    addText(source, "p", `Source: ${row.composition_module}, line ${row.source_line}. Table SHA-256: ${EXPECTED_SHA256}.`);
+    card.append(source);
     result.append(card);
   }
 
@@ -110,7 +112,7 @@
       pairInput.disabled = false;
       kInput.disabled = false;
       run.disabled = false;
-      status.textContent = `Verified ${audit.rows.length.toLocaleString("en-US")} distinct source pairs; slope 517,135; minimum intercept 117; table SHA-256 ${digest}.`;
+      status.textContent = `All ${audit.rows.length.toLocaleString("en-US")} saved pairs passed the file check. Choose a row and a value of k.`;
       calculate(audit.rows);
       form.addEventListener("submit", (event) => {
         event.preventDefault();

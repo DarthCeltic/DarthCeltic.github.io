@@ -6,8 +6,8 @@ window.MathCaseStaticDemo = {
   "cases": [
     {
       "id": "hero-composite-counterexample-r1",
-      "short": "Counterexample",
-      "title": "An overbroad divisor claim",
+      "short": "Try it with 4",
+      "title": "Does 4 divide the number as well?",
       "kind": "Local arithmetic check",
       "math": "4 ∣ n²  ⇒  4 ∣ n",
       "statement": "For every natural number n, if 4 divides n squared, then 4 divides n.",
@@ -27,8 +27,8 @@ window.MathCaseStaticDemo = {
     },
     {
       "id": "hero-prime-divisibility-r1",
-      "short": "Checked lemma",
-      "title": "Prime divisibility in a square",
+      "short": "Follow the prime proof",
+      "title": "What changes when the divisor is prime?",
       "kind": "Saved model attempt + Lean check",
       "math": "p prime ∧ p ∣ n²  ⇒  p ∣ n",
       "statement": "For natural numbers p and n, if p is prime and divides n squared, then p divides n.",
@@ -37,20 +37,20 @@ window.MathCaseStaticDemo = {
       "note": "The proof is checked for the linked formal statement. No independent review of a plain-language explanation is claimed.",
       "steps": [
         {
-          "title": "State the missing condition",
-          "body": "Requiring a prime divisor makes the claim true; primality is sufficient, not necessary. This is a known theorem."
+          "title": "What are we given?",
+          "body": "We know two things about the divisor. It is prime, meaning its only positive factors are 1 and itself and it is greater than 1. It divides the square exactly, leaving no remainder. A proof has to use both facts."
         },
         {
-          "title": "Inspect the first attempt",
-          "body": "Lean rejected the saved S0 candidate with a type-mismatch error."
+          "title": "Why did the first attempt fail?",
+          "body": "Nemotron chose the right rule. To use it, the AI had to show first that the divisor was prime, then that it divided the square. It gave only the second fact. Lean asked for the first one."
         },
         {
-          "title": "Read the repair",
-          "body": "A second saved Nemotron candidate used Nat.Prime.dvd_of_dvd_pow with the primality fact and divisibility hypothesis."
+          "title": "What did the AI fix?",
+          "body": "The question already gave both facts. On its second try, Nemotron supplied them in the order the rule needed. The question stayed the same."
         },
         {
-          "title": "Check the exact proof",
-          "body": "The saved Lean receipt records a kernel pass and an axiom audit pass. Opening this page does not rerun either check."
+          "title": "Why does the rule work?",
+          "body": "A prime dividing a product must divide one of its factors. In a square, both factors are the same number. Lean accepted the corrected proof, and its separate check of the assumptions passed."
         }
       ],
       "proof": "by intro p n hp h; exact Nat.Prime.dvd_of_dvd_pow hp h",

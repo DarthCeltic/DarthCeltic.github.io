@@ -34,32 +34,31 @@
     </nav>
   </div></header>
   <main class="tool-page">
-    <h1>Compare two sets of saved run records.</h1>
-    <p class="tool-lede">Load a comparison plan, then add the files from each side. This page counts only records that match the same frozen plan.</p>
-    <div class="tool-note"><strong>This page does not run anything.</strong> It reads files you choose and summarizes their fields in this browser. It does not call a model or prove that one side is better.</div>
+    <h1>Compare two sets of saved runs</h1>
+    <p class="tool-lede">Did the same problems get different outcomes with and without a library? Open the plan both groups used, then add their saved results. Your files stay in this browser. No model runs here.</p>
     <section class="tool-card">
-      <h2>1. Choose the comparison plan</h2>
+      <h2>Choose a comparison plan</h2>
       <div class="upload-row"><label for="study-file">Comparison plan file</label><input id="study-file" type="file" accept=".json,application/json"></div>
-      <p id="study-status" role="status">No study manifest selected.</p>
+      <p id="study-status" role="status">No plan selected.</p>
       <div id="study-info"></div>
-      <button class="tool-action" type="button" id="download-binding" disabled>Download the plan's fingerprint</button>
+      <p>Trying this for the first time? Download the practice plan with two sample problems, then open it above.</p>
       <button class="tool-action" type="button" id="download-template">Download a practice plan</button>
-      <details class="tool-note"><summary>Technical details about the plan fingerprint</summary><p>Use the downloaded manifest SHA-256 in every new run record. The binding file makes the digest easy to carry forward; it is not a signature and cannot prove when the manifest was frozen. The practice plan uses two elementary identities and is not an evaluation result.</p></details>
+      <details class="record-details"><summary>Use this plan’s fingerprint in a run</summary><button class="tool-action" type="button" id="download-binding" disabled>Download the plan's fingerprint</button><p>Copy the SHA-256 fingerprint into each new run record so the file can be matched to this plan. It identifies the contents, but cannot establish who created the plan or when.</p></details>
     </section>
     <section class="tool-card">
-      <h2>2. Add the saved results</h2>
+      <h2>Add the saved results</h2>
       <div class="upload-row"><label for="run-files">Result files, one per target and side</label><input id="run-files" type="file" accept=".json,application/json" multiple disabled></div>
-      <p id="run-status" role="status">Load a valid study manifest first.</p>
+      <p id="run-status" role="status">Choose a comparison plan first.</p>
       <div id="summary"></div>
       <div id="slots"></div>
-      <div class="upload-row"><button class="tool-action" type="button" id="download-report" disabled>Download bounded report</button><button class="tool-action" type="button" id="clear-study">Clear</button></div>
+      <div class="upload-row"><button class="tool-action" type="button" id="download-report" disabled>Download comparison report</button><button class="tool-action" type="button" id="clear-study">Clear</button></div>
     </section>
     <details class="tool-card">
       <summary>How the comparison score is counted</summary>
       <p>A planned slot is one frozen case in one arm. A slot counts as a reported pass only when exactly one non-conflicting v2 envelope binds the exact frozen manifest SHA-256, study, case, arm, problem, exact statement hash, and a run summary saying solved=true with an attempt reporting PASS plus a proof hash. Older or stale envelopes remain descriptive and never count toward matched scoring. Missing, malformed, duplicate, or conflicting inputs remain visible and do not inflate the denominator.</p>
       <p>This is an accounting rule over user-supplied records. The report labels results as reported fields; a proof hash alone is not a Lean kernel receipt or an authenticated run.</p>
     </details>
-    <p class="tool-footer"><a href="lab.html">Return to descriptive run report</a>. Preserve every original manifest and run envelope beside the exported report.</p>
+    <p class="tool-footer"><a href="lab.html">Make a report from unpaired runs</a>. Keep the plan and original run files alongside your report.</p>
   </main>
 </body>
 </html>

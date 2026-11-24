@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="referrer" content="no-referrer">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>Guided mathematics · MathCase</title>
+  <title>A divisor of a square · MathCase</title>
   <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="workbench.css">
   <link rel="stylesheet" href="tools.css">
@@ -34,44 +34,40 @@
       </details>
     </nav>
   </div></header>
-  <main class="tool-page">
-    <h1>Try a counterexample, then repair the claim.</h1>
-    <p class="tool-lede">Start with 4 and 2. Then add the prime assumption and try a related question yourself. The teacher answer is on a separate readable page.</p>
-    <div class="tool-note"><strong>Start here:</strong> 4 divides 2 squared, but 4 does not divide 2. That one example shows why the unrestricted rule fails.</div>
-    <section class="tool-grid" aria-label="Guided cases">
-      <article class="tool-card">
-        <h2>First, try 4 and 2</h2>
-        <p><strong>What happens:</strong> 4 divides 2 × 2, but 4 does not divide 2.</p>
-        <details><summary>Exact Lean statement</summary><code class="formula">(4 : Nat) ∣ 2 ^ 2 ∧ ¬ (4 : Nat) ∣ 2</code></details>
-        <p><strong>Shows:</strong> the unrestricted implication fails: 4 divides 2², but 4 does not divide 2.</p>
-        <p><strong>Keep separate:</strong> 6 works for the one-square claim because 2 and 3 dividing n² imply 2 and 3 divide n. But 6 fails the later product rule: 6 divides 2 × 3, while it divides neither factor.</p>
-        <a class="tool-action" href="index.html?starter=counterexample">Try this example in your proof</a>
-      </article>
-      <article class="tool-card">
-        <h2>Next, assume the divisor is prime</h2>
-        <p><strong>Plain:</strong> If a prime divides a natural number’s square, it divides that number.</p>
-        <details><summary>Exact Lean statement</summary><code class="formula">∀ (p n : Nat), p.Prime → p ∣ n ^ 2 → p ∣ n</code></details>
-        <p><strong>Shows:</strong> a known elementary theorem, checked by Lean from the Mathlib prime-divisor lemma.</p>
-        <p><strong>Does not show:</strong> that every composite divisor fails, a new result, or a general AI theorem-solving capability.</p>
-        <a class="tool-action" href="index.html?starter=prime">Try the prime example</a>
-      </article>
-      <article class="tool-card">
-        <h2>Then try a related product question</h2>
-        <p><strong>Plain:</strong> If a prime divides a product squared, prove it divides at least one factor.</p>
-        <details><summary>Exact Lean statement</summary><code class="formula">∀ (p a b : Nat), p.Prime → p ∣ (a * b) ^ 2 → p ∣ a ∨ p ∣ b</code></details>
-        <p><strong>Uses:</strong> the prime-divides-square result, followed by the prime-divides-product result.</p>
-        <p><strong>Does not show:</strong> this is a fresh teaching exercise in the workbench, not an evaluated transfer experiment. The teacher explanation is separate.</p>
-        <a class="tool-action" href="index.html?starter=transfer">Try writing the proof</a>
-      </article>
+  <main class="tool-page lesson-page">
+    <h1>If 4 divides <em>n</em>², must it divide <em>n</em>?</h1>
+    <section class="lesson-example" aria-labelledby="lesson-example-heading">
+      <h2 id="lesson-example-heading">Try <em>n</em> = 2</h2>
+      <p>Four goes into 2 × 2 exactly once. Can you split two objects into groups of four with none left over?</p>
+      <details class="lesson-answer"><summary>Check your answer</summary>
+        <p>No. Four divides the square, but it leaves a remainder when you divide 2 by 4. One example is enough to disprove a rule that claims to work every time. That’s a <strong>counterexample</strong>.</p>
+      </details>
+      <div class="lesson-actions">
+        <a class="tool-action" href="index.html?starter=counterexample#case-title">Open this example in your notebook</a>
+        <details><summary>See the statement in Lean</summary><code class="formula">(4 : Nat) ∣ 2 ^ 2 ∧ ¬ (4 : Nat) ∣ 2</code></details>
+      </div>
     </section>
-    <section>
-      <h2>For teachers</h2>
-      <p>Open the worked answer in a readable page, or download its Markdown source. The separate file activity lets a teacher and learner exchange assignment and response files without an account or upload.</p>
-      <a class="tool-action" href="teacher-guide.html">Read the worked teacher answer</a>
-      <a class="tool-action" href="teacher-guide.md" download>Download the teacher answer (.md)</a>
-      <a class="tool-action" href="classroom.html">Use the assignment file activity</a>
+
+    <section class="lesson-followup" aria-labelledby="lesson-prime-heading">
+      <h2 id="lesson-prime-heading">What if the divisor is prime?</h2>
+      <p>If a prime divides a whole number’s square, it divides the number too. For example, 3 divides 36 and also divides 6. The proof in the notebook uses a known theorem about primes to cover every case.</p>
+      <div class="lesson-actions"><a href="index.html?starter=prime#case-title">Read the prime proof</a>
+        <details><summary>See the statement in Lean</summary><code class="formula">∀ (p n : Nat), p.Prime → p ∣ n ^ 2 → p ∣ n</code></details>
+      </div>
     </section>
-    <p class="tool-footer">The workbench stores cases in this browser unless you export them. A visitor-supplied receipt is evidence to inspect, not a MathCase signature. No page here claims a famous open problem is solved.</p>
+
+    <section class="lesson-followup" aria-labelledby="lesson-product-heading">
+      <h2 id="lesson-product-heading">Your turn with two factors</h2>
+      <p>Suppose a prime divides (<em>a</em> × <em>b</em>)². Can you show that it divides at least one of the two factors?</p>
+      <details class="lesson-answer"><summary>Show a hint</summary><p>First apply the square rule to <em>a</em> × <em>b</em>. Then use the fact that a prime dividing a product divides at least one factor.</p></details>
+      <div class="lesson-actions"><a href="index.html?starter=transfer#case-title">Write your proof</a>
+        <details><summary>See the statement in Lean</summary><code class="formula">∀ (p a b : Nat), p.Prime → p ∣ (a * b) ^ 2 → p ∣ a ∨ p ∣ b</code></details>
+      </div>
+    </section>
+
+    <footer class="tool-footer"><h2>For teachers</h2>
+      <p><a href="teacher-guide.html">Read the worked answer</a> for both steps and the example with 6. You can also <a href="teacher-guide.md" download>download the answer (.md)</a> or <a href="classroom.html">make an assignment file</a>.</p>
+    </footer>
   </main>
 </body>
 </html>
