@@ -12,6 +12,8 @@ The embedded editor is still the public `live.lean-lang.org` service. Opening it
 
 The follow-up [`visitor-live-lean-version-disclosure-2026-11-24-r1.json`](visitor-live-lean-version-disclosure-2026-11-24-r1.json) records the separate note that the hosted editor selects its own Lean/Mathlib version. That version may differ from the local receipt check pinned to Lean 4.33.1.
 
+The [`visitor-lean-reconnect-2026-11-24-r1.json`](visitor-lean-reconnect-2026-11-24-r1.json) overlay records an in-page recovery path for the hosted editor's “No connection to Lean” failure. The message explains that the online checker has not checked the proof, and **Reconnect from draft** reloads the current MathCase workbench code without opening a new tab. The user must copy any edits made only inside the hosted editor back into the workbench first. The pinned local check remains a separate route.
+
 
 [`visitor/index.html`](../../../visitor/index.html) moves the public-editor disclosure before the run controls and places the receipt-import button outside the collapsed local-check instructions. The button and file-input IDs stay the same, and the existing click and change listeners remain in [`visitor/workbench.js`](../../../visitor/workbench.js). The source and overlay hashes are recorded in [`visitor-disclosure-receipt-controls-2026-11-22-r1.json`](visitor-disclosure-receipt-controls-2026-11-22-r1.json).
 

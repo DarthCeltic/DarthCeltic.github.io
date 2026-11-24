@@ -1,0 +1,34 @@
+{
+  "schema": "mathcase-pages-visitor-overlay-v1",
+  "overlay_id": "visitor-lean-reconnect-2026-11-24-r1",
+  "site_repository": "DarthCeltic/DarthCeltic.github.io",
+  "site_base_commit": "24885be8c13dd45839cae97356fdaa7b33de9bf1",
+  "source_repository": "DarthCeltic/MathCase",
+  "source_branch": "main",
+  "source_commit": "8e0741b0271cca9e31a0b2c6276fb64396418020",
+  "source_manifest_path": "evidence/visitor-workbench/source-manifest.json",
+  "source_manifest_sha256": "b8a531c3d212f5106644661ec0e56058ed4d7a57e0a9aa1688ce9068293bffb1",
+  "purpose": "Explain hosted Lean connection failures and provide an in-page retry that reloads the current workbench source, with the pinned local check visible as a separate fallback.",
+  "files": [
+    {
+      "path": "visitor/index.html",
+      "pages_base_sha256": "3ffcb36d4faf7789709f1ba0325e95749c012d2ace13ea4b892afafc9dc72f11",
+      "overlay_sha256": "35b652b1b5819b362565934a1c3feb36949729aa3a80f13f827f80b1727eb506",
+      "mathcase_source_sha256": "65be758ea0c767ac405f7b544a07b05e6b12a388ecf028d1059abfd349f30658",
+      "relation_to_mathcase_source": "Pages copy retains its site navigation and local receipt workflow while applying the same hosted-editor recovery controls"
+    },
+    {
+      "path": "visitor/workbench.js",
+      "pages_base_sha256": "310d78794a597f9d389aa744dbf9e4612c9eb74ee17e82d95d6285c833b1ba49",
+      "overlay_sha256": "99ee8d0ae3ee94caf034a2b4f209abbbab798cf434bfec14fcb65e1eb48a6251",
+      "mathcase_source_sha256": "99ee8d0ae3ee94caf034a2b4f209abbbab798cf434bfec14fcb65e1eb48a6251",
+      "relation_to_mathcase_source": "byte-identical"
+    }
+  ],
+  "limits": [
+    "The hosted compiler runs at live.lean-lang.org; MathCase cannot restart or repair its remote worker.",
+    "Reconnect reloads the current workbench source into a new embedded editor. Copy edits made only inside the old hosted editor back into the workbench before retrying.",
+    "The hosted editor follows its own Lean/Mathlib release. It is a convenience check and does not create a MathCase receipt; the pinned local checker remains separate.",
+    "This overlay does not promote an evidence gate or assert a mathematical result."
+  ]
+}
