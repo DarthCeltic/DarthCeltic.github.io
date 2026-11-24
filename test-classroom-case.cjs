@@ -1,7 +1,7 @@
 "use strict";
 
 const assert = require("node:assert/strict");
-const { normalizeTeacherCase, teacherCaseImportError } = require("./visitor/classroom-case.js");
+const { normalizeTeacherCase, teacherCaseImportError, learnerFeedbackMatches } = require("./visitor/classroom-case.js");
 
 const base = {
   id: "example-prime-case",
@@ -27,4 +27,22 @@ assert.throws(() => normalizeTeacherCase({ ...base, schema_version: "mathcase-vi
 assert.match(teacherCaseImportError(new Error("case-fields")), /plain statement or exact Lean target/);
 assert.throws(() => normalizeTeacherCase({ ...base, schema_version: "mathcase-visitor-case-v1", source: "x".repeat(2 * 1024 * 1024 + 1) }), /case-field-too-large/);
 
-console.log("PASS classroom case packets: v1/v2 accepted; incompatible, incomplete, and oversized inputs explained.");
+const submission = {
+  schema_version: "mathcase-class-submission-v1",
+  submission_id: "submission-1",
+  assignment_id: "assignment-1",
+  lean_statement_sha256: "a".repeat(64)
+};
+const review = {
+  schema_version: "mathcase-class-review-v1",
+  submission_id: "submission-1",
+  assignment_id: "assignment-1",
+  lean_statement_sha256: "a".repeat(64),
+  submission_file_sha256: "b".repeat(64)
+};
+assert.equal(learnerFeedbackMatches(submission, review, "b".repeat(64)), true, "matching review opens beside its original submission");
+assert.equal(learnerFeedbackMatches(submission, { ...review, submission_id: "submission-2" }, "b".repeat(64)), false, "review for another submission is rejected");
+assert.equal(learnerFeedbackMatches(submission, review, "c".repeat(64)), false, "changed submission bytes are rejected");
+assert.equal(learnerFeedbackMatches(submission, { ...review, assignment_id: "assignment-2" }, "b".repeat(64)), false, "review for another assignment is rejected");
+
+console.log("PASS classroom case packets: v1/v2 accepted; invalid packets rejected; feedback requires the exact submission and assignment.");

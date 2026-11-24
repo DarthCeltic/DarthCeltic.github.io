@@ -69,6 +69,14 @@
         <label for="review-notes">Teacher feedback</label><textarea id="review-notes" class="statement" rows="5" placeholder="Write feedback. This stays in this browser until exported."></textarea>
         <button class="tool-action" id="make-review" type="button" disabled>Download review JSON</button>
       </article>
+      <article class="tool-card">
+        <h2 id="open-feedback">Open my feedback</h2>
+        <p>Choose the submission file you sent and the review file your teacher returned. MathCase checks that the feedback names this exact submission before showing it beside your work.</p>
+        <div class="upload-row"><label for="learner-submission-file">My original submission JSON</label><input id="learner-submission-file" type="file" accept=".json,application/json"></div>
+        <div class="upload-row"><label for="learner-review-file">Teacher feedback JSON</label><input id="learner-review-file" type="file" accept=".json,application/json"></div>
+        <p id="learner-review-status" role="status">Choose both files to open your feedback.</p>
+        <div id="learner-review-content" aria-live="polite"></div>
+      </article>
     </section>
     <details class="lesson-followup"><summary>About review files and self-hosting</summary>
       <p>A review includes a fingerprint of the learner’s submitted file. It identifies which file received feedback. It does not verify anyone’s identity.</p>

@@ -5,11 +5,16 @@ let teacherCase = null;
 let assignment = null;
 let reviewAssignment = null;
 let reviewSubmission = null;
+let learnerReviewSubmission = null;
+let learnerReview = null;
 let teacherLoadGeneration = 0;
 let learnerLoadGeneration = 0;
 let reviewAssignmentGeneration = 0;
 let reviewSubmissionGeneration = 0;
 let reviewCheckGeneration = 0;
+let learnerReviewSubmissionGeneration = 0;
+let learnerReviewGeneration = 0;
+let learnerReviewCheckGeneration = 0;
 
 function byId(id) { return document.getElementById(id); }
 function setStatus(id, value, error = false) {
@@ -156,6 +161,79 @@ async function maybeEnableReview() {
   setStatus("review-status", "Assignment ID and target hash match. The submitted source remains unexecuted.");
   byId("make-review").disabled = false;
 }
+
+async function showLearnerFeedback() {
+  const generation = ++learnerReviewCheckGeneration;
+  byId("learner-review-content").replaceChildren();
+  if (!learnerReviewSubmission || !learnerReview) {
+    if (learnerReview) setStatus("learner-review-status", "Feedback loaded. Choose your original submission file to check it.");
+    else if (learnerReviewSubmission) setStatus("learner-review-status", "Submission loaded. Choose the teacher feedback file for this exact file.");
+    return;
+  }
+  const selectedSubmission = learnerReviewSubmission;
+  const selectedReview = learnerReview;
+  const review = selectedReview.value;
+  const submission = selectedSubmission.value;
+  if (!MathCaseClassroomCase.learnerFeedbackMatches(submission, review, selectedSubmission.sha256)) {
+    setStatus("learner-review-status", "These files do not match: the feedback was not made for this exact submission. Choose the original file you sent and its returned feedback file.", true);
+    return;
+  }
+  if (generation !== learnerReviewCheckGeneration || selectedSubmission !== learnerReviewSubmission || selectedReview !== learnerReview) return;
+  const panel = byId("learner-review-content");
+  addText(panel, "h3", "Your submitted work");
+  addText(panel, "h4", "What I wrote");
+  addText(panel, "pre", submission.learner_notes || "(no notes)");
+  addText(panel, "h4", "Proof source");
+  addText(panel, "pre", submission.proof_source || "(no proof source)");
+  addText(panel, "h3", "Teacher feedback");
+  addText(panel, "p", review.decision === "reviewed" ? "Reviewed" : "Needs revision");
+  addText(panel, "p", review.teacher_feedback || "Your teacher left no written note.");
+  setStatus("learner-review-status", "Feedback matches the exact submission file you selected.");
+}
+
+byId("learner-submission-file").addEventListener("change", async () => {
+  const generation = ++learnerReviewSubmissionGeneration;
+  learnerReviewSubmission = null;
+  ++learnerReviewCheckGeneration;
+  byId("learner-review-content").replaceChildren();
+  setStatus("learner-review-status", "Reading your original submission…");
+  try {
+    const loaded = await loadObject(byId("learner-submission-file").files[0]);
+    const value = loaded.value;
+    if (value?.schema_version !== "mathcase-class-submission-v1" || !isText(value.submission_id) ||
+        !isText(value.assignment_id) || !isSHA(value.lean_statement_sha256) ||
+        !isText(value.learner_notes) || !isText(value.proof_source)) throw new Error("shape");
+    const sha256 = await digest(loaded.bytes);
+    if (generation !== learnerReviewSubmissionGeneration) return;
+    learnerReviewSubmission = { ...loaded, sha256 };
+    setStatus("learner-review-status", "Submission loaded. Choose the teacher feedback file for this exact file.");
+    await showLearnerFeedback();
+  } catch {
+    if (generation === learnerReviewSubmissionGeneration) setStatus("learner-review-status", "Could not read a valid submission file.", true);
+  } finally { if (generation === learnerReviewSubmissionGeneration) byId("learner-submission-file").value = ""; }
+});
+
+byId("learner-review-file").addEventListener("change", async () => {
+  const generation = ++learnerReviewGeneration;
+  learnerReview = null;
+  ++learnerReviewCheckGeneration;
+  byId("learner-review-content").replaceChildren();
+  setStatus("learner-review-status", "Reading teacher feedback…");
+  try {
+    const loaded = await loadObject(byId("learner-review-file").files[0]);
+    const value = loaded.value;
+    if (value?.schema_version !== "mathcase-class-review-v1" || !isText(value.review_id) ||
+        !isText(value.assignment_id) || !isText(value.submission_id) || !isSHA(value.submission_file_sha256) ||
+        !isSHA(value.lean_statement_sha256) || !["reviewed", "needs_revision"].includes(value.decision) ||
+        !isText(value.teacher_feedback)) throw new Error("shape");
+    if (generation !== learnerReviewGeneration) return;
+    learnerReview = loaded;
+    setStatus("learner-review-status", "Feedback loaded. Checking which submission it belongs to…");
+    await showLearnerFeedback();
+  } catch {
+    if (generation === learnerReviewGeneration) setStatus("learner-review-status", "Could not read a valid teacher feedback file.", true);
+  } finally { if (generation === learnerReviewGeneration) byId("learner-review-file").value = ""; }
+});
 
 byId("review-assignment").addEventListener("change", async () => {
   const generation = ++reviewAssignmentGeneration;

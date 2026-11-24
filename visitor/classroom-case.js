@@ -31,7 +31,17 @@
     return "Could not read this case file. Choose a MathCase “Save the whole claim” JSON export.";
   }
 
-  const api = { normalizeTeacherCase, teacherCaseImportError };
+  function learnerFeedbackMatches(submission, review, submissionSha256) {
+    return !!submission && !!review &&
+      review.schema_version === "mathcase-class-review-v1" &&
+      submission.schema_version === "mathcase-class-submission-v1" &&
+      review.submission_id === submission.submission_id &&
+      review.assignment_id === submission.assignment_id &&
+      review.lean_statement_sha256 === submission.lean_statement_sha256 &&
+      review.submission_file_sha256 === submissionSha256;
+  }
+
+  const api = { normalizeTeacherCase, teacherCaseImportError, learnerFeedbackMatches };
   root.MathCaseClassroomCase = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 })(typeof window === "undefined" ? globalThis : window);
