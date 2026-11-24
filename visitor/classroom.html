@@ -7,7 +7,7 @@
   <title>Assignment files · MathCase</title>
   <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="workbench.css"><link rel="stylesheet" href="tools.css">
-  <script defer src="classroom.js"></script>
+  <script defer src="classroom-case.js"></script><script defer src="classroom.js"></script>
 </head>
 <body>
   <header class="mast"><div class="mast-inner">
@@ -40,8 +40,8 @@
     <section class="tool-grid">
       <article class="tool-card">
         <h2 id="make">Make an assignment</h2>
-        <p>Choose “Save the whole claim” in <a href="index.html">your notebook</a>, then open that file here. The assignment includes your prompt and the exact statement. Your own proof stays out of the assignment.</p>
-        <div class="upload-row"><label for="teacher-case">Case packet</label><input id="teacher-case" type="file" accept=".json,application/json"></div>
+        <p>Choose “Save the whole claim” in <a href="index.html">your notebook</a>, then open that file here. Both older v1 and current v2 exports work. The assignment carries your prompt and exact target with its hash; the teacher's proof and receipt stay out.</p>
+        <div class="upload-row"><label for="teacher-case">Saved case JSON (v1 or v2)</label><input id="teacher-case" type="file" accept=".json,application/json"></div>
         <label for="assignment-prompt">Learner prompt</label>
         <textarea id="assignment-prompt" class="statement" rows="5">Review the plain statement against the exact Lean proposition. Then write a proof attempt and explain your main step.</textarea>
         <p id="teacher-case-status" role="status">No case loaded.</p>

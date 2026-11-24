@@ -31,7 +31,8 @@ async function digest(bytes) {
   return Array.from(result, (value) => value.toString(16).padStart(2, "0")).join("");
 }
 async function loadObject(file) {
-  if (!file || file.size > maxBytes) throw new Error("size");
+  if (!file) throw new Error("missing-file");
+  if (file.size > maxBytes) throw new Error("file-too-large");
   const bytes = await file.arrayBuffer();
   const raw = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
   return { value: JSON.parse(raw), bytes };
@@ -53,15 +54,13 @@ byId("teacher-case").addEventListener("change", async () => {
   setStatus("teacher-case-status", "Reading case packet…");
   try {
     const { value } = await loadObject(byId("teacher-case").files[0]);
-    if (value?.schema_version !== "mathcase-visitor-case-v1" ||
-        !isText(value.title) || !isText(value.statement) || !isText(value.formal_target) ||
-        !value.formal_target.trim() || !isText(value.source)) throw new Error("shape");
+    const normalized = MathCaseClassroomCase.normalizeTeacherCase(value);
     if (generation !== teacherLoadGeneration) return;
-    teacherCase = value;
+    teacherCase = normalized;
     byId("make-assignment").disabled = false;
-    setStatus("teacher-case-status", `Loaded ${value.title}; exact target is available for a bound assignment.`);
-  } catch {
-    if (generation === teacherLoadGeneration) setStatus("teacher-case-status", "Could not load a MathCase full-case JSON packet under 4 MiB.", true);
+    setStatus("teacher-case-status", `Loaded ${normalized.title} (${normalized.schema_version}); exact target is ready for a bound assignment.`);
+  } catch (error) {
+    if (generation === teacherLoadGeneration) setStatus("teacher-case-status", MathCaseClassroomCase.teacherCaseImportError(error), true);
   } finally { if (generation === teacherLoadGeneration) byId("teacher-case").value = ""; }
 });
 
