@@ -34,6 +34,7 @@
       <details class="tool-nav-group">
         <summary>More</summary>
         <div class="tool-nav-links">
+          <a href="../work.html">All results and limits</a>
           <a href="model-workflow.html">Saved proof attempts</a>
           <a href="lab.html">Run reports</a>
           <a href="study-lab.html">Compare saved runs</a>
@@ -46,10 +47,29 @@
   <noscript><p>This workbench needs JavaScript to edit and save cases in your browser.</p></noscript>
   <main class="desk">
     <section class="desk-welcome" aria-labelledby="desk-welcome-title">
-      <p class="eyebrow">Start with a worked example or write your own</p>
-      <h1 id="desk-welcome-title">Put the claim in ordinary words first.</h1>
-      <p>Try the <a href="lesson.html">short lesson</a>, then edit the statement and proof here. The exact Lean statement and code are available below when you need them.</p>
-      <p><a class="welcome-action" href="lesson.html">Start with the 4 and 2 example</a> <a href="teacher-guide.html">For teachers: read the worked answer</a></p>
+      <p class="eyebrow">Start with a worked example, then choose your next step</p>
+      <h1 id="desk-welcome-title">Write the claim in your words. Check the exact target in Lean.</h1>
+      <p>We begin with 4 and 2: four divides 2 × 2, but four does not divide 2. That example shows why the rule needs an assumption.</p>
+      <div class="guide-level-row">
+        <label for="guide-level">Choose directions for your experience</label>
+        <select id="guide-level">
+          <option value="new">New to proofs</option>
+          <option value="math">Comfortable with math, new to Lean</option>
+          <option value="lean">Already use Lean</option>
+        </select>
+      </div>
+      <div class="guide-copy" aria-live="polite">
+        <p data-guide-level="new">Start with the example. Then write the claim in plain words. Open the technical section only when you are ready to enter Lean’s exact version.</p>
+        <p data-guide-level="math" hidden>Write the informal statement, its exact proposition, and the name of the Lean theorem that should prove it. The check compares the proposition to that theorem.</p>
+        <p data-guide-level="lean" hidden>The local checker appends a generated theorem whose type is the exact target, proves it with your named declaration, and prints its axiom dependencies.</p>
+      </div>
+      <ol class="walkthrough-steps" aria-live="polite">
+        <li><strong><span data-guide-level="new">1. Try the 4 and 2 example.</span><span data-guide-level="math" hidden>1. State the claim and assumptions.</span><span data-guide-level="lean" hidden>1. Bind the claim to an exact proposition.</span></strong><span data-guide-level="new">Four divides 2 × 2, but it does not divide 2.</span><span data-guide-level="math" hidden>Write the sentence you want proved before opening the technical fields.</span><span data-guide-level="lean" hidden>Record the proposition separately from the theorem that proves it.</span></li>
+        <li><strong><span data-guide-level="new">2. Put the idea in your words.</span><span data-guide-level="math" hidden>2. Choose the Lean target and theorem name.</span><span data-guide-level="lean" hidden>2. Use a named declaration as the proof.</span></strong><span data-guide-level="new">Say what rule the example challenges.</span><span data-guide-level="math" hidden>Open the technical details when you are ready to enter both exact names.</span><span data-guide-level="lean" hidden>The checker generates a wrapper theorem with the target’s exact type.</span></li>
+        <li><strong><span data-guide-level="new">3. See what the check can tell you.</span><span data-guide-level="math" hidden>3. Run Lean and inspect the receipt.</span><span data-guide-level="lean" hidden>3. Review the result and axiom list.</span></strong><span data-guide-level="new">A Lean check verifies the formal statement, not whether it says what you meant.</span><span data-guide-level="math" hidden>The local receipt binds the claim, target, source, and reported axioms.</span><span data-guide-level="lean" hidden>Compare every bound hash; no hash replaces a human meaning review.</span></li>
+      </ol>
+      <p class="welcome-actions"><a class="welcome-action" href="?starter=counterexample#case-title">Jump to the 4 and 2 example</a> <a href="lesson.html">Follow the short lesson</a> <a href="teacher-guide.html">For teachers: read the worked answer</a></p>
+      <p class="guide-boundary">A matching hash proves the saved words have not changed; it does not prove that the English sentence means the Lean proposition. A person still checks that connection.</p>
     </section>
     <aside class="library" aria-labelledby="library-heading">
       <div class="library-top">
@@ -70,12 +90,14 @@
         <label for="statement">What are you trying to prove?</label>
         <textarea class="statement" id="statement" rows="2" placeholder="State your claim, including any assumptions."></textarea>
         <details class="technical-target">
-          <summary>Exact Lean statement (technical)</summary>
-          <label for="formal-target">The exact proposition Lean must prove</label>
-          <textarea class="statement formal-target" id="formal-target" rows="3" spellcheck="false" placeholder="Enter the exact Lean proposition here."></textarea>
+          <summary>Exact Lean proposition and theorem name</summary>
+          <label for="formal-target">The precise proposition Lean should check</label>
+          <textarea class="statement formal-target" id="formal-target" rows="3" spellcheck="false" placeholder="Paste the exact Lean proposition. Keep it separate from the proof source."></textarea>
+          <label for="theorem-name">The declaration in your source that should prove it</label>
+          <input class="theorem-name" id="theorem-name" type="text" autocomplete="off" spellcheck="false" placeholder="example: every_nat_has_larger">
+          <p class="target-help">The checker can test that this theorem proves this proposition. It cannot judge whether the proposition says the same thing as your plain-language claim.</p>
+          <p class="target-binding">Exact proposition SHA-256 · <code id="target-hash">Not set</code></p>
         </details>
-        <p class="target-help">Lean checks the source you run. This exact proposition is the required target; the theorem declaration in your source must prove it.</p>
-        <p class="target-binding">Exact statement SHA-256 · <code id="target-hash">Not set</code></p>
       </div>
       <section class="source" aria-labelledby="source-heading">
         <div class="source-head">
@@ -99,31 +121,32 @@
         </details>
       </section>
       <section class="checking" aria-labelledby="checking-heading">
-        <p><strong>Before checking:</strong> this sends the proof code to the public Lean editor at <a href="https://live.lean-lang.org/" target="_blank" rel="noreferrer">live.lean-lang.org</a>. It checks the code you send, but does not compare it with the ordinary-language claim or create a MathCase receipt.</p>
         <div class="check-row">
           <div>
             <h2 id="checking-heading">Check the proof</h2>
+            <p id="check-scope" aria-live="polite">Add the exact proposition and its declaration name to check that the theorem proves the target.</p>
+            <p class="check-disclosure">Before running: review the Lean code. It is code sent to the public <a href="https://live.lean-lang.org/" target="_blank" rel="noreferrer">Lean editor</a>, along with the generated target check when available. The editor shows compiler output; it does not create a MathCase receipt.</p>
           </div>
           <div class="run-actions">
-            <button id="run-lean" type="button" class="primary" aria-expanded="false" aria-controls="live-panel">Open the Lean checker</button>
-            <button id="web-editor" type="button" class="text-action">Open checker in a new tab</button>
+            <button id="run-lean" type="button" class="primary" aria-expanded="false" aria-controls="live-panel">Open Lean editor below</button>
+            <details class="editor-popout"><summary>Prefer a separate window?</summary><button id="web-editor" type="button" class="text-action">Open editor in a new tab <span aria-hidden="true">↗</span></button></details>
           </div>
         </div>
-        <p>Already checked the code on your own computer? Load its record here and compare the source digest.</p>
-        <button id="import-receipt" class="secondary" type="button">Load a check record</button>
-        <input type="file" accept=".json,application/json" id="receipt-file" hidden>
         <section id="live-panel" class="live-panel" aria-label="Live Lean editor" hidden>
           <div class="live-head">
-            <p>Copy any edits you make in the live editor back into your MathCase source to save them.</p>
+            <p>The editor opens here. Press its Run control to check the code. Copy any edits back into this workbench to save them.</p>
             <button id="close-lean" type="button" class="secondary">Close editor</button>
           </div>
           <div id="live-frame"></div>
         </section>
         <details id="local-check">
-          <summary>Check in Codespaces or locally</summary>
-          <p>Download the .lean file. In a local checkout, place it in the repository root. In a <a href="https://codespaces.new/DarthCeltic/MathCase?quickstart=1" target="_blank" rel="noopener noreferrer">MathCase Codespace <span aria-hidden="true">↗</span></a>, drag it into the repository root in Explorer. Open a terminal there and run the checker on your trusted source.</p>
+          <summary>Check locally and save a receipt</summary>
+          <p>Choose <strong>Save the whole claim</strong> to download a packet with the plain claim, exact proposition, theorem name, and Lean source. Place it in the MathCase checkout and run the command below. The starter uses Lean Core. For sources importing Mathlib, use an already prepared Lean 4.33.1 project and add <code>--lake-project PATH</code>; this command does not fetch packages.</p>
+          <p>A <a href="https://codespaces.new/DarthCeltic/MathCase?quickstart=1" target="_blank" rel="noopener noreferrer">MathCase Codespace</a> can install the pinned Lean Core toolchain; Mathlib is not included by default.</p>
           <pre><code id="check-command"></code></pre>
-          <p>Import the resulting JSON to compare its source digest with this draft.</p>
+          <p>Load the receipt to compare its claim, proposition, theorem name, and source with this browser draft. It is visitor evidence, not a MathCase signature.</p>
+          <button id="import-receipt" class="secondary" type="button">Load checker receipt</button>
+          <input type="file" accept=".json,application/json" id="receipt-file" hidden>
         </details>
         <div class="receipt" id="receipt-panel" hidden>
           <h3>Your check record</h3>
@@ -135,8 +158,16 @@
           <details>
             <summary>Source digests</summary>
             <dl>
-              <dt>Receipt SHA-256</dt><dd id="receipt-hash"></dd>
+              <dt>Imported receipt file SHA-256</dt><dd id="receipt-hash"></dd>
+              <dt>Lean exit code</dt><dd id="receipt-exit-code"></dd>
+              <dt>Named Lean theorem</dt><dd id="receipt-theorem"></dd>
+              <dt>Reported axioms</dt><dd id="receipt-axioms"></dd>
+              <dt>Generated check input SHA-256</dt><dd id="generated-input-hash"></dd>
+              <dt>Lean stdout SHA-256</dt><dd id="stdout-hash"></dd>
+              <dt>Lean stderr SHA-256</dt><dd id="stderr-hash"></dd>
               <dt>Current source SHA-256</dt><dd id="source-hash"></dd>
+              <dt>Current exact proposition SHA-256</dt><dd id="target-hash-current"></dd>
+              <dt>Current plain claim SHA-256</dt><dd id="statement-hash-current"></dd>
             </dl>
           </details>
         </div>

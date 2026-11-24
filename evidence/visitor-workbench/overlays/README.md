@@ -6,6 +6,11 @@ The hosted Pages copy is not byte-for-byte identical to that upstream directory.
 
 ## Added in this Pages update
 
+The [`visitor-guided-target-bound-workbench-2026-11-23-r1.json`](visitor-guided-target-bound-workbench-2026-11-23-r1.json) overlay records the Nov 23 human-guided workbench update. It starts from the 4-and-2 counterexample, lets visitors choose beginner, math, or Lean directions, makes the embedded Lean editor the primary action, and keeps a separate-window option available only on request. The local case checker binds the plain claim, exact Lean target, named declaration, proof source, compiler output, and reported axioms in a receipt.
+
+The embedded editor is still the public `live.lean-lang.org` service. Opening it sends the displayed Lean code and generated exact-target check to that service; it does not create a MathCase receipt. The local checker is a separate path. A person must still review whether the plain-language claim means the Lean proposition. The overlay record pins the Pages baseline, MathCase source commit, and hashes for the three served files. The original source manifest and earlier overlay records remain unchanged.
+
+
 [`visitor/index.html`](../../../visitor/index.html) moves the public-editor disclosure before the run controls and places the receipt-import button outside the collapsed local-check instructions. The button and file-input IDs stay the same, and the existing click and change listeners remain in [`visitor/workbench.js`](../../../visitor/workbench.js). The source and overlay hashes are recorded in [`visitor-disclosure-receipt-controls-2026-11-22-r1.json`](visitor-disclosure-receipt-controls-2026-11-22-r1.json).
 
 The disclosure says the optional web-editor action sends Lean source to `live.lean-lang.org`, does not check the workbench's target proposition, and does not create a MathCase receipt. Imported receipts remain visitor-supplied compiler evidence.
