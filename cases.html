@@ -3,60 +3,114 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="MathCase public case catalog: saved proof attempts, exact local calculations, and reproducible Lean checks with honest limits.">
+  <meta name="description" content="Explore MathCase by subject. Each question links to a hands-on activity, a worked explanation or a saved check and shows what is still open.">
   <meta name="theme-color" content="#0b1823">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self' https://raw.githubusercontent.com; object-src 'none'; base-uri 'none'; form-action 'none'">
   <link rel="canonical" href="https://darthceltic.github.io/cases.html">
-  <title>MathCase — Public case index</title>
+  <title>MathCase | Mathematics by subject</title>
   <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="home.css">
   <link rel="stylesheet" href="case-index.css">
   <script defer src="riemann-reference.js"></script>
 </head>
 <body>
-  <header class="site-header shell">
-    <a class="brand" href="index.html" aria-label="MathCase home">
-      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
-      <span>MathCase<small>Public case index</small></span>
-    </a>
+  <a class="home-skip" href="#top">Skip to the guide</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
     <nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="tools.html">Try math</a>
-      <a class="current" aria-current="page" href="cases.html">Examples</a>
-      <a href="work.html">Results</a>
-      <a href="visitor/">Your proof</a>
-      <a href="visitor/teacher-guide.html">For teachers</a>
-      <details class="nav-more">
+      <a href="tools.html">Activities</a>
+      <a aria-current="page" href="cases.html">Math guide</a>
+      <details class="home-menu">
         <summary>More</summary>
-        <div class="nav-more-links">
+        <div>
+          <a href="work.html">Research results</a>
+          <a href="visitor/">Your proof</a>
+          <a href="visitor/teacher-guide.html">For teachers</a>
           <a href="frontier.html">Frontier math</a>
-          <a href="collatz.html">Collatz result</a>
-          <a href="roadmap.html">Research plan</a>
           <a href="timeline.html">Timeline</a>
-          <a href="replay.html">Replay records</a>
-          <a href="projects/">Projects</a>
-          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+          <a href="roadmap.html">Open questions</a>
+          <a href="replay.html">Replay explorer</a>
+          <a href="index.html#hero-title">Judge’s guide</a>
+          <a href="projects/">About Ryan</a>
         </div>
       </details>
     </nav>
   </header>
   <main class="shell case-index" id="top">
-    <section class="archive-intro" aria-labelledby="case-index-title">
-      <p class="eyebrow">Questions to try · examples to inspect</p>
-      <h1 id="case-index-title">Pick a claim, a number, or a graph. See what the check says.</h1>
-      <p>Start with a browser activity, then open a saved proof or result if you want the detailed record. Nothing on this page starts an AI call.</p>
-      <div class="archive-intro-actions">
-        <a class="button button-primary" href="tools.html#collatz-tool">Try 239</a>
-        <a class="button button-secondary" href="tools.html#triangle-game">Color a graph</a>
-        <a class="button button-secondary" href="tools.html#fraction-identity">Check 4/21</a>
-        <a class="button button-secondary" href="frontier.html">See six research questions</a>
-      </div>
+    <section class="map-intro" aria-labelledby="case-index-title">
+      <p class="eyebrow">MathCase subject guide</p>
+      <h1 id="case-index-title">What kind of math would you like to try?</h1>
+      <p>Open a subject to find a question, a way to understand it, and the result someone actually checked.</p>
     </section>
+    <section class="subject-map" id="subjects" aria-label="Questions and explanations by subject">
+      <details>
+        <summary><span>Number theory</span><strong>When a prime divides a square, what else must it divide?</strong></summary>
+        <div class="subject-body" id="subject-primes">
+          <p>Start with a small number, then follow a worked lesson about why the divisor matters. Lean accepted a corrected proof for every prime divisor. The example with 4 and 2 is a separate arithmetic counterexample.</p>
+          <details class="level-reader">
+            <summary id="level-reader-title">Read the same proof at five levels</summary>
+            <p id="five-levels">These explanations were written for this page. Each explains the same statement. Lean checked the saved formal proof. The five explanations have not had independent teaching review.</p>
+            <details><summary>High school · Think of a square as a product</summary><p>A square is a number times itself. A prime that divides a product must divide at least one of its factors. In a square the two factors are the same number, so it must divide that number. For example, 5 divides 100 = 10 × 10, and it divides 10.</p></details>
+            <details><summary>Associate · Use the prime product rule</summary><p>Write n² as n × n. Euclid’s lemma says that if a prime p divides a product, then p divides its first factor or its second factor. Either conclusion here is p ∣ n.</p></details>
+            <details><summary>Bachelor’s · Look at the remainder</summary><p>Reduce n modulo p. If its remainder were nonzero, it would have a multiplicative inverse because p is prime. Its square could not be zero, since multiplying by the inverse twice would give 1 = 0 modulo p. So n has remainder zero.</p></details>
+            <details><summary>Master’s · Recognize a prime ideal</summary><p>In the integers, the ideal (p) of multiples of a prime p is a prime ideal. Since n · n belongs to (p), one of its factors belongs to (p). Both factors are n, which gives p ∣ n.</p></details>
+            <details><summary>Doctorate · Reframe it in the quotient</summary><p>The image of n in ℤ/(p) has square zero. This quotient is a field and hence reduced, so the image of n is zero. The square argument uses only the absence of nonzero square-zero elements in the quotient.</p></details>
+          </details>
+          <div class="subject-links"><a href="visitor/lesson.html">Work through the example</a><a href="reader.html?scope=public#case/hero-prime-divisibility-r1">Read the AI mistake and the repair</a><a href="#sqrt2-child">See the lemma used in a proof about √2</a></div>
+        </div>
+      </details>
+      <details>
+        <summary><span>Graph theory</span><strong>Can you avoid a triangle whose lines are all one color?</strong></summary>
+        <div class="subject-body" id="subject-graphs">
+          <p>Try six dots and two colors. The board checks the lines you chose. A short written proof explains why every such coloring contains a triangle. On larger graphs, specific checked colorings give lower bounds for the Ramsey numbers.</p>
+          <div class="subject-links"><a href="tools.html#triangle-game">Play and read the hand proof</a><a href="#ramsey">See the 42-dot Lean result</a><a href="#ramsey66">Inspect the 101-dot computer check</a><a href="frontier.html#ramsey-3-3-3-3">Try the four-color question</a></div>
+        </div>
+      </details>
+      <details>
+        <summary><span>Integer sequences · Collatz</span><strong>How soon can a sequence fall below its starting number?</strong></summary>
+        <div class="subject-body" id="subject-collatz">
+          <p>Follow one number by halving it when even or tripling it and adding 1 when odd. A separate Lean proof guarantees a drop within 37 ordinary steps for starts of at least 3 meeting a precise 23-step condition. Whether every positive start eventually reaches 1 remains open.</p>
+          <div class="subject-links"><a href="tools.html#collatz-tool">Walk through 239</a><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the 23-step rule in words</a><a href="#collatz-parity-envelope-23-14">Inspect the formal check</a></div>
+        </div>
+      </details>
+      <details>
+        <summary><span>Fractions &amp; algebra</span><strong>When can 4/n be split into three fractions with 1 on top?</strong></summary>
+        <div class="subject-body" id="subject-fractions">
+          <p>Try three denominators for 4/21 and check the sum exactly. The formula explanation extends examples to whole families, including numbers of the form 28k + 21. The finite search records more examples. The Erdős–Straus conjecture for all integers n ≥ 2 remains open.</p>
+          <div class="subject-links"><a href="tools.html#fraction-identity">Try the fraction puzzle</a><a href="frontier.html#egyptian-28k-21">Read two identities and their Lean source</a><a href="work.html#shift7-identity">Follow an algebraic derivation</a><a href="#erdos-straus">See the search record</a></div>
+        </div>
+      </details>
+      <details>
+        <summary><span>Additive combinatorics</span><strong>Can coloring whole numbers hide a pattern?</strong></summary>
+        <div class="subject-body" id="subject-colorings">
+          <p>Look for equally spaced numbers of one color, or a same-color sum such as 2 + 3 = 5. The worked research notes explain which finite colorings avoided a pattern and where extensions failed. A failed extension of one coloring leaves other starting colorings open.</p>
+          <div class="subject-links"><a href="frontier.html#vdw-2-7">Seven equally spaced numbers</a><a href="frontier.html#vdw-5-3">Three equally spaced numbers</a><a href="frontier.html#ws-5">A same-color sum</a></div>
+        </div>
+      </details>
+      <details>
+        <summary><span>Logic &amp; discrete structures</span><strong>What does it mean to belong to a two-item list?</strong></summary>
+        <div class="subject-body" id="subject-lists">
+          <p>A value belongs to [b, c] exactly when it equals b or equals c. For example, 5 belongs to [2, 5] because it equals the second entry. The public prototype identifies five saved draft explanations of this known theorem, from high school through doctorate. None has an accepted independent teaching review.</p>
+          <div class="subject-links"><a href="https://github.com/DarthCeltic/MathCase/blob/46c502ae90554e646265d39a6a52dd6060c4779c/ui/prototype/index.html#L888-L897">Inspect the prototype source and draft status</a></div>
+        </div>
+      </details>
+      <details>
+        <summary><span>Analytic number theory</span><strong>Which source files describe the Riemann Hypothesis?</strong></summary>
+        <div class="subject-body" id="subject-analysis">
+          <p>Read the statement about the zeros of the zeta function and follow the links to the upstream authors. MathCase verifies the identities of four reference files. The proof and its mathematical verification belong to the upstream project.</p>
+          <div class="subject-links"><a href="#riemann-source-audit">See the statement, source checker and attribution</a></div>
+        </div>
+      </details>
+    </section>
+    <p class="map-next"><a href="roadmap.html">What’s still open, and which subjects could come next? →</a></p>
+    <details class="map-records" id="full-records">
+      <summary>Browse the full case records and replay instructions</summary>
     <details class="case-card-page local-launcher" id="local-launcher">
       <summary>For people rerunning checks from a MathCase clone</summary>
       <div class="local-launcher-content">
       <h2 id="local-launcher-title">Re-run saved checks on your computer</h2>
-      <p>This optional command-line route lists eleven saved checks. Choose one to run its documented calculation or Lean check; each run writes fresh logs and receipts in a new folder. No model is called.</p>
+      <p>The command-line launcher lists the available saved checks. Choose one to run its documented calculation or Lean check. Each run writes fresh logs and receipts in a new folder. No model is called.</p>
       <pre>python scripts/run_public_case.py list
 python scripts/run_public_case.py collatz
 python scripts/run_public_case.py collatz-at-most-twelve
@@ -210,6 +264,7 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
       </article>
     </div>
     <p class="record-note"><strong>How to read these labels:</strong> “saved” means an earlier result is displayed; “local calculation” runs bounded arithmetic in your browser; “Lean replay” compiles source locally when you run the command. The public site does not run arbitrary Lean in the browser. No model calls or external inference API calls are triggered by this catalog.</p>
+    </details>
     <p class="back-home"><a class="back-top" href="index.html">← Home</a><a class="back-top" href="work.html">All work →</a><a class="back-top" href="#top">Back to top ↑</a></p>
   </main>
   <footer class="site-footer shell">

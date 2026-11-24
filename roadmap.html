@@ -3,157 +3,88 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="MathCase's public research roadmap: reproducibility, independent review, finite structures, exact identity work, and measured transfer.">
+  <meta name="description" content="Explore the open questions behind the MathCase subject guide, the explanations available now, and what broader coverage would require.">
   <meta name="theme-color" content="#0b1823">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>MathCase — Research roadmap</title>
+  <title>MathCase | Open questions and future subjects</title>
   <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="judging.css">
   <link rel="stylesheet" href="research.css">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="case-index.css">
 </head>
 <body>
-  <header class="site-header shell">
-    <a class="brand" href="index.html" aria-label="MathCase home">
-      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
-      <span>MathCase<small>Research roadmap</small></span>
-    </a>
+  <a class="home-skip" href="#top">Skip to the guide</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
     <nav aria-label="Main navigation">
-      <a href="index.html">Home</a>
-      <a href="tools.html">Try math</a>
-      <a href="cases.html">Examples</a>
-      <a href="work.html">Results</a>
-      <a href="visitor/">Your proof</a>
-      <a href="visitor/teacher-guide.html">For teachers</a>
-      <details class="nav-more">
-        <summary class="current">More</summary>
-        <div class="nav-more-links">
+      <a href="tools.html">Activities</a>
+      <a href="cases.html">Math guide</a>
+      <details class="home-menu">
+        <summary>More</summary>
+        <div>
+          <a href="work.html">Research results</a>
+          <a href="visitor/">Your proof</a>
+          <a href="visitor/teacher-guide.html">For teachers</a>
           <a href="frontier.html">Frontier math</a>
-          <a href="collatz.html">Collatz result</a>
-          <a class="current" aria-current="page" href="roadmap.html">Research plan</a>
           <a href="timeline.html">Timeline</a>
-          <a href="replay.html">Replay records</a>
-          <a href="projects/">Projects</a>
-          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+          <a aria-current="page" href="roadmap.html">Open questions</a>
+          <a href="replay.html">Replay explorer</a>
+          <a href="index.html#hero-title">Judge’s guide</a>
+          <a href="projects/">About Ryan</a>
         </div>
       </details>
     </nav>
   </header>
 
-  <main class="shell research-page" id="top">
-    <section class="research-hero" aria-labelledby="roadmap-title">
-      <p class="eyebrow">Work that can survive outside this machine</p>
-      <h1 id="roadmap-title">MathCase is building a tool mathematicians can inspect, reproduce, and use.</h1>
-      <p>The strongest evidence today is a disciplined checking and record-keeping pipeline. Broad autonomous mathematical discovery has not been demonstrated. This roadmap turns that gap into specific work with visible finish conditions.</p>
-      <div class="research-actions">
-        <a class="button button-primary" href="frontier.html">Explore six math questions</a>
-        <a class="button button-secondary" href="tools.html#collatz-tool">Try 239</a>
-        <a class="button button-secondary" href="work.html#reproduction">See how the results are checked</a>
-        <a class="button button-secondary" href="timeline.html">See the project timeline</a>
+  <main class="shell case-index" id="top">
+    <section class="map-intro" aria-labelledby="roadmap-title">
+      <p class="eyebrow">MathCase research roadmap</p>
+      <h1 id="roadmap-title">Where does the math go next?</h1>
+      <p>A coloring can answer a question about one graph. A proof can explain why an answer holds for every graph of a given kind. The open work depends on which kind of answer each question needs.</p>
+    </section>
+    <section class="roadmap-reading" aria-labelledby="roadmap-overview-title">
+      <h2 id="roadmap-overview-title">Ways to explore today</h2>
+      <div class="subject-links"><a href="cases.html#subjects">Browse questions by subject</a><a href="cases.html#five-levels">Read one proof at five levels</a><a href="tools.html#triangle-game">Play the triangle puzzle and find its hand proof</a></div>
+    </section>
+    <section class="roadmap-reading" aria-labelledby="roadmap-items-title">
+      <h2 id="roadmap-items-title">What remains open?</h2>
+      <div class="subject-map">
+        <details>
+          <summary><span>Collatz sequences</span><strong>Which starting numbers are guaranteed to drop?</strong></summary>
+          <div class="subject-body">
+            <p>Lean checked a drop by step 37 for every start of at least 3 with at most 14 odd inputs in its first 23 shortcut moves. Exactly 7,507,638 of 8,388,608 parity classes meet this condition. A separate computer count combined five conditions. The published check does not prove a combined descent theorem for the five, or that every sequence reaches 1.</p>
+            <div class="subject-links"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the checked theorem and follow-ups</a><a href="collatz.html#basis-status">Which earlier proofs can be reused?</a></div>
+          </div>
+        </details>
+        <details>
+          <summary><span>Graphs &amp; colorings</span><strong>Could a different coloring work where this one fails?</strong></summary>
+          <div class="subject-body">
+            <p>The known 42-dot coloring for R(5,5) has a saved Lean check. Independent review and a build from a fresh checkout remain open. For R(6,6), a computer checked a 101-dot coloring and ruled out adding a dot while keeping every old line fixed. That leaves other arrangements open.</p>
+            <div class="subject-links"><a href="work.html#ramsey">Inspect the 42-dot check</a><a href="frontier.html#ramsey-6-6">Explore the 102nd-dot question</a><a href="cases.html#subject-colorings">See pattern-avoidance questions for whole numbers</a></div>
+          </div>
+        </details>
+        <details>
+          <summary><span>Fractions</span><strong>Which denominators admit a single formula?</strong></summary>
+          <div class="subject-body">
+            <p>The fraction search recorded 831,860 exact examples in a filtered set. Separate algebraic formulas explain whole families, including numbers of the form 28k + 21. A formula covering every integer n ≥ 2 remains the open Erdős–Straus question.</p>
+            <div class="subject-links"><a href="frontier.html#egyptian-28k-21">Read the example and its family</a><a href="work.html#egyptian">Inspect the finite search</a></div>
+          </div>
+        </details>
+        <details>
+          <summary><span>Checking research</span><strong>Can someone else reproduce the result, and does reusing a proof help?</strong></summary>
+          <div class="subject-body">
+            <p>Two saved runs of the 363-module Collatz proof agreed. Rebuilding that historical run from a fresh public checkout still needs its exact environment. Separately, one matched comparison of proof attempts with and without saved context tied on every test group. Whether it helps on average remains open.</p>
+            <div class="subject-links"><a href="evidence/REPRODUCTION_STATUS.md">Read the reproduction limits</a><a href="replay.html">Compare saved runs</a><a href="cases.html#transfer-pilot">Inspect the matched comparison</a></div>
+          </div>
+        </details>
       </div>
     </section>
-
-    <section class="roadmap-overview" aria-labelledby="roadmap-overview-title">
-      <p class="eyebrow">Current position</p>
-      <h2 id="roadmap-overview-title">What is ready, and what is still missing</h2>
-      <div class="roadmap-status-grid">
-        <article class="roadmap-status-card status-ready"><span>Available now</span><strong>Inspect the saved work</strong><p>Open the Case Desk, bounded theorem reports, finite computation bundles, replay records, and hash-checked statement index.</p></article>
-        <article class="roadmap-status-card status-open"><span>Still open</span><strong>Repeat the flagship build independently</strong><p>The pinned Docker image is not anonymously pullable and its complete build context is missing.</p></article>
-        <article class="roadmap-status-card status-staged"><span>Not run</span><strong>Measure whether the library helps</strong><p>The equal-budget comparison is staged. No model calls are running; external spend is $0.</p></article>
-      </div>
-    </section>
-
-    <section class="roadmap-section" aria-labelledby="roadmap-items-title">
-      <div class="timeline-heading">
-        <p class="eyebrow">Next steps in order</p>
-        <h2 id="roadmap-items-title">Each step has a checkable finish line</h2>
-        <p>Items with prerequisites stay visible as open work. The page does not treat a prepared packet or a saved local run as a finished independent result.</p>
-      </div>
-
-      <ol class="roadmap-list">
-        <li class="roadmap-item">
-          <span class="roadmap-number">01</span>
-          <article class="roadmap-card">
-            <p class="roadmap-state state-blocked">Blocked by build inputs</p>
-            <h3>Make the 363-module Lean replay repeatable by a stranger.</h3>
-            <p>The two recorded runs agree in the pinned environment. A new operator still needs an anonymously pullable pinned image or a complete, public image build recipe.</p>
-            <details><summary>What counts as done?</summary><p>A fresh public checkout and documented runtime reproduce the source and axiom checks with matching recorded bindings, without MathCase OLEAN reuse. Any output difference stays visible.</p></details>
-            <a href="evidence/REPRODUCTION_STATUS.md">Read the current reproduction boundary <span aria-hidden="true">→</span></a>
-          </article>
-        </li>
-
-        <li class="roadmap-item">
-          <span class="roadmap-number">02</span>
-          <article class="roadmap-card">
-            <p class="roadmap-state state-open">Review not yet independent</p>
-            <h3>Put the exact bounded theorem in front of an independent Lean reviewer.</h3>
-            <p>The public packet contains the plain statement, formal source location, both replay reports, axiom summary, and limits. Independent review remains open.</p>
-            <details><summary>What should a reviewer receive?</summary><p>The exact 2,652-family statement, its source and hash bindings, both phase reports, the coefficient-gap check, and the explicit scope: first descent on listed progressions after 32 steps.</p></details>
-            <a href="work.html#collatz-main">Open the theorem and replay evidence <span aria-hidden="true">→</span></a>
-            <a href="replay.html">Search the phase-by-phase records <span aria-hidden="true">→</span></a>
-          </article>
-        </li>
-
-        <li class="roadmap-item">
-          <span class="roadmap-number">03</span>
-          <article class="roadmap-card">
-            <p class="roadmap-state state-review">Lean-checked known bound · independent review open</p>
-            <h3>Choose one finite-structure target only after checking its statement and prior work.</h3>
-            <p>The known R(5,5) lower bound now has a MathCase Lean formalization: 27 chunks and a final composition checked the 42-vertex witness. Ryan reviewed that the English statement matches the Lean target. The run used a warm local cache; fresh-checkout reproduction and independent review remain open. The R(6,6) statement was also reviewed, but no Lean attempt is recorded here.</p>
-            <p class="roadmap-formula">R(5,5) Lean target: <code>∃ G : SimpleGraph (Fin 42), G.CliqueFree 5 ∧ (Gᶜ).CliqueFree 5</code>.</p>
-            <details><summary>Why not call this a new result?</summary><p>The graph construction and bound are known. The browser checker verifies the finite certificate, and MathCase has a separate Lean proof bundle. The upstream FormalConjectures file remains a proof placeholder; that does not change the saved MathCase result or make it a new construction.</p></details>
-            <div class="roadmap-links">
-              <a href="evidence/finite-graphs/ramsey-r55/README.md">Read the local construction and check scope</a>
-              <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r55-lean-v1" target="_blank" rel="noopener noreferrer">Open the Lean sources and receipts ↗</a>
-              <a href="https://github.com/google-deepmind/formal-conjectures/blob/b576d527b271b936f9e61c0e367c302d7386bc80/FormalConjectures/Wikipedia/RamseyNumbers.lean" target="_blank" rel="noopener noreferrer">Open the pinned target source ↗</a>
-              <a href="https://arxiv.org/abs/2212.12630" target="_blank" rel="noopener noreferrer">Read the known construction paper ↗</a>
-            </div>
-          </article>
-        </li>
-
-        <li class="roadmap-item">
-          <span class="roadmap-number">04</span>
-          <article class="roadmap-card">
-            <p class="roadmap-state state-open">Computation complete · proof idea not established</p>
-            <h3>Use the Erdős–Straus pile to look for a proved identity family.</h3>
-            <p>The public data now includes 831,860 exact witnesses for a filtered finite set through d = 10,000,000. Its miss analysis did not establish a new general rule. The next useful step is to formulate one precise candidate identity or criterion from the existing pile, then prove it and check prior work.</p>
-            <details><summary>What would count as progress?</summary><p>A new identity pattern is only a conjecture until its exact hypotheses and algebraic proof are written down. A literature check must precede any novelty claim. More range extension alone is not the headline.</p></details>
-            <a href="work.html#egyptian">Read the complete campaign scope and limits <span aria-hidden="true">→</span></a>
-          </article>
-        </li>
-
-        <li class="roadmap-item">
-          <span class="roadmap-number">05</span>
-          <article class="roadmap-card">
-            <p class="roadmap-state state-staged">Staged · no model calls running</p>
-            <h3>Test whether a checked library helps on held-out theorems.</h3>
-            <p>A useful comparison needs the same Lean snapshot, fixed held-out targets, a library-enabled arm, a no-library baseline, and equal time and attempt budgets. The 11 reserved evaluation bundles remain unopened so they can still serve as held-out material.</p>
-            <details><summary>Why is there no score yet?</summary><p>The comparison depends on a model-based worker. No provider or model calls are running, no target has been attempted for this measurement, and external spend is $0. Until the necessary review and execution conditions exist, a transfer score would be invented.</p></details>
-            <a href="work.html#limits">See the limits and staged measurements <span aria-hidden="true">→</span></a>
-          </article>
-        </li>
-
-        <li class="roadmap-item">
-          <span class="roadmap-number">06</span>
-          <article class="roadmap-card roadmap-card-judging">
-            <p class="roadmap-state state-live">Public judge path</p>
-            <h3>Keep the three-minute walkthrough simple and live.</h3>
-            <p>The judging path starts on the plain-language homepage, opens a saved Case Desk example, and points to the larger evidence ledger. Judging runs November 16, 2026 at 9:00 AM PST through December 4, 2026 at noon PST; winners are announced January 25, 2027 at noon PST. <a href="https://nebiusglobalaihackathon.devpost.com/details/dates">Official schedule</a>.</p>
-            <a href="index.html#case-desk">Start the judge walkthrough <span aria-hidden="true">→</span></a>
-          </article>
-        </li>
-
-        <li class="roadmap-item">
-          <span class="roadmap-number">07</span>
-          <article class="roadmap-card">
-            <p class="roadmap-state state-open">Receipt checked · release prepared</p>
-            <h3>Publish the exact 23/14 Collatz result and keep shrinking the proof basis honestly.</h3>
-            <p>The checked rule covers 7,507,638 of 8,388,608 residue classes with a first drop by ordinary step 37. An independent CPU screen combines five parity filters, but no single Lean theorem combines them and the smaller-basis search is not closed.</p>
-            <details><summary>What is checked now?</summary><p>The source and prior Lean receipt are packaged with a fresh-source replay command. That replay command was not run during this publication session. The 24/15, 31/19, and 32/20 cases remain exploratory; 31/19 uses its separate passing audit while its original FAIL_AUDIT receipt stays preserved.</p></details>
-            <a href="work.html#collatz-23-of-14">Read the exact statement and evidence <span aria-hidden="true">→</span></a>
-            <a href="work.html#collatz-23-of-14">Read the parity-union screen and its limits <span aria-hidden="true">→</span></a>
-          </article>
-        </li>
-      </ol>
+    <section class="roadmap-reading roadmap-future" id="future-subjects" aria-labelledby="future-subjects-title">
+      <h2 id="future-subjects-title">Future subjects and explanations</h2>
+      <p>The longer-term aim is to make more areas of mathematics approachable at different levels. Geometry, calculus and probability are examples of areas beyond the current guided case catalog. New entries would need a specific question, a worked explanation and a record of what was checked.</p>
+      <p>Today you can read the prime-divisibility argument at five levels on this site. The source also describes five historical drafts for a theorem about lists. Independent teaching review and evidence about what readers learned remain open.</p>
+      <div class="subject-links"><a href="cases.html#five-levels">Compare the five explanations</a><a href="cases.html#subject-lists">Find the list example and its draft status</a></div>
     </section>
 
     <p class="back-home"><a class="back-top" href="index.html">← Home</a><a class="back-top" href="work.html">All work →</a><a class="back-top" href="#top">Back to top ↑</a></p>
@@ -161,7 +92,7 @@
 
   <footer class="site-footer shell">
     <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="visitor/">Make a case</a><a href="work.html">All work</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a><a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost entry</a></nav>
-    <span>Human-readable priorities · no model calls · no live Lean execution</span>
+    <span>MathCase · open questions and public evidence</span>
   </footer>
 </body>
 </html>

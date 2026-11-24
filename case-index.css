@@ -16,3 +16,42 @@
 .case-card-page pre { max-width: 100%; overflow: auto; padding: 12px; border-radius: 8px; background: #07151e; color: #d7e0de; font-size: 10px; line-height: 1.55; white-space: pre-wrap; overflow-wrap: anywhere; }
 .case-index .record-note { max-width: 900px; }
 @media (max-width: 720px) { .case-grid { grid-template-columns: minmax(0, 1fr); } .case-card-page { padding: 18px; } }
+
+.case-index { padding-top: clamp(1.6rem,4vw,3.2rem); }
+.map-intro { max-width: 51rem; }
+.map-intro h1 { margin: 0 0 .7rem; color: #fff1da; font: 400 clamp(2.3rem,5vw,4.1rem)/1.04 Georgia,serif; letter-spacing: -.045em; }
+.map-intro > p:not(.eyebrow) { max-width: 60ch; color: #c6d3cd; line-height: 1.6; }
+.subject-map { margin: 1.6rem 0; border-top: 1px solid #65746a; }
+.subject-map > details { border-bottom: 1px solid #485e57; }
+.subject-map > details > summary { position: relative; display: grid; grid-template-columns: minmax(9rem, .63fr) 1.8fr; gap: 1rem; align-items: baseline; padding: 1rem 2rem 1rem 0; cursor: pointer; list-style: none; }
+.subject-map > details > summary::-webkit-details-marker { display: none; }
+.subject-map > details > summary::after { content: "+"; position: absolute; right: .25rem; top: 50%; transform: translateY(-50%); color: #ffd2a0; font-size: 1.35rem; }
+.subject-map > details[open] > summary::after { content: "−"; }
+.subject-map > details > summary span { color: #efc391; font-size: .88rem; }
+.subject-map > details > summary strong { color: #f9edda; font: 400 clamp(1.05rem,2.1vw,1.35rem)/1.3 Georgia,serif; }
+.subject-map > details > summary:hover strong { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+.subject-map > details > summary:focus-visible,.map-records > summary:focus-visible { outline: 2px solid #f9d29d; outline-offset: 2px; }
+.subject-body { margin-left: calc((100% - 3rem) * .63 / 2.43 + 1rem); padding-bottom: 1.2rem; }
+.subject-body p { max-width: 66ch; color: #c7d4cf; font-size: .96rem; line-height: 1.6; }
+.subject-links { display: flex; flex-wrap: wrap; gap: .65rem 1.1rem; }
+.subject-links a,.map-next a { color: #f4c594; text-underline-offset: .22em; }
+.map-next { margin: 1.25rem 0 1.7rem; }
+.map-records > summary { color: #d7ddd0; cursor: pointer; padding: .9rem 0; }
+.map-records[open] > summary { margin-bottom: .9rem; }
+@media (max-width: 40rem) {
+  .subject-map > details > summary { grid-template-columns: 1fr; gap: .25rem; padding-block: .8rem; }
+  .subject-body { margin-left: 0; }
+}
+.subject-body { scroll-margin-top: 5.5rem; }
+.level-reader { margin: .85rem 0 1rem; padding: .2rem .8rem; border: 1px solid #627768; border-radius: .35rem; background: #192f2e; }
+.level-reader summary { min-height: 44px; padding: .7rem 0; cursor: pointer; color: #ffdaa8; font-size: .94rem; }
+.level-reader summary:focus-visible { outline: 2px solid #f9d29d; outline-offset: 2px; }
+.level-reader details { border-top: 1px solid #42594f; }
+.level-reader p { margin: .3rem 0 .7rem; }
+#five-levels { scroll-margin-top: 5rem; }
+
+.roadmap-reading { margin: 2rem 0; }
+.roadmap-reading h2 { margin: 0 0 .75rem; color: #f7edda; font: 400 clamp(1.6rem,3vw,2.1rem)/1.18 Georgia,serif; }
+.roadmap-reading .subject-map { margin: .85rem 0; }
+.roadmap-future { padding-top: 1.4rem; border-top: 1px solid #51675c; }
+.roadmap-future > p { max-width: 75ch; color: #c6d3cd; line-height: 1.6; }

@@ -38,6 +38,15 @@
 #triangle-status { margin: .8rem 0 .65rem; color: #c8d7d0; font-size: .9rem; line-height: 1.5; }
 #triangle-status[data-state="success"] { color: #ffdfa6; }
 #triangle-status[data-state="error"] { color: #ffbfae; }
+.triangle-case-story { margin: .6rem 0 .85rem; border: 1px solid #9f9772; border-radius: .4rem; background: #14292b; }
+.triangle-case-story[hidden] { display: none; }
+.triangle-case-story summary { padding: .7rem .8rem; min-height: 44px; color: #ffdb9f; cursor: pointer; font-weight: 650; }
+.triangle-case-story > div { padding: 0 .85rem .9rem; line-height: 1.55; font-size: .94rem; }
+.triangle-case-story h3 { margin: .2rem 0 .6rem; color: #fff1d9; font: 400 1.32rem/1.18 Georgia,serif; }
+.triangle-case-story p { margin: .6rem 0; color: #d4dfdb; }
+.triangle-case-story p.story-subject { margin: .2rem 0 .35rem; color: #f4c799; font-size: .77rem; }
+.triangle-case-story .story-links { display: grid; gap: .55rem; justify-items: start; margin-top: .8rem; }
+.triangle-case-story a { color: #ffce99; text-underline-offset: .2em; }
 .triangle-list { border-top: 1px solid #98b5a94a; }
 .triangle-list summary { width: fit-content; min-height: 44px; padding: .75rem 0; color: #d6e0d8; font-size: .85rem; cursor: pointer; }
 .triangle-explanation p { margin: .15rem 0 .7rem; font-size: .92rem; line-height: 1.55; color: #d1ded4; }

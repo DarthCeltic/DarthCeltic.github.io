@@ -9,6 +9,20 @@
   const highlight = document.getElementById("triangle-highlight");
   const list = document.getElementById("triangle-edges");
   const status = document.getElementById("triangle-status");
+  const story = document.createElement("details");
+  story.className = "triangle-case-story";
+  story.hidden = true;
+  story.innerHTML = `
+    <summary>See a real AI proof mistake</summary>
+    <div>
+      <p class="story-subject">A different problem · Prime numbers</p>
+      <h3>If a prime divides a square, must it divide the number you squared?</h3>
+      <p>Yes. For example, 3 is prime and divides 6² = 36. It also divides 6. The challenge was to prove this for <em>every</em> prime and every whole number.</p>
+      <p><strong>What went wrong?</strong> The AI, Nemotron, chose a rule that needs two facts. First it needs “the divisor is prime.” Then it needs “the divisor divides the square.” Both facts were given in the original question. The AI handed Lean only the second one, in the first slot. Lean rejected the attempt.</p>
+      <p><strong>What changed?</strong> On its second attempt, Nemotron supplied the prime fact first and the divisibility fact second. Lean accepted the corrected proof of the original statement for all natural numbers satisfying those conditions.</p>
+      <div class="story-links"><a href="reader.html?scope=public#case/hero-prime-divisibility-r1">Read the two saved attempts and Lean’s verdict →</a><a href="cases.html#five-levels">Read the same theorem at five levels</a></div>
+    </div>`;
+  status.after(story);
   const points = [[91, 28], [229, 28], [289, 125], [229, 222], [91, 222], [31, 125]];
   const colors = new Map();
   const edges = [];
@@ -24,6 +38,8 @@
   function announce(message, state = "ready") {
     status.textContent = message;
     status.dataset.state = state;
+    story.hidden = state !== "success";
+    if (story.hidden) story.open = false;
   }
 
   function markTriangle(result) {
@@ -114,7 +130,7 @@
       return;
     }
     const labels = result.vertices.map(vertex => vertex + 1).join(", ");
-    announce(`Found a ${result.color} triangle on dots ${labels}. Its three lines have a double outline. This check covers this coloring only.`, "success");
+    announce(`Found a ${result.color} triangle on dots ${labels}. Its three lines have a double outline. This check covers this coloring only. Below is a saved AI proof mistake on a different problem.`, "success");
   });
 
   if (graph.closest('[data-start-coloring="sample"]')) loadSample();

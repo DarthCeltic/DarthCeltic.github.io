@@ -10,6 +10,7 @@
 .home-header nav, .home-footer nav { gap: clamp(.7rem, 2.3vw, 1.8rem); }
 .home-header nav a, .home-header summary { display: inline-block; padding: .6rem 0; color: #dbdfd5; text-decoration: none; font-size: .92rem; }
 .home-header nav a:hover, .home-header summary:hover, .home-footer a:hover { color: #ffdaaa; text-decoration: underline; }
+.home-header nav a[aria-current="page"] { color: #ffdaa8; text-decoration: underline; text-underline-offset: .25em; }
 .home-menu { position: relative; }
 .home-header summary { display: list-item; cursor: pointer; }
 .home-menu > div { position: absolute; z-index: 4; top: 100%; right: 0; display: grid; width: 13rem; padding: .5rem .85rem; border: 1px solid #767e72; border-radius: .35rem; background: #192b30; box-shadow: 0 .8rem 2rem #0005; }
