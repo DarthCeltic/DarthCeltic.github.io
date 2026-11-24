@@ -53,7 +53,7 @@
           <span>Erdős–Straus · fractions</span><strong>Can 4/21 be split into three unit fractions?</strong><small>Check one exact example.</small>
         </a>
       </div>
-      <p class="quick-start-more"><a href="frontier.html">See all six active math questions</a> · <a href="collatz.html#at-most-seventeen-of-twenty-seven">Read the new Collatz result</a> · <a href="#hero-title">Read the judge’s guide</a></p>
+      <p class="quick-start-more"><a href="frontier.html">See all six active math questions</a> · <a href="collatz.html#at-most-fourteen-of-twenty-three">Read the new 23-step Collatz result</a> · <a href="#hero-title">Read the judge’s guide</a></p>
     </section>
 
     <section class="hero hero-judging shell" aria-labelledby="hero-title">
@@ -111,7 +111,7 @@
         </article>
 
       </div>
-      <p class="desk-footnote">These are the two public saved cases. For hands-on number, graph, and fraction questions, <a href="frontier.html">try the six current math activities</a>.</p>
+      <p class="desk-footnote">The Case Desk contains two saved proof examples. A third source-backed Lean replay for the 23/14 Collatz theorem is in the <a href="cases.html#collatz-parity-envelope-23-14">public case catalog</a>. For hands-on number, graph, and fraction questions, <a href="frontier.html">try the six current math activities</a>.</p>
     </section>
 
     <section class="proof-story shell" id="your-workspace" aria-labelledby="workspace-title">
@@ -119,7 +119,7 @@
         <div>
           <p class="eyebrow">Make your own case</p>
           <h2 id="workspace-title">Bring a claim. Edit Lean. Check the exact file.</h2>
-          <p>The visitor workbench keeps drafts in your browser, lets you import or download a <code>.lean</code> file, and compares a checker receipt with the source digest. You can use the Lean web editor by choice or check with the pinned compiler in your own Codespace.</p>
+          <p>The visitor workbench keeps drafts in your browser, lets you import or download a <code>.lean</code> file, and compares a checker receipt with the source digest. New to Lean? Start with the <a href="visitor/lesson.html">10-minute worked lesson</a>. The workbench does not yet translate arbitrary plain English into Lean or run Lean inside this page; its optional web-editor check goes to live.lean-lang.org.</p>
           <p>The hosted workbench is based on the <a href="https://github.com/DarthCeltic/MathCase/tree/17174a4a6311eb2e32556d9e4fb38255290a36be/visitor" target="_blank" rel="noopener noreferrer">pinned public MathCase visitor source at commit 17174a4</a>. The source manifest records the upstream file hashes. This Pages copy includes documented site-specific changes, including the disclosure and visible receipt-import control. <a href="evidence/visitor-workbench/overlays/README.md">Read what changed and how it is bound.</a></p>
           <div class="hero-actions">
             <a class="button button-primary" href="visitor/">Open the MathCase workbench <span aria-hidden="true">→</span></a>
@@ -174,13 +174,13 @@
 
     <section class="latest-update shell" aria-labelledby="latest-title">
       <div>
-        <p class="eyebrow">New checked theorem · Nov 23, 2026</p>
-        <h2 id="latest-title">A 27-move parity rule forces a first drop by step 44.</h2>
-        <p>For every start <code>n ≥ 26,018</code>, if no more than 17 of its first 27 shortcut moves start on an odd number, an ordinary Collatz step takes it below its starting value by step <code>27+h</code>, at most step 44. A separate arithmetic count finds 126,025,204 of 134,217,728 27-move parity patterns meet that condition (93.8961%). That is a count of patterns, not a share of all natural numbers or a percentage of Collatz solved. It does not show that every sequence reaches 1.</p>
+        <p class="eyebrow">New checked theorem · Nov 24, 2026</p>
+        <h2 id="latest-title">A 23-step parity rule gives a first drop by step 37.</h2>
+        <p>For every start <code>n ≥ 3</code>, if no more than 14 of its first 23 shortcut moves start on an odd number, an ordinary Collatz step takes it below its start at step <code>23+h</code>, at most step 37. Lean counts exactly 7,507,638 of 8,388,608 possible 23-step parity classes. This bounded result does not show that every sequence reaches 1 or solve Collatz. The three adjacent parameter cases remain exploratory and have not had Ryan's statement review.</p>
       </div>
       <div class="hero-actions">
-        <a class="button button-primary" href="collatz.html#at-most-seventeen-of-twenty-seven">Read the theorem and limits <span aria-hidden="true">→</span></a>
-        <a class="button button-secondary" href="cases.html#collatz-at-most-seventeen-27">Open the runnable proof case</a>
+        <a class="button button-primary" href="collatz.html#at-most-fourteen-of-twenty-three">Read the theorem and limits <span aria-hidden="true">→</span></a>
+        <a class="button button-secondary" href="cases.html#collatz-parity-envelope-23-14">Open the source-and-replay case</a>
         <a class="button button-secondary" href="tools.html#collatz-tool">Try a Collatz calculation</a>
         <a class="button button-secondary" href="frontier.html">Explore all six math questions <span aria-hidden="true">→</span></a>
         <a class="button button-secondary" href="work.html">Browse the full work and evidence <span aria-hidden="true">→</span></a>

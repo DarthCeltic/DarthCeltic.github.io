@@ -52,6 +52,7 @@
         <a class="button button-secondary" href="#at-most-thirteen-of-twenty-one">See the 21-step rule</a>
         <a class="button button-secondary" href="#at-most-thirteen-of-twenty-two">See the 22-step rule</a>
         <a class="button button-secondary" href="#at-most-seventeen-of-twenty-seven">See the 27-step rule</a>
+        <a class="button button-secondary" href="#at-most-fourteen-of-twenty-three">See the reviewed 23-step rule</a>
         <a class="button button-secondary" href="#exact-statement">See the exact statement</a>
         <a class="button button-secondary" href="#coefficient-check">Check a listed family</a>
         <a class="button button-secondary" href="frontier.html">See the other math questions</a>
@@ -155,6 +156,26 @@
         <p>The command recompiles five Lean-core modules from fresh source copies, audits their axiom reports, and checks the separate integer count and 18 coefficient thresholds.</p>
         <p><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-seventeen-of-twenty-seven-v1" target="_blank" rel="noopener noreferrer">Read the proof guide, source and replay details ↗</a></p>
       </details>
+    </section>
+
+    <section class="record-section" id="at-most-fourteen-of-twenty-three" aria-labelledby="at-most-fourteen-23-title">
+      <span class="record-label public">Lean checked · Ryan reviewed this statement · bounded first drop</span>
+      <h2 id="at-most-fourteen-23-title">At most 14 odd shortcut moves give a first drop by step 37.</h2>
+      <p><strong>Plain statement:</strong> repeat this shortcut 23 times: halve an even number; for an odd number, calculate <code>3n+1</code> and halve once. For every start <code>n ≥ 3</code>, if at most 14 shortcut moves begin on odd numbers, the ordinary Collatz sequence is below its start after <code>23+h</code> steps, where <code>h</code> is the number of odd moves.</p>
+      <p class="record-formula">Lean checked exactly <strong>7,507,638 of 8,388,608</strong> residue classes modulo <code>2²³</code>. Since <code>h ≤ 14</code>, the proved drop occurs no later than ordinary step 37.</p>
+      <p>This is one precise bounded-descent rule. It does not show that every number eventually reaches 1, prove the Collatz conjecture, or establish novelty.</p>
+      <details class="record-note">
+        <summary>Read the exact target, receipts, and exploratory follow-ups</summary>
+        <p>The checked target is <code>(residueAtMostCount 23 14 = 7507638) ∧ ∀ n, 3 ≤ n → odds n 23 ≤ 14 → ordinaryIter n (23 + odds n 23) &lt; n</code>. The descent theorem reports axioms <code>[propext, Quot.sound]</code>; the count and combined theorem report <code>[Classical.choice, propext, Quot.sound]</code>. No <code>sorryAx</code> was reported.</p>
+        <p>Ryan's statement-fidelity YES is bound to packet SHA-256 <code>cab441ca8079f71a6c9dbaadcea53a8e38cc8d4e9ee68f18f874f6bf39fb66bb</code>. Ryan reported the YES at Nov 23, 21:57 ET; the saved hash-bound local record was generated at 23:53 ET. The source-to-kernel receipt SHA-256 is <code>9fcb62099417bd0ad46a60dc0addab267b18145f893fb5ff2761e25dba904497</code>.</p>
+        <p><strong>Exploratory, not M0-reviewed:</strong> at most 15 odd inputs in 24 steps covers 15,505,590 of 16,777,216 classes and gives a step-39 bound; at most 19 in 31 covers 1,986,838,144 of 2,147,483,648 and gives a step-50 bound; at most 20 in 32 covers 4,058,348,603 of 4,294,967,296 and gives a step-52 bound. For 31/19, the original receipt still says <code>FAIL_AUDIT</code>; a separate audit passed with <code>[Classical.choice, propext, Quot.sound]</code>. These parameter cases have not received Ryan's M0 review.</p>
+        <p>A separate Python screen counts the union of five checked conditions as 4,138,588,909 of 4,294,967,296 length-32 parity words. Its two counting methods agree, but it is not a combined Lean theorem and does not close the smaller-basis search. Its first calculation failed and remains in the record.</p>
+        <p><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1" target="_blank" rel="noopener noreferrer">Open the four source modules, receipts, and replay route ↗</a> · <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-basis-audit-v1" target="_blank" rel="noopener noreferrer">Open the basis screen and preserved correction ↗</a></p>
+      </details>
+      <div class="record-links">
+        <a href="cases.html#collatz-parity-envelope-23-14">Open the public case card</a>
+        <a href="work.html#collatz-23-of-14">Read the result in the work ledger</a>
+      </div>
     </section>
 
     <section class="record-section" id="exact-statement" aria-labelledby="statement-title">
