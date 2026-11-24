@@ -45,7 +45,7 @@
 
   <main class="shell" id="top">
     <section class="archive-intro" aria-labelledby="work-title">
-      <p class="eyebrow">MathCase work map · updated November 20, 2026</p>
+      <p class="eyebrow">MathCase work map · updated November 23, 2026</p>
       <h1 id="work-title">Question an AI proof, check it in Lean, and build on what holds.</h1>
       <p>This ledger separates formal proofs, finite computations, and saved engineering evidence. Each result starts in ordinary language, then shows the exact scope and the limits.</p>
       <div class="archive-intro-actions">
@@ -214,6 +214,15 @@
         <a href="cases.html#collatz-at-most-thirteen-22">Open the runnable public case</a>
         <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-two-v2" target="_blank" rel="noopener noreferrer">Open sources and replay instructions ↗</a>
       </div>
+    </section>
+
+    <section class="record-section" id="collatz-17-of-27" aria-labelledby="collatz-17-of-27-title">
+      <span class="record-label public">Public Lean 4.33.1 core result · exact integer audit reported separately</span>
+      <h2 id="collatz-17-of-27-title">A 27-step parity rule gives first descent by ordinary step 44.</h2>
+      <p><strong>Plain statement:</strong> for every <code>n ≥ 26,018</code>, if at most 17 of the first 27 shortcut inputs are odd, then the ordinary Collatz iterate after <code>27+h</code> steps is smaller than <code>n</code>, where <code>h</code> is the exact odd-input count.</p>
+      <p>The arithmetic audit counts 126,025,204 of 134,217,728 qualifying residue classes modulo <code>2^27</code> (93.8961%). Lean checks the residue-count/parity-word recurrence; the final numeric sum is independently checked by Pascal recurrence and binomial coefficients, not stated as a separate Lean numeral theorem.</p>
+      <p>This is a bounded, parity-conditioned first drop for the stated range. It does not establish global convergence, natural density, novelty, or priority.</p>
+      <div class="record-links"><a href="collatz.html#at-most-seventeen-of-twenty-seven">Read the plain explanation</a><a href="cases.html#collatz-at-most-seventeen-27">Open the runnable case</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-seventeen-of-twenty-seven-v1" target="_blank" rel="noopener noreferrer">Open proof sources and replay guide ↗</a></div>
     </section>
 
     <section class="record-section" id="m31-bound" aria-labelledby="m31-bound-title">

@@ -41,11 +41,16 @@
       : "Bounded result recorded";
     const summary = document.createElement("p");
     summary.textContent = receipt.summary;
+    const details = document.createElement("details");
+    details.className = "receipt-details";
+    const detailsSummary = document.createElement("summary");
+    detailsSummary.textContent = "Show the receipt and technical details";
     const digestLine = document.createElement("p");
     digestLine.textContent = "Receipt SHA-256: " + receipt.receipt_sha256;
     const pre = document.createElement("pre");
     pre.textContent = JSON.stringify(receipt, null, 2);
-    container.append(title, summary, digestLine, pre);
+    details.append(detailsSummary, digestLine, pre);
+    container.append(title, summary, details);
   }
 
   function attachReceiptButtons(prefix, getReceipt) {

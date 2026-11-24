@@ -127,6 +127,21 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <pre>python scripts/run_public_case.py collatz-at-most-thirteen-22</pre>
         <div class="case-actions"><a href="collatz.html#at-most-thirteen-of-twenty-two">Read the theorem in plain language</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-two-v2">Open the source, replay protocol, and limits ↗</a></div>
       </article>
+      <article class="case-card-page" id="collatz-at-most-seventeen-27">
+        <span class="case-status pass">Collatz · Lean checked</span>
+        <h2>Can a number fall below itself within 44 steps?</h2>
+        <p><strong>The rule:</strong> halve an even number. For an odd number, triple it, add 1, and halve once. Repeat 27 times.</p>
+        <p><strong>Plain claim:</strong> for every start <code>n ≥ 26,018</code> with at most 17 odd moves, the ordinary Collatz value at step <code>27+h</code> is below its start, no later than step 44.</p>
+        <p>Example: <code>26,018</code> has 12 odd moves and falls below its start after 39 ordinary steps, reaching <code>107</code>. That example illustrates the rule; it is not the proof.</p>
+        <p>The rule covers only starts that meet its size and parity conditions. It does not prove that every Collatz sequence reaches 1.</p>
+        <div class="case-actions"><a href="collatz.html#at-most-seventeen-of-twenty-seven">Read the explanation and limits</a><a href="tools.html#collatz-tool">Try a Collatz calculation</a></div>
+        <details class="record-note">
+          <summary>Show the pattern count and command-line replay</summary>
+          <p>The separate arithmetic count is 126,025,204 of 134,217,728 possible 27-move parity patterns (93.8961%). It is not a natural-density result or a percentage of Collatz solved.</p>
+          <pre>python scripts/run_public_case.py collatz-at-most-seventeen-27</pre>
+          <p><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-seventeen-of-twenty-seven-v1" target="_blank" rel="noopener noreferrer">Open the proof guide and replay files ↗</a></p>
+        </details>
+      </article>
       <article class="case-card-page" id="collatz-listed-families">
         <span class="case-status pass">Compact Lean replay · separate from historical 363-module replay</span>
         <h2>The 2,652 listed Collatz progressions</h2>

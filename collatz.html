@@ -51,6 +51,7 @@
         <a class="button button-secondary" href="#at-most-twelve-of-twenty">See the broader 20-step rule</a>
         <a class="button button-secondary" href="#at-most-thirteen-of-twenty-one">See the 21-step rule</a>
         <a class="button button-secondary" href="#at-most-thirteen-of-twenty-two">See the 22-step rule</a>
+        <a class="button button-secondary" href="#at-most-seventeen-of-twenty-seven">See the 27-step rule</a>
         <a class="button button-secondary" href="#exact-statement">See the exact statement</a>
         <a class="button button-secondary" href="#coefficient-check">Check a listed family</a>
         <a class="button button-secondary" href="frontier.html">See the other math questions</a>
@@ -134,6 +135,26 @@
         <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-thirteen-of-twenty-two-v2" target="_blank" rel="noopener noreferrer">Read the plain-language proof guide, replay protocol, and results ↗</a>
         <a href="cases.html#collatz-at-most-thirteen-22">Open the runnable case and command ↗</a>
       </div>
+    </section>
+
+    <section class="record-section" id="at-most-seventeen-of-twenty-seven" aria-labelledby="at-most-seventeen-27-title">
+      <span class="record-label public">Lean checked · bounded Collatz result</span>
+      <h2 id="at-most-seventeen-27-title">At most 17 odd inputs in 27 shortcut moves imply a drop by step 44.</h2>
+      <p><strong>The rule:</strong> for an even number, halve it. For an odd number, triple it, add 1, and halve once. Repeat this 27 times.</p>
+      <p><strong>What Lean checked:</strong> for every start <code>n ≥ 26,018</code>, if no more than 17 of those 27 moves start on odd numbers, the ordinary sequence falls below its starting value at step <code>27+h</code>, where <code>h</code> is the number of odd moves. That is between steps 27 and 44.</p>
+      <p>For example, <code>26,018</code> has 12 odd moves; it falls below its start after 39 ordinary steps and is then 107. This example illustrates the rule; the Lean proof checks the general statement.</p>
+      <p class="record-note"><strong>Limit:</strong> this covers starts meeting the stated size and parity conditions. It does not show that every number eventually reaches 1 or solve the Collatz conjecture.</p>
+      <div class="record-links">
+        <a href="cases.html#collatz-at-most-seventeen-27">Open the runnable case</a>
+        <a href="tools.html#collatz-tool">Try a Collatz calculation in the browser</a>
+      </div>
+      <details class="record-note">
+        <summary>Show the pattern count and command-line replay</summary>
+        <p>The separate arithmetic audit counts 126,025,204 of 134,217,728 possible 27-move parity patterns (93.8961%). This count is not a natural-density result or a percentage of Collatz solved. Lean checks the general link from residue counts to parity-word counts; the final numeral is an arithmetic audit.</p>
+        <pre class="record-command">python scripts/run_public_case.py collatz-at-most-seventeen-27</pre>
+        <p>The command recompiles five Lean-core modules from fresh source copies, audits their axiom reports, and checks the separate integer count and 18 coefficient thresholds.</p>
+        <p><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-at-most-seventeen-of-twenty-seven-v1" target="_blank" rel="noopener noreferrer">Read the proof guide, source and replay details ↗</a></p>
+      </details>
     </section>
 
     <section class="record-section" id="exact-statement" aria-labelledby="statement-title">
