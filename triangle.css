@@ -19,7 +19,7 @@
 .graph-edge[data-color="red"] .edge-ink, .triangle-winner[data-color="red"] { stroke: var(--red-line); stroke-dasharray: none; }
 .graph-edge[data-color="blue"] .edge-ink, .triangle-winner[data-color="blue"] { stroke: var(--blue-line); stroke-dasharray: 6 4; }
 .graph-edge:focus-visible .edge-hit { stroke: #fff1bd; stroke-opacity: .65; stroke-width: 10; }
-.graph-edge:hover .edge-ink, .graph-edge:focus-visible .edge-ink { stroke-width: 4; }
+.graph-edge:focus-visible .edge-ink { stroke-width: 4; }
 #triangle-highlight, #triangle-vertices { pointer-events: none; }
 .triangle-halo { fill: #ffe9a91c; stroke: #fff0ba; stroke-width: 7.5; stroke-linejoin: round; }
 .triangle-winner { fill: none; stroke-width: 3.2; stroke-linejoin: round; }
@@ -27,6 +27,10 @@
 .graph-vertex text { fill: #fbf2de; font: 600 12px ui-sans-serif, system-ui, sans-serif; }
 .graph-vertex.found circle { fill: #f7e3aa; stroke: #182727; stroke-width: 2; }
 .graph-vertex.found text { fill: #182727; }
+.line-picker { margin: .65rem 0; padding: .55rem .7rem; border: 1px solid #98b5a9; border-radius: .4rem; }
+.line-picker legend { padding: 0 .25rem; color: #ffdb9f; font-size: .92rem; }
+.line-picker div { display: inline-flex; flex-wrap: wrap; gap: .4rem; margin: 0 .4rem .2rem 0; }
+.line-picker button { min-height: 44px; padding: .35rem .55rem; border: 1px solid #839a90; border-radius: .25rem; color: #f7f1de; background: #132b30; cursor: pointer; }
 .triangle-key { display: flex; gap: 1.1rem; justify-content: center; padding: .55rem 0; font-size: .8rem; color: #d2dcd5; }
 .triangle-key span { display: inline-flex; gap: .4rem; align-items: center; }
 .triangle-key span::before { content: ""; width: 1.75rem; border-top: 2px solid var(--red-line); }

@@ -50,6 +50,12 @@
 .level-reader p { margin: .3rem 0 .7rem; }
 #five-levels { scroll-margin-top: 5rem; }
 
+#ways-to-do-math { max-width: 74ch; scroll-margin-top: 4.5rem; }
+.ways-reader { max-width: 51rem; }
+.ways-reader p,.ways-reader li { color: #d2ded7; line-height: 1.55; }
+.ways-reader ul { margin: .6rem 0 1rem; padding-left: 1.3rem; }
+.ways-reader li + li { margin-top: .55rem; }
+.ways-reader a { color: #ffcf9a; text-underline-offset: .2em; }
 .roadmap-reading { margin: 2rem 0; }
 .roadmap-reading h2 { margin: 0 0 .75rem; color: #f7edda; font: 400 clamp(1.6rem,3vw,2.1rem)/1.18 Georgia,serif; }
 .roadmap-reading .subject-map { margin: .85rem 0; }

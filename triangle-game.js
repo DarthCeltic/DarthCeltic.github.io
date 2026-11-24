@@ -29,6 +29,21 @@
   const nodes = [];
   const svgNamespace = "http://www.w3.org/2000/svg";
 
+  const chooser = document.createElement("fieldset");
+  chooser.className = "line-picker";
+  chooser.hidden = true;
+  const legend = document.createElement("legend");
+  legend.textContent = "Which line did you mean?";
+  const choices = document.createElement("div");
+  const cancel = document.createElement("button");
+  cancel.type = "button";
+  cancel.textContent = "Cancel";
+  chooser.append(legend, choices, cancel);
+  graph.after(chooser);
+  chooser.addEventListener("keydown", event => {
+    if (event.key === "Escape") cancel.click();
+  });
+
   function svg(tag, attributes = {}) {
     const element = document.createElementNS(svgNamespace, tag);
     for (const [key, value] of Object.entries(attributes)) element.setAttribute(key, value);
@@ -36,6 +51,7 @@
   }
 
   function announce(message, state = "ready") {
+    chooser.hidden = true;
     status.textContent = message;
     status.dataset.state = state;
     story.hidden = state !== "success";
@@ -93,7 +109,6 @@
       const edge = { key: `${a},${b}`, a, b, control, title, button, label: `${a + 1}–${b + 1} · uncolored` };
       button.textContent = edge.label;
       button.addEventListener("click", () => flip(edge));
-      control.addEventListener("click", () => flip(edge));
       control.addEventListener("keydown", event => {
         if (event.key !== "Enter" && event.key !== " ") return;
         event.preventDefault();
@@ -110,6 +125,72 @@
     vertices.append(node);
     nodes.push(node);
   }
+
+  function segmentDistance(pointer, start, end) {
+    const dx = end.x - start.x;
+    const dy = end.y - start.y;
+    const along = ((pointer.x - start.x) * dx + (pointer.y - start.y) * dy) / (dx * dx + dy * dy);
+    const t = Math.max(0, Math.min(1, along));
+    return Math.hypot(pointer.x - start.x - t * dx, pointer.y - start.y - t * dy);
+  }
+
+  function askWhichLine(candidates) {
+    choices.replaceChildren();
+    for (const edge of candidates) {
+      const option = document.createElement("button");
+      option.type = "button";
+      option.textContent = edge.label;
+      option.addEventListener("click", () => {
+        flip(edge);
+        edge.control.focus({ preventScroll: true });
+      });
+      choices.append(option);
+    }
+    cancel.onclick = () => {
+      chooser.hidden = true;
+      candidates[0].control.focus({ preventScroll: true });
+    };
+    chooser.hidden = false;
+    choices.firstElementChild.focus();
+  }
+
+  // A touch-generated click can be retargeted to a nearby SVG hit area.
+  // Keep the actual point where the finger lifted for the line-distance calculation.
+  let pointerUp = null;
+  graph.addEventListener("pointerup", event => {
+    if (event.isPrimary && event.button === 0) {
+      pointerUp = { x: event.clientX, y: event.clientY, time: event.timeStamp };
+    }
+  });
+  graph.addEventListener("click", event => {
+    if (event.detail === 0) {
+      const control = event.target.closest(".graph-edge");
+      const edge = edges.find(item => item.control === control);
+      if (edge) flip(edge);
+      return;
+    }
+    const point = pointerUp && Math.abs(event.timeStamp - pointerUp.time) < 600
+      ? pointerUp : { x: event.clientX, y: event.clientY };
+    pointerUp = null;
+    const screen = graph.getScreenCTM();
+    if (!screen) return;
+    const displayed = points.map(([x, y]) => new DOMPoint(x, y).matrixTransform(screen));
+    const distances = edges.map(edge => ({
+      edge,
+      distance: segmentDistance(point, displayed[edge.a], displayed[edge.b])
+    }));
+    const nearest = Math.min(...distances.map(item => item.distance));
+    const hitRadius = Math.max(10, 8 * Math.hypot(screen.a, screen.b));
+    if (nearest > hitRadius) return;
+    // Subpixel rounding makes equal distances differ slightly at a crossing.
+    const candidates = distances.filter(item => item.distance <= nearest + 1).map(item => item.edge);
+    if (candidates.length === 1) {
+      flip(candidates[0]);
+      candidates[0].control.focus({ preventScroll: true });
+    } else {
+      askWhichLine(candidates);
+    }
+  });
 
   function loadSample() {
     for (const edge of edges) colorEdge(edge, (edge.a + edge.b) % 2 === 0 ? "red" : "blue");
