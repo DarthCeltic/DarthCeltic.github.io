@@ -210,9 +210,10 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <span class="case-status pass">Compact Lean replay · separate from historical 363-module replay</span>
         <h2>The 2,652 listed Collatz progressions</h2>
         <p><strong>Plain claim:</strong> for each of the 2,652 published coefficient pairs and every natural <code>k</code>, 32 ordinary steps take <code>1,048,576k+r</code> to <code>531,441k+q</code>, which is smaller.</p>
-        <p>The five-module Lean-core replay also checks a separate 456-row prespecified sample. Its source route is distinct from the archived 229 shards plus 133 composition chunks.</p>
+        <p>The five-module Lean-core replay also checks a prespecified sample of 456 rows.</p>
+        <p>A full local rebuild of the historical proof compiled all 363 modules from public sources. The public replay guide includes a smoke-test receipt. Independent replication of the full build remains open.</p>
         <pre>py -3 -B reproduction/collatz-affine-family-replay-v1/verify_parity.py</pre>
-        <div class="case-actions"><a href="collatz.html#exact-statement">Read the exact theorem and scope →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-affine-family-replay-v1">Open compact proof sources and receipt ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m15-m20-r2/PUBLIC_REPRODUCTION.md">Check the separate 363-module replay status ↗</a></div>
+        <div class="case-actions"><a href="collatz.html#exact-statement">Read the exact theorem and scope →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-affine-family-replay-v1">Open compact proof sources and receipt ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/ORIGINAL_REPLAY.md">Open the 363-module public-source replay guide ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/runs/smoke/status.json">Read the public smoke-test receipt ↗</a></div>
       </article>
       <article class="case-card-page" id="transfer-pilot">
         <span class="case-status">One matched pair · no observed uplift</span>
