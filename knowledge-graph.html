@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="description" content="Search 4,262 saved Collatz theorem checks, read each result in plain language, and inspect its Lean source and receipt.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src https://raw.githubusercontent.com; object-src 'none'; base-uri 'none'; form-action 'none">
+  <link rel="canonical" href="https://darthceltic.github.io/knowledge-graph.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MathCase | Search saved proof checks">
+  <meta property="og:description" content="A human-readable lookup for 4,262 bounded Collatz theorem checks, with exact Lean statements and receipts.">
+  <meta property="og:url" content="https://darthceltic.github.io/knowledge-graph.html">
+  <meta property="og:image" content="https://darthceltic.github.io/assets/mathcase-branding-kit/mathcase-lockup-960.png">
+  <title>MathCase | Search saved proof checks</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="home.css?v=20261124-portfolio-nav">
+  <link rel="stylesheet" href="case-index.css">
+  <link rel="stylesheet" href="knowledge-graph.css">
+  <script defer src="knowledge-graph-core.js"></script>
+  <script defer src="knowledge-graph.js"></script>
+</head>
+<body>
+  <a class="home-skip" href="#main">Skip to the proof library</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
+    <nav aria-label="Main navigation">
+      <a href="tools.html">Activities</a>
+      <a href="cases.html">Math guide</a>
+      <details class="home-menu">
+        <summary>More</summary>
+        <div>
+          <a href="work.html">Research results</a>
+          <a href="visitor/">Your proof</a>
+          <a href="visitor/teacher-guide.html">For teachers</a>
+          <a href="frontier.html">Frontier math</a>
+          <a href="knowledge-graph.html" aria-current="page">Proof library</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="roadmap.html">Open questions</a>
+          <a href="replay.html">Replay explorer</a>
+          <a href="projects/">About the creator</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+  <main class="shell proof-library" id="main">
+    <section class="library-intro" aria-labelledby="library-title">
+      <p class="eyebrow">Collatz · saved proof checks</p>
+      <h1 id="library-title">Find a checked step in the number pattern</h1>
+      <p>MathCase has a shelf of 4,262 formal statements about specific families of starting numbers. Search a name or phrase, read what one statement says, then open the Lean source and the matching receipt.</p>
+      <p class="plain-example"><strong>One example:</strong> every start of the form 32,768 × k + 127 becomes 19,683 × k + 77 after 24 steps. That result is smaller than the start. The letter <em>k</em> can be any natural number.</p>
+      <p class="scope-note">This is a finite collection of checked families. It does not show that every Collatz sequence reaches 1.</p>
+    </section>
+
+    <section class="library-panel" aria-labelledby="search-title">
+      <h2 id="search-title">Search the saved statements</h2>
+      <p>Choose to load the pinned public records (about 8 MB). Then search by theorem name or words in the exact statement. This is ordinary text search: it does not decide whether two proofs mean the same thing or suggest new proofs.</p>
+      <div class="library-actions">
+        <button id="load-graph" class="library-button" type="button">Load 4,262 saved statements</button>
+        <button id="open-example" class="library-button secondary" type="button" disabled>Open the example above</button>
+      </div>
+      <p id="graph-status" class="library-status" role="status" aria-live="polite">The proof records are not loaded. No data is fetched until you choose the load button.</p>
+      <label for="graph-search">Find a theorem by name or phrase</label>
+      <input id="graph-search" class="library-search" type="search" autocomplete="off" placeholder="For example: Descent127 or 32768 * k + 127" disabled>
+      <p id="graph-count" class="library-count" aria-live="polite"></p>
+      <ol id="graph-results" class="library-results" aria-label="Matching saved theorems"></ol>
+      <section id="graph-detail" class="library-detail" aria-live="polite" hidden></section>
+    </section>
+
+    <section class="library-panel" aria-labelledby="meaning-title">
+      <h2 id="meaning-title">What these records tell you</h2>
+      <dl class="meaning-list">
+        <div><dt>What question?</dt><dd>For a listed family of starting numbers, what exact value appears after a fixed number of Collatz steps, and is it smaller?</dd></div>
+        <div><dt>What did Lean check?</dt><dd>Each record is bound to one exact Lean statement, its source file, and the corresponding line in a saved replay receipt.</dd></div>
+        <div><dt>How was it checked?</dt><dd>These are individual theorem modules from a pinned replay. Each row records its axiom report and whether <code>sorryAx</code> appeared.</dd></div>
+        <div><dt>What is still open?</dt><dd>The statements have not each had a separate human wording review or promotion. The records do not prove that all positive starting numbers eventually reach 1.</dd></div>
+      </dl>
+      <details class="library-more">
+        <summary>What “checked” and “not promoted” mean</summary>
+        <p>Lean checking means the proof term was accepted in the recorded, pinned replay environment for that module. It does not automatically establish novelty, human statement review, or a general theorem beyond that module’s exact statement.</p>
+        <p>Dependency notes list imports and references to declarations local to the source module. They are not a normalized closure of every imported Lean constant.</p>
+        <p><a id="replay-package-link" href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">Open the pinned replay package and reproduction notes</a>.</p>
+        <p>Snapshot commit: <code id="snapshot-commit">loaded by the page</code>. The browser uses this fixed commit for every file, checks the manifest and theorem records against their SHA-256 files in that commit, then checks the index against the digest inside the manifest.</p>
+      </details>
+    </section>
+  </main>
+</body>
+</html>
