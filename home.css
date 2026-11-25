@@ -50,10 +50,11 @@
 @media (max-width: 45rem) {
   .home-width { width: min(calc(100% - 2rem), 34rem); }
   .puzzle, .home-paths, .research-strip, .home-links { grid-template-columns: 1fr; }
-  .home-header { padding-block: .5rem; }
+  .home-header { flex-wrap: wrap; gap: .25rem 1rem; padding-block: .5rem; }
+  .home-header nav { flex: 1 1 100%; justify-content: flex-start; flex-wrap: wrap; gap: .2rem 1rem; }
   .home-header img { width: 33px; height: 33px; }
   .home-header .brand { font-size: 1.25rem; }
-  .home-header nav a, .home-header summary { font-size: .85rem; }
+  .home-header nav a, .home-header summary { padding-block: .4rem; font-size: .85rem; }
   .puzzle { gap: 1.1rem; padding: 1.6rem 0; }
   .puzzle h1 { max-width: 15ch; font-size: clamp(2.65rem, 9vw, 3.8rem); }
   .puzzle .home-kicker { margin-bottom: .45rem; }
