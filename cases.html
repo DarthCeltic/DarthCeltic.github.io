@@ -277,12 +277,13 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
       <details class="case-record">
         <summary>Ramsey R(6,6)</summary>
       <article class="case-card-page" id="ramsey66">
-        <span class="case-status">Independent finite check · not Lean-checked</span>
+        <span class="case-status candidate">Lean source replay · known lower bound</span>
 
-        <p><strong>Plain claim:</strong> a 101-vertex Paley graph is presented as a finite witness for the known lower bound R(6,6) ≥ 102.</p>
-        <p>The local Python checker independently searches all 101 vertices and the complement for six-cliques. This finite certificate check supports the known lower bound; it is not a Lean proof and does not determine the exact Ramsey number.</p>
+        <p><strong>Plain claim:</strong> a known coloring of 101 dots avoids a one-color group of six. So any guarantee of such a group needs at least 102 dots: R(6,6) ≥ 102.</p>
+        <p>A separate Lean source replay compiled the three MathCase files from source with Lean 4.33.1 and pinned Mathlib. The recorded axioms are <code>[propext, Classical.choice, Quot.sound]</code>; no <code>sorryAx</code> was reported. This verifies the known witness, not a new bound or the exact Ramsey number.</p>
+        <p>The command below checks the finite graph certificate; it does not run Lean. The Lean receipt is on the public MathCase feature branch. That image is not yet verified as publicly pullable, and an anonymous clean rebuild remains open.</p>
         <pre>python scripts/run_public_case.py ramsey66</pre>
-        <div class="case-actions"><a href="work.html#ramsey-r66">Inspect the saved graph certificate →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-paley101-v1">Open the checker and certificate ↗</a></div>
+        <div class="case-actions"><a href="work.html#ramsey-r66">Inspect the saved graph certificate →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-paley101-v1">Run the finite checker and certificate ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/e51cc66fad08422146c60bfbb544b34c9c4c3463/reproduction/ramsey-r66-lean-v1">Read the Lean source package ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/e51cc66fad08422146c60bfbb544b34c9c4c3463/reproduction/ramsey-r66-lean-v1/source-replay-receipt.json">Read the Lean receipt ↗</a></div>
       </article>
       </details>
       <details class="case-record">
