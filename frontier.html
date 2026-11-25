@@ -87,13 +87,16 @@
     <h2>Where can you put 208 without creating a same-color sum?</h2>
     <p>If 2 and 3 are blue, 5 cannot also be blue, because 2 + 3 = 5. Only sums of two <em>distinct</em> positive numbers count.</p>
     <p>Two known colorings get through 207. MathCase tried all five colors for 208 and allowed up to 18 earlier numbers to change color. Neither starting arrangement could extend that way. A more extensive rearrangement could still work.</p>
+    <p>MathCase also tested one near-miss of its own: it had three conflicts, and a Z3 solver reported no repair using ten or fewer changes. That result applies only to this saved arrangement; another coloring could still work.</p>
     <details class="reading-details">
     <summary>Inspect the exact result, its limits and sources</summary>
     <p>The rule forbids same-color sums <code>a + b = c</code> when <code>a</code> and <code>b</code> are distinct positive numbers. Two known colorings cover 1 through 207; MathCase checked both and searched every color for 208 while changing up to 18 old entries.</p>
             <p>All ten bounded searches finished. Starting from either published coloring, at least 19 old positions must change before an extension can work. A coloring farther from both starting points could still exist.</p>
+            <p>For a separate MathCase near-miss, the solver encoded all 10,712 allowed sums and reported no valid repair within ten changes. This is a bounded solver report, not a proof certificate or a claim that 208 is impossible.</p>
             <p class="frontier-next"><strong>Next question.</strong> find a valid 208 coloring outside those neighborhoods, or check a proof that covers every five-coloring.</p>
             <div class="frontier-links">
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/weak-schur-5">Run the witness and radius checks ↗</a>
+              <a href="https://github.com/DarthCeltic/MathCase/tree/codex/collatz-parity-envelopes-20261124/research/frontier-2026-11/weak-schur-5/repair-radius-ten-v1">Read the exact ten-change query and its limits ↗</a>
               <a href="https://oeis.org/A072842" target="_blank" rel="noopener noreferrer">Rowley's published sequence record ↗</a>
               <a href="https://arxiv.org/abs/2611.22032" target="_blank" rel="noopener noreferrer">Vicenzi et al., 2026 ↗</a>
             </div>
@@ -152,10 +155,10 @@
     </details>
     </article>
     </section>
-    <section class="frontier-footer-card" aria-labelledby="frontier-replay-title"><h2 id="frontier-replay-title">Run one of the six checks yourself</h2><p>Choose a question to see its inputs, method and saved result.</p>
+    <section class="frontier-footer-card" aria-labelledby="frontier-replay-title"><h2 id="frontier-replay-title">Run a frontier check yourself</h2><p>Choose a question to see its inputs, method and saved result. The Weak Schur ten-change replay needs the exact local Z3 image; a clean-room image build is still open.</p>
     <details class="reading-details">
     <summary>Open the local commands and software requirements</summary>
-    <p>From a MathCase checkout, run <code>python scripts/run_frontier_case.py list</code>. Choose a case to produce logs and file hashes. The checks use Python and, for the fraction identities, Lean 4.33.1. The Weak Schur check downloads two public colorings and verifies their hashes. The checks use no model calls.</p><p><a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11">Open all six reproducible research cases</a></p>
+    <p>From a MathCase checkout, run <code>python scripts/run_frontier_case.py list</code>. Choose a case to produce logs and file hashes. The checks use Python and, for the fraction identities, Lean 4.33.1. The Weak Schur check downloads two public colorings and verifies their hashes. The checks use no model calls.</p><p><a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11">Open the frontier research package</a></p>
     </details>
     </section>
 
