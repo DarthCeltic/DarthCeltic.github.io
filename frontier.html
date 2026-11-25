@@ -93,10 +93,12 @@
     <p>The rule forbids same-color sums <code>a + b = c</code> when <code>a</code> and <code>b</code> are distinct positive numbers. Two known colorings cover 1 through 207; MathCase checked both and searched every color for 208 while changing up to 18 old entries.</p>
             <p>All ten bounded searches finished. Starting from either published coloring, at least 19 old positions must change before an extension can work. A coloring farther from both starting points could still exist.</p>
             <p>For a separate MathCase near-miss, the solver encoded all 10,712 allowed sums and reported no valid repair within ten changes. This is a bounded solver report, not a proof certificate or a claim that 208 is impossible.</p>
+            <p>On a different saved coloring with one remaining conflict (4 + 8 = 12), a full Z3 query over all 10,712 allowed sums reported no repair within three changes. This is a bounded solver report without a proof certificate; it says nothing about other starting colorings.</p>
             <p class="frontier-next"><strong>Next question.</strong> find a valid 208 coloring outside those neighborhoods, or check a proof that covers every five-coloring.</p>
             <div class="frontier-links">
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/weak-schur-5">Run the witness and radius checks ↗</a>
               <a href="https://github.com/DarthCeltic/MathCase/tree/codex/collatz-parity-envelopes-20261124/research/frontier-2026-11/weak-schur-5/repair-radius-ten-v1">Read the exact ten-change query and its limits ↗</a>
+              <a href="https://github.com/DarthCeltic/MathCase/tree/codex/collatz-parity-envelopes-20261124/research/frontier-2026-11/weak-schur-5/repair-radius-three-v1">Read the one-conflict, three-change query and checker ↗</a>
               <a href="https://oeis.org/A072842" target="_blank" rel="noopener noreferrer">Rowley's published sequence record ↗</a>
               <a href="https://arxiv.org/abs/2611.22032" target="_blank" rel="noopener noreferrer">Vicenzi et al., 2026 ↗</a>
             </div>
