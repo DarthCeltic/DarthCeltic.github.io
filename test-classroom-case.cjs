@@ -1,7 +1,7 @@
 "use strict";
 
 const assert = require("node:assert/strict");
-const { normalizeTeacherCase, teacherCaseImportError, learnerFeedbackMatches } = require("./visitor/classroom-case.js");
+const { normalizeTeacherCase, teacherCaseImportError, packetImportError, learnerFeedbackMatches } = require("./visitor/classroom-case.js");
 
 const base = {
   id: "example-prime-case",
@@ -23,6 +23,11 @@ for (const schema_version of ["mathcase-visitor-case-v1", "mathcase-visitor-case
 
 assert.throws(() => normalizeTeacherCase({ ...base, schema_version: "mathcase-class-assignment-v1" }), /unsupported-case-version/);
 assert.match(teacherCaseImportError(new Error("unsupported-case-version")), /Save the whole claim.*v1 or v2/);
+const wrongPacket = new Error("wrong-schema");
+wrongPacket.actualSchema = "mathcase-class-assignment-v1";
+assert.match(packetImportError(wrongPacket, "learner submission", "mathcase-class-submission-v1", "Choose the learner's saved file."), /Wrong file type.*mathcase-class-assignment-v1.*learner submission/);
+assert.match(packetImportError(new Error("shape"), "learner submission", "mathcase-class-submission-v1", "Re-export the submission."), /required fields are missing or invalid/);
+assert.match(packetImportError(new Error("hash"), "assignment", "mathcase-class-assignment-v1", "Choose the teacher export."), /target hash does not match its Lean statement/);
 assert.throws(() => normalizeTeacherCase({ ...base, schema_version: "mathcase-visitor-case-v2", formal_target: " " }), /case-fields/);
 assert.match(teacherCaseImportError(new Error("case-fields")), /plain statement or exact Lean target/);
 assert.throws(() => normalizeTeacherCase({ ...base, schema_version: "mathcase-visitor-case-v1", source: "x".repeat(2 * 1024 * 1024 + 1) }), /case-field-too-large/);

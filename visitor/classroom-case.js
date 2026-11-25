@@ -31,6 +31,18 @@
     return "Could not read this case file. Choose a MathCase “Save the whole claim” JSON export.";
   }
 
+  function packetImportError(error, expectedLabel, expectedSchema, nextAction) {
+    if (error?.message === "file-too-large") return "This file is over the 4 MiB limit. Choose a smaller classroom packet.";
+    if (error instanceof SyntaxError || error?.name === "TypeError") return "This file is not valid JSON. Re-download the classroom packet and try again.";
+    if (error?.message === "hash") return "The assignment’s target hash does not match its Lean statement. Ask the teacher to export the assignment again.";
+    if (error?.message === "wrong-schema") {
+      const actual = typeof error.actualSchema === "string" && error.actualSchema ? ` It is labeled “${error.actualSchema}”.` : " It has no recognized MathCase packet label.";
+      return `Wrong file type for this step.${actual} This step needs a ${expectedLabel} (${expectedSchema}). ${nextAction}`;
+    }
+    if (error?.message === "shape") return `This file is labeled as a ${expectedLabel}, but required fields are missing or invalid. ${nextAction}`;
+    return `Could not read a valid ${expectedLabel} file (${expectedSchema}). ${nextAction}`;
+  }
+
   function learnerFeedbackMatches(submission, review, submissionSha256) {
     return !!submission && !!review &&
       review.schema_version === "mathcase-class-review-v1" &&
@@ -41,7 +53,7 @@
       review.submission_file_sha256 === submissionSha256;
   }
 
-  const api = { normalizeTeacherCase, teacherCaseImportError, learnerFeedbackMatches };
+  const api = { normalizeTeacherCase, teacherCaseImportError, packetImportError, learnerFeedbackMatches };
   root.MathCaseClassroomCase = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
 })(typeof window === "undefined" ? globalThis : window);

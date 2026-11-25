@@ -25,6 +25,13 @@ function setStatus(id, value, error = false) {
 function newID() { return crypto.randomUUID?.() || `${Date.now()}-${Math.random().toString(36).slice(2)}`; }
 function isText(value) { return typeof value === "string"; }
 function isSHA(value) { return typeof value === "string" && /^[0-9a-f]{64}$/.test(value); }
+function requirePacketSchema(value, expected) {
+  if (value?.schema_version !== expected) {
+    const error = new Error("wrong-schema");
+    error.actualSchema = typeof value?.schema_version === "string" ? value.schema_version : "";
+    throw error;
+  }
+}
 function addText(parent, tag, value) {
   const node = document.createElement(tag);
   node.textContent = value;
@@ -98,8 +105,8 @@ byId("assignment-file").addEventListener("change", async () => {
   setStatus("assignment-status", "Reading assignment…");
   try {
     const { value } = await loadObject(byId("assignment-file").files[0]);
-    if (value?.schema_version !== "mathcase-class-assignment-v1" ||
-        !isText(value.assignment_id) || !isText(value.case_title) || !isText(value.statement) ||
+    requirePacketSchema(value, "mathcase-class-assignment-v1");
+    if (!isText(value.assignment_id) || !isText(value.case_title) || !isText(value.statement) ||
         !isText(value.lean_statement) || !isSHA(value.lean_statement_sha256) ||
         !isText(value.learner_prompt)) throw new Error("shape");
     if (await digest(new TextEncoder().encode(value.lean_statement)) !== value.lean_statement_sha256) throw new Error("hash");
@@ -115,8 +122,8 @@ byId("assignment-file").addEventListener("change", async () => {
     addText(brief, "p", value.learner_prompt);
     byId("make-submission").disabled = false;
     setStatus("assignment-status", `Loaded ${value.case_title} · assignment ${value.assignment_id}. Target hash verified locally.`);
-  } catch {
-    if (generation === learnerLoadGeneration) setStatus("assignment-status", "Assignment packet is invalid or its exact-target hash does not match.", true);
+  } catch (error) {
+    if (generation === learnerLoadGeneration) setStatus("assignment-status", MathCaseClassroomCase.packetImportError(error, "assignment", "mathcase-class-assignment-v1", "Choose the assignment saved by the teacher."), true);
   } finally { if (generation === learnerLoadGeneration) byId("assignment-file").value = ""; }
 });
 
@@ -200,7 +207,8 @@ byId("learner-submission-file").addEventListener("change", async () => {
   try {
     const loaded = await loadObject(byId("learner-submission-file").files[0]);
     const value = loaded.value;
-    if (value?.schema_version !== "mathcase-class-submission-v1" || !isText(value.submission_id) ||
+    requirePacketSchema(value, "mathcase-class-submission-v1");
+    if (!isText(value.submission_id) ||
         !isText(value.assignment_id) || !isSHA(value.lean_statement_sha256) ||
         !isText(value.learner_notes) || !isText(value.proof_source)) throw new Error("shape");
     const sha256 = await digest(loaded.bytes);
@@ -208,8 +216,8 @@ byId("learner-submission-file").addEventListener("change", async () => {
     learnerReviewSubmission = { ...loaded, sha256 };
     setStatus("learner-review-status", "Submission loaded. Choose the teacher feedback file for this exact file.");
     await showLearnerFeedback();
-  } catch {
-    if (generation === learnerReviewSubmissionGeneration) setStatus("learner-review-status", "Could not read a valid submission file.", true);
+  } catch (error) {
+    if (generation === learnerReviewSubmissionGeneration) setStatus("learner-review-status", MathCaseClassroomCase.packetImportError(error, "learner submission", "mathcase-class-submission-v1", "Choose the JSON file you downloaded after returning your work."), true);
   } finally { if (generation === learnerReviewSubmissionGeneration) byId("learner-submission-file").value = ""; }
 });
 
@@ -222,7 +230,8 @@ byId("learner-review-file").addEventListener("change", async () => {
   try {
     const loaded = await loadObject(byId("learner-review-file").files[0]);
     const value = loaded.value;
-    if (value?.schema_version !== "mathcase-class-review-v1" || !isText(value.review_id) ||
+    requirePacketSchema(value, "mathcase-class-review-v1");
+    if (!isText(value.review_id) ||
         !isText(value.assignment_id) || !isText(value.submission_id) || !isSHA(value.submission_file_sha256) ||
         !isSHA(value.lean_statement_sha256) || !["reviewed", "needs_revision"].includes(value.decision) ||
         !isText(value.teacher_feedback)) throw new Error("shape");
@@ -230,8 +239,8 @@ byId("learner-review-file").addEventListener("change", async () => {
     learnerReview = loaded;
     setStatus("learner-review-status", "Feedback loaded. Checking which submission it belongs to…");
     await showLearnerFeedback();
-  } catch {
-    if (generation === learnerReviewGeneration) setStatus("learner-review-status", "Could not read a valid teacher feedback file.", true);
+  } catch (error) {
+    if (generation === learnerReviewGeneration) setStatus("learner-review-status", MathCaseClassroomCase.packetImportError(error, "teacher feedback", "mathcase-class-review-v1", "Choose the review JSON returned by your teacher."), true);
   } finally { if (generation === learnerReviewGeneration) byId("learner-review-file").value = ""; }
 });
 
@@ -246,13 +255,14 @@ byId("review-assignment").addEventListener("change", async () => {
   try {
     const loaded = await loadObject(byId("review-assignment").files[0]);
     const value = loaded.value;
-    if (value?.schema_version !== "mathcase-class-assignment-v1" || !isText(value.assignment_id) ||
+    requirePacketSchema(value, "mathcase-class-assignment-v1");
+    if (!isText(value.assignment_id) ||
         !isText(value.lean_statement) || !isSHA(value.lean_statement_sha256)) throw new Error("shape");
     if (generation !== reviewAssignmentGeneration) return;
     reviewAssignment = loaded;
     setStatus("review-status", "Assignment loaded. Load the matching submission.");
     await maybeEnableReview();
-  } catch { if (generation === reviewAssignmentGeneration) setStatus("review-status", "Could not load a valid assignment file.", true); }
+  } catch (error) { if (generation === reviewAssignmentGeneration) setStatus("review-status", MathCaseClassroomCase.packetImportError(error, "assignment", "mathcase-class-assignment-v1", "Choose the original assignment given to the learner."), true); }
   finally { if (generation === reviewAssignmentGeneration) byId("review-assignment").value = ""; }
 });
 
@@ -267,14 +277,15 @@ byId("submission-file").addEventListener("change", async () => {
   try {
     const loaded = await loadObject(byId("submission-file").files[0]);
     const value = loaded.value;
-    if (value?.schema_version !== "mathcase-class-submission-v1" || !isText(value.submission_id) ||
+    requirePacketSchema(value, "mathcase-class-submission-v1");
+    if (!isText(value.submission_id) ||
         !isText(value.assignment_id) || !isSHA(value.lean_statement_sha256) ||
         !isText(value.learner_notes) || !isText(value.proof_source)) throw new Error("shape");
     if (generation !== reviewSubmissionGeneration) return;
     reviewSubmission = { ...loaded, sha256: await digest(loaded.bytes) };
     if (generation !== reviewSubmissionGeneration) return;
     await maybeEnableReview();
-  } catch { if (generation === reviewSubmissionGeneration) setStatus("review-status", "Could not load a valid submission file.", true); }
+  } catch (error) { if (generation === reviewSubmissionGeneration) setStatus("review-status", MathCaseClassroomCase.packetImportError(error, "learner submission", "mathcase-class-submission-v1", "Choose the JSON file returned by the learner."), true); }
   finally { if (generation === reviewSubmissionGeneration) byId("submission-file").value = ""; }
 });
 
