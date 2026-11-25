@@ -52,3 +52,11 @@ test("normalizes spacing for human text searches without claiming semantic match
   assert.equal(core.matchesSearch(record, "32768k+127"), true);
   assert.equal(core.matchesSearch(record, "not a theorem here"), false);
 });
+
+test("clears a selected proof when a search no longer includes it", () => {
+  const selected = { case_id: "collatz:m15:Descent127" };
+  const other = { case_id: "collatz:m15:Descent143" };
+  assert.equal(core.selectionVisibleInResults([], selected.case_id), false);
+  assert.equal(core.selectionVisibleInResults([other], selected.case_id), false);
+  assert.equal(core.selectionVisibleInResults([selected, other], selected.case_id), true);
+});

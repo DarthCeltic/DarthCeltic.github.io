@@ -99,8 +99,7 @@
     const dl = document.createElement("dl");
     addDetailRow(dl, "Axiom report", record.axioms);
     addDetailRow(dl, "sorryAx reported", record.sorryAx);
-    addDetailRow(dl, "Human wording review", "Not done separately for this individual row");
-    addDetailRow(dl, "Promotion", "Not promoted beyond the recorded individual replay");
+    addDetailRow(dl, "Individual review", "This row has not been individually reviewed for English-to-Lean wording.");
     addDetailRow(dl, "Novelty", "Not assessed");
     addDetailRow(dl, "What this row proves", record.claim_limit);
     addDetailRow(dl, "Imports", record.dependencies?.imports);
@@ -135,12 +134,21 @@
     }
     detail.append(links);
     detail.hidden = false;
-    setStatus("The statement digest matches the pinned record.");
+    setStatus("The exact statement matches the pinned saved record.");
   }
 
   function renderResults() {
     const query = search.value;
     const matches = records.filter((record) => core.matchesSearch(record, query));
+    if (selected && !core.selectionVisibleInResults(matches, selected)) {
+      selected = null;
+      detailGeneration += 1;
+      detail.replaceChildren();
+      detail.hidden = true;
+      setStatus(matches.length === 0
+        ? "No statement is selected. Try a theorem name or a number from its formula."
+        : "Search changed. Choose one of the matching statements to see its source and receipt.");
+    }
     const visible = matches.slice(0, 30);
     resultsNode.replaceChildren();
     for (const record of visible) {

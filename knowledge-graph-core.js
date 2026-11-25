@@ -114,5 +114,9 @@
     return haystack.includes(q);
   }
 
-  return Object.freeze({ PIN, parseSha256Sidecar, verifySnapshotHashes, parseCollatzStatement, githubFileUrl, validateGraph, normalizeSearch, matchesSearch });
+  function selectionVisibleInResults(matches, selectedCaseId) {
+    return typeof selectedCaseId === "string" && matches.some((record) => record.case_id === selectedCaseId);
+  }
+
+  return Object.freeze({ PIN, parseSha256Sidecar, verifySnapshotHashes, parseCollatzStatement, githubFileUrl, validateGraph, normalizeSearch, matchesSearch, selectionVisibleInResults });
 });

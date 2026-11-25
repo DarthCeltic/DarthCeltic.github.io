@@ -38,6 +38,15 @@ function addText(parent, tag, value) {
   parent.append(node);
   return node;
 }
+function addFingerprintDisclosure(parent, summaryText, value) {
+  const details = document.createElement("details");
+  details.className = "fingerprint-details";
+  addText(details, "summary", summaryText);
+  const fingerprint = addText(details, "code", value);
+  fingerprint.className = "fingerprint-value";
+  parent.append(details);
+  return details;
+}
 async function digest(bytes) {
   const result = new Uint8Array(await crypto.subtle.digest("SHA-256", bytes));
   return Array.from(result, (value) => value.toString(16).padStart(2, "0")).join("");
@@ -117,11 +126,12 @@ byId("assignment-file").addEventListener("change", async () => {
     addText(brief, "p", value.statement);
     addText(brief, "h3", "Exact Lean proposition");
     addText(brief, "pre", value.lean_statement);
-    addText(brief, "p", "Target SHA-256 verified: " + value.lean_statement_sha256);
+    addText(brief, "p", "The statement fingerprint matches this assignment file.");
+    addFingerprintDisclosure(brief, "Show the exact statement fingerprint", value.lean_statement_sha256);
     addText(brief, "h3", "Teacher prompt");
     addText(brief, "p", value.learner_prompt);
     byId("make-submission").disabled = false;
-    setStatus("assignment-status", `Loaded ${value.case_title} · assignment ${value.assignment_id}. Target hash verified locally.`);
+    setStatus("assignment-status", `Loaded ${value.case_title}. The statement fingerprint matches.`);
   } catch (error) {
     if (generation === learnerLoadGeneration) setStatus("assignment-status", MathCaseClassroomCase.packetImportError(error, "assignment", "mathcase-class-assignment-v1", "Choose the assignment saved by the teacher."), true);
   } finally { if (generation === learnerLoadGeneration) byId("assignment-file").value = ""; }
@@ -160,12 +170,13 @@ async function maybeEnableReview() {
   }
   const panel = byId("review-content");
   addText(panel, "h3", selectedAssignment.value.case_title);
-  addText(panel, "p", "Exact-target binding verified: " + targetDigest);
+  addText(panel, "p", "This assignment matches the learner’s submission.");
+  addFingerprintDisclosure(panel, "Show the exact statement fingerprint", targetDigest);
   addText(panel, "h3", "Learner notes");
   addText(panel, "pre", selectedSubmission.value.learner_notes || "(none)");
   addText(panel, "h3", "Submitted Lean source · displayed as text only");
   addText(panel, "pre", selectedSubmission.value.proof_source || "(empty submission)");
-  setStatus("review-status", "Assignment ID and target hash match. The submitted source remains unexecuted.");
+  setStatus("review-status", "Assignment and statement match. The submitted source is shown as text and has not been run.");
   byId("make-review").disabled = false;
 }
 

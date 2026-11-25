@@ -76,11 +76,11 @@
         <div><dt>What question?</dt><dd>For a listed family of starting numbers, what exact value appears after a fixed number of Collatz steps, and is it smaller?</dd></div>
         <div><dt>What did Lean check?</dt><dd>Each record is bound to one exact Lean statement, its source file, and the corresponding line in a saved replay receipt.</dd></div>
         <div><dt>How was it checked?</dt><dd>These are individual theorem modules from a pinned replay. Each row records its axiom report and whether <code>sorryAx</code> appeared.</dd></div>
-        <div><dt>What is still open?</dt><dd>The statements have not each had a separate human wording review or promotion. The records do not prove that all positive starting numbers eventually reach 1.</dd></div>
+        <div><dt>What is still open?</dt><dd>The statements have not each had an individual human wording review. The records do not prove that all positive starting numbers eventually reach 1.</dd></div>
       </dl>
       <details class="library-more">
-        <summary>What “checked” and “not promoted” mean</summary>
-        <p>Lean checking means the proof term was accepted in the recorded, pinned replay environment for that module. It does not automatically establish novelty, human statement review, or a general theorem beyond that module’s exact statement.</p>
+        <summary>What a recorded Lean check means</summary>
+        <p>Lean checking means the proof term was accepted in the recorded, pinned replay environment for that module. It does not automatically establish novelty, an individual human wording review, or a general theorem beyond that exact statement.</p>
         <p>Dependency notes list imports and references to declarations local to the source module. They are not a normalized closure of every imported Lean constant.</p>
         <p><a id="replay-package-link" href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">Open the pinned replay package and reproduction notes</a>.</p>
         <p>Snapshot commit: <code id="snapshot-commit">loaded by the page</code>. The browser uses this fixed commit for every file, checks the manifest and theorem records against their SHA-256 files in that commit, then checks the index against the digest inside the manifest.</p>

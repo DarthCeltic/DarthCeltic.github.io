@@ -14,9 +14,12 @@
 .tool-note { margin-top: 18px; padding: 14px 16px; background: #e4e7da; border-left: 3px solid #8d7652; }
 .assignment-brief { margin-top: 12px; }
 .assignment-brief:empty { display: none; }
+.assignment-brief, #review-content { min-width: 0; max-width: 100%; }
 .assignment-brief h3 { margin: 14px 0 5px; font-size: 1rem; }
 .assignment-brief p, .assignment-brief pre { margin: 5px 0; }
 .assignment-brief pre { padding: 10px; background: #e9e9df; font: .88rem/1.5 var(--mono); }
+.fingerprint-details { min-width: 0; margin: 8px 0; }
+.fingerprint-value { display: block; max-width: 100%; overflow-wrap: anywhere; word-break: break-word; white-space: normal; font: .82rem/1.5 var(--mono); }
 .tool-nav a[aria-current="page"] { text-decoration: underline; text-underline-offset: .25em; }
 .tool-back { margin: 20px 0 0; }
 .tool-page pre { white-space: pre-wrap; overflow-wrap: anywhere; }
