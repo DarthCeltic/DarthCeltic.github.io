@@ -9,6 +9,7 @@
   <title>Your proof notebook · MathCase</title>
   <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="workbench.css">
+  <script defer src="lean-draft.js"></script>
   <script defer src="workbench.js"></script>
 </head>
 <body>
@@ -85,6 +86,11 @@
         <input class="title-input" type="text" id="case-title" autocomplete="off" placeholder="Untitled case">
         <label for="statement">What are you trying to prove?</label>
         <textarea class="statement" id="statement" rows="2" placeholder="State your claim, including any assumptions."></textarea>
+        <div class="formalization-helper">
+          <p>New to Lean? Write the claim in your own words, then prepare a draft request for an AI you choose. MathCase copies the request; it does not send your words to an AI or verify that the proposed Lean statement says the same thing.</p>
+          <button class="secondary" id="copy-formalization" type="button">Prepare an AI draft from this claim</button>
+          <p id="formalization-status" role="status" aria-live="polite"></p>
+        </div>
         <details class="technical-target">
           <summary>Statement in Lean and theorem name</summary>
           <label for="formal-target">The precise proposition Lean should check</label>

@@ -559,20 +559,43 @@ elements["close-lean"].addEventListener("click", () => {
 });
 elements["web-editor"].addEventListener("click", () => window.open(editorUrl(), "_blank", "noopener,noreferrer"));
 
-async function copyPrompt(text) {
+async function copyPrompt(text, messages = {}) {
   const field = elements["ai-prompt"];
   const panel = elements["ai-panel"];
   panel.hidden = false;
   try {
     await navigator.clipboard.writeText(text);
-    elements["copy-status"].textContent = "Prompt copied. Paste it into your AI, then review its proposal and paste the Lean source above.";
+    elements["copy-status"].textContent = messages.copied || "Prompt copied. Paste it into your AI, then review its proposal and paste the Lean source above.";
+    return true;
   } catch {
     panel.open = true;
     field.focus();
     field.select();
-    elements["copy-status"].textContent = "Copy the selected prompt, then paste it into your AI.";
+    elements["copy-status"].textContent = messages.fallback || "Copy the selected prompt, then paste it into your AI.";
+    return false;
   }
 }
+
+elements["copy-formalization"].addEventListener("click", async () => {
+  const item = active();
+  if (!item.statement.trim()) {
+    elements["formalization-status"].textContent = "Write your claim in your own words first.";
+    return;
+  }
+  const prompt = MathCaseLeanDraft.buildFormalizationPrompt({
+    title: visibleName(item), statement: item.statement, source: item.source
+  });
+  elements["ai-prompt"].value = prompt;
+  elements["ai-panel"].hidden = false;
+  elements["ai-panel"].open = true;
+  const copied = await copyPrompt(prompt, {
+    copied: "Draft request copied. Paste it into an AI you choose. Compare its plain-English restatement and assumptions with your claim before using the Lean code. Nothing was sent automatically.",
+    fallback: "The draft request is shown below. Copy it into an AI you choose. Nothing was sent automatically."
+  });
+  elements["formalization-status"].textContent = copied
+    ? "Prompt copied. The AI will only propose a draft; Lean and your review are still needed."
+    : "Prompt ready below. It has not been sent or checked.";
+});
 
 elements["copy-ai"].addEventListener("click", async () => {
   const item = active();
