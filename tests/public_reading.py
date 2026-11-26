@@ -90,6 +90,14 @@ class PublicReadingTests(unittest.TestCase):
         self.assertNotIn("pinned image is not verified as anonymously pullable", frontier)
         self.assertIn("Browse the replay files and earlier run history", frontier)
 
+    def test_collatz_twelve_of_twenty_density_is_plain_and_bounded(self):
+        root = Path(__file__).resolve().parents[1]
+        collatz = (root / "collatz.html").read_text(encoding="utf-8")
+        self.assertIn("natural density exactly 62,985/524,288", collatz)
+        self.assertIn("about 12.0134%", collatz)
+        self.assertIn("other starts may also be", collatz)
+        self.assertIn("proves no global convergence", collatz)
+
 
 if __name__ == "__main__":
     unittest.main()
