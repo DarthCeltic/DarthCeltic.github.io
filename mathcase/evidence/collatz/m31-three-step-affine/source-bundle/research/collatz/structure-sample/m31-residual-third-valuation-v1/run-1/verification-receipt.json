@@ -1,0 +1,30 @@
+{
+  "created_utc": "2026-11-14T17:22:16+00:00",
+  "direct_trajectory_records_checked": 23642078,
+  "docker_used": false,
+  "global_collatz_proof": false,
+  "gpu_used": false,
+  "independent_population": {
+    "examined": 25542548,
+    "family_matches": 1900470,
+    "residuals": 23642078
+  },
+  "independent_third_valuation_histogram": {
+    "1": 19495091,
+    "2": 4146987
+  },
+  "lean_compiled": false,
+  "network_calls": 0,
+  "primary_audit_code_sha256": "c96cdbaa912880325e29a87b9764cc1335e02645de8355568b8b362d3f786d8b",
+  "protocol_path": "research/collatz/structure-sample/m31-residual-third-valuation-v1/protocol.md",
+  "protocol_sha256": "4f72f4014efd6ceb1b73e499b0f3d51a4b219d06ba83d8a075159bec8c55ddc8",
+  "provider_calls": 0,
+  "residual_index_sha256": "e04b6be58d34f2c2ce935cd87356cfbc7743a270b2c007432c3c724597b1d202",
+  "run_manifest_sha256": "15a77151be8e75457e1a1dee6675fb5207df7bb319f1548633df8a07d54a3258",
+  "schema": "mathcase-collatz-m31-residual-third-valuation-verification-v1",
+  "status": "PASS_INDEPENDENT_DIRECT_TRAJECTORY_AND_POPULATION_CHECK",
+  "summary_sha256": "a0d10e2006f3f4d27bc894b45acedf804b54028094b5fab7a1362fd4bbd9b1d3",
+  "test_code_sha256": "28a52207028ab6a3710953af88aa7fe59b32660a15c3c89e305a190572a5ab8c",
+  "verification_code_path": "scripts/verify_collatz_m31_residual_third_valuation.py",
+  "verification_code_sha256": "dda88efff401adcd4777f796ef53ea5298e38c265e7a72d0bf1573f34307d3b3"
+}

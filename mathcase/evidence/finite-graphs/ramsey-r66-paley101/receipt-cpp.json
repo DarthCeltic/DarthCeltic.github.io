@@ -1,0 +1,23 @@
+{
+  "certificate_sha256": "330196fd61554c66c7a3305a8257ea0a33b1b2722da95750819271438289073e",
+  "checker_sha256": "bf045759e5462c96ac048ce91a250b49a3bdc035cd483da8674bf7df59dadeeb",
+  "cost_usd": 0,
+  "elapsed_seconds": 0.134,
+  "error": null,
+  "exit_code": 0,
+  "external_calls": 0,
+  "limits": {
+    "affinity_mask": "0x1",
+    "priority": "BelowNormal",
+    "status": "set"
+  },
+  "schema": "mathcase-bounded-process-runner-receipt-v1",
+  "status": "PASS_EXACT_FINITE_CERTIFICATE",
+  "stderr": "",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout": "PASS_EXACT_R66_CERTIFICATE vertices=101 edges=2525 clique_search_nodes=51981 independent_search_nodes=54976 no_K6=yes no_independent6=yes\r\n",
+  "stdout_bytes": 139,
+  "stdout_sha256": "6f471e9a45ac1fcaeee516a1113f346d90a1c4ba1f0add9d520c4038d154b42d",
+  "timed_out": false
+}

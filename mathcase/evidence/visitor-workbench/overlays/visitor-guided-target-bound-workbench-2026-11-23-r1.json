@@ -1,0 +1,41 @@
+{
+  "schema": "mathcase-pages-visitor-overlay-v1",
+  "overlay_id": "visitor-guided-target-bound-workbench-2026-11-23-r1",
+  "site_repository": "DarthCeltic/DarthCeltic.github.io",
+  "site_base_commit": "d6009698d500744ebe3c30c7c6c4b551dbc220ae",
+  "source_repository": "DarthCeltic/MathCase",
+  "source_branch": "main",
+  "source_commit": "684ca6be073891e484883bd7fb536dfaa9010cd5",
+  "source_manifest_path": "evidence/visitor-workbench/source-manifest.json",
+  "source_manifest_sha256": "b8a531c3d212f5106644661ec0e56058ed4d7a57e0a9aa1688ce9068293bffb1",
+  "purpose": "Guide visitors from a plain counterexample through an exact Lean target check, while keeping the editor embedded in the page and its separate-window option optional.",
+  "files": [
+    {
+      "path": "visitor/index.html",
+      "pages_base_sha256": "f94955029b4876bd2694262cd12201dcfab2533f678f0e685e3fe549636320f6",
+      "overlay_sha256": "5a449b9f12bc60ea9671d8ce8ea2b9504b848ff9c0426af6d0f07aa90470e7a1",
+      "mathcase_source_sha256": "46785a7828346faa96779a20a32346200315d7b89c016eb9c2944fbb8ae7d6d2",
+      "relation_to_mathcase_source": "Pages copy retains site navigation, teacher-resource links, or existing visual integration while adding the guided target-bound workbench"
+    },
+    {
+      "path": "visitor/workbench.css",
+      "pages_base_sha256": "ea39d1bb8835128d7e8dacf2150d03b3dae8a02a7422ade38b8e8f83937e4f20",
+      "overlay_sha256": "31031f3a16964f389950a6a0f4a4137cfe77bf732d80146e977d88b21e3ff08f",
+      "mathcase_source_sha256": "fd6bdcd56f3c586da6f05475a676548a9877b288c8f91babb24db6a3b1991a9e",
+      "relation_to_mathcase_source": "Pages copy retains site navigation, teacher-resource links, or existing visual integration while adding the guided target-bound workbench"
+    },
+    {
+      "path": "visitor/workbench.js",
+      "pages_base_sha256": "11865e1de252e964ff485eb34f0b7eec0cfebe405d12cba2dd11739510be6f38",
+      "overlay_sha256": "310d78794a597f9d389aa744dbf9e4612c9eb74ee17e82d95d6285c833b1ba49",
+      "mathcase_source_sha256": "310d78794a597f9d389aa744dbf9e4612c9eb74ee17e82d95d6285c833b1ba49",
+      "relation_to_mathcase_source": "byte-identical"
+    }
+  ],
+  "limits": [
+    "The embedded editor is the public live.lean-lang.org service. Lean source and the generated target check are sent there only when the visitor opens the editor; the browser workbench does not produce a MathCase receipt.",
+    "A local Lean 4.33.1 checker can prove the exact exported proposition from the named declaration and record axiom and output hashes. It cannot decide whether the English sentence matches the Lean proposition.",
+    "The pinned original visitor source manifest and prior overlay records are unchanged. Pages keeps its existing navigation and teacher-resource integration.",
+    "Visitor receipt import compares exact recorded bytes but does not create a human M0 review, M4 result, independent review, or signature."
+  ]
+}

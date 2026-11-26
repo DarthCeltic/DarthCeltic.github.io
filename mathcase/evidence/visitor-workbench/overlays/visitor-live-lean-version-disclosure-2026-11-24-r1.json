@@ -1,0 +1,26 @@
+{
+  "schema": "mathcase-pages-visitor-overlay-v1",
+  "overlay_id": "visitor-live-lean-version-disclosure-2026-11-24-r1",
+  "site_repository": "DarthCeltic/DarthCeltic.github.io",
+  "site_base_commit": "ef2926c85c0ac72a274ead08fbf6a44ed8b52f41",
+  "source_repository": "DarthCeltic/MathCase",
+  "source_branch": "main",
+  "source_commit": "c5da1e8e97df429388b095144abef150d9cc77ff",
+  "source_manifest_path": "evidence/visitor-workbench/source-manifest.json",
+  "source_manifest_sha256": "b8a531c3d212f5106644661ec0e56058ed4d7a57e0a9aa1688ce9068293bffb1",
+  "purpose": "Tell visitors that the embedded public Lean editor chooses a version that may differ from the pinned local receipt checker.",
+  "files": [
+    {
+      "path": "visitor/index.html",
+      "pages_base_sha256": "5a449b9f12bc60ea9671d8ce8ea2b9504b848ff9c0426af6d0f07aa90470e7a1",
+      "overlay_sha256": "3ffcb36d4faf7789709f1ba0325e95749c012d2ace13ea4b892afafc9dc72f11",
+      "mathcase_source_sha256": "5c84e8388fdb143c0f80d910f0e31d5de8dc84bb9a896271aad9d8c2d2bb5a02",
+      "relation_to_mathcase_source": "Pages copy retains the existing site navigation and teacher-resource links; this overlay mirrors the version-disclosure sentence."
+    }
+  ],
+  "limits": [
+    "The public editor may change its Lean/Mathlib version independently; it does not create a MathCase receipt.",
+    "The local target-bound checker is pinned to Lean 4.33.1 and still cannot judge whether the English claim matches its Lean proposition.",
+    "The pinned visitor source manifest and earlier overlay records remain unchanged."
+  ]
+}

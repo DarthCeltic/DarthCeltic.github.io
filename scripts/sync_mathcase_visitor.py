@@ -132,7 +132,8 @@ def main() -> int:
     )
     args = parser.parse_args()
 
-    site_root = Path(__file__).resolve().parents[1]
+    repo_root = Path(__file__).resolve().parents[1]
+    site_root = repo_root / "mathcase"
     destination = site_root / "visitor"
     manifest_path = site_root / "evidence" / "visitor-workbench" / "source-manifest.json"
     stage: Path | None = None
@@ -148,7 +149,7 @@ def main() -> int:
             if args.backup_existing_to is None:
                 raise SyncError("site visitor/ or its source manifest already exists; provide --backup-existing-to for a preserved replacement")
             backup_root = args.backup_existing_to.resolve()
-            if site_root == backup_root or site_root in backup_root.parents:
+            if repo_root == backup_root or repo_root in backup_root.parents:
                 raise SyncError("the backup must be outside the Pages repository")
             if backup_root.drive.lower() != site_root.drive.lower():
                 raise SyncError("the backup must be on the same drive as the Pages repository for a safe directory swap")
@@ -196,8 +197,8 @@ def main() -> int:
                 manifest_temp.unlink(missing_ok=True)
                 raise
 
-        print(f"Copied {len(files)} files ({tree_bytes} bytes) from MathCase {source_commit} to visitor/.")
-        print(f"Source manifest: {manifest_path.relative_to(site_root).as_posix()}")
+        print(f"Copied {len(files)} files ({tree_bytes} bytes) from MathCase {source_commit} to mathcase/visitor/.")
+        print(f"Source manifest: {manifest_path.relative_to(repo_root).as_posix()}")
         return 0
     except (OSError, UnicodeError, SyncError, subprocess.SubprocessError) as exc:
         print(f"sync refused: {exc}", file=sys.stderr)

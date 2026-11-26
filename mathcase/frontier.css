@@ -1,0 +1,21 @@
+.frontier-page { padding-bottom: 52px; }
+.frontier-reassurance { margin-top: 14px !important; font-size: 13px !important; }
+.frontier-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin: 8px 0 34px; }
+.frontier-card { min-width: 0; display: flex; flex-direction: column; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg,#ffffff09,#ffffff02),#102431b8; scroll-margin-top: 14px; }
+.frontier-card h2 { margin: 0 0 11px; font: 500 clamp(22px,2.5vw,30px)/1.15 Georgia,"Times New Roman",serif; }
+.frontier-card p { color: #c0cbcd; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.frontier-kicker { margin: 0 0 9px !important; color: var(--gold) !important; font-size: 11px !important; font-weight: 850; letter-spacing: .07em; text-transform: uppercase; }
+.frontier-next { margin-top: auto; padding-top: 10px; border-top: 1px solid var(--line); }
+.frontier-next strong { color: #f0dfc2; }
+.frontier-links { display: flex; flex-wrap: wrap; gap: 9px 18px; margin-top: 5px; }
+.frontier-links a { color: #f0d09c; font-size: 13px; line-height: 1.5; text-underline-offset: 3px; overflow-wrap: anywhere; }
+.frontier-footer-card { max-width: 900px; padding: 24px; border: 1px solid #e7c49455; border-radius: 14px; background: linear-gradient(125deg,#172f3f,#142b3a 72%,#33291e); }
+.frontier-footer-card h2 { margin: 0 0 12px; font: 500 clamp(24px,3vw,34px)/1.15 Georgia,serif; }
+.frontier-footer-card p { color: #c0cbcd; font-size: 14px; line-height: 1.7; overflow-wrap: anywhere; }
+.frontier-footer-card .button { margin-top: 3px; }
+.frontier-limit { margin: 16px 0 0 !important; padding-top: 13px; border-top: 1px solid #e7c49435; font-size: 13px !important; }
+@media (max-width: 700px) {
+  .frontier-grid { grid-template-columns: minmax(0,1fr); }
+  .frontier-card { padding: 18px; }
+  .frontier-footer-card { padding: 19px 16px; }
+}

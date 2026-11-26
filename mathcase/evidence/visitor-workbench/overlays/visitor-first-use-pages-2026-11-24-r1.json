@@ -1,0 +1,72 @@
+{
+  "schema": "mathcase-pages-visitor-overlay-v1",
+  "overlay_id": "visitor-first-use-pages-2026-11-24-r1",
+  "site_repository": "DarthCeltic/DarthCeltic.github.io",
+  "site_base_commit": "419fb1cf2fbebd223fa02488376520774a8ad0ee",
+  "source_repository": "DarthCeltic/MathCase",
+  "source_branch": "main",
+  "source_commit": "17174a4a6311eb2e32556d9e4fb38255290a36be",
+  "source_manifest_path": "evidence/visitor-workbench/source-manifest.json",
+  "source_manifest_sha256": "b8a531c3d212f5106644661ec0e56058ed4d7a57e0a9aa1688ce9068293bffb1",
+  "purpose": "Make the public visitor notebook and lesson easier to try, and explain the file-based tools at the point of use.",
+  "files": [
+    {
+      "path": "visitor/classroom.html",
+      "pages_base_sha256": "82a2faeea4ded0294ff47c3aeeedf48133b78caa2eff4d1fbc94f182b2f6959f",
+      "overlay_sha256": "6830cfa3abd823584f208f503818007036bfa4bcf261693cc54c5c24c5af8287",
+      "change": "Adds links for creating, returning, and reviewing an assignment. Explains local file handling beside the assignment flow."
+    },
+    {
+      "path": "visitor/index.html",
+      "pages_base_sha256": "13da23c1b306a13a9112904bfe1572dd8dca5572b554af852ad5e5a1043360b7",
+      "overlay_sha256": "07fecf9cd426d6852e4fe631339843b897368bad26dfd266f8e08e9b467cdcbb",
+      "change": "Opens with the 4 and 2 example, groups experience-specific guidance, and explains the public editor next to its controls."
+    },
+    {
+      "path": "visitor/lab.html",
+      "pages_base_sha256": "dfcde8ffba09c015079a6930e4a9696c17d6b9195fe1a5a362a5a1f297786e1f",
+      "overlay_sha256": "ff3195726108153a8195ab62326c0bfbcd4262a46b9f65a70487a8e7979bb34c",
+      "change": "Leads with the run-summary import and sample report. Groups the matched-comparison guidance."
+    },
+    {
+      "path": "visitor/lesson.html",
+      "pages_base_sha256": "75dda31349cf43a6e449173195dbf4fcf899cb24a4fd77d62ac8c6e87dbe2667",
+      "overlay_sha256": "5dd26860e86634cb8adde3245d3a653945e728b76dc7ed3905cd833e8fcb8559",
+      "change": "Presents the square question, a revealable answer, the prime case, and an exercise with a hint."
+    },
+    {
+      "path": "visitor/model-workflow.html",
+      "pages_base_sha256": "856b2ac7c32dc7b260555887df409c4e8cee757d915e5dc8bb001856d1a8734b",
+      "overlay_sha256": "5d9a2c1ec2bd564bbbc0130006dddcf1ab97c4ca78d73f87c51643b2f1071e01",
+      "change": "Leads with local file review and places the optional command in a disclosure."
+    },
+    {
+      "path": "visitor/study-lab.html",
+      "pages_base_sha256": "66fee6b562f1633bdd96f362ac461fb33f619caa7ed74f295b99b3dad3d54ba0",
+      "overlay_sha256": "0f4c1146a7bc3467cec284b073c82a69be621bfb44664a571b8e61a62160e658",
+      "change": "Introduces the practice plan before the technical fingerprint instructions."
+    },
+    {
+      "path": "visitor/teacher-guide.html",
+      "pages_base_sha256": "473d37f44afdececc32ec4d11e8f5c1ce803d41849d89ee55914c06df3d8fdb2",
+      "overlay_sha256": "36f9e1610e3b3e09899d78feb06bfe1ac67d5e859203d0e62d5b6cc4fb951fd3",
+      "change": "Keeps the worked arithmetic and two-step prime argument together. Places the composite example in a disclosure."
+    },
+    {
+      "path": "visitor/tools.css",
+      "pages_base_sha256": "6ead1578ddb440a19909e44d8c2e8b155dde9c5a985c6dba7a2afcb9cd7bdba3",
+      "overlay_sha256": "1acbc5a01aef30fa17bab6c325c33dffc71b289086ef51579acf4fe0dcaead96",
+      "change": "Styles the worked example, follow-up questions, and local file tasks."
+    },
+    {
+      "path": "visitor/workbench.css",
+      "pages_base_sha256": "31031f3a16964f389950a6a0f4a4137cfe77bf732d80146e977d88b21e3ff08f",
+      "overlay_sha256": "1f867b5423e9f444050860dc34fc433e7e9d9a981631903c24d27c1d40a30242",
+      "change": "Styles the optional proof guide and online editor version details."
+    }
+  ],
+  "limits": [
+    "This editorial overlay covers Pages HTML and CSS. The hashes describe the site files.",
+    "Proof checks, archived mathematical results, and model outcomes retain their original evidence."
+  ]
+}

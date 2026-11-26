@@ -1,0 +1,91 @@
+{
+  "class_member_convention": "n = r + k*2^31 for each saved odd residual residue r and integer k >= 0",
+  "classification": "DERIVED_EXACT_FINITE_AFFINE_COROLLARY",
+  "cost_usd": 0,
+  "external_calls": 0,
+  "lean_compiled": false,
+  "limits": [
+    "Finite affine consequence only for the 23,642,078 pinned odd residue classes modulo 2^31.",
+    "No claim for other residues or all odd integers.",
+    "No step-four decrease is established; no later descent or convergence claim follows.",
+    "No Lean proof, M0/M4 evidence, novelty claim, or independent mathematical review is claimed.",
+    "No trajectory rescan is performed; only the verified summary formulas and parent bindings are used."
+  ],
+  "m0_or_m4_promoted": false,
+  "map": "T(x)=(3*x+1)/2^v2(3*x+1), accelerated odd-to-odd Collatz map",
+  "modulus": 2147483648,
+  "parent_result": {
+    "independent_parent_status": "PASS_INDEPENDENT_DERIVATION_AND_BINDING_CHECK",
+    "parent_inputs_rehashed": 21,
+    "run_manifest_sha256": "a894f9ec6f2ba8ade337973ed593093bbc7671b6267911a1baffc628e374d6d3",
+    "summary_sha256": "074dc937cee95da535bf372d3f5cb1b35e7be2e372ebb3f88da5d55308f32a84",
+    "verification_receipt_sha256": "4ea8c1526945e6a3145eb8ef43bdffb591c9a97d90bfa6d909c0b91ae5bd6144"
+  },
+  "population": 23642078,
+  "result": {
+    "bound_holds_for_all_positive_members_of_saved_classes": true,
+    "empty_stratum": {
+      "a2": 2,
+      "a3": 2,
+      "claim": "NONE",
+      "class_count": 0
+    },
+    "equality_strata": [
+      {
+        "a2": 1,
+        "a3": 2,
+        "class_count": 4146987
+      }
+    ],
+    "equivalent_lower_bound": "T^3(n) >= (27*n + 19)/16",
+    "exact_inequality": "16*T^3(n) - 27*n >= 19",
+    "plain_language": "After three accelerated odd-to-odd steps, each positive member is more than 27/16 of its starting value, with a uniform additive margin of at least 19/16.",
+    "sharp": true,
+    "strata": [
+      {
+        "a2": 1,
+        "a3": 1,
+        "claim_applies": true,
+        "class_count": 15348104,
+        "equality_for_every_positive_n": false,
+        "exact_margin_expression": "27*n + 38",
+        "margin_at_least_19": true,
+        "t3_formula": "(27*n + 19)/8"
+      },
+      {
+        "a2": 1,
+        "a3": 2,
+        "claim_applies": true,
+        "class_count": 4146987,
+        "equality_for_every_positive_n": true,
+        "exact_margin_expression": "0*n + 19",
+        "margin_at_least_19": true,
+        "t3_formula": "(27*n + 19)/16"
+      },
+      {
+        "a2": 2,
+        "a3": 1,
+        "claim_applies": true,
+        "class_count": 4146987,
+        "equality_for_every_positive_n": false,
+        "exact_margin_expression": "0*n + 23",
+        "margin_at_least_19": true,
+        "t3_formula": "(27*n + 23)/16"
+      },
+      {
+        "a2": 2,
+        "a3": 2,
+        "claim_applies": false,
+        "class_count": 0,
+        "empty_stratum_no_claim": true,
+        "equality_for_every_positive_n": false,
+        "exact_margin_expression": null,
+        "margin_at_least_19": null,
+        "t3_formula": "(27*n + 23)/32"
+      }
+    ]
+  },
+  "schema": "mathcase-collatz-m31-three-step-affine-lower-bound-summary-v1",
+  "status": "PASS_DERIVED_FINITE_AFFINE_LOWER_BOUND",
+  "trajectory_rescan_performed": false
+}

@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Play a six-dot coloring puzzle, then inspect a saved proof checked by Lean. Explore MathCase activities, research, and public projects.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MathCase | Play with a claim. Inspect a proof.</title>
+  <link rel="canonical" href="https://darthceltic.github.io/mathcase/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="MathCase | Play with a claim. Inspect a proof.">
+  <meta property="og:description" content="Play a six-dot coloring puzzle, then inspect a saved proof checked by Lean. Explore MathCase activities, research, and public projects.">
+  <meta property="og:url" content="https://darthceltic.github.io/mathcase/">
+  <meta property="og:image" content="https://darthceltic.github.io/mathcase/assets/mathcase-branding-kit/mathcase-lockup-960.png">
+  <meta property="og:image:alt" content="MathCase wordmark">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="MathCase | Play with a claim. Inspect a proof.">
+  <meta name="twitter:description" content="Play a six-dot coloring puzzle, then inspect a saved proof checked by Lean. Explore MathCase activities, research, and public projects.">
+  <meta name="twitter:image" content="https://darthceltic.github.io/mathcase/assets/mathcase-branding-kit/mathcase-lockup-960.png">
+  <meta name="twitter:image:alt" content="MathCase wordmark">
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="triangle.css">
+  <link rel="stylesheet" href="home.css?v=20261124-portfolio-nav">
+  <script defer src="activities-core.js"></script>
+  <script defer src="triangle-game.js?v=20261124-line-picking"></script>
+  <script defer src="case-desk-launch.js?v=20261123-case-routing"></script>
+</head>
+<body class="home">
+  <a class="home-skip" href="#try-math">Skip to the challenge</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/mathcase/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
+    <nav aria-label="Main navigation">
+      <a href="tools.html">Activities</a>
+      <a href="cases.html">Math guide</a>
+      <a href="/#projects">Projects</a>
+      <details class="home-menu">
+        <summary>More</summary>
+        <div>
+          <a href="work.html">Research results</a>
+          <a href="visitor/">Your proof</a>
+          <a href="visitor/teacher-guide.html">For teachers</a>
+          <a href="frontier.html">Frontier math</a>
+          <a href="diagnostics.html">Diagnostics and lab notes</a>
+          <a href="knowledge-graph.html">Proof library</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="roadmap.html">Open questions</a>
+          <a href="replay.html">Replay explorer</a>
+          <a href="#hero-title">Judge’s guide</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+  <main class="home-width">
+    <section class="puzzle" id="try-math" aria-labelledby="puzzle-title">
+      <div class="puzzle-intro">
+        <p class="home-kicker">Ramsey’s triangle puzzle</p>
+        <h1 id="puzzle-title">Can six dots avoid a <em><span>one-color</span> triangle?</em></h1>
+        <p class="puzzle-question">Every pair of dots is connected. Can you color the lines so that every triangle uses both red and blue?</p>
+        <p id="triangle-help">Tap a line to switch its color, then check your work. You can also edit each line by number.</p>
+        <p class="byline"><a href="/#contact">About the creator</a></p>
+      </div>
+      <div class="puzzle-board" data-start-coloring="sample">
+        <div class="triangle-widget">
+          <svg id="triangle-graph" viewBox="0 0 320 250" role="group" aria-label="Six numbered dots and 15 editable lines" aria-describedby="triangle-help">
+            <g id="triangle-lines"></g>
+            <g id="triangle-highlight" aria-hidden="true"></g>
+            <g id="triangle-vertices" aria-hidden="true"></g>
+          </svg>
+          <div class="triangle-key" aria-hidden="true"><span class="key-red">Red</span><span class="key-blue">Blue</span></div>
+          <div class="triangle-controls">
+            <div class="triangle-actions">
+              <button class="button button-primary" id="triangle-check" type="button">Check this coloring</button>
+              <button class="button button-secondary" id="triangle-sample" type="button">Load a sample coloring</button>
+            </div>
+            <p id="triangle-status" role="status" aria-live="polite" aria-atomic="true">Color the 15 lines or load a sample to begin.</p>
+            <details class="triangle-list">
+              <summary>Edit lines by number</summary>
+              <div class="triangle-edges" id="triangle-edges" role="group" aria-label="Choose a line to change its color"></div>
+            </details>
+            <details class="triangle-list triangle-explanation">
+              <summary>Why is a triangle unavoidable?</summary>
+              <p>Pick any dot. At least three of its five lines share a color. Suppose that color is red.</p>
+              <p>Look at the three dots on the other ends of those red lines. If any two are joined by red, they make a red triangle with your first dot. Otherwise all three lines between them are blue, so those three dots make a blue triangle.</p>
+              <p>The same argument works with the colors reversed.</p>
+            </details>
+          </div>
+          <noscript><p>Enable JavaScript to color the graph and check it in your browser.</p></noscript>
+        </div>
+      </div>
+    </section>
+
+    <section class="home-section" id="case-desk" aria-labelledby="desk-title">
+      <h2 id="desk-title">Try another question</h2>
+      <div class="home-paths">
+        <article id="proof-story">
+          <p class="home-kicker">Saved Lean proof</p>
+          <h3 id="proof-title">If a prime divides a square, must it divide the root?</h3>
+          <p>Lean, a program that checks mathematical proofs, rejected the first AI attempt. See the mistake and the correction it accepted.</p>
+          <a data-case-desk-launch="hero-prime-divisibility-r1" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open the saved proof <span aria-hidden="true">→</span></a>
+        </article>
+        <article>
+          <p class="home-kicker">Hands-on arithmetic</p>
+          <h3>Can three unit fractions add up to 4/21?</h3>
+          <p>Each fraction has a 1 on top. Choose three different denominators and check their sum exactly.</p>
+          <a href="tools.html#fraction-identity">Try the fraction puzzle <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="home-section research-strip" aria-labelledby="latest-title">
+      <div>
+        <p class="home-kicker">From the research notebook · November 24, 2026</p>
+        <h2 id="latest-title">When does a Collatz sequence drop?</h2>
+        <p>Halve an even number. Triple an odd number and add 1. On odd numbers, a shortcut combines that step and the next halving. A proved rule guarantees a drop within 37 ordinary steps for starts of at least 3 whose first 23 shortcuts include at most 14 odd starts.</p>
+        <a href="work.html#collatz-23-of-14">See the worked example and the theorem <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="research-notation" aria-hidden="true"><span>5 → 16 → 8 → 4</span><small>Three ordinary steps take 5 below its start</small></div>
+    </section>
+
+    <section class="home-section home-library" aria-labelledby="browse-title">
+      <h2 id="browse-title">Explore MathCase</h2>
+      <div class="home-links">
+        <div id="your-workspace"><a id="workspace-title" href="visitor/">Bring your own proof <span aria-hidden="true">→</span></a><p>Edit a Lean statement and choose how to check it.</p></div>
+        <div><a href="cases.html">Find a question by subject <span aria-hidden="true">→</span></a><p>Compare explanations, try an example or inspect a saved check.</p></div>
+      </div>
+      <details class="judge-disclosure">
+        <summary>Hackathon judge’s guide</summary>
+        <p id="hero-title">MathCase pairs an AI proof attempt with Lean’s response. For a three-minute walkthrough, use the saved prime-divisibility case.</p>
+        <ol>
+          <li><a href="reader.html?scope=public#case/hero-prime-divisibility-r1">Read the claim and the rejected attempt.</a> The candidate supplied divisibility where Lean expected primality.</li>
+          <li>Inspect the repaired proof in the same record. It uses the known Lean theorem <code>Nat.Prime.dvd_of_dvd_pow</code>.</li>
+          <li><a href="reader.html?scope=public#case/hero-composite-counterexample-r1">Remove the prime assumption.</a> The saved arithmetic example shows what fails when the divisor is 4.</li>
+        </ol>
+        <p><a href="https://devpost.com/software/mathcase">MathCase on Devpost</a> · <a href="https://nebiusglobalaihackathon.devpost.com/details/dates">Official judging schedule</a></p>
+      </details>
+    </section>
+  </main>
+  <footer class="home-footer home-width"><span>MathCase</span><nav aria-label="Footer"><a href="/#projects">Projects</a><a href="https://github.com/DarthCeltic/MathCase">Source on GitHub</a></nav></footer>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Model run review · MathCase</title>
+  <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="workbench.css"><link rel="stylesheet" href="tools.css">
+  <script defer src="model-workflow.js"></script>
+</head>
+<body>
+  <header class="mast"><div class="mast-inner">
+    <a href="../" class="brand"><img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" width="38" height="38" alt=""><span>Math<span>Case</span></span></a>
+    <nav class="tool-nav" aria-label="MathCase pages">
+      <a href="lesson.html">Try a lesson</a>
+      <a href="index.html">Your proof</a>
+      <a href="../tools.html">Try number math</a>
+      <details class="tool-nav-group">
+        <summary>For teachers</summary>
+        <div class="tool-nav-links">
+          <a href="teacher-guide.html">Read the worked answer</a>
+          <a href="classroom.html">Assignment files</a>
+        </div>
+      </details>
+      <details class="tool-nav-group">
+        <summary aria-current="page">More</summary>
+        <div class="tool-nav-links">
+          <a href="model-workflow.html" aria-current="page">Saved proof attempts</a>
+          <a href="lab.html">Run reports</a>
+          <a href="study-lab.html">Compare saved runs</a>
+        </div>
+      </details>
+    </nav>
+  </div></header>
+  <main class="tool-page">
+    <h1>Review a saved proof attempt</h1>
+    <p class="tool-lede">Read what the model tried and what Lean reported. The files stay in your browser. This page makes no model calls and runs no proof code.</p>
+    <section class="tool-card">
+      <h2>Start with the claim</h2>
+      <p>In <a href="index.html">your notebook</a>, choose “Save the whole claim.” Open that file here to compare its statement with the saved run.</p>
+      <div class="upload-row"><label for="case-file">Case packet JSON</label><input id="case-file" type="file" accept=".json,application/json"></div>
+      <p id="case-status" role="status">No case loaded.</p>
+      <details class="record-details"><summary>Statement and file fingerprint</summary><dl><dt>Exact Lean statement</dt><dd><pre id="case-target">—</pre></dd><dt>Exact statement SHA-256</dt><dd id="case-hash">—</dd></dl></details>
+    </section>
+    <section class="tool-card">
+      <h2>Add the saved run</h2>
+      <p>Choose the summary from the same run. You’ll see the recorded attempts, outcomes, costs, and any failures.</p>
+      <div class="upload-row"><label for="run-file">Provider run summary JSON</label><input id="run-file" type="file" accept=".json,application/json"></div>
+      <p id="run-status" role="status">No run loaded.</p>
+      <div id="run-summary"></div>
+      <div id="attempts"></div>
+      <h3>Read the model’s attempts</h3>
+      <p>Choose the response files from this run to read the model’s drafts. A draft appears only when its file fingerprint matches the recorded attempt.</p>
+      <div class="upload-row"><label for="response-files">Provider response JSON</label><input id="response-files" type="file" accept=".json,application/json" multiple></div>
+      <p id="response-status" role="status">No provider response files loaded.</p>
+      <div id="responses"></div>
+      <button class="tool-action" id="export-review" type="button" disabled>Download review notes</button>
+    </section>
+    <details class="lesson-followup">
+      <summary>How to create a run on your own machine</summary>
+      <p>Start with a target you have permission to use. Review the exact statement and spending limits first. Keep credentials in your local environment and run candidate code only in the pinned Lean sandbox.</p>
+      <p>The MathCase command requires an owner grant, input clearance, a specific provider and model, approved prices, and a hard spending cap. This version accepts HTTPS provider endpoints only. Local HTTP Ollama endpoints are unsupported.</p>
+      <p>Replace the placeholders before running this template in Bash. In PowerShell, put the arguments on one line and omit the backslashes.</p>
+      <pre><code>mathcase solve-provider --dispatch \
+  --problem &lt;cleared-problem.json&gt; \
+  --owner-authorization &lt;owner-grant.json&gt; \
+  --input-clearance &lt;item-clearance.json&gt; \
+  --provider &lt;approved-provider&gt; --protocol &lt;protocol-id&gt; --model &lt;exact-model-id&gt; \
+  --base-url &lt;approved-endpoint&gt; --api-key-env &lt;ENVIRONMENT_VARIABLE_NAME&gt; \
+  --input-price-micros-per-million &lt;reviewed-rate&gt; \
+  --output-price-micros-per-million &lt;reviewed-rate&gt; \
+  --per-call-ceiling-micros &lt;cap&gt; --run-ceiling-micros &lt;cap&gt; \
+  --max-provider-calls 1 \
+  --run-id &lt;unique-run-id&gt; --output &lt;new-result.json&gt; \
+  --cost-journal &lt;local-cost-ledger.jsonl&gt; --provider-evidence-dir &lt;local-call-evidence&gt; \
+  --lean-snapshot-manifest &lt;pinned-snapshot.json&gt; \
+  --lean-sandbox-image sha256:&lt;approved-image-digest&gt; --lean-receipt-root &lt;local-receipts&gt;</code></pre>
+      <p class="warning">Do not paste API keys, owner grants, clearance files, local paths, or raw request/response files into a public page. A visitor controls provider dispatch and spend.</p>
+    </details>
+    <p class="tool-footer">A run summary reports what happened. To confirm that Lean accepted a proof, check the pinned Lean receipt against the exact source and statement.</p>
+  </main>
+</body>
+</html>

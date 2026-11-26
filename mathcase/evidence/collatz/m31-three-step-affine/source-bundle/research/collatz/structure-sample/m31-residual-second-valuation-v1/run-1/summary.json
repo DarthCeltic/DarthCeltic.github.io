@@ -1,0 +1,36 @@
+{
+  "axiom_checked": false,
+  "classification": "EXACT_FINITE_RESIDUAL_CLASS_CENSUS",
+  "global_collatz_proof": false,
+  "lean_compiled": false,
+  "protocol_path": "research/collatz/structure-sample/m31-residual-second-valuation-v1/protocol.md",
+  "result": {
+    "base_modulus": 1073741824,
+    "first_odd_to_odd_valuation_histogram": {
+      "1": 23642078
+    },
+    "m31_modulus": 2147483648,
+    "m31_residual_classes_examined": 25542548,
+    "m31_saved_family_rows_matched": 1900470,
+    "m31_unresolved_classes": 23642078,
+    "representative_convention": "n = r + 2^31",
+    "scope": "Exact census on fixed representatives of the finite M31 unresolved set. Uniform two-step statements are only the congruence consequences stated in the protocol; no global convergence or novelty claim.",
+    "second_odd_to_odd_valuation_histogram": {
+      "1": 19495091,
+      "2": 4146987
+    },
+    "second_valuation_invariant_for_all_class_members_by_congruence": {
+      "classes_at_or_above_cutoff_without_uniformity_claim": 0,
+      "classes_with_a2_below_cutoff": 23642078,
+      "cutoff_exclusive": 30
+    },
+    "two_odd_step_descent": {
+      "fixed_representatives_with_a2_at_least_3": 0,
+      "representative_examples_at_or_above_cutoff": [],
+      "representative_examples_of_uniform_classes": [],
+      "uniform_residue_classes_with_3_le_a2_lt_30": 0,
+      "uniformity_reason": "(9n+5)/2 changes by 9*k*2^30 within a fixed residue class; valuations below 30 are unchanged"
+    }
+  },
+  "schema": "mathcase-collatz-m31-residual-second-valuation-summary-v1"
+}

@@ -1,0 +1,20 @@
+{
+  "classes_satisfying_bound": 23642078,
+  "cost_usd": 0,
+  "created_utc": "2026-11-15T22:51:35.445094+00:00",
+  "external_calls": 0,
+  "input_files_rehashed": 30,
+  "lean_compiled": false,
+  "m0_or_m4_promoted": false,
+  "parent_inputs_rehashed": 21,
+  "population_conserved": 23642078,
+  "run_manifest_sha256": "1b985942371e255f8f3492af27e762d0760c7a5cc14449d95204eb5f0fc7fa09",
+  "schema": "mathcase-collatz-m31-three-step-affine-lower-bound-verification-v1",
+  "sharp_equality_classes": 4146987,
+  "status": "PASS_INDEPENDENT_AFFINE_BOUND_AND_BINDING_CHECK",
+  "strata_checked": 4,
+  "summary_sha256": "3d06c51361f8e914f021d987ea4583f719ec31df55aa4ded0ea948a0912ef39d",
+  "trajectory_rescan_performed": false,
+  "verification_script_path": "scripts/verify_collatz_m31_three_step_affine_lower_bound_v1.py",
+  "verification_script_sha256": "729ee510cbc51df84996db6da4268aa841b98843ae73657b4b6f583d0c34742a"
+}

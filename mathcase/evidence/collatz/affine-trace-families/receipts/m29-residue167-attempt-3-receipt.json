@@ -1,0 +1,109 @@
+{
+  "attempt_id": "m29-residue167-attempt-3",
+  "axioms": [
+    "propext",
+    "Quot.sound"
+  ],
+  "bindings": {
+    "certificate_source": {
+      "base": "repository",
+      "path": "research/collatz/affine-trace/M29Residue167.lean",
+      "sha256": "b2eb08240b8ca2252c6537f9fe5d8e83a3160b6638b3f9ee51dd7b2ef57f5f4d"
+    },
+    "generator": {
+      "base": "repository",
+      "path": "scripts/generate_collatz_affine_certificate_v2.py",
+      "sha256": "4d8906e9b0d880978ab957b19d32f95301b46467d899d1c55e76308324acad30"
+    },
+    "generic_theorem_source": {
+      "base": "repository",
+      "path": "research/collatz/affine-trace/CollatzAffineTrace.lean",
+      "sha256": "8a53e1cee2436efc347c6ebb07da0203d9c613670ad52bafdd0d0d19258d408c"
+    },
+    "parent_manifest": {
+      "base": "repository",
+      "path": "research/collatz/m29-exploratory/package-manifest.json",
+      "sha256": "e265f28359379ba92d691a3b70c09c954e5b9ea54f58964b16203246cdfada0a"
+    },
+    "parent_scan": {
+      "base": "repository",
+      "path": "research/collatz/m29-exploratory/scan/m29-residual-affine-screen.json.gz",
+      "sha256": "3f747c1490742f407ae94a34430bbde78026dfce0b38eb5e2d70b100d15e08eb"
+    },
+    "parent_validation": {
+      "base": "repository",
+      "path": "research/collatz/m29-exploratory/independent-validation.json",
+      "sha256": "3df65d32d08513c9c1f61439e89b728fb6720b5e950b24bade0e4902c43c3e86"
+    },
+    "runner": {
+      "base": "repository",
+      "path": "research/collatz/affine-trace/verify-m29-residue167-fast-in-pinned-image.sh",
+      "sha256": "39c677af6d4ab61ccd93bd8f114834a386b96c887f26b6547ac36aaa8a52536f"
+    },
+    "stderr": {
+      "base": "receipt_directory",
+      "path": "docker-stderr.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "base": "receipt_directory",
+      "path": "docker-stdout.log",
+      "sha256": "551e9ecb9b04e9f5ab5376a0fd0f33a00369f9c94d4e3ae25f5e4054ccb15ea7"
+    }
+  },
+  "classification": "ONE_UNIVERSAL_AFFINE_FAMILY_DESCENT",
+  "evidence_class": "LOCAL_BOUNDED_LEAN_REPLAY",
+  "execution": {
+    "api_calls": 0,
+    "capabilities_dropped": "ALL",
+    "container_auto_removed": true,
+    "container_name": "mathcase-m29-r167-20261101-3",
+    "cpu_limit": "1",
+    "dependency_environment": "direct LEAN_PATH, no lake env",
+    "exit_code": 0,
+    "finished_at": "2026-11-01T18:38:45.015576+00:00",
+    "gpu_used": false,
+    "host_available_gib_post_run": 7.09,
+    "host_available_gib_precheck": 10.63,
+    "image_id": "sha256:ec3377f34aaf0b83502e6755d5403ca36382adb99e4c7ab1470d42a1ac5abdc7",
+    "image_source_root_sha256": "8f587bf452930d3f8d7fa888f0f72fc1d938b1fbb9930d3a11c0e75daaab5089",
+    "input_mount": "affine-trace source directory read-only at /mathcase/input",
+    "lean_version": "Lean 4.33.1",
+    "memory_limit": "2g",
+    "memory_swap_limit": "2g",
+    "model_calls": 0,
+    "network": "none",
+    "no_new_privileges": true,
+    "pids_limit": 64,
+    "project_tree": "pinned image embedded project; no host checkout overmount",
+    "provider_calls": 0,
+    "root_filesystem_read_only": true,
+    "started_at": "2026-11-01T18:35:35.607592+00:00",
+    "timed_out": false,
+    "timeout_seconds": 300,
+    "wall_seconds": 189.407984
+  },
+  "family": {
+    "depth": 29,
+    "endpoint_intercept": 122,
+    "endpoint_slope": 387420489,
+    "modulus": 536870912,
+    "residue": 167,
+    "steps": 47,
+    "strict_gap_intercept": 45,
+    "strict_gap_slope": 149450423
+  },
+  "interpretation": {
+    "global_collatz_proof": false,
+    "human_semantic_review": "NOT_PERFORMED",
+    "m0_pass": false,
+    "novelty_review": "NOT_PERFORMED",
+    "source_proof_use_grant": false,
+    "standard_m4_receipt": false
+  },
+  "proof_statement": "For every natural k, exactly 47 standard Collatz steps from 2^29*k+167 reach 387420489*k+122, which is strictly smaller.",
+  "schema": "mathcase-collatz-m29-row-lean-receipt-v1",
+  "source_use": "Arithmetic-only M29 scan and local computation; no source proof-use authorization or external use is claimed.",
+  "status": "PASS_FINITE_FAMILY_ONLY",
+  "theorem": "MathCase.CollatzAffineTrace.m29Residue167.universalDescent"
+}

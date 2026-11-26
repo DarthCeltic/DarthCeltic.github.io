@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 
-const root = path.resolve(__dirname, "..");
+const root = path.resolve(__dirname, "../mathcase");
 const classroomJS = fs.readFileSync(path.join(root, "visitor/classroom.js"), "utf8");
 const classroomCSS = fs.readFileSync(path.join(root, "visitor/tools.css"), "utf8");
 const triangleJS = fs.readFileSync(path.join(root, "triangle-game.js"), "utf8");

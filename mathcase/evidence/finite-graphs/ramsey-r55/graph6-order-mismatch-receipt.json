@@ -1,0 +1,12 @@
+{
+  "schema": "mathcase-finite-ramsey-certificate-rejection-v1",
+  "status": "FAIL_CERTIFICATE_ORDER_MISMATCH",
+  "source": "https://github.com/daniel-munro/leaps-in-bounds/blob/main/certificates/ramsey/ramsey-5-5-lower-42.g6",
+  "yaml": "https://github.com/daniel-munro/leaps-in-bounds/blob/main/certificates/ramsey/ramsey-5-5-lower-42.yml",
+  "expected_vertices": 42,
+  "decoded_graph6_vertices": 41,
+  "failure": "graph6 header encodes 41 vertices; exact target requires 42",
+  "graph6_sha256": "e6a69d32978e8b896feaba3dae482f4260285ba2d339622897538ffa9ce3ff56",
+  "checker_sha256": "d8da1c21dd11cd732ef892e01f82ed55e330dbd51d7ece49c2a0013c9965e8e8",
+  "no_claim_of_target_pass": true
+}
