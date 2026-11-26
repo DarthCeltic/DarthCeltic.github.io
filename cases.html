@@ -230,9 +230,9 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <p><strong>Plain claim:</strong> for every start <code>n ≥ 3</code>, if at most 14 of the first 23 shortcut moves begin on an odd number, a regular Collatz step takes it below its start at step <code>23+h</code>, no later than step 37.</p>
         <p>Lean counted exactly <strong>7,507,638 of 8,388,608</strong> residue classes modulo <code>2²³</code>. The descent theorem reports <code>[propext, Quot.sound]</code>; the count and combined theorem report <code>[Classical.choice, propext, Quot.sound]</code>. No <code>sorryAx</code> was reported.</p>
         <p>This is one bounded first-drop result. It does not show that every sequence reaches 1, prove Collatz, or claim novelty. Three neighboring parameter cases remain exploratory.</p>
-        <pre>python scripts/run_public_case.py collatz-parity-envelope-23-14</pre>
-        <p>The runner is prepared to compile the sources in fresh output, but was not run during this publication session. The linked receipt is from the earlier exact source-to-kernel check.</p>
-        <div class="case-actions"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the theorem and limits →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1">Open source, receipts, and replay code ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/collatz-parity-envelopes-2026-11-v1/evidence/receipt-23-14.json">Open the hash-bound receipt ↗</a></div>
+        <pre>python -B scripts/run_public_case.py collatz-parity-envelope-23-14</pre>
+        <p>The command passed from a fresh public checkout with Lean 4.33.1. It compiles the four modules for this result and writes a receipt. The recorded Windows run took 14.251 seconds.</p>
+        <div class="case-actions"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the theorem and limits →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1">Open source, receipts, and replay code ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/collatz-parity-envelopes-2026-11-v1/evidence/23-14-official-replay/public-launcher/replay-result.json">Open the fresh replay receipt ↗</a></div>
       </article>
       </details>
       <details class="case-record">
@@ -282,11 +282,10 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <span class="case-status candidate">Lean source replay · known lower bound</span>
 
         <p><strong>Plain claim:</strong> a known coloring of 101 dots avoids a one-color group of six. So any guarantee of such a group needs at least 102 dots: R(6,6) ≥ 102.</p>
-        <p>A separate Lean source replay compiled the three MathCase files from source with Lean 4.33.1 and pinned Mathlib. The recorded axioms are <code>[propext, Classical.choice, Quot.sound]</code>; no <code>sorryAx</code> was reported. This verifies the known witness, not a new bound or the exact Ramsey number.</p>
-        <p>The recorded pinned-container replay passed. A separate public Lake recipe is included, but its current dependency lock does not match the older Lake receipt, so a clean rebuild with that lock is still open.</p>
-        <p>The command below checks the finite graph certificate; it does not run Lean. The Lean receipt is on the public MathCase feature branch. That image is not yet verified as publicly pullable, and an anonymous clean rebuild remains open.</p>
+        <p>A fresh Windows build compiled the three MathCase files with Lean 4.33.1 and the current Mathlib lock. The audit reported <code>[propext, Classical.choice, Quot.sound]</code> as the only axioms. The result verifies the known 101-vertex witness.</p>
+        <p>Use the Lean source package to rebuild the proof. The command below runs the graph checker. The earlier Lake receipt records a different dependency lock.</p>
         <pre>python scripts/run_public_case.py ramsey66</pre>
-        <div class="case-actions"><a href="work.html#ramsey-r66">Inspect the saved graph certificate →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-paley101-v1">Run the finite checker and certificate ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-lean-v1">Read the Lean source package ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/ramsey-r66-lean-v1/source-replay-receipt.json">Read the Lean receipt ↗</a></div>
+        <div class="case-actions"><a href="work.html#ramsey-r66">Inspect the saved graph certificate →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-paley101-v1">Run the finite checker and certificate ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-lean-v1">Read the Lean source package ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/ramsey-r66-lean-v1/source-replay-receipt.json">Read the earlier container receipt ↗</a></div>
       </article>
       </details>
       <details class="case-record">
