@@ -32,6 +32,7 @@
           <a href="visitor/">Your proof</a>
           <a href="visitor/teacher-guide.html">For teachers</a>
           <a href="frontier.html">Frontier math</a>
+          <a href="diagnostics.html">Diagnostics and lab notes</a>
           <a href="timeline.html">Timeline</a>
           <a href="roadmap.html">Open questions</a>
           <a href="replay.html">Replay explorer</a>
@@ -90,25 +91,13 @@
               <div class="record-links"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the plain explanation</a><a href="cases.html#collatz-parity-envelope-23-14">Open the source-and-replay case</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1" target="_blank" rel="noopener noreferrer">Open source and receipt bundle ↗</a></div>
       </div>
     </details>
-      <details class="result-detail">
-      <summary>What happened in a sample of 23.6 million odd starts?</summary>
-      <div class="result-detail-body">
-        <article id="m31-step34-crlf-binding" aria-labelledby="m31-step34-crlf-title">
-          <h3 id="m31-step34-crlf-title">How many of the sampled numbers dropped within 34 moves?</h3>
-          <p>Two calculations agreed. Of the 23,642,078 odd starting numbers in the sample, <strong>18,391,741</strong> reached a smaller number within 34 odd-to-odd moves.</p>
-          <p>This study counts moves from one odd number to the next. Start at 5, triple it and add 1 to get 16, then halve until the next odd number, 1. Here that entire journey counts as one move. The calculation used one starting number from each selected group. Other numbers in the same groups can behave differently.</p>
-          <details class="result-detail">
-          <summary>Inspect the sample, independent check and original file-format issue</summary>
-          <div class="result-detail-body">
-            <p>In the files, M31 means grouping numbers by their remainder after division by 2³¹ (2,147,483,648). Here “step 34” counts odd-to-odd moves.</p>
-            <p>The original package failed a formatting check because its protocol files used Windows line endings (CRLF). The original CRLF input bytes are now matched to the exact hashes in the primary attempt record and independent verification receipt. The normalized Markdown copies are documentation derivatives. No large calculation was rerun.</p>
-                  <p class="record-note"><strong>Limits:</strong> this counts one chosen representative per odd residue class. It proves no rule for every number in a class and does not establish eventual descent or Collatz convergence. The original packaging failure remains part of the record.</p>
-                  <div class="record-links"><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m31-step34-crlf-binding-v1/README.md" target="_blank" rel="noopener noreferrer">Read the failure and byte-binding record ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/m31-step34-crlf-binding-v1" target="_blank" rel="noopener noreferrer">Open the copied receipts and exact protocol bytes ↗</a></div>
-          </div>
-        </details>
-        </article>
-      </div>
-    </details>
+      <details class="result-detail" id="m31-step34-crlf-binding">
+        <summary>Archived: M31 finite sample and input-byte record</summary>
+        <div class="result-detail-body">
+          <p>This secondary record covers a finite representative sample, not every start in a residue class. It does not establish eventual descent or Collatz convergence.</p>
+          <p><a href="diagnostics.html#m31-step34-crlf-binding">Read the sample count, file-format history, and exact limits →</a></p>
+        </div>
+      </details>
     <details class="result-detail">
       <summary>Other Collatz results and the starting-number calculator</summary>
       <div class="result-detail-body">

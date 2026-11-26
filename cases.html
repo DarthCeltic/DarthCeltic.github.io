@@ -12,7 +12,6 @@
   <link rel="stylesheet" href="judging.css">
   <link rel="stylesheet" href="home.css?v=20261124-portfolio-nav">
   <link rel="stylesheet" href="case-index.css">
-  <script defer src="riemann-reference.js"></script>
 </head>
 <body>
   <a class="home-skip" href="#top">Skip to the guide</a>
@@ -28,6 +27,7 @@
           <a href="visitor/">Your proof</a>
           <a href="visitor/teacher-guide.html">For teachers</a>
           <a href="frontier.html">Frontier math</a>
+          <a href="diagnostics.html">Diagnostics and lab notes</a>
           <a href="knowledge-graph.html">Proof library</a>
           <a href="timeline.html">Timeline</a>
           <a href="roadmap.html">Open questions</a>
@@ -90,19 +90,11 @@
         </div>
       </details>
       <details id="matrix-multiplication">
-        <summary><span>Algebra · Matrix multiplication</span><strong>Can seven multiplications replace eight for a 2×2 product?</strong></summary>
+        <summary><span>Related diagnostics</span><strong>Where can I inspect source audits and incomplete replays?</strong></summary>
         <div class="subject-body" id="subject-matrix">
-          <p>Try A = [[1, 2], [3, 4]] and B = [[5, 6], [7, 8]]. The ordinary calculation and Strassen’s formula both give [[19, 22], [43, 50]]. The row-by-column method uses eight number multiplications and four additions. Strassen’s method uses seven number multiplications and 18 additions or subtractions, including setup and recombination.</p>
-          <p><strong>What MathCase checked:</strong> one exact worked example, plus a deliberately wrong sign that the checker rejects. <strong>What remains upstream:</strong> the pinned OpenAI/math paper claims the matrix multiplication exponent is 9/4. MathCase’s Lean attempt timed out while compiling a prerequisite and never reached that theorem.</p>
-          <div class="subject-links"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/matrix-exponent-2x2-v1">Open the runnable example and limits ↗</a><a href="https://github.com/openai/math/blob/3344da59991ed94f9ba711217b29c1d760badfa6/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf">Read the upstream paper ↗</a><a href="https://github.com/openai/math/blob/3344da59991ed94f9ba711217b29c1d760badfa6/lean/docs/107.md">See the upstream formal scope ↗</a></div>
-        </div>
-      </details>
-      <details>
-        <summary><span>Algebra · VP versus VNP</span><strong>How can the same small grid give a count of 2 and a count of 0?</strong></summary>
-        <div class="subject-body" id="subject-vp-vnp">
-          <p>In a 2 by 2 grid of ones, there are two ways to choose one entry from each row and each column, so the permanent is 1 + 1 = 2. The determinant subtracts one choice, giving 1 − 1 = 0. This example shows the difference between the two formulas; it does not prove the larger theorem.</p>
-          <p>MathCase checked this arithmetic example, rejected a deliberately wrong answer, and matched seven pinned upstream source files. The upstream formalization states an arithmetic-circuit result separating VP from VNP. MathCase has not replayed that proof here, and this result does not settle the ordinary P-versus-NP question.</p>
-          <div class="subject-links"><a href="#vp-vnp">See the worked example and checks</a><a href="https://github.com/anthropics/formal-math/tree/11b6c7e3c927df2658f513b6b68ea7f8929c62c5/vp-vnp" target="_blank" rel="noopener noreferrer">Open the upstream formalization ↗</a></div>
+          <span id="subject-vp-vnp"></span><span id="subject-analysis"></span>
+          <p>Small examples, pinned-source checks, and bounded searches are available with their limits. They are kept apart from the featured proof and established activities.</p>
+          <div class="subject-links"><a href="diagnostics.html">Open diagnostics and lab notes</a></div>
         </div>
       </details>
       <details>
@@ -112,17 +104,10 @@
           <div class="subject-links"><a href="https://github.com/DarthCeltic/MathCase/blob/46c502ae90554e646265d39a6a52dd6060c4779c/ui/prototype/index.html#L888-L897">Inspect the prototype source and draft status</a></div>
         </div>
       </details>
-      <details>
-        <summary><span>Analytic number theory</span><strong>Which source files describe the Riemann Hypothesis?</strong></summary>
-        <div class="subject-body" id="subject-analysis">
-          <p>Read the statement about the zeros of the zeta function and follow the links to the upstream authors. MathCase verifies the identities of four reference files. The proof and its mathematical verification belong to the upstream project.</p>
-          <div class="subject-links"><a href="#riemann-source-audit">See the statement, source checker and attribution</a></div>
-        </div>
-      </details>
     </section>
     <p class="map-next subject-links"><a href="roadmap.html#ways-to-do-math">Six ways to do mathematics →</a><a href="roadmap.html#future-subjects">See future subjects and explanations →</a></p>
     <details class="map-records" id="full-records">
-      <summary>Browse the full case records and replay instructions</summary>
+      <summary>More: saved case records and replay instructions</summary>
     <details class="case-card-page local-launcher" id="local-launcher">
       <summary>For people rerunning checks from a MathCase clone</summary>
       <div class="local-launcher-content">
@@ -265,15 +250,9 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
       <details class="case-record">
         <summary>Can the 860 listed Collatz progressions be shown to drop?</summary>
       <article class="case-card-page" id="collatz-m31-lift">
-        <span class="case-status candidate">Saved Lean source replay · wording review open</span>
-
-        <p><strong>Plain claim:</strong> for each of 860 listed patterns, every starting number in that pattern becomes smaller after a fixed number of ordinary Collatz steps. The recorded step counts range from 52 to 207.</p>
-        <p>Each pattern has the form <code>r + 2<sup>d</sup>k</code>. Lean proves a shared rule: after <code>d</code> steps, changing the start by <code>2<sup>d</sup>k</code> changes the endpoint by <code>6<sup>a</sup>k</code>, where <code>a</code> counts odd inputs along the original path. For each listed row, the endpoint is below <code>r</code> and <code>6<sup>a</sup> &lt; 2<sup>d</sup></code>, so the drop holds for every natural <code>k</code> in that pattern.</p>
-        <p>The saved Lean 4.33.1 replay compiled the shared proof and all 860 row declarations from source; both stages exited 0 with axioms <code>[propext, Quot.sound]</code> and no <code>sorryAx</code> in successful output. A separate public checker recomputes the row arithmetic and checks the receipt hashes without running Lean.</p>
-        <p>This is a finite list selected from an earlier bounded sample. The selection process is not independently reproduced in this bundle. It does not prove Collatz convergence, give the density of convergent numbers, establish novelty, or cover every start.</p>
-        <p>The exact statement has not received an owner wording review. The Lean result is presented with its saved source and limits; no review or dossier gate is implied.</p>
-        <pre>python scripts/run_public_case.py collatz-m31-lift</pre>
-        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-m31-lift-v1">Open the source, saved Lean receipt, and independent checker ↗</a><a href="collatz.html#at-most-fourteen-of-twenty-three">Compare with the reviewed 23-step theorem →</a></div>
+        <span class="case-status candidate">Secondary record · fresh replay and review open</span>
+        <p>The saved M31 v1 record concerns 860 listed progressions. Its source, receipt, and exact limitations are preserved in the diagnostics archive.</p>
+        <div class="case-actions"><a href="diagnostics.html#m31-v1">Read the diagnostic record and source links</a><a href="collatz.html#at-most-fourteen-of-twenty-three">Open the reviewed 23-step theorem →</a></div>
       </article>
       </details>
       <details class="case-record">
@@ -323,29 +302,17 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
       <details class="case-record">
         <summary>Riemann Hypothesis source audit</summary>
       <article class="case-card-page" id="riemann-source-audit">
-        <span class="case-status">External result · source provenance check only</span>
-
-        <p><strong>Plain statement:</strong> every nontrivial zero of the Riemann zeta function has real part ½.</p>
-        <p>Levent Alpöge published the Claude-assisted proof; the Lean FRO and Mathlib Initiative coordinated independent checks. The result and proof belong to the upstream authors and community, not MathCase.</p>
-        <p>MathCase’s small checker pins four public source files and verifies their byte counts and SHA-256 values. It does not download the proof export, elaborate the target, replay the proof, or independently validate the theorem.</p>
-        <button type="button" class="button button-primary" id="check-riemann-files">Check four source files</button>
-        <p id="riemann-file-summary" role="status" aria-live="polite">Downloads 14 KB from GitHub when clicked. This checks source identity only.</p>
-        <ul id="riemann-file-results"></ul>
-        <pre>py -3 -B reproduction/riemann-source-audit-v1/check_sources.py</pre>
-        <div class="case-actions"><a href="https://github.com/leanprover-community/riemann-hypothesis">Open the upstream project and attribution ↗</a><a href="https://math.mit.edu/~drew/grh/">Read upstream verification files and reproduction instructions ↗</a><a href="https://github.com/leanprover-community/mathlib4/blob/0df444a360eaa60ab8c11dca51a86af692955474/Mathlib/NumberTheory/LSeries/RiemannZeta.lean">Read the pinned Mathlib target ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/riemann-source-audit-v1">Read the MathCase source-only checker ↗</a></div>
+        <span class="case-status">External result · source check only</span>
+        <p>This is a hash check of four public reference files, not a proof replay or independent validation. The preserved attribution and source links are in the diagnostics archive.</p>
+        <div class="case-actions"><a href="diagnostics.html#riemann-source-audit">Open the source-check record</a></div>
       </article>
       </details>
       <details class="case-record">
         <summary>What does the permanent count that the determinant subtracts?</summary>
       <article class="case-card-page" id="vp-vnp">
-        <span class="case-status">Worked arithmetic + pinned source check · upstream proof not replayed</span>
-
-        <p><strong>Plain example:</strong> in a 2 by 2 grid of ones, there are two ways to choose one entry from each row and column. The permanent adds them, giving 2. The determinant subtracts one, giving 0. In arithmetic modulo 2, 2 becomes 0, so this example alone does not distinguish them there.</p>
-        <p><strong>What MathCase checked:</strong> the worked values, a deliberately wrong-answer control, and the byte identities of seven source files at one pinned upstream commit. <strong>What it did not check:</strong> it did not compile Lean, run the upstream proof checker, or validate the large theorem independently.</p>
-        <p>The upstream formalization states lower bounds for arithmetic circuits computing the Hamiltonian-cycle polynomial, a permanent lower bound for fields whose characteristic is not 2, and a separation between VP and VNP. These are arithmetic-circuit statements; they do not settle the usual P-versus-NP question. Credit for the result and formalization belongs to the upstream Anthropic formal-math project.</p>
-        <pre>python scripts/run_public_case.py vp-vnp-example
-python scripts/run_public_case.py vp-vnp-source-audit</pre>
-        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/vp-vnp-source-audit-v1">Open the worked example, source check, and limits ↗</a><a href="https://github.com/anthropics/formal-math/tree/11b6c7e3c927df2658f513b6b68ea7f8929c62c5/vp-vnp" target="_blank" rel="noopener noreferrer">Open the upstream formalization ↗</a></div>
+        <span class="case-status">Worked arithmetic · upstream proof not replayed</span>
+        <p>The two-by-two example and the upstream source-identity check are kept in the diagnostics archive. MathCase did not replay the upstream theorem.</p>
+        <div class="case-actions"><a href="diagnostics.html#vp-vnp">Open the worked example and limits</a></div>
       </article>
       </details>
       <details class="case-record">
