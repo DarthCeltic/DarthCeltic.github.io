@@ -141,11 +141,12 @@
           <div class="live-head">
             <div>
               <p>The editor opens here. Press its Run control to check the code. Copy any edits back into this workbench to save them.</p>
-              <p class="check-disclosure">If it says “No connection to Lean” or stays on “Updating…”, the online checker has not checked your proof. Choose <strong>Reconnect from draft</strong> to reload the code currently in this workbench. Copy any changes from the editor back here first. If it still cannot connect, use the pinned local check below.</p>
+              <p class="check-disclosure">If “No connection to Lean” appears or “Updating…” does not finish, Lean has not checked your proof. Copy any edits back here, then reload from this draft or open it in a new tab. If the error remains, try the pinned local check below. The online editor’s output is not saved here; import a receipt from the local check to record the result.</p>
               <p id="live-connection-status" class="feedback" role="status" aria-live="polite"></p>
             </div>
             <div class="run-actions">
-              <button id="retry-lean" type="button" class="secondary">Reconnect from draft</button>
+              <button id="retry-lean" type="button" class="secondary">Reload from this draft</button>
+              <button id="open-lean-tab" type="button" class="secondary">Open this draft in a new tab</button>
               <button id="close-lean" type="button" class="secondary">Close editor</button>
             </div>
           </div>
