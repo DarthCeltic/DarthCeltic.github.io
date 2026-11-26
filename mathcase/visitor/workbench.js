@@ -548,7 +548,7 @@ function loadEditor(statusMessage = "The online editor is opening in this page. 
   frame.scrollIntoView({ block: "nearest" });
 }
 
-elements["run-lean"].addEventListener("click", loadEditor);
+elements["run-lean"].addEventListener("click", () => loadEditor());
 elements["retry-lean"].addEventListener("click", () => {
   loadEditor("Reloading the online editor from the code currently in this workbench…");
 });

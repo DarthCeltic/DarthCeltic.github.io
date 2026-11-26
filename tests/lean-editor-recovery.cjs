@@ -17,6 +17,7 @@ test("the proof editor stays embedded and offers a same-draft recovery tab", () 
   assert.match(html, /The online editor’s output is not saved here/);
   assert.match(html, /import a receipt from the local check to record the result/);
   assert.match(js, /frame\.src = editorUrl\(\)/);
+  assert.match(js, /elements\["run-lean"\]\.addEventListener\("click", \(\) => loadEditor\(\)\);/);
   assert.match(js, /elements\["retry-lean"\][\s\S]*?loadEditor\("Reloading the online editor from the code currently in this workbench…"\)/);
   assert.match(js, /elements\["open-lean-tab"\]\.addEventListener\("click", \(\) => \{\s*window\.open\(editorUrl\(\), "_blank", "noopener,noreferrer"\);\s*\}\)/);
   assert.match(css, /\.live-head \.run-actions\s*\{[^}]*width:\s*100%;[^}]*max-width:\s*100%;[^}]*\}/);
