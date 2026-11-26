@@ -131,13 +131,14 @@
     <details class="reading-details">
     <summary>Inspect the exact result, its limits and sources</summary>
     <p>The known Paley graph on 101 vertices has no monochromatic six-clique, giving <strong>R(6,6) ≥ 102</strong>. A checked certificate rules out adding one new vertex while keeping every old edge the same.</p>
-            <p>A separate Lean source replay now checks the existence statement for this same 101-vertex witness. It confirms the known lower bound; it does not add a new bound. The public clean-checkout replay remains open because the pinned image is not verified as anonymously pullable.</p>
+            <p>A fresh local Lean replay rebuilt the three MathCase proof files from source under the current pinned dependencies. It confirms this known lower bound; it does not add a new one. The public rebuild guide is available, but a stranger has not yet reproduced the run.</p>
             <p>Other bounded checks find that at least 16 old edges must change. None of 33 predefined structured edge-change patterns gave a valid extension; each produced a six-clique. These restrictions apply to this starting graph and these changes only.</p>
             <p class="frontier-next"><strong>Next question.</strong> find a materially different 102-vertex coloring and check every six-vertex subset.</p>
             <div class="frontier-links">
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/paley-101">Run the saved Paley certificate and bounded checks ↗</a>
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/paley-101">Read the 16-edge recoloring check ↗</a>
-              <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-lean-v1">Read the Lean source replay and receipt ↗</a>
+              <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/ramsey-r66-lean-v1/README.md">Read what Lean checked and how to rebuild it ↗</a>
+              <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-lean-v1">Browse the replay files and earlier run history ↗</a>
             </div>
     </details>
     </article>

@@ -248,10 +248,10 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
       </article>
       </details>
       <details class="case-record">
-        <summary>Can the 860 listed Collatz progressions be shown to drop?</summary>
+        <summary>Can these 860 selected groups of Collatz starts be shown to drop?</summary>
       <article class="case-card-page" id="collatz-m31-lift">
         <span class="case-status candidate">Secondary record · fresh replay and review open</span>
-        <p>The saved M31 v1 record concerns 860 listed progressions. Its source, receipt, and exact limitations are preserved in the diagnostics archive.</p>
+        <p>The saved Lean record reports a bounded first-drop result for 860 selected groups of Collatz starting numbers. Each group contains infinitely many starts: take a fixed offset and add the same fixed jump size any whole number of times. The recorded form is <code>r + 2<sup>d</sup>k</code>, with <code>k = 0, 1, 2, …</code>. The exact statement has no recorded wording review, and the process that selected these groups has not been independently reproduced. The public checker checks saved files and arithmetic; it does not run Lean. A fresh outside replay remains open, and this is not a proof that every Collatz sequence reaches 1.</p>
         <div class="case-actions"><a href="diagnostics.html#m31-v1">Read the diagnostic record and source links</a><a href="collatz.html#at-most-fourteen-of-twenty-three">Open the reviewed 23-step theorem →</a></div>
       </article>
       </details>
@@ -282,10 +282,10 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
         <span class="case-status candidate">Lean source replay · known lower bound</span>
 
         <p><strong>Plain claim:</strong> a known coloring of 101 dots avoids a one-color group of six. So any guarantee of such a group needs at least 102 dots: R(6,6) ≥ 102.</p>
-        <p>A fresh Windows build compiled the three MathCase files with Lean 4.33.1 and the current Mathlib lock. The audit reported <code>[propext, Classical.choice, Quot.sound]</code> as the only axioms. The result verifies the known 101-vertex witness.</p>
-        <p>Use the Lean source package to rebuild the proof. The command below runs the graph checker. The earlier Lake receipt records a different dependency lock.</p>
+        <p>Lean 4.33.1 rebuilt the three MathCase proof files from source under the current pinned dependency set, using a fresh MathCase output folder. It reused the public Mathlib cache fetched during setup; no MathCase proof output was reused. The axiom report lists <code>[propext, Classical.choice, Quot.sound]</code>; no <code>sorryAx</code> was reported. The run took 147.929 seconds. Windows did not enforce a memory cap. This verifies a known witness, not a new bound.</p>
+        <p>The command below checks the saved graph certificate; it does not run Lean. To rebuild the Lean proof, follow the linked guide. A stranger’s rebuild and independent review remain open. The older container receipt is historical: it records a different dependency lock, and the cause of that mismatch is unknown.</p>
         <pre>python scripts/run_public_case.py ramsey66</pre>
-        <div class="case-actions"><a href="work.html#ramsey-r66">Inspect the saved graph certificate →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-paley101-v1">Run the finite checker and certificate ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-lean-v1">Read the Lean source package ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/ramsey-r66-lean-v1/source-replay-receipt.json">Read the earlier container receipt ↗</a></div>
+        <div class="case-actions"><a href="work.html#ramsey-r66">Inspect the saved graph certificate →</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-paley101-v1">Run the finite checker and certificate ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/ramsey-r66-lean-v1/README.md">Read what Lean checked and how to rebuild it ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-lean-v1">Browse the replay files and earlier run history ↗</a></div>
       </article>
       </details>
       <details class="case-record">

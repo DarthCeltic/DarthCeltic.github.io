@@ -54,6 +54,41 @@ class PublicReadingTests(unittest.TestCase):
                 self.assertTrue(view.text, "Expected a visible article")
                 self.assertNotRegex(" ".join(view.text), technical_label)
 
+    def test_research_cards_explain_the_860_families_and_current_ramsey_replay(self):
+        root = Path(__file__).resolve().parents[1]
+        cases = (root / "cases.html").read_text(encoding="utf-8")
+        diagnostics = (root / "diagnostics.html").read_text(encoding="utf-8")
+
+        m31 = re.search(
+            r'<article class="case-card-page" id="collatz-m31-lift">(.*?)</article>',
+            cases,
+            re.S,
+        )
+        self.assertIsNotNone(m31)
+        self.assertIn("860 selected groups of Collatz starting numbers", m31.group(1))
+        self.assertIn("Each group contains infinitely many starts", m31.group(1))
+        self.assertIn("does not run Lean", m31.group(1))
+        self.assertIn("not a proof that every Collatz sequence reaches 1", m31.group(1))
+        self.assertIn("860 selected groups of Collatz starting numbers", diagnostics)
+
+        r66 = re.search(
+            r'<article class="case-card-page" id="ramsey66">(.*?)</article>',
+            cases,
+            re.S,
+        )
+        self.assertIsNotNone(r66)
+        self.assertIn("fresh MathCase output folder", r66.group(1))
+        self.assertIn("Read what Lean checked and how to rebuild it", r66.group(1))
+        self.assertIn("Browse the replay files and earlier run history", r66.group(1))
+        self.assertNotRegex(r66.group(1), r'href="[^"]+\.json')
+        self.assertIn("A stranger’s rebuild and independent review remain open", r66.group(1))
+        self.assertNotIn("fresh replay remains open", r66.group(1))
+
+        frontier = (root / "frontier.html").read_text(encoding="utf-8")
+        self.assertIn("a stranger has not yet reproduced the run", frontier)
+        self.assertNotIn("pinned image is not verified as anonymously pullable", frontier)
+        self.assertIn("Browse the replay files and earlier run history", frontier)
+
 
 if __name__ == "__main__":
     unittest.main()

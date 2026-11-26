@@ -86,7 +86,7 @@
       </div>
     </details>
       <details class="result-detail" id="m31-step34-crlf-binding">
-        <summary>Archived: M31 finite sample and input-byte record</summary>
+        <summary>Archived: finite Collatz sample and input-file record</summary>
         <div class="result-detail-body">
           <p>This secondary record covers a finite representative sample, not every start in a residue class. It does not establish eventual descent or Collatz convergence.</p>
           <p><a href="diagnostics.html#m31-step34-crlf-binding">Read the sample count, file-format history, and exact limits →</a></p>
@@ -356,9 +356,10 @@
       <summary>How can a 101-dot arrangement avoid a one-color group of six?</summary>
       <div class="result-detail-body">
         <article id="ramsey-r66" aria-label="How can a 101-dot arrangement avoid a one-color group of six?"><div id="ramsey-r66-title">
-        <p><strong>Plain statement:</strong> there is a simple graph on 101 labeled vertices with no clique of six and no independent set of six.</p>
+        <p><strong>Plain statement:</strong> there is a simple graph on 101 labeled vertices with no clique of six and no independent set of six. This is a witness for the known lower bound <code>R(6,6) ≥ 102</code>.</p>
               <p><strong>Exact target:</strong> <code>∃ G : SimpleGraph (Fin 101), G.CliqueFree 6 ∧ (Gᶜ).CliqueFree 6</code>. Ryan reviewed that the English statement matches this target.</p>
-              <p>The certificate is the Paley graph P(101), with 2,525 edges and degree 50 at every vertex. Two separately implemented local checkers found no six-clique and no independent six-set; both exited 0. This reproduces a known finite lower bound. It is not a Lean proof, a new Ramsey theorem, an exact value for R(6,6), or an independent mathematical review.</p>
+              <p>The saved graph is the known Paley graph P(101), with 2,525 edges and degree 50 at every vertex. Two separately written local checkers found no six-clique and no independent six-set; both exited 0. The browser control below checks the saved certificate and displays one vertex; it does not rerun those exhaustive searches.</p>
+              <p>Separately, Lean 4.33.1 rebuilt the three MathCase theorem files from source under the current pinned Mathlib dependencies, using a fresh MathCase output folder. It reused the public Mathlib cache fetched during setup; no MathCase proof output was reused. The axiom report lists <code>[propext, Classical.choice, Quot.sound]</code>; no <code>sorryAx</code> was reported. This run took 147.929 seconds, with no Windows-enforced memory cap. It verifies a known bound, not new mathematics or independent review.</p>
               <div class="ramsey-certificate-panel">
                 <p class="coefficient-local-note">Inspect the saved graph in this browser. The page checks the certificate hash and degree sequence, then displays one vertex’s neighbors. It does not rerun the exhaustive clique searches.</p>
                 <form class="coefficient-form" id="ramsey66-inspect-form">
@@ -371,13 +372,15 @@
                 <div id="ramsey66-result" class="coefficient-result" aria-live="polite"></div>
               </div>
               <div class="record-links">
-                <a href="evidence/finite-graphs/ramsey-r66-paley101/README.md">Read the plain-language reproduction guide</a>
+                <a href="evidence/finite-graphs/ramsey-r66-paley101/README.md">Read the graph-certificate guide</a>
+                <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/ramsey-r66-lean-v1/README.md">Read what Lean checked and how to rebuild it ↗</a>
+                <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-lean-v1">Browse the replay files and earlier run history ↗</a>
                 <a href="frontier.html#ramsey-6-6">See what MathCase checked next and what remains</a>
                 <a href="tools.html#triangle-game">Try the six-dot triangle activity</a>
                 <a href="evidence/finite-graphs/ramsey-r66-paley101/ramsey66_exact_checker.cpp">View the C++ finite checker</a>
                 <a href="evidence/finite-graphs/ramsey-r66-paley101/verify_paley101_independent.py">View the Python cross-checker</a>
               </div>
-              <p class="file-location"><strong>Evidence files:</strong> <code>evidence/finite-graphs/ramsey-r66-paley101/</code> contains the human guide, graph certificate, both checker sources, two run receipts, and a SHA-256 manifest.</p>
+              <p class="file-location"><strong>Evidence files:</strong> the graph certificate and finite-checker receipts are in <code>evidence/finite-graphs/ramsey-r66-paley101/</code>. The separate Lean sources, current-lock replay receipt, and rebuild steps are in the public MathCase package linked above.</p>
         </div></article>
       </div>
     </details>
