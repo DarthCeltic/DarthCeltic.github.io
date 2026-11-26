@@ -1,0 +1,904 @@
+{
+  "schemaVersion": 1,
+  "commit": "4259a682ee0ae198b88e9b185c532fe771988722",
+  "base": "/Millennial-Mayhem/",
+  "regions": [
+    {
+      "id": "AK",
+      "label": "Anchorage, AK",
+      "paths": [
+        {
+          "path": "art/regions/region-alaska-2003.jpg",
+          "bytes": 551355,
+          "sha256": "53a5a394a5e906285c11b6e403756361700939629aa172c208aab4350b51183c"
+        },
+        {
+          "path": "art/regions/region-alaska-2026.jpg",
+          "bytes": 519598,
+          "sha256": "8cb82c574a9f76179252f7d929aa473ed3b6c25fa534e431283481266d89db18"
+        }
+      ],
+      "bytes": 1070953
+    },
+    {
+      "id": "AL",
+      "label": "Montgomery, AL",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "AR",
+      "label": "Little Rock, AR",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "AZ",
+      "label": "Phoenix, AZ",
+      "paths": [
+        {
+          "path": "art/regions/region-southwest-2003.jpg",
+          "bytes": 491062,
+          "sha256": "7921d4a31157ecd80937f26648af7c240673c385bb9841615498383bfed15924"
+        },
+        {
+          "path": "art/regions/region-southwest-2026.jpg",
+          "bytes": 536514,
+          "sha256": "01e083d9ef2046844b3e714d140b455aabee64dbac28ebc9c43af9be80078e0a"
+        }
+      ],
+      "bytes": 1027576
+    },
+    {
+      "id": "CA",
+      "label": "Sacramento, CA",
+      "paths": [
+        {
+          "path": "art/regions/region-california-2003.jpg",
+          "bytes": 622441,
+          "sha256": "56d37ba3d267eb6f34679585affb933f57c50ac2fa3bdc46796ee775d6cb88ba"
+        },
+        {
+          "path": "art/regions/region-california-2026.jpg",
+          "bytes": 651085,
+          "sha256": "2e3b3a780f10073c961bbf26ab45f58003b40210cae050cbd8b7dd9fb4f42362"
+        }
+      ],
+      "bytes": 1273526
+    },
+    {
+      "id": "CO",
+      "label": "Denver, CO",
+      "paths": [
+        {
+          "path": "art/regions/region-southwest-2003.jpg",
+          "bytes": 491062,
+          "sha256": "7921d4a31157ecd80937f26648af7c240673c385bb9841615498383bfed15924"
+        },
+        {
+          "path": "art/regions/region-southwest-2026.jpg",
+          "bytes": 536514,
+          "sha256": "01e083d9ef2046844b3e714d140b455aabee64dbac28ebc9c43af9be80078e0a"
+        }
+      ],
+      "bytes": 1027576
+    },
+    {
+      "id": "CT",
+      "label": "Hartford, CT",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "DC",
+      "label": "Washington, DC",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "DE",
+      "label": "Dover, DE",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "FL",
+      "label": "Okeechobee, FL",
+      "paths": [
+        {
+          "path": "art/regions/okeechobee-home-2003.png",
+          "bytes": 3135864,
+          "sha256": "028ddf05a4c5e2294968f74c24081efb8da1b085c7420b474327bb5c22ed5336"
+        },
+        {
+          "path": "art/regions/okeechobee-home-2026.jpg",
+          "bytes": 468677,
+          "sha256": "ad36b5825a6ebf1fafe653ac35047a2bb504159f29029327eefa282d63d5c648"
+        }
+      ],
+      "bytes": 3604541
+    },
+    {
+      "id": "GA",
+      "label": "Atlanta, GA",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "HI",
+      "label": "Honolulu, HI",
+      "paths": [
+        {
+          "path": "art/regions/region-hawaii-2003.jpg",
+          "bytes": 560724,
+          "sha256": "3361ac3c04886e7af341d52cd252c22b9745a6a9d11bdf6c3d456822844c794b"
+        },
+        {
+          "path": "art/regions/region-hawaii-2026.jpg",
+          "bytes": 521727,
+          "sha256": "48061e0c3211cc58f6e38912975e32ec8f94ea04e5266692e7b29d71a0430360"
+        }
+      ],
+      "bytes": 1082451
+    },
+    {
+      "id": "IA",
+      "label": "Des Moines, IA",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "ID",
+      "label": "Boise, ID",
+      "paths": [
+        {
+          "path": "art/regions/region-southwest-2003.jpg",
+          "bytes": 491062,
+          "sha256": "7921d4a31157ecd80937f26648af7c240673c385bb9841615498383bfed15924"
+        },
+        {
+          "path": "art/regions/region-southwest-2026.jpg",
+          "bytes": 536514,
+          "sha256": "01e083d9ef2046844b3e714d140b455aabee64dbac28ebc9c43af9be80078e0a"
+        }
+      ],
+      "bytes": 1027576
+    },
+    {
+      "id": "IL",
+      "label": "Springfield, IL",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "IN",
+      "label": "Indianapolis, IN",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "KS",
+      "label": "Topeka, KS",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "KY",
+      "label": "Frankfort, KY",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "LA",
+      "label": "Baton Rouge, LA",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "MA",
+      "label": "Boston, MA",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "MD",
+      "label": "Baltimore, MD",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "ME",
+      "label": "Augusta, ME",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "MI",
+      "label": "Ypsilanti, MI",
+      "paths": [
+        {
+          "path": "art/regions/michigan-commuter-2003.png",
+          "bytes": 3172651,
+          "sha256": "23f9b3da45b8b3e4a779a2ef475837302d761bb041735b4fa39d0117d0bd648c"
+        },
+        {
+          "path": "art/regions/michigan-commuter-2026.jpg",
+          "bytes": 545213,
+          "sha256": "7ad0f5c38b8094bdf24740cf66b50ce900b13930b7bb6f94dd64be94f46cdffe"
+        },
+        {
+          "path": "art/regions/michigan-detached-home-2003.png",
+          "bytes": 2879177,
+          "sha256": "4a9cc2fffcffcf721ec415c3df8bed374693982b1588b05994cc223303a43624"
+        },
+        {
+          "path": "art/regions/michigan-west-cross-2003.png",
+          "bytes": 3287856,
+          "sha256": "f4ff29408802b34b5a6222169aadccac904c8176763291d78a578c943a3781d6"
+        },
+        {
+          "path": "art/regions/michigan-west-cross-detached-2003.png",
+          "bytes": 3078585,
+          "sha256": "8af1e691f7029d357971e805e07702573f7eaa94c598ddc3588afc485778916b"
+        }
+      ],
+      "bytes": 12963482
+    },
+    {
+      "id": "MN",
+      "label": "Minneapolis, MN",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "MO",
+      "label": "St. Louis, MO",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "MS",
+      "label": "Jackson, MS",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "MT",
+      "label": "Helena, MT",
+      "paths": [
+        {
+          "path": "art/regions/region-southwest-2003.jpg",
+          "bytes": 491062,
+          "sha256": "7921d4a31157ecd80937f26648af7c240673c385bb9841615498383bfed15924"
+        },
+        {
+          "path": "art/regions/region-southwest-2026.jpg",
+          "bytes": 536514,
+          "sha256": "01e083d9ef2046844b3e714d140b455aabee64dbac28ebc9c43af9be80078e0a"
+        }
+      ],
+      "bytes": 1027576
+    },
+    {
+      "id": "NC",
+      "label": "Lincolnton, NC",
+      "paths": [
+        {
+          "path": "art/regions/lincolnton-main-street-2026.jpg",
+          "bytes": 578560,
+          "sha256": "568cdf4c4335efc8a17f22d500b8e97fa7f6c83e8f8771014ea666fbf3405c60"
+        },
+        {
+          "path": "art/regions/lincolnton-route-2003.png",
+          "bytes": 2955751,
+          "sha256": "daf0df59115844d55cddb35a5e490f1cd76e15c3bca5c9c8e4fee70f23a82323"
+        },
+        {
+          "path": "art/regions/parris-island-posting-2003.png",
+          "bytes": 3386160,
+          "sha256": "efc0ce06f49abcfa7c1e825513b859207f5b82c58d99653b989fc91d783fea2c"
+        }
+      ],
+      "bytes": 6920471
+    },
+    {
+      "id": "ND",
+      "label": "Fargo, ND",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "NE",
+      "label": "Omaha, NE",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "NH",
+      "label": "Concord, NH",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "NJ",
+      "label": "Newark, NJ",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "NM",
+      "label": "Albuquerque, NM",
+      "paths": [
+        {
+          "path": "art/regions/region-southwest-2003.jpg",
+          "bytes": 491062,
+          "sha256": "7921d4a31157ecd80937f26648af7c240673c385bb9841615498383bfed15924"
+        },
+        {
+          "path": "art/regions/region-southwest-2026.jpg",
+          "bytes": 536514,
+          "sha256": "01e083d9ef2046844b3e714d140b455aabee64dbac28ebc9c43af9be80078e0a"
+        }
+      ],
+      "bytes": 1027576
+    },
+    {
+      "id": "NV",
+      "label": "Reno, NV",
+      "paths": [
+        {
+          "path": "art/regions/region-southwest-2003.jpg",
+          "bytes": 491062,
+          "sha256": "7921d4a31157ecd80937f26648af7c240673c385bb9841615498383bfed15924"
+        },
+        {
+          "path": "art/regions/region-southwest-2026.jpg",
+          "bytes": 536514,
+          "sha256": "01e083d9ef2046844b3e714d140b455aabee64dbac28ebc9c43af9be80078e0a"
+        }
+      ],
+      "bytes": 1027576
+    },
+    {
+      "id": "NY",
+      "label": "Albany, NY",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "OH",
+      "label": "Lakeview, OH",
+      "paths": [
+        {
+          "path": "art/1999-lakeview-ohio-main-street.png",
+          "bytes": 3326130,
+          "sha256": "6badae0323504046b94bfeab47a024329736fe7fb95da849e56dd6905d79ca4e"
+        },
+        {
+          "path": "art/2003/lakeview-ohio-main-street.png",
+          "bytes": 3208274,
+          "sha256": "bf74d1ac5071beb442a13485adc2540ce508101487a31fe9965d014fe8cca1f2"
+        },
+        {
+          "path": "art/2010s-lakeview-ohio-main-street.png",
+          "bytes": 3411077,
+          "sha256": "d578b2aae28a69a8c0d0c5344b8e819bd0b91b85c191008dc93f4de633cf59f9"
+        },
+        {
+          "path": "art/2026/lakeview-ohio-main-street.png",
+          "bytes": 3090816,
+          "sha256": "4db0a2a2225b2d58dba2c4ce60c26d0c80d92219a63f992f50928a82b4d66fc8"
+        }
+      ],
+      "bytes": 13036297
+    },
+    {
+      "id": "OK",
+      "label": "Tulsa, OK",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "OR",
+      "label": "Portland, OR",
+      "paths": [
+        {
+          "path": "art/regions/region-pnw-2003.jpg",
+          "bytes": 529688,
+          "sha256": "af5bb6a0ae9e60afb0fc56e549f9e4bb3a7d45bf5efd8ff9aca4ef2de991874a"
+        },
+        {
+          "path": "art/regions/region-pnw-2026.jpg",
+          "bytes": 510987,
+          "sha256": "92ce0c6cf4e69500e3253e872f7e6dffeb29947b785bb4a43814978918b7801a"
+        }
+      ],
+      "bytes": 1040675
+    },
+    {
+      "id": "PA",
+      "label": "Pittsburgh, PA",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "RI",
+      "label": "Providence, RI",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "SC",
+      "label": "Charleston, SC",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "SD",
+      "label": "Sioux Falls, SD",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "TN",
+      "label": "Memphis, TN",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "TX",
+      "label": "Houston, TX",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "UT",
+      "label": "Salt Lake City, UT",
+      "paths": [
+        {
+          "path": "art/regions/region-southwest-2003.jpg",
+          "bytes": 491062,
+          "sha256": "7921d4a31157ecd80937f26648af7c240673c385bb9841615498383bfed15924"
+        },
+        {
+          "path": "art/regions/region-southwest-2026.jpg",
+          "bytes": 536514,
+          "sha256": "01e083d9ef2046844b3e714d140b455aabee64dbac28ebc9c43af9be80078e0a"
+        }
+      ],
+      "bytes": 1027576
+    },
+    {
+      "id": "VA",
+      "label": "Richmond, VA",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "VT",
+      "label": "Burlington, VT",
+      "paths": [
+        {
+          "path": "art/regions/region-ne-2003.jpg",
+          "bytes": 619754,
+          "sha256": "fc9ef12e36852cf690afdffec0c7e4f039ecd82500a3d53293fae6703da69fad"
+        },
+        {
+          "path": "art/regions/region-ne-2026.jpg",
+          "bytes": 609690,
+          "sha256": "646b939ff539043228f050e7a7054d57805fca1e00014b5e4110b31118388325"
+        }
+      ],
+      "bytes": 1229444
+    },
+    {
+      "id": "WA",
+      "label": "Tacoma, WA",
+      "paths": [
+        {
+          "path": "art/regions/region-pnw-2003.jpg",
+          "bytes": 529688,
+          "sha256": "af5bb6a0ae9e60afb0fc56e549f9e4bb3a7d45bf5efd8ff9aca4ef2de991874a"
+        },
+        {
+          "path": "art/regions/region-pnw-2026.jpg",
+          "bytes": 510987,
+          "sha256": "92ce0c6cf4e69500e3253e872f7e6dffeb29947b785bb4a43814978918b7801a"
+        }
+      ],
+      "bytes": 1040675
+    },
+    {
+      "id": "WI",
+      "label": "Milwaukee, WI",
+      "paths": [
+        {
+          "path": "art/regions/region-midwest-2003.jpg",
+          "bytes": 572522,
+          "sha256": "c390ba415e745e6ba1a55f23d0e9da20af21482cc6c464d528a0d302ca7b6d62"
+        },
+        {
+          "path": "art/regions/region-midwest-2026.jpg",
+          "bytes": 578505,
+          "sha256": "0191eed8d6fb418b51bc4c43c9496489d8868ceac5f1be5af5e10a05d8a26ae7"
+        }
+      ],
+      "bytes": 1151027
+    },
+    {
+      "id": "WV",
+      "label": "Charleston, WV",
+      "paths": [
+        {
+          "path": "art/regions/region-south-2003.jpg",
+          "bytes": 671088,
+          "sha256": "3c2c864abb8a8da633817c1ea855a331d86ca04b487580c987135e7344e40b9f"
+        },
+        {
+          "path": "art/regions/region-south-2026.jpg",
+          "bytes": 646142,
+          "sha256": "82cbdcfc4c865712781e31ba8766102c2233624772743ba6f6b6750e147ceed1"
+        }
+      ],
+      "bytes": 1317230
+    },
+    {
+      "id": "WY",
+      "label": "Cheyenne, WY",
+      "paths": [
+        {
+          "path": "art/regions/region-southwest-2003.jpg",
+          "bytes": 491062,
+          "sha256": "7921d4a31157ecd80937f26648af7c240673c385bb9841615498383bfed15924"
+        },
+        {
+          "path": "art/regions/region-southwest-2026.jpg",
+          "bytes": 536514,
+          "sha256": "01e083d9ef2046844b3e714d140b455aabee64dbac28ebc9c43af9be80078e0a"
+        }
+      ],
+      "bytes": 1027576
+    }
+  ]
+}

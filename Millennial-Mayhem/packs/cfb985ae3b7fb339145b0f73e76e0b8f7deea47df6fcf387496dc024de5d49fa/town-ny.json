@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "id": "town-ny",
+  "kind": "regional-town",
+  "dataVersion": "national-town-index-1",
+  "inputSha256": "72517ceb6babe83bcf6f3932961798314410411f75e5ca80d4bd4fda155bce3d",
+  "town": {
+    "schemaVersion": 1,
+    "id": "national.ny",
+    "name": "Albany, NY",
+    "jurisdiction": "NY",
+    "version": "national-town-index-1",
+    "places": [
+      {
+        "id": "home",
+        "label": "Home",
+        "kind": "house",
+        "hours": "Always open · authored fixture",
+        "coordinates": [
+          170,
+          390
+        ]
+      },
+      {
+        "id": "shop",
+        "label": "Corner Market",
+        "kind": "store",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          410,
+          185
+        ]
+      },
+      {
+        "id": "school",
+        "label": "High School & Community College",
+        "kind": "school",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          675,
+          365
+        ]
+      },
+      {
+        "id": "recruiting-office",
+        "label": "Recruiting Office",
+        "kind": "office",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          905,
+          165
+        ]
+      },
+      {
+        "id": "library",
+        "label": "Public Library",
+        "kind": "library",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          1045,
+          385
+        ]
+      },
+      {
+        "id": "bus-stop",
+        "label": "Main Street Bus Stop",
+        "kind": "stop",
+        "hours": "Authored in-game fixture; check date before relying on service",
+        "coordinates": [
+          620,
+          575
+        ]
+      }
+    ],
+    "transit": {
+      "busFareCents": 125,
+      "weekdayFirstMinute": 360,
+      "weekdayLastMinute": 1200,
+      "weekendFirstMinute": 420,
+      "weekendLastMinute": 1080
+    },
+    "offers": [
+      "national.ny.local-note"
+    ],
+    "cards": [
+      {
+        "id": "national-ny-local-note",
+        "kind": "record",
+        "basis": "fiction",
+        "town": "national.ny",
+        "date": "2003-05-19",
+        "once": "perHousehold",
+        "when": [
+          {
+            "op": "hasOffer",
+            "id": "national.ny.local-note"
+          }
+        ],
+        "speaker": "local.clerk.ny",
+        "text": "Albany is a geographic starting label. Local people, employers, schedules, fares and outcomes are authored fictional game material.",
+        "choices": [
+          {
+            "id": "close-local-note",
+            "label": "Close the local note",
+            "effects": [
+              {
+                "op": "releaseOffer",
+                "offer": "national.ny.local-note"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "rules": {
+      "schemaVersion": 1,
+      "predicateOperators": [
+        "hasOffer",
+        "hasExposure"
+      ],
+      "effectOperators": [
+        "acceptWithCost",
+        "releaseOffer",
+        "resolveInstitutionalChoice"
+      ],
+      "publicationRules": [
+        {
+          "id": "cps-2002",
+          "metric": "cpsVotedPercentOfCitizenAdults",
+          "releaseDate": "2004-07-28",
+          "sourceId": "CPS2002"
+        },
+        {
+          "id": "cps-2004",
+          "metric": "cpsVotedPercentOfCitizenAdults",
+          "releaseDate": "2005-05-25",
+          "sourceId": "CPS2004"
+        }
+      ],
+      "rentPolicy": {
+        "arrearsLateFeeCents": 0,
+        "manualPaymentOnly": true,
+        "effectiveDate": "2002-11-01"
+      },
+      "fuelCost": {
+        "formula": "roundOnce(millsPerGallon * gallonsThousandths / 10000)",
+        "gallonsThousandths": 8000
+      }
+    }
+  },
+  "regional": {
+    "state": "NY",
+    "sceneAsset": "region-ne-2003",
+    "sceneAsset2026": "region-ne-2026",
+    "city": "Albany",
+    "siteId": "ny-corner-market-and-bus-stop",
+    "neighborhoodId": "ny-main-street",
+    "localOpportunity": {
+      "eventId": "local-market-shift-2003-05-19",
+      "personId": "market-shift-lead-ny",
+      "personName": "Nina Brooks",
+      "role": "fictional neighborhood market shift lead",
+      "venue": "Albany Corner Market",
+      "date": "2003-05-19",
+      "deadlineMinute": 555,
+      "walkMinutes": 16,
+      "fareCents": 125,
+      "shift": {
+        "date": "2003-05-20",
+        "startMinute": 540,
+        "endMinute": 780,
+        "hourlyWageCents": 600
+      },
+      "termsBasis": "Authored fictional shift terms; not a historical or local wage claim."
+    },
+    "intercityCoach": {
+      "minutes": 242,
+      "fareCents": 2881,
+      "label": "fictional in-game coach estimate; not a carrier quote"
+    },
+    "fictionBoundary": "New York is named from the local geographic index. This authored playable neighborhood is a composite, not a claim about local transit or a named real household. Every person, employer, schedule, route, price and outcome in the town pack is fictional. The linked official election office supports state identity and source discovery only.",
+    "sources": [
+      {
+        "label": "New York official elections office",
+        "url": "https://www.elections.ny.gov/",
+        "supports": "Current state identity and public election source discovery only; it does not substantiate this fictional town, job, transit schedule, price, household or story."
+      }
+    ]
+  }
+}

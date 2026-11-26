@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "mm-2026-11-21.2-c5ad0606f4c0964d",
+  "engineVersion": "1",
+  "rulesVersion": "1",
+  "storyVersion": "oh-opening-1",
+  "dataVersion": "2026-11-21.2",
+  "inputSha256": "19ecdfc88abe812571be6b8ab36482e93accce4cf756420e4230824c68c719d2",
+  "packs": [
+    {
+      "id": "us-state-index",
+      "path": "packs/5f792f193e2c52131b10ee737026d9d1aa6c977178003ac8e0b549a90130a9f6/state-index.json",
+      "bytes": 607270,
+      "sha256": "5f792f193e2c52131b10ee737026d9d1aa6c977178003ac8e0b549a90130a9f6"
+    },
+    {
+      "id": "oh-opening",
+      "path": "packs/8095342d8090be0571de7cbb0495299040b55a43c51eb16b1942c01eb8368d73/oh-opening.json",
+      "bytes": 42203,
+      "sha256": "8095342d8090be0571de7cbb0495299040b55a43c51eb16b1942c01eb8368d73"
+    }
+  ],
+  "validators": {
+    "id": "schema-validators",
+    "path": "schemas/c296586c988f2a0a38bd39a04197279598a8ae0d2b4b1f652c1b7a3ab2b8c3a7/validators.mjs",
+    "bytes": 229021,
+    "sha256": "c296586c988f2a0a38bd39a04197279598a8ae0d2b4b1f652c1b7a3ab2b8c3a7"
+  }
+}

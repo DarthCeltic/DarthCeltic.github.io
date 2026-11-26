@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "mm-2026-11-21.2-de69b4b0bbfa6986",
+  "engineVersion": "1",
+  "rulesVersion": "1",
+  "storyVersion": "oh-opening-1",
+  "dataVersion": "2026-11-21.2",
+  "inputSha256": "f6961fbb2df4281b9422921c3f99950dbb516fc5847f9ef1514db6eb90083c54",
+  "packs": [
+    {
+      "id": "us-state-index",
+      "path": "packs/e1c409f31aa44fcc5eeeb9e1d80be5ca498d083127c67c12784b33940767b121/state-index.json",
+      "bytes": 607270,
+      "sha256": "e1c409f31aa44fcc5eeeb9e1d80be5ca498d083127c67c12784b33940767b121"
+    },
+    {
+      "id": "oh-opening",
+      "path": "packs/2ad5d74b612243836766906ffb98a9d993ee26d6c040207e0b58b7bd62a9c92a/oh-opening.json",
+      "bytes": 44732,
+      "sha256": "2ad5d74b612243836766906ffb98a9d993ee26d6c040207e0b58b7bd62a9c92a"
+    },
+    {
+      "id": "town-oh",
+      "path": "packs/e63ba9d65ef62314b5bdd7962bc9e4a7d3bc5677d98cef1be406465e50c5dab2/town-oh.json",
+      "bytes": 7733,
+      "sha256": "e63ba9d65ef62314b5bdd7962bc9e4a7d3bc5677d98cef1be406465e50c5dab2"
+    },
+    {
+      "id": "town-mi",
+      "path": "packs/d3eeee1d08c3d765e7bc14ce1a5e65f6584e17861ee6314eb0e224fbf3e339cd/town-mi.json",
+      "bytes": 7396,
+      "sha256": "d3eeee1d08c3d765e7bc14ce1a5e65f6584e17861ee6314eb0e224fbf3e339cd"
+    },
+    {
+      "id": "town-fl",
+      "path": "packs/babaa95c4c059e470832f1ba4d52d368bc707167e8bb4d243ae03e002dbfde79/town-fl.json",
+      "bytes": 6897,
+      "sha256": "babaa95c4c059e470832f1ba4d52d368bc707167e8bb4d243ae03e002dbfde79"
+    },
+    {
+      "id": "town-nc",
+      "path": "packs/7d3c5b94c98b0320bcf59c1292067bab1fc33e9e31bc6c30ed4edc8f0c109713/town-nc.json",
+      "bytes": 6938,
+      "sha256": "7d3c5b94c98b0320bcf59c1292067bab1fc33e9e31bc6c30ed4edc8f0c109713"
+    },
+    {
+      "id": "town-ak",
+      "path": "packs/fb824d0a7f24882e8b64fa239384637c4db5b6bd1db6939108180d2486b3050b/town-ak.json",
+      "bytes": 5366,
+      "sha256": "fb824d0a7f24882e8b64fa239384637c4db5b6bd1db6939108180d2486b3050b"
+    },
+    {
+      "id": "town-al",
+      "path": "packs/1daffe6c0d164ae723d27c0de57eb3639fff83b6c2905483a17bcc71d6356127/town-al.json",
+      "bytes": 5379,
+      "sha256": "1daffe6c0d164ae723d27c0de57eb3639fff83b6c2905483a17bcc71d6356127"
+    },
+    {
+      "id": "town-ar",
+      "path": "packs/d9869ba8759b776107e1ca7c3edd1672c37b4c7dc99ed73bca26db6c5d97869c/town-ar.json",
+      "bytes": 5384,
+      "sha256": "d9869ba8759b776107e1ca7c3edd1672c37b4c7dc99ed73bca26db6c5d97869c"
+    },
+    {
+      "id": "town-az",
+      "path": "packs/4480a54c8e20540702cfead69a92847e682ef487345899125e71a72816605b25/town-az.json",
+      "bytes": 5363,
+      "sha256": "4480a54c8e20540702cfead69a92847e682ef487345899125e71a72816605b25"
+    },
+    {
+      "id": "town-ca",
+      "path": "packs/e4103ef686fade2aaa253a7e934d32e19690ab81ecf69eaf07963e8c9b502c43/town-ca.json",
+      "bytes": 5389,
+      "sha256": "e4103ef686fade2aaa253a7e934d32e19690ab81ecf69eaf07963e8c9b502c43"
+    },
+    {
+      "id": "town-co",
+      "path": "packs/02b1fdf327ccd969dc19d13438852f53ac1a4655072dd34abd4ef52e55734ad6/town-co.json",
+      "bytes": 5388,
+      "sha256": "02b1fdf327ccd969dc19d13438852f53ac1a4655072dd34abd4ef52e55734ad6"
+    },
+    {
+      "id": "town-ct",
+      "path": "packs/79964829d437af9830f2c3d0c1430507ff5ac7435e5c583b6cd44d77e8cc1373/town-ct.json",
+      "bytes": 5425,
+      "sha256": "79964829d437af9830f2c3d0c1430507ff5ac7435e5c583b6cd44d77e8cc1373"
+    },
+    {
+      "id": "town-dc",
+      "path": "packs/be2415f6b5d15bb845bec5de28d2078fb807f5ff65c7748e614a8b6accc93138/town-dc.json",
+      "bytes": 5380,
+      "sha256": "be2415f6b5d15bb845bec5de28d2078fb807f5ff65c7748e614a8b6accc93138"
+    },
+    {
+      "id": "town-de",
+      "path": "packs/31e3af873e137c1541307418ff4296e92ce739397070da567a744740fa20f2fc/town-de.json",
+      "bytes": 5359,
+      "sha256": "31e3af873e137c1541307418ff4296e92ce739397070da567a744740fa20f2fc"
+    },
+    {
+      "id": "town-ga",
+      "path": "packs/88420cc6492de8a40b4683af0fff284ef4de075ccce4751d0d80cf53310515cf/town-ga.json",
+      "bytes": 5400,
+      "sha256": "88420cc6492de8a40b4683af0fff284ef4de075ccce4751d0d80cf53310515cf"
+    },
+    {
+      "id": "town-hi",
+      "path": "packs/08777118cc81de8171bd5e4b28d156dfd7f9c0bfed3e86fd88487b3b7e17b556/town-hi.json",
+      "bytes": 5363,
+      "sha256": "08777118cc81de8171bd5e4b28d156dfd7f9c0bfed3e86fd88487b3b7e17b556"
+    },
+    {
+      "id": "town-ia",
+      "path": "packs/ed61842649519cfc9da1bc6e762a2dd8d92bb74c25188a88aa7b4097adb9fdb0/town-ia.json",
+      "bytes": 5393,
+      "sha256": "ed61842649519cfc9da1bc6e762a2dd8d92bb74c25188a88aa7b4097adb9fdb0"
+    },
+    {
+      "id": "town-id",
+      "path": "packs/0083b0f49743588ab0e9e0776ad54433f2d103c3129c0edff3cba765ffb33872/town-id.json",
+      "bytes": 5347,
+      "sha256": "0083b0f49743588ab0e9e0776ad54433f2d103c3129c0edff3cba765ffb33872"
+    },
+    {
+      "id": "town-il",
+      "path": "packs/e49510dbf73b9e4e0adb06f299223fddb623ac853a33b8a1433a4a8ad31a9bd2/town-il.json",
+      "bytes": 5383,
+      "sha256": "e49510dbf73b9e4e0adb06f299223fddb623ac853a33b8a1433a4a8ad31a9bd2"
+    },
+    {
+      "id": "town-in",
+      "path": "packs/73481baa32dcf97d795949cdcd75949e8eb45da4da5ed4a5623e40f766713f20/town-in.json",
+      "bytes": 5380,
+      "sha256": "73481baa32dcf97d795949cdcd75949e8eb45da4da5ed4a5623e40f766713f20"
+    },
+    {
+      "id": "town-ks",
+      "path": "packs/f63d5e24ad4001a739a0e5c09d016bac32f5303e09b5d7b753ed7c6bca886bad/town-ks.json",
+      "bytes": 5370,
+      "sha256": "f63d5e24ad4001a739a0e5c09d016bac32f5303e09b5d7b753ed7c6bca886bad"
+    },
+    {
+      "id": "town-ky",
+      "path": "packs/15ffcdd01ca8f1db4405e3aab090f9d9b13283d60f964feeda737cb56a13d6cf/town-ky.json",
+      "bytes": 5380,
+      "sha256": "15ffcdd01ca8f1db4405e3aab090f9d9b13283d60f964feeda737cb56a13d6cf"
+    },
+    {
+      "id": "town-la",
+      "path": "packs/15e1f2e572b7b0f023c97ac5e7583e9943609c13860d2b9d415eaf64cdfe48a5/town-la.json",
+      "bytes": 5407,
+      "sha256": "15e1f2e572b7b0f023c97ac5e7583e9943609c13860d2b9d415eaf64cdfe48a5"
+    },
+    {
+      "id": "town-ma",
+      "path": "packs/699be91bca590522db12e40f3f0746a3995dc22ef03bb240bcff4481e7a584b7/town-ma.json",
+      "bytes": 5403,
+      "sha256": "699be91bca590522db12e40f3f0746a3995dc22ef03bb240bcff4481e7a584b7"
+    },
+    {
+      "id": "town-md",
+      "path": "packs/b8ffe370179a5eaca72f4c7aa71e68527fb16de25d4d9f1ca650511b6a767126/town-md.json",
+      "bytes": 5364,
+      "sha256": "b8ffe370179a5eaca72f4c7aa71e68527fb16de25d4d9f1ca650511b6a767126"
+    },
+    {
+      "id": "town-me",
+      "path": "packs/37d4608d09bb94bf7441302457ba13f1eef8822a61f589a5a2b3b805be8f390e/town-me.json",
+      "bytes": 5359,
+      "sha256": "37d4608d09bb94bf7441302457ba13f1eef8822a61f589a5a2b3b805be8f390e"
+    },
+    {
+      "id": "town-mn",
+      "path": "packs/571209b667a0f1459c739999c3496ab758cf38ec452e9af0ce05973740667a51/town-mn.json",
+      "bytes": 5398,
+      "sha256": "571209b667a0f1459c739999c3496ab758cf38ec452e9af0ce05973740667a51"
+    },
+    {
+      "id": "town-mo",
+      "path": "packs/22a8bd0789473580b00614ba3d1585b75ba5541558937ce81ebf0de08e4d19f6/town-mo.json",
+      "bytes": 5375,
+      "sha256": "22a8bd0789473580b00614ba3d1585b75ba5541558937ce81ebf0de08e4d19f6"
+    },
+    {
+      "id": "town-ms",
+      "path": "packs/8ca44365ad5361949aa0016870d1d3751ed4c947874327073a9633235b03b344/town-ms.json",
+      "bytes": 5376,
+      "sha256": "8ca44365ad5361949aa0016870d1d3751ed4c947874327073a9633235b03b344"
+    },
+    {
+      "id": "town-mt",
+      "path": "packs/098bf66974d14cb719aea959328fca71c9e8cbf92e05ecf4f63caf889e88d1e0/town-mt.json",
+      "bytes": 5359,
+      "sha256": "098bf66974d14cb719aea959328fca71c9e8cbf92e05ecf4f63caf889e88d1e0"
+    },
+    {
+      "id": "town-nd",
+      "path": "packs/5426f57602f9f03fba28ae9c702900ebba26aeaf8419bfe47c921cc50d1b5952/town-nd.json",
+      "bytes": 5373,
+      "sha256": "5426f57602f9f03fba28ae9c702900ebba26aeaf8419bfe47c921cc50d1b5952"
+    },
+    {
+      "id": "town-ne",
+      "path": "packs/cd792798f2233ca37c5d74c5cda77ded63c09a63c4716cacf51b7ec7d6d9b86e/town-ne.json",
+      "bytes": 5378,
+      "sha256": "cd792798f2233ca37c5d74c5cda77ded63c09a63c4716cacf51b7ec7d6d9b86e"
+    },
+    {
+      "id": "town-nh",
+      "path": "packs/ff4cc23e4a3863ae908c7a9d6d01b7e09fc959d6b95cbfb80c2673aed3cf7605/town-nh.json",
+      "bytes": 5374,
+      "sha256": "ff4cc23e4a3863ae908c7a9d6d01b7e09fc959d6b95cbfb80c2673aed3cf7605"
+    },
+    {
+      "id": "town-nj",
+      "path": "packs/4b2e1597e19eff00efb259c17b558bf42eb31de871938daecd14fe656d00be30/town-nj.json",
+      "bytes": 5371,
+      "sha256": "4b2e1597e19eff00efb259c17b558bf42eb31de871938daecd14fe656d00be30"
+    },
+    {
+      "id": "town-nm",
+      "path": "packs/b29151467d930099f583d82146ac2564aa8a54e6d11c506d854f43d785072c7a/town-nm.json",
+      "bytes": 5437,
+      "sha256": "b29151467d930099f583d82146ac2564aa8a54e6d11c506d854f43d785072c7a"
+    },
+    {
+      "id": "town-nv",
+      "path": "packs/b6692decb3a86d3f1a31039208ecaec6efce21389c5de620591529e592afee9d/town-nv.json",
+      "bytes": 5356,
+      "sha256": "b6692decb3a86d3f1a31039208ecaec6efce21389c5de620591529e592afee9d"
+    },
+    {
+      "id": "town-ny",
+      "path": "packs/65538d90af05b4657533e1efdfebc11df2dd2e607230e29f50c748f488e96289/town-ny.json",
+      "bytes": 5350,
+      "sha256": "65538d90af05b4657533e1efdfebc11df2dd2e607230e29f50c748f488e96289"
+    },
+    {
+      "id": "town-ok",
+      "path": "packs/f745ea710f98c92ea432e76c2ec1f5f2bfed4510e2ea6f0885ecd0e74b00b3b6/town-ok.json",
+      "bytes": 5355,
+      "sha256": "f745ea710f98c92ea432e76c2ec1f5f2bfed4510e2ea6f0885ecd0e74b00b3b6"
+    },
+    {
+      "id": "town-or",
+      "path": "packs/d25ba28e0aff2f1ba6e950158190fa5f1dff049a4778a07dc29a3901990aeac3/town-or.json",
+      "bytes": 5386,
+      "sha256": "d25ba28e0aff2f1ba6e950158190fa5f1dff049a4778a07dc29a3901990aeac3"
+    },
+    {
+      "id": "town-pa",
+      "path": "packs/9fe872efe9ed3b7f719f8a9d8a02b41d52d8ca4664c808afcf8dd33528af30c2/town-pa.json",
+      "bytes": 5405,
+      "sha256": "9fe872efe9ed3b7f719f8a9d8a02b41d52d8ca4664c808afcf8dd33528af30c2"
+    },
+    {
+      "id": "town-ri",
+      "path": "packs/5a99a35b665b7cd522ec16235f9e8abc340b34bc71989a1d2645a43ea214367f/town-ri.json",
+      "bytes": 5367,
+      "sha256": "5a99a35b665b7cd522ec16235f9e8abc340b34bc71989a1d2645a43ea214367f"
+    },
+    {
+      "id": "town-sc",
+      "path": "packs/ca0c5491048864a039448dd46f90ce083b6279058ca437c1a5d0971bed2e0c4f/town-sc.json",
+      "bytes": 5380,
+      "sha256": "ca0c5491048864a039448dd46f90ce083b6279058ca437c1a5d0971bed2e0c4f"
+    },
+    {
+      "id": "town-sd",
+      "path": "packs/5d8221ccb4d11b3b9fa7000fcf99932f6f54497b12a14f557b1c185eb83706de/town-sd.json",
+      "bytes": 5402,
+      "sha256": "5d8221ccb4d11b3b9fa7000fcf99932f6f54497b12a14f557b1c185eb83706de"
+    },
+    {
+      "id": "town-tn",
+      "path": "packs/77bc5c0a9424b61e630c30451e00760cd8ff8c183c43dd471e591d39b65a90dc/town-tn.json",
+      "bytes": 5358,
+      "sha256": "77bc5c0a9424b61e630c30451e00760cd8ff8c183c43dd471e591d39b65a90dc"
+    },
+    {
+      "id": "town-tx",
+      "path": "packs/653e9f87cccad10ed9654e7c8506d584e050cd6be16f6ae0a8afcfd08da042ef/town-tx.json",
+      "bytes": 5374,
+      "sha256": "653e9f87cccad10ed9654e7c8506d584e050cd6be16f6ae0a8afcfd08da042ef"
+    },
+    {
+      "id": "town-ut",
+      "path": "packs/8eae05ea1fe4e683efde8b50ac455480831e9c9f235b6179e566b6a68fe1ec5f/town-ut.json",
+      "bytes": 5382,
+      "sha256": "8eae05ea1fe4e683efde8b50ac455480831e9c9f235b6179e566b6a68fe1ec5f"
+    },
+    {
+      "id": "town-va",
+      "path": "packs/e68e473121a1205a1522acec766fe50d2e5168569c11732eaa90ef33be275da8/town-va.json",
+      "bytes": 5369,
+      "sha256": "e68e473121a1205a1522acec766fe50d2e5168569c11732eaa90ef33be275da8"
+    },
+    {
+      "id": "town-vt",
+      "path": "packs/6d18ce9cc69ec616bc99c143aec105c321e42be40568fb0325d8d2c26e94704b/town-vt.json",
+      "bytes": 5367,
+      "sha256": "6d18ce9cc69ec616bc99c143aec105c321e42be40568fb0325d8d2c26e94704b"
+    },
+    {
+      "id": "town-wa",
+      "path": "packs/6df6fa0a0076f848b1a5e42a3779b442e65207e3a0c9282dc5f1a20e7286d11e/town-wa.json",
+      "bytes": 5358,
+      "sha256": "6df6fa0a0076f848b1a5e42a3779b442e65207e3a0c9282dc5f1a20e7286d11e"
+    },
+    {
+      "id": "town-wi",
+      "path": "packs/d5081059897a649c056db6fe7535ae6994c387b7ba9e656468c169f1b783ea05/town-wi.json",
+      "bytes": 5371,
+      "sha256": "d5081059897a649c056db6fe7535ae6994c387b7ba9e656468c169f1b783ea05"
+    },
+    {
+      "id": "town-wv",
+      "path": "packs/3cad0abd250b4214eacf0ea72ff94c75fdd463138e86ac291f981af76b9561ab/town-wv.json",
+      "bytes": 5400,
+      "sha256": "3cad0abd250b4214eacf0ea72ff94c75fdd463138e86ac291f981af76b9561ab"
+    },
+    {
+      "id": "town-wy",
+      "path": "packs/46814b9ee8ade287643ba0e967fc696e4b6380fd6b7d7b7dab7c29baa800c849/town-wy.json",
+      "bytes": 5385,
+      "sha256": "46814b9ee8ade287643ba0e967fc696e4b6380fd6b7d7b7dab7c29baa800c849"
+    }
+  ],
+  "validators": {
+    "id": "schema-validators",
+    "path": "schemas/17a40186a1f4a542ab64574f1e9a92683bbe8c7207e0898ce6a40ca201425e85/validators.mjs",
+    "bytes": 305477,
+    "sha256": "17a40186a1f4a542ab64574f1e9a92683bbe8c7207e0898ce6a40ca201425e85"
+  }
+}

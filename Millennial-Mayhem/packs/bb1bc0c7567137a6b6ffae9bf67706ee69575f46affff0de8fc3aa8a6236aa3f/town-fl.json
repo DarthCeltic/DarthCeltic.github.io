@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "id": "town-fl",
+  "kind": "regional-town",
+  "dataVersion": "fl-okeechobee-2003-1",
+  "inputSha256": "4b3d126c353e900d54c22dd7dd61f815acf0dff8e0a2fa4d63217470def51fdd",
+  "town": {
+    "schemaVersion": 1,
+    "id": "fl.okeechobee-home",
+    "name": "Okeechobee, Florida",
+    "jurisdiction": "FL",
+    "version": "fl-okeechobee-2003-1",
+    "places": [
+      {
+        "id": "home",
+        "label": "Family house off South Parrott Avenue",
+        "kind": "house",
+        "hours": "Always open",
+        "coordinates": [
+          170,
+          390
+        ]
+      },
+      {
+        "id": "shop",
+        "label": "Main Street market",
+        "kind": "store",
+        "hours": "Daily, 6:00 AM–9:00 PM · authored fixture",
+        "coordinates": [
+          410,
+          185
+        ]
+      },
+      {
+        "id": "school",
+        "label": "Okeechobee High School",
+        "kind": "school",
+        "hours": "Weekdays, 7:30 AM–4:00 PM · authored fixture",
+        "coordinates": [
+          675,
+          365
+        ]
+      },
+      {
+        "id": "recruiting-office",
+        "label": "Recruiting office",
+        "kind": "office",
+        "hours": "Weekdays, 9:00 AM–5:00 PM · authored fixture",
+        "coordinates": [
+          905,
+          165
+        ]
+      },
+      {
+        "id": "library",
+        "label": "Okeechobee County Library",
+        "kind": "library",
+        "hours": "Weekdays, 9:00 AM–6:00 PM · authored fixture",
+        "coordinates": [
+          1045,
+          385
+        ]
+      },
+      {
+        "id": "bus-stop",
+        "label": "County road pickup",
+        "kind": "stop",
+        "hours": "Call-ahead ride · authored fixture",
+        "coordinates": [
+          620,
+          575
+        ]
+      }
+    ],
+    "transit": {
+      "busFareCents": 0,
+      "weekdayFirstMinute": 420,
+      "weekdayLastMinute": 1080,
+      "weekendFirstMinute": 480,
+      "weekendLastMinute": 960
+    },
+    "offers": [
+      "fl.family-ride",
+      "fl.school-form"
+    ],
+    "cards": [
+      {
+        "id": "fl.family-ride",
+        "kind": "scene",
+        "basis": "fiction",
+        "town": "fl.okeechobee-home",
+        "date": "1994-09-06",
+        "once": "perHousehold",
+        "when": [],
+        "speaker": "fl.aunt",
+        "text": "The family car is needed for an appointment. Ask before taking the keys; the answer depends on the saved household plan.",
+        "choices": [
+          {
+            "id": "ask-for-ride",
+            "label": "Ask your aunt about the ride plan",
+            "effects": [
+              {
+                "op": "resolveInstitutionalChoice",
+                "systemId": "fl.family-ride",
+                "choiceId": "ask-for-ride"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "rules": {
+      "schemaVersion": 1,
+      "predicateOperators": [
+        "hasOffer",
+        "hasExposure"
+      ],
+      "effectOperators": [
+        "acceptWithCost",
+        "releaseOffer",
+        "resolveInstitutionalChoice"
+      ],
+      "publicationRules": [],
+      "rentPolicy": {
+        "arrearsLateFeeCents": 0,
+        "manualPaymentOnly": true,
+        "effectiveDate": "1994-01-01"
+      },
+      "fuelCost": {
+        "formula": "roundOnce(millsPerGallon * gallonsThousandths / 10000)",
+        "gallonsThousandths": 8000
+      }
+    }
+  },
+  "regional": {
+    "schemaVersion": 1,
+    "state": "FL",
+    "sceneAsset": "okeechobee-home-2003",
+    "intercityCoach": {
+      "minutes": 210,
+      "fareCents": 2400,
+      "label": "fictional in-game coach fare; not a historical quote"
+    },
+    "routeId": "florida-carolinas",
+    "sources": [
+      {
+        "label": "City of Okeechobee Council",
+        "url": "https://www.cityofokeechobee.com/city-council.html",
+        "supports": "Current city venue and civic structure only; authored route events are fictional."
+      },
+      {
+        "label": "City of Okeechobee agendas and minutes",
+        "url": "https://www.cityofokeechobee.com/AgendaMInutes-CityCouncil.html",
+        "supports": "Current council chamber location and archive; not evidence of the authored 1994 events."
+      },
+      {
+        "label": "Florida official elections office",
+        "url": "https://www.dos.myflorida.com/elections/",
+        "supports": "Current state identity and public election source discovery only; it does not substantiate this fictional town, job, transit schedule, price, household or story."
+      }
+    ],
+    "fictionBoundary": "Okeechobee addresses, family, school, transport and offers are fictional. The optional route records only the dates and locations stated in the authored reference; personal outcomes remain open.",
+    "sceneAsset2026": "okeechobee-home-2026",
+    "city": "Okeechobee",
+    "localOpportunity": {
+      "eventId": "local-market-shift-2003-05-19",
+      "personId": "market-shift-lead-fl",
+      "personName": "Maya Greene",
+      "role": "fictional neighborhood market shift lead",
+      "venue": "Okeechobee Corner Market",
+      "date": "2003-05-19",
+      "deadlineMinute": 555,
+      "walkMinutes": 18,
+      "fareCents": 0,
+      "shift": {
+        "date": "2003-05-20",
+        "startMinute": 540,
+        "endMinute": 780,
+        "hourlyWageCents": 600
+      },
+      "termsBasis": "Authored fictional shift terms; not a historical or local wage claim."
+    },
+    "siteId": "fl-corner-market-and-bus-stop",
+    "neighborhoodId": "fl-main-street",
+    "sourceOrFiction": "Florida is named from the local geographic index. Every person, employer, schedule, route, price and outcome in the town pack is fictional. The linked official election office supports state identity and source discovery only."
+  },
+  "story": {
+    "schemaVersion": 1,
+    "id": "florida-carolinas-reference-route",
+    "residences": [
+      {
+        "town": "Okeechobee",
+        "state": "FL",
+        "from": "1994-01-01",
+        "to": "2002-01-01"
+      },
+      {
+        "town": "Lincolnton",
+        "state": "NC",
+        "from": "2002-01-01",
+        "to": null
+      }
+    ],
+    "duty": [
+      {
+        "site": "Parris Island",
+        "state": "SC",
+        "from": "2003-12-01",
+        "to": "2004-04-01",
+        "sceneAsset": "parris-island-posting-2003"
+      },
+      {
+        "site": "Jacksonville",
+        "state": "NC",
+        "from": "2004-04-01",
+        "to": "2005-01-01",
+        "sceneAsset": "jacksonville-nc-posting-2004"
+      },
+      {
+        "site": "Cherry Point",
+        "state": "NC",
+        "from": "2005-01-01",
+        "to": "2006-01-01",
+        "sceneAsset": "cherry-point-posting-2005"
+      }
+    ],
+    "separationDate": "2006-01-01",
+    "unresolved": [
+      "birth date",
+      "characterization",
+      "separation reason",
+      "VA result",
+      "SSA result",
+      "relationships",
+      "personal outcomes"
+    ]
+  }
+}

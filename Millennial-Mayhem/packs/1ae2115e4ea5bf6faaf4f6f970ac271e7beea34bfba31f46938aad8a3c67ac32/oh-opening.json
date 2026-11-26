@@ -1,0 +1,1094 @@
+{
+  "schemaVersion": 1,
+  "id": "oh-opening",
+  "kind": "opening",
+  "dataVersion": "2026-11-21.2",
+  "inputSha256": "1490754165998a8cad7ee7b3850a45cc75097a096af446b99ada7a8ab2b30d9a",
+  "town": {
+    "id": "oh.commuter",
+    "name": "Lakeview, Ohio",
+    "jurisdiction": "OH",
+    "version": "oh-opening-1",
+    "places": [
+      {
+        "id": "home",
+        "label": "Home",
+        "kind": "house",
+        "hours": "Always open",
+        "coordinates": [
+          170,
+          390
+        ]
+      },
+      {
+        "id": "shop",
+        "label": "Northstar Market",
+        "kind": "store",
+        "hours": "Daily, 6:00 AM–10:00 PM",
+        "coordinates": [
+          410,
+          185
+        ]
+      },
+      {
+        "id": "school",
+        "label": "Lakeview High & Community College",
+        "kind": "school",
+        "hours": "Weekdays, 7:30 AM–9:00 PM; Saturday, 9:00 AM–2:00 PM",
+        "coordinates": [
+          675,
+          365
+        ]
+      },
+      {
+        "id": "recruiting-office",
+        "label": "Recruiting Office",
+        "kind": "office",
+        "hours": "Weekdays, 9:00 AM–5:00 PM",
+        "coordinates": [
+          905,
+          165
+        ]
+      },
+      {
+        "id": "library",
+        "label": "Lakeview Public Library",
+        "kind": "library",
+        "hours": "Weekdays, 9:00 AM–8:00 PM; Saturday, 10:00 AM–5:00 PM; Sunday, 1:00–5:00 PM",
+        "coordinates": [
+          1045,
+          385
+        ]
+      },
+      {
+        "id": "bus-stop",
+        "label": "Main Street Bus Stop / Parking Lot",
+        "kind": "stop",
+        "hours": "Weekdays, 5:45 AM–8:45 PM; weekends, posted service",
+        "coordinates": [
+          620,
+          575
+        ]
+      }
+    ],
+    "transit": {
+      "busFareCents": 125,
+      "weekdayFirstMinute": 345,
+      "weekdayLastMinute": 1245,
+      "weekendFirstMinute": 420,
+      "weekendLastMinute": 1170
+    }
+  },
+  "cards": [
+    {
+      "id": "oh.rent.call",
+      "kind": "decision",
+      "basis": "fiction",
+      "town": "oh.commuter",
+      "date": "2002-10-31",
+      "once": "perHousehold",
+      "when": [
+        {
+          "op": "hasOffer",
+          "id": "oh.rent.deferral"
+        }
+      ],
+      "speaker": "oh.landlord",
+      "text": "The rent draft is tomorrow morning. Tell me which payment date you are asking about.",
+      "choices": [
+        {
+          "id": "request-noon",
+          "label": "Ask to pay after the Friday paycheck",
+          "effects": [
+            {
+              "op": "resolveInstitutionalChoice",
+              "systemId": "oh.rent.deferral",
+              "choiceId": "request-noon"
+            }
+          ]
+        },
+        {
+          "id": "keep-eight",
+          "label": "Keep the original Friday morning date",
+          "effects": [
+            {
+              "op": "resolveInstitutionalChoice",
+              "systemId": "oh.rent.deferral",
+              "choiceId": "keep-eight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oh.lab.materials",
+      "kind": "decision",
+      "basis": "fiction",
+      "town": "oh.commuter",
+      "date": "2002-10-31",
+      "once": "perHousehold",
+      "when": [
+        {
+          "op": "hasOffer",
+          "id": "oh.lab.seat"
+        }
+      ],
+      "speaker": "oh.lab.clerk",
+      "text": "I can hold your seat until we start.",
+      "choices": [
+        {
+          "id": "take",
+          "label": "Pay $55 and take the lab",
+          "effects": [
+            {
+              "op": "acceptWithCost",
+              "offer": "oh.lab.seat",
+              "account": "cash",
+              "cents": 5500
+            }
+          ]
+        },
+        {
+          "id": "pass",
+          "label": "Give up the seat",
+          "effects": [
+            {
+              "op": "releaseOffer",
+              "offer": "oh.lab.seat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oh.paper.cps-release",
+      "kind": "record",
+      "basis": "attributedHistory",
+      "town": "oh.commuter",
+      "date": "2005-05-16",
+      "once": "perHousehold",
+      "when": [
+        {
+          "op": "hasExposure",
+          "id": "CPS2004"
+        }
+      ],
+      "speaker": "oh.library.clerk",
+      "text": "This copy of the 2004 survey has a May 25, 2005 release date.",
+      "choices": [
+        {
+          "id": "wait-for-release",
+          "label": "Wait until the published table is available",
+          "effects": [
+            {
+              "op": "resolveInstitutionalChoice",
+              "systemId": "oh.paper.cps",
+              "choiceId": "wait-for-release"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "openingEvents": {
+    "schemaVersion": 1,
+    "id": "oh-opening-events",
+    "dataVersion": "oh-opening-2002-2005.1",
+    "events": [
+      {
+        "id": "oh.opening.01",
+        "number": 1,
+        "sceneId": "graduation-envelope",
+        "date": "2002-05-20",
+        "title": "The graduation envelope",
+        "speaker": "Your future self",
+        "text": "The letter is still folded inside the envelope. On the back, your senior-year promise is in your own handwriting. Dee has sent a short note from the lab. Cal is already asking who has a blank disc. The first evening is yours to decide.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "read-promise",
+            "label": "Read the promise and save the envelope",
+            "receipt": "You open the graduation envelope. Your original promise stays beside it in the folder.",
+            "memory": "senior-exit-envelope",
+            "commitment": "keep-learning"
+          },
+          {
+            "id": "answer-classmates",
+            "label": "Write back to Dee and Cal before the evening starts",
+            "receipt": "You answer both classmates and keep the evening open for a later visit.",
+            "memory": "senior-year-replies",
+            "commitment": "classmates"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.02",
+        "number": 2,
+        "sceneId": "aid-letter",
+        "date": "2002-05-22",
+        "title": "The aid letter",
+        "speaker": "Guidance counselor",
+        "text": "The aid letter puts a grant, campus work-study and a loan on separate lines. A counselor says the degree is worth the risk. The grant has an amount and a term; the loan has a rate and a signature box. You can compare all three without accepting debt today.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "compare-aid",
+            "label": "Compare the grant, work-study and loan terms",
+            "receipt": "You copy the grant and work-study dates and leave the loan unsigned.",
+            "memory": "aid-letter-compared",
+            "commitment": "review-aid"
+          },
+          {
+            "id": "request-work-study",
+            "label": "Ask for the work-study shift list before deciding",
+            "receipt": "You request the posted work-study schedule before accepting any aid.",
+            "memory": "work-study-request",
+            "commitment": "study-with-work"
+          },
+          {
+            "id": "defer-debt",
+            "label": "Take the letter home and do not sign the loan",
+            "receipt": "The loan remains unaccepted. You keep the letter and its terms for a later review.",
+            "memory": "unsigned-aid-letter",
+            "commitment": "avoid-hidden-debt"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.03",
+        "number": 3,
+        "sceneId": "service-fair",
+        "date": "2002-05-31",
+        "title": "The service and work fair",
+        "speaker": "Fair table volunteers",
+        "text": "Five uniformed service tables share one gym with the Peace Corps preparation booth, AmeriCorps and a paid local employer. The brochures describe different obligations. None can promise the same schedule, pay, housing or return date. You can ask for written terms or keep another door open.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "compare-five-services",
+            "label": "Compare all five uniformed services and ask for current terms",
+            "receipt": "You take home five service sheets and mark the local information-session date.",
+            "memory": "five-service-comparison",
+            "commitment": "compare-service"
+          },
+          {
+            "id": "ask-civilian-programs",
+            "label": "Ask about Peace Corps preparation and AmeriCorps terms",
+            "receipt": "You separate civilian service applications from uniformed enlistment papers.",
+            "memory": "civilian-service-comparison",
+            "commitment": "compare-civilian-service"
+          },
+          {
+            "id": "visit-paid-employer",
+            "label": "Ask the local employer for a paid opening",
+            "receipt": "The employer hands you the paid opening and its posted hours. No job is accepted yet.",
+            "memory": "paid-opening-flyer",
+            "commitment": "earn-honestly"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.04",
+        "number": 4,
+        "sceneId": "first-roster",
+        "date": "2002-06-03",
+        "title": "The first roster",
+        "speaker": "Northstar Market manager",
+        "text": "The pencil roster adds a late shift to the week. The manager says everyone helps when the store is short. Dee has already asked you to keep Friday evening for her family. You can accept the posted hours, ask for a written limit or protect the commitment you already made.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "take-late-shift",
+            "label": "Take the posted late shift",
+            "receipt": "You accept the late shift and add it to the week’s commitments.",
+            "memory": "first-roster-shift",
+            "commitment": "late-shift"
+          },
+          {
+            "id": "protect-evening",
+            "label": "Protect the evening already promised to Dee",
+            "receipt": "You decline the added shift and keep the evening you promised Dee.",
+            "memory": "kept-dee-evening",
+            "commitment": "dee-evening"
+          },
+          {
+            "id": "ask-written-roster",
+            "label": "Ask for a written roster before agreeing",
+            "receipt": "The manager writes down the proposed hours. Your answer remains open until the next roster.",
+            "memory": "written-roster-request",
+            "commitment": "written-roster"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.05",
+        "number": 5,
+        "sceneId": "last-bus",
+        "date": "2002-06-07",
+        "title": "The last bus",
+        "speaker": "Classmate at the stop",
+        "text": "The class runs late and the last bus pulls away. A ride may be available, a fare is due on the next route, and the walk is long after dark. Dee can miss the study group if you stay. Check the distance and ask before promising a ride.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "ask-for-ride",
+            "label": "Ask a classmate for a ride and offer gas next time",
+            "receipt": "You ask before counting on the ride. The classmate agrees to pick you up after lab.",
+            "memory": "last-bus-ride",
+            "commitment": "ride-share"
+          },
+          {
+            "id": "take-next-bus",
+            "label": "Pay the fare and use the next posted bus",
+            "receipt": "You keep the posted fare in the travel envelope and follow the next available route.",
+            "memory": "last-bus-fare-note",
+            "commitment": "use-bus"
+          },
+          {
+            "id": "miss-study-group",
+            "label": "Go home and tell Dee you will miss the study group",
+            "receipt": "You get home safely and tell Dee before she waits at the library.",
+            "memory": "missed-study-group",
+            "commitment": "tell-dee-early"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.06",
+        "number": 6,
+        "sceneId": "first-car-repair",
+        "date": "2002-06-14",
+        "title": "The first car repair",
+        "speaker": "Garage mechanic",
+        "text": "The mechanic shows you a worn belt and a handwritten estimate. The car can make one more short trip, but the next long commute is a gamble. Share the ride, authorize the repair if the household can pay, or change which shifts you can reach.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "authorize-repair",
+            "label": "Authorize the quoted repair after checking the household balance",
+            "receipt": "You authorize the quoted repair. The mechanic gives you the dated work order before taking the keys.",
+            "memory": "first-repair-order",
+            "commitment": "repair-before-commute"
+          },
+          {
+            "id": "share-ride",
+            "label": "Ask a coworker to share the next commute",
+            "receipt": "You arrange a shared ride and offer to cover the next gas stop.",
+            "memory": "shared-commute",
+            "commitment": "ride-share"
+          },
+          {
+            "id": "change-shifts",
+            "label": "Ask the manager to change which shifts you can reach",
+            "receipt": "You ask for reachable shifts before the next roster closes. The repair stays on the list.",
+            "memory": "reachable-shifts-request",
+            "commitment": "change-roster"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.07",
+        "number": 7,
+        "sceneId": "library-lan-night",
+        "date": "2002-06-21",
+        "title": "The library or LAN night",
+        "speaker": "Cal Mercer",
+        "text": "The library computer room has one open seat and a hand-lettered LAN flyer. Cal says the band has three songs and needs a blank disc. You can share an evening with him, leave early for work or call and make a plan that fits both schedules.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "join-cal-lan",
+            "label": "Join Cal for the LAN night and help with the demo",
+            "receipt": "You share the library evening. Cal labels the band’s three-song demo disc while you are there.",
+            "memory": "cal-lan-evening",
+            "commitment": "make-time-for-friends",
+            "peerEvent": {
+              "id": "cal.lan-demo.2002-06-21",
+              "peerId": "cal",
+              "kind": "creative-goal",
+              "detail": "Cal finishes the first labeled three-song demo with the player at the library LAN night."
+            }
+          },
+          {
+            "id": "leave-for-work",
+            "label": "Leave in time for the posted work shift",
+            "receipt": "You leave before the LAN night ends and keep the paid shift you accepted.",
+            "memory": "work-over-lan-night",
+            "commitment": "keep-work-shift"
+          },
+          {
+            "id": "call-and-reschedule",
+            "label": "Call Cal and set a date after the next roster",
+            "receipt": "Cal accepts a later date and you both write it down before leaving.",
+            "memory": "rescheduled-lan-night",
+            "commitment": "reschedule-with-cal",
+            "peerEvent": {
+              "id": "cal.rescheduled-demo.2002-06-21",
+              "peerId": "cal",
+              "kind": "creative-goal",
+              "detail": "Cal agrees to finish the band demo at a later library evening after the player checks the work roster."
+            }
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.08",
+        "number": 8,
+        "sceneId": "care-handoff",
+        "date": "2002-07-19",
+        "title": "The care handoff",
+        "speaker": "Dee Hall",
+        "text": "Dee’s sister has to cover an extra shift, and Maya’s pickup time moved forward. Dee asks if you can take one evening. She can decline a proposed swap; this is help, not a debt you can impose. Ask what would actually make the week easier.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "cover-pickup",
+            "label": "Offer one pickup after confirming the time with Dee",
+            "receipt": "Dee accepts one dated pickup. The family keeps its own backup plan.",
+            "memory": "care-handoff-accepted",
+            "commitment": "cover-maya-pickup",
+            "peerEvent": {
+              "id": "dee.care-handoff.2002-07-19",
+              "peerId": "dee",
+              "kind": "family-care",
+              "detail": "Dee accepts the player’s offer to cover one pickup after the time is confirmed."
+            }
+          },
+          {
+            "id": "ask-about-other-help",
+            "label": "Ask Dee what other help would be useful",
+            "receipt": "Dee declines the pickup swap and asks for help finding a later lab section instead.",
+            "memory": "care-handoff-declined",
+            "commitment": "find-later-lab",
+            "peerEvent": {
+              "id": "dee.care-handoff-declined.2002-07-19",
+              "peerId": "dee",
+              "kind": "family-care",
+              "detail": "Dee declines the pickup swap and asks about a later lab section."
+            }
+          },
+          {
+            "id": "decline-with-notice",
+            "label": "Decline now and give Dee time to call someone else",
+            "receipt": "You cannot cover the pickup, so Dee has time to make another plan.",
+            "memory": "care-handoff-notice",
+            "commitment": "give-notice"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.09",
+        "number": 9,
+        "sceneId": "first-posting-or-placement",
+        "date": "2003-05-19",
+        "title": "The first posting or placement",
+        "speaker": "A dated offer on the desk",
+        "text": "The next paper depends on the route you are living: orders, a supervisor’s roster or a placement offer. Read its actual date and terms before choosing. A college hand also receives the newsroom’s unpaid internship invitation and the registrar’s separate $900 summer invoice.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "accept-internship",
+            "label": "Accept the three-credit newsroom placement and its $900 tuition invoice",
+            "receipt": "You accept the unpaid newsroom placement. The $900 tuition invoice is recorded separately; the 12-week placement pays $0 and earns the cohort contact list.",
+            "memory": "unpaid-internship-packet",
+            "commitment": "complete-internship",
+            "ledger": [
+              {
+                "account": "cash",
+                "deltaCents": 90000,
+                "cause": "Education loan disbursed for three summer placement credits"
+              },
+              {
+                "account": "loanPrincipal",
+                "deltaCents": 90000,
+                "cause": "Accept education loan for three summer placement credits"
+              },
+              {
+                "account": "cash",
+                "deltaCents": -90000,
+                "cause": "Pay three summer placement credits for unpaid newsroom internship"
+              }
+            ],
+            "peerEvent": {
+              "id": "dee.internship-copy.2003-05-19",
+              "peerId": "dee",
+              "kind": "career-event",
+              "detail": "Dee reads the newsroom offer in the break room and points out that the internship has no hourly pay."
+            }
+          },
+          {
+            "id": "take-shelf-shifts",
+            "label": "Take the paid shelf shifts at $7.50 an hour",
+            "receipt": "You accept twelve weeks of paid shelf work: $3,600 gross at 40 hours a week. The internship roster is not yours; the next employer still has a hiring door.",
+            "memory": "paid-shelf-shifts",
+            "commitment": "work-shelf-shifts",
+            "ledger": [
+              {
+                "account": "cash",
+                "deltaCents": 360000,
+                "cause": "Twelve weeks of paid shelf shifts at $7.50 an hour"
+              }
+            ],
+            "peerEvent": {
+              "id": "dee.shelf-shift.2003-05-19",
+              "peerId": "dee",
+              "kind": "career-event",
+              "detail": "Dee tells the player the shelf job is open and asks which nights can be traded."
+            }
+          },
+          {
+            "id": "ask-editor-to-pay",
+            "label": "Ask the editor to pay for the newsroom work",
+            "receipt": "The editor declines a wage agreement. You leave the unpaid placement unsigned and ask the desk for the next paid opening.",
+            "memory": "internship-wage-request",
+            "commitment": "request-paid-placement",
+            "peerEvent": {
+              "id": "dee.wage-question.2003-05-19",
+              "peerId": "dee",
+              "kind": "career-event",
+              "detail": "Dee asks the editor whether the placement has a wage line before the player signs."
+            }
+          }
+        ],
+        "routeChoices": {
+          "work": [
+            {
+              "id": "accept-roster",
+              "label": "Accept the written supervisor roster",
+              "receipt": "You accept the supervisor’s dated roster and keep the offered shift hours.",
+              "memory": "first-work-roster",
+              "commitment": "complete-first-term"
+            },
+            {
+              "id": "negotiate-roster",
+              "label": "Ask to protect a class or care evening",
+              "receipt": "The supervisor agrees to review the shift conflict before the roster is final.",
+              "memory": "roster-conflict-raised",
+              "commitment": "protect-class-evening"
+            }
+          ],
+          "military": [
+            {
+              "id": "accept-orders",
+              "label": "Read and acknowledge the dated orders",
+              "receipt": "You acknowledge the dated reporting order. Housing and duty dates stay attached to this posting.",
+              "memory": "first-service-orders",
+              "commitment": "report-as-ordered"
+            },
+            {
+              "id": "request-record",
+              "label": "Ask the clerk to correct or clarify the order",
+              "receipt": "The clerk opens a written clarification request. The original report date remains active until the answer arrives.",
+              "memory": "order-clarification-request",
+              "commitment": "confirm-report-date"
+            }
+          ],
+          "other": [
+            {
+              "id": "review-host-terms",
+              "label": "Review the host and placement terms before accepting",
+              "receipt": "You ask for the host’s hours, support contact and return date in writing.",
+              "memory": "host-terms-request",
+              "commitment": "review-placement"
+            },
+            {
+              "id": "keep-local-option",
+              "label": "Keep the local paid opening while you compare",
+              "receipt": "You leave the placement open and ask the local employer to hold the paid opening through its stated date.",
+              "memory": "local-opening-held",
+              "commitment": "compare-paid-offer"
+            }
+          ]
+        }
+      },
+      {
+        "id": "oh.opening.10",
+        "number": 10,
+        "sceneId": "housing-and-commitment",
+        "date": "2003-06-02",
+        "title": "Housing and commitment",
+        "speaker": "Landlord and partner",
+        "text": "The barracks-marriage branch is possible only if a service posting allows it and a partner consents. A civilian household faces a lease renewal or a cohabitation request. Put the actual housing terms on the table and keep the partner’s answer theirs to give.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "sign-lease",
+            "label": "Renew the lease after comparing the full monthly cost",
+            "receipt": "You renew the lease at its stated rate and keep the dated notice.",
+            "memory": "lease-renewal",
+            "commitment": "keep-current-housing"
+          },
+          {
+            "id": "share-household",
+            "label": "Ask a partner about sharing the household costs",
+            "receipt": "You discuss a written split and wait for an unpressured answer before changing the lease.",
+            "memory": "shared-household-discussion",
+            "commitment": "discuss-cohabitation"
+          },
+          {
+            "id": "seek-roommate",
+            "label": "Look for a roommate and keep separate finances",
+            "receipt": "You post a fictional local room notice and retain separate account responsibility.",
+            "memory": "roommate-search",
+            "commitment": "find-roommate"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.11",
+        "number": 11,
+        "sceneId": "war-reaches-home",
+        "date": "2003-07-18",
+        "title": "The war reaches home",
+        "speaker": "A friend waiting by the phone",
+        "text": "The invasion is in the news. A relevant service route gets dated orders; a friend’s family asks for help with a long drive. Read what applies to this household. The player’s sphere of influence is local and small, but a concrete promise still matters.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "answer-orders",
+            "label": "Read the orders and tell your partner the report date",
+            "receipt": "You read the dated orders and share the report date with your partner.",
+            "memory": "orders-shared-at-home",
+            "commitment": "tell-the-truth-about-orders"
+          },
+          {
+            "id": "drive-friend",
+            "label": "Offer the friend a ride after checking the route and shift",
+            "receipt": "You offer a ride on the date your schedule allows. The friend confirms before relying on it.",
+            "memory": "friend-ride-offer",
+            "commitment": "drive-friend-family"
+          },
+          {
+            "id": "ask-for-local-help",
+            "label": "Ask the town group what help it can actually provide",
+            "receipt": "You ask the local group to name a specific, reachable task rather than promising everything.",
+            "memory": "local-help-request",
+            "commitment": "ask-before-promising"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.12",
+        "number": 12,
+        "sceneId": "first-craving-or-overload",
+        "date": "2004-02-02",
+        "title": "The first overload",
+        "speaker": "A classmate after shift",
+        "text": "You have slept badly twice and the shift has started to blur. A friend notices before a supervisor does. Reach out, change the next evening or pretend you can cover another shift. A setback does not erase what you have already done.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "reach-out",
+            "label": "Tell a trusted person and ask for a smaller next step",
+            "receipt": "You reach out before taking the extra shift. The plan names one next step and a check-in date.",
+            "memory": "first-overload-reach-out",
+            "commitment": "check-in-with-friend"
+          },
+          {
+            "id": "reduce-exposure",
+            "label": "Turn down the extra shift and take one evening to recover",
+            "receipt": "You turn down the added shift and keep the next evening for sleep and a meal.",
+            "memory": "first-overload-evening",
+            "commitment": "protect-sleep"
+          },
+          {
+            "id": "cover-everything",
+            "label": "Take the extra shift and postpone the conversation",
+            "receipt": "You cover the shift. The unfinished conversation remains in the folder and can be reopened.",
+            "memory": "overload-postponed",
+            "commitment": "revisit-support"
+          }
+        ],
+        "peerMilestones": [
+          {
+            "id": "dee.certificate.2004-02-02",
+            "peerId": "dee",
+            "kind": "education-milestone",
+            "share": "Certificate in hand tonight. Maya picked the music for the pictures.",
+            "detail": "Dee completes her evening certificate and posts a family photo. She has not told the player that childcare trouble cost her two shifts."
+          },
+          {
+            "id": "cal.first-show.2004-02-02",
+            "peerId": "cal",
+            "kind": "creative-milestone",
+            "share": "First local opener. Three songs, one blurry picture, everybody packed in close.",
+            "detail": "Cal’s band plays its first local opening set. The slot is short and unpaid; he has not told the player that a work shift was cut."
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.13",
+        "number": 13,
+        "sceneId": "missed-prerequisite",
+        "date": "2004-03-01",
+        "title": "The missed prerequisite",
+        "speaker": "Registrar",
+        "text": "The course list has changed. A prerequisite was missed when the shift or care plan moved. The registrar can show the next section and the add deadline. You can wait for the next term, negotiate the job or find an alternate course that still counts.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "take-next-section",
+            "label": "Register for the next open section",
+            "receipt": "You take the next section and write its first meeting date on the calendar.",
+            "memory": "next-prerequisite-section",
+            "commitment": "continue-school"
+          },
+          {
+            "id": "renegotiate-work",
+            "label": "Ask the supervisor to release the class evening",
+            "receipt": "You ask for the class evening before the roster is posted. No promise is treated as approval yet.",
+            "memory": "class-evening-request",
+            "commitment": "protect-class"
+          },
+          {
+            "id": "choose-equivalent",
+            "label": "Ask the registrar for an equivalent section",
+            "receipt": "The registrar identifies an equivalent section and documents which credits transfer.",
+            "memory": "equivalent-course-record",
+            "commitment": "keep-credits"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.14",
+        "number": 14,
+        "sceneId": "local-project-hearing",
+        "date": "2004-04-12",
+        "title": "The local project hearing",
+        "speaker": "Neighborhood committee clerk",
+        "text": "The bus proposal has its hearing tonight. Your promise was to leave a door open for somebody else. Bring a partner and an actual stop-time proposal, or ask the clerk what would fit the budget. A single vote does not settle the debate.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "bring-bus-proposal",
+            "label": "Bring a later evening bus proposal with its cost",
+            "receipt": "The committee records your later-route proposal for a vote. The schedule changes once only if the named motion passes.",
+            "memory": "bus-hearing-proposal",
+            "commitment": "later-evening-route",
+            "busTimetableChange": true
+          },
+          {
+            "id": "bring-partner",
+            "label": "Bring a partner and ask the clerk for a smaller pilot",
+            "receipt": "You and a partner request a limited pilot and the clerk records the cost question for the next meeting.",
+            "memory": "bus-pilot-request",
+            "commitment": "pilot-cost-review"
+          },
+          {
+            "id": "stay-and-listen",
+            "label": "Stay for the hearing and record both sides",
+            "receipt": "You record the minutes, including the neighbors who oppose the route and why.",
+            "memory": "bus-hearing-minutes",
+            "commitment": "remember-local-debate"
+          },
+          {
+            "id": "bring-cal-to-hearing",
+            "label": "Bring Cal to the project hearing and save him a ride home",
+            "receipt": "Cal joins the hearing because you saved him a ride. The committee passes a later-route pilot; Cal stays afterward to tell you why the band lost its evening practice room.",
+            "memory": "cal-hearing-evening",
+            "commitment": "keep-cal-promise",
+            "requiresResponse": "cal.hearing-ride",
+            "busTimetableChange": true,
+            "peerEvent": {
+              "id": "cal.hearing-meeting.2004-04-12",
+              "peerId": "cal",
+              "kind": "meeting",
+              "detail": "Cal attends the project hearing after the player offers the ride he requested on MySpace."
+            }
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.15",
+        "number": 15,
+        "sceneId": "first-presidential-election",
+        "date": "2004-11-02",
+        "title": "The first presidential election",
+        "speaker": "County election clerk",
+        "text": "The state’s 2004 rules and your work roster determine which voting window is feasible. The line is long after shift. Find the lawful window on the posted local calendar, or ask for leave before assuming your manager will approve it.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "vote-before-work",
+            "label": "Use the posted early window before your shift",
+            "receipt": "You vote during the lawful window available under the state’s dated rules.",
+            "memory": "first-presidential-vote",
+            "commitment": "civic-participation"
+          },
+          {
+            "id": "request-leave",
+            "label": "Ask the manager for time and keep the written response",
+            "receipt": "You ask for the time needed to vote and record the manager’s actual answer.",
+            "memory": "voting-time-request",
+            "commitment": "request-civic-time"
+          },
+          {
+            "id": "miss-vote-window",
+            "label": "Keep the shift and record why the window was missed",
+            "receipt": "The shift ends after the available window. You record the constraint and the next election date.",
+            "memory": "missed-election-window",
+            "commitment": "check-next-election"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.16",
+        "number": 16,
+        "sceneId": "employer-program-promise",
+        "date": "2005-01-17",
+        "title": "What the employer or program promised",
+        "speaker": "Supervisor or program host",
+        "text": "The first term is ending. Pull the original promise next to the offer, roster or host agreement. A company anniversary card does not replace the written pay, schedule or support terms. You can ask for the missing line before renewing.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "compare-written-terms",
+            "label": "Compare the offer to the first term actually completed",
+            "receipt": "You compare the dated offer, paid hours and completed term line by line.",
+            "memory": "first-term-comparison",
+            "commitment": "compare-offer-to-outcome"
+          },
+          {
+            "id": "request-correction",
+            "label": "Ask the employer or host to correct the missing term",
+            "receipt": "You request a written correction and keep the response date visible.",
+            "memory": "written-term-request",
+            "commitment": "follow-up-on-terms"
+          },
+          {
+            "id": "renew-as-is",
+            "label": "Renew the agreement while keeping a copy of the original",
+            "receipt": "You renew under the current terms and keep the original promise for the audit.",
+            "memory": "renewed-current-terms",
+            "commitment": "remember-original-offer"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.17",
+        "number": 17,
+        "sceneId": "promise-comes-due",
+        "date": "2005-04-22",
+        "title": "A promise comes due",
+        "speaker": "Dee Hall",
+        "text": "A partner, host or coworker remembers what you said you would do. Dee’s certificate photo is still bright on the MySpace page. She waits until the message window closes before saying childcare trouble cost her two shifts. Ask what help she wants before offering a fix.",
+        "eligibility": "all",
+        "choices": [
+          {
+            "id": "honor-promise",
+            "label": "Honor the original promise and ask Dee what she wants",
+            "receipt": "You follow through on the original promise and ask Dee before making a care plan.",
+            "memory": "promise-honored",
+            "commitment": "promise-kept"
+          },
+          {
+            "id": "renegotiate-promise",
+            "label": "Explain the conflict and set a date to make it right",
+            "receipt": "You tell Dee what changed and agree on a new date rather than disappearing.",
+            "memory": "promise-renegotiated",
+            "commitment": "promise-repaired"
+          },
+          {
+            "id": "decline-promise",
+            "label": "Admit you cannot do it and let Dee make another plan",
+            "receipt": "You tell Dee in time to make another plan. The missed promise stays visible.",
+            "memory": "promise-missed-with-notice",
+            "commitment": "promise-unkept"
+          }
+        ]
+      },
+      {
+        "id": "oh.opening.18",
+        "number": 18,
+        "sceneId": "trajectory-audit",
+        "date": "2005-05-16",
+        "title": "The May 2005 trajectory audit",
+        "speaker": "Your future self",
+        "text": "The folder opens on the original survey, the unpaid invoice or its alternative, and the promise you made at eighteen. Dee and Cal have their own accounts of the years. Put one good memory beside one condition you could not control; then choose what remains open.",
+        "eligibility": "audit",
+        "choices": [
+          {
+            "id": "keep-a-door-open",
+            "label": "Leave the yearbook margin open for another route",
+            "receipt": "You keep the campaign open. Your original promise, peer accounts and earned memory remain saved for replay.",
+            "memory": "may-2005-trajectory-audit",
+            "commitment": "keep-a-door-open"
+          },
+          {
+            "id": "close-this-chapter",
+            "label": "Close the first chapter and keep replay available",
+            "receipt": "You close the first 156-week chapter. Replay preserves the history and lets you change one decision in a copy.",
+            "memory": "may-2005-trajectory-audit",
+            "commitment": "audit-complete"
+          }
+        ]
+      }
+    ]
+  },
+  "internshipClaim": {
+    "id": "claims.internship.2003",
+    "date": "2003-05-19",
+    "title": "The Unpaid Internship Gate",
+    "basis": "fiction",
+    "claim": "A desk by the window and a badge that opens the newsroom after six. Three summer credits cost $900. The placement pays no hourly wage.",
+    "choices": [
+      {
+        "id": "accept",
+        "label": "Sign for the placement",
+        "effects": [
+          {
+            "op": "resolveInstitutionalChoice",
+            "scenario": "claims.internship.2003",
+            "choice": "accept"
+          }
+        ],
+        "consequence": "Reserve 40 hours a week for 12 weeks, collect $0 wages, pay tuition if the cash or a permitted distribution clears, then open this cohort’s alumni roster and advance two career tiers on completion."
+      },
+      {
+        "id": "stock",
+        "label": "Take the paid shelf shifts",
+        "effects": [
+          {
+            "op": "resolveInstitutionalChoice",
+            "scenario": "claims.internship.2003",
+            "choice": "stock"
+          }
+        ],
+        "consequence": "Payroll dates appear. The invitation to this specific summer cohort expires permanently; other ways into the profession can still open."
+      },
+      {
+        "id": "ask",
+        "label": "Ask the editor to fund the seat",
+        "effects": [
+          {
+            "op": "resolveInstitutionalChoice",
+            "scenario": "claims.internship.2003",
+            "choice": "ask"
+          }
+        ],
+        "consequence": "The reference editor declines. Keep the email and the application open until the deadline; a separate funded-employer hand can grant a stipend."
+      }
+    ],
+    "classification": "Academic credit alone does not determine worker status; review the facts of the placement.",
+    "source": "U.S. Department of Labor, Office of Administrative Law Judges trainee and employee decisions",
+    "kind": "decision",
+    "firstTicket": 10,
+    "pack": "oh-opening",
+    "openingHost": "09",
+    "scope": "eligible US household; authored Ohio reference hand",
+    "once": "perHousehold",
+    "systems": [
+      "good-debt",
+      "self-made"
+    ],
+    "speaker": "intern.coordinator",
+    "when": [
+      {
+        "op": "hasExposure",
+        "id": "offered-summer-media-placement"
+      }
+    ],
+    "text": "The editor underlines the word paid in “paid in experience.” Somebody has printed the welcome packet in color. You would have a desk by the window and a badge that opens the newsroom after six. The registrar slides a second sheet across the counter. Three summer credits cost $900, due before the paper will put your name on the roster. Dee reads your copy in the break room. She says the shelf job is still open and asks which nights you could trade. On the last page of the internship packet there is a space for an emergency contact. There is no space for a rate of pay.",
+    "receipt": "Summer tuition invoice, twelve zero-dollar wage weeks, or the first grocery pay stub.",
+    "sources": [
+      "externship"
+    ],
+    "offerChoices": [
+      {
+        "id": "accept-internship",
+        "hourlyPayCents": 0,
+        "hoursPerWeek": 40,
+        "weeks": 12,
+        "tuitionCents": 90000,
+        "credits": 3,
+        "careerTiers": 2,
+        "rosterAccess": true,
+        "paidGrossCents": 0
+      },
+      {
+        "id": "take-shelf-shifts",
+        "hourlyPayCents": 750,
+        "hoursPerWeek": 40,
+        "weeks": 12,
+        "tuitionCents": 0,
+        "credits": 0,
+        "careerTiers": 0,
+        "rosterAccess": false,
+        "paidGrossCents": 360000
+      },
+      {
+        "id": "ask-editor-to-pay",
+        "hourlyPayCents": 0,
+        "hoursPerWeek": 0,
+        "weeks": 0,
+        "tuitionCents": 0,
+        "credits": 0,
+        "careerTiers": 0,
+        "rosterAccess": false,
+        "paidGrossCents": 0
+      }
+    ]
+  },
+  "offers": [
+    "oh.rent.deferral",
+    "oh.lab.seat"
+  ],
+  "rules": {
+    "schemaVersion": 1,
+    "predicateOperators": [
+      "hasOffer",
+      "hasExposure"
+    ],
+    "effectOperators": [
+      "acceptWithCost",
+      "releaseOffer",
+      "resolveInstitutionalChoice"
+    ],
+    "publicationRules": [
+      {
+        "id": "cps-2002",
+        "metric": "cpsVotedPercentOfCitizenAdults",
+        "releaseDate": "2004-07-28",
+        "sourceId": "CPS2002"
+      },
+      {
+        "id": "cps-2004",
+        "metric": "cpsVotedPercentOfCitizenAdults",
+        "releaseDate": "2005-05-25",
+        "sourceId": "CPS2004"
+      }
+    ],
+    "rentPolicy": {
+      "arrearsLateFeeCents": 0,
+      "manualPaymentOnly": true,
+      "effectiveDate": "2002-11-01"
+    },
+    "fuelCost": {
+      "formula": "roundOnce(millsPerGallon * gallonsThousandths / 10000)",
+      "gallonsThousandths": 8000
+    }
+  },
+  "fuel": {
+    "date": "2002-05-20",
+    "jurisdiction": "OH",
+    "stateSeriesId": "SOH",
+    "stateMills": null,
+    "regionalSeriesId": "R20",
+    "regionalMills": 1405,
+    "status": "regionalEstimate",
+    "label": "Midwest weekly estimate for Ohio",
+    "gallonsThousandths": 8000,
+    "cents": 1124
+  },
+  "referenceCostFixtures": {
+    "ohioMidwestOpeningCents": 1124,
+    "californiaOpeningCents": 1246,
+    "californiaOpeningMills": 1557
+  },
+  "indexPack": {
+    "id": "us-state-index",
+    "path": "packs/82b5f493780a786760d97ccc335f304ee31cf4cb3ec5a9e3b813bf33a77ad176/state-index.json",
+    "bytes": 607270,
+    "sha256": "82b5f493780a786760d97ccc335f304ee31cf4cb3ec5a9e3b813bf33a77ad176"
+  }
+}

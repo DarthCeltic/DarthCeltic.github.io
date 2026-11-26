@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "releaseId": "mm-2026-11-21.2-1e840c5eef4a209f",
+  "engineVersion": "1",
+  "rulesVersion": "1",
+  "storyVersion": "oh-opening-1",
+  "dataVersion": "2026-11-21.2",
+  "inputSha256": "c35f6000e4a8f6f750390d00695327007514da5ea6a4d73d2dae20f477701e70",
+  "packs": [
+    {
+      "id": "us-state-index",
+      "path": "packs/1e21499398b9ebe26fee7ead633591c1115da01fa4bf9602b8489b071c328bea/state-index.json",
+      "bytes": 607270,
+      "sha256": "1e21499398b9ebe26fee7ead633591c1115da01fa4bf9602b8489b071c328bea"
+    },
+    {
+      "id": "oh-opening",
+      "path": "packs/53fdf0b1f3cecf226d8afae49cc2166ef16b12a53a49f33cedd03d4ce979baf4/oh-opening.json",
+      "bytes": 44732,
+      "sha256": "53fdf0b1f3cecf226d8afae49cc2166ef16b12a53a49f33cedd03d4ce979baf4"
+    },
+    {
+      "id": "town-oh",
+      "path": "packs/922f03b43c8b16f39858a90ad37746ef13e7a773d330c9c13ff6389706067834/town-oh.json",
+      "bytes": 6409,
+      "sha256": "922f03b43c8b16f39858a90ad37746ef13e7a773d330c9c13ff6389706067834"
+    },
+    {
+      "id": "town-mi",
+      "path": "packs/c70fb8085f96df3b2b4ed9bd47c6f7b1a7b9c8707c06c7dfe92e3574938f52e8/town-mi.json",
+      "bytes": 5344,
+      "sha256": "c70fb8085f96df3b2b4ed9bd47c6f7b1a7b9c8707c06c7dfe92e3574938f52e8"
+    },
+    {
+      "id": "town-fl",
+      "path": "packs/ba4fdec45e714c9c1051002c06f32dad0b2c7ef279343b2cbfc09cd3ef50a4cb/town-fl.json",
+      "bytes": 5573,
+      "sha256": "ba4fdec45e714c9c1051002c06f32dad0b2c7ef279343b2cbfc09cd3ef50a4cb"
+    },
+    {
+      "id": "town-nc",
+      "path": "packs/71dd94200b913fd90c168c7cf4aefbf4620309aeaf7a15668a5409355b492173/town-nc.json",
+      "bytes": 5610,
+      "sha256": "71dd94200b913fd90c168c7cf4aefbf4620309aeaf7a15668a5409355b492173"
+    }
+  ],
+  "validators": {
+    "id": "schema-validators",
+    "path": "schemas/7955bf63bea366bc55e8e6a82a1daf7c81e5d54657acd506ab3338c221e27a3b/validators.mjs",
+    "bytes": 298568,
+    "sha256": "7955bf63bea366bc55e8e6a82a1daf7c81e5d54657acd506ab3338c221e27a3b"
+  }
+}

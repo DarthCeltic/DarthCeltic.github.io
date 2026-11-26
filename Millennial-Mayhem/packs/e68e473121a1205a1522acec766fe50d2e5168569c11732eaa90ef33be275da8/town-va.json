@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "id": "town-va",
+  "kind": "regional-town",
+  "dataVersion": "national-town-index-1",
+  "inputSha256": "f6961fbb2df4281b9422921c3f99950dbb516fc5847f9ef1514db6eb90083c54",
+  "town": {
+    "schemaVersion": 1,
+    "id": "national.va",
+    "name": "Richmond, VA",
+    "jurisdiction": "VA",
+    "version": "national-town-index-1",
+    "places": [
+      {
+        "id": "home",
+        "label": "Home",
+        "kind": "house",
+        "hours": "Always open · authored fixture",
+        "coordinates": [
+          170,
+          390
+        ]
+      },
+      {
+        "id": "shop",
+        "label": "Corner Market",
+        "kind": "store",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          410,
+          185
+        ]
+      },
+      {
+        "id": "school",
+        "label": "High School & Community College",
+        "kind": "school",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          675,
+          365
+        ]
+      },
+      {
+        "id": "recruiting-office",
+        "label": "Recruiting Office",
+        "kind": "office",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          905,
+          165
+        ]
+      },
+      {
+        "id": "library",
+        "label": "Public Library",
+        "kind": "library",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          1045,
+          385
+        ]
+      },
+      {
+        "id": "bus-stop",
+        "label": "Main Street Bus Stop",
+        "kind": "stop",
+        "hours": "Authored in-game fixture; check date before relying on service",
+        "coordinates": [
+          620,
+          575
+        ]
+      }
+    ],
+    "transit": {
+      "busFareCents": 125,
+      "weekdayFirstMinute": 360,
+      "weekdayLastMinute": 1200,
+      "weekendFirstMinute": 420,
+      "weekendLastMinute": 1080
+    },
+    "offers": [
+      "national.va.local-note"
+    ],
+    "cards": [
+      {
+        "id": "national-va-local-note",
+        "kind": "record",
+        "basis": "fiction",
+        "town": "national.va",
+        "date": "2003-05-19",
+        "once": "perHousehold",
+        "when": [
+          {
+            "op": "hasOffer",
+            "id": "national.va.local-note"
+          }
+        ],
+        "speaker": "local.clerk.va",
+        "text": "Richmond is a geographic starting label. Local people, employers, schedules, fares and outcomes are authored fictional game material.",
+        "choices": [
+          {
+            "id": "close-local-note",
+            "label": "Close the local note",
+            "effects": [
+              {
+                "op": "releaseOffer",
+                "offer": "national.va.local-note"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "rules": {
+      "schemaVersion": 1,
+      "predicateOperators": [
+        "hasOffer",
+        "hasExposure"
+      ],
+      "effectOperators": [
+        "acceptWithCost",
+        "releaseOffer",
+        "resolveInstitutionalChoice"
+      ],
+      "publicationRules": [
+        {
+          "id": "cps-2002",
+          "metric": "cpsVotedPercentOfCitizenAdults",
+          "releaseDate": "2004-07-28",
+          "sourceId": "CPS2002"
+        },
+        {
+          "id": "cps-2004",
+          "metric": "cpsVotedPercentOfCitizenAdults",
+          "releaseDate": "2005-05-25",
+          "sourceId": "CPS2004"
+        }
+      ],
+      "rentPolicy": {
+        "arrearsLateFeeCents": 0,
+        "manualPaymentOnly": true,
+        "effectiveDate": "2002-11-01"
+      },
+      "fuelCost": {
+        "formula": "roundOnce(millsPerGallon * gallonsThousandths / 10000)",
+        "gallonsThousandths": 8000
+      }
+    }
+  },
+  "regional": {
+    "state": "VA",
+    "sceneAsset": "region-south-2003",
+    "sceneAsset2026": "region-south-2026",
+    "city": "Richmond",
+    "siteId": "va-corner-market-and-bus-stop",
+    "neighborhoodId": "va-main-street",
+    "localOpportunity": {
+      "eventId": "local-market-shift-2003-05-19",
+      "personId": "market-shift-lead-va",
+      "personName": "Camille Cruz",
+      "role": "fictional neighborhood market shift lead",
+      "venue": "Richmond Corner Market",
+      "date": "2003-05-19",
+      "deadlineMinute": 555,
+      "walkMinutes": 44,
+      "fareCents": 0,
+      "shift": {
+        "date": "2003-05-20",
+        "startMinute": 540,
+        "endMinute": 780,
+        "hourlyWageCents": 600
+      },
+      "termsBasis": "Authored fictional shift terms; not a historical or local wage claim."
+    },
+    "intercityCoach": {
+      "minutes": 277,
+      "fareCents": 4784,
+      "label": "fictional in-game coach estimate; not a carrier quote"
+    },
+    "fictionBoundary": "Virginia is named from the local geographic index. This authored playable neighborhood is a composite, not a claim about local transit or a named real household. Every person, employer, schedule, route, price and outcome in the town pack is fictional. The linked official election office supports state identity and source discovery only.",
+    "sources": [
+      {
+        "label": "Virginia official elections office",
+        "url": "https://www.elections.virginia.gov/",
+        "supports": "Current state identity and public election source discovery only; it does not substantiate this fictional town, job, transit schedule, price, household or story."
+      }
+    ]
+  }
+}

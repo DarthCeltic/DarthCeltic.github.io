@@ -1,0 +1,190 @@
+{
+  "schemaVersion": 1,
+  "id": "town-mo",
+  "kind": "regional-town",
+  "dataVersion": "national-town-index-1",
+  "inputSha256": "f6961fbb2df4281b9422921c3f99950dbb516fc5847f9ef1514db6eb90083c54",
+  "town": {
+    "schemaVersion": 1,
+    "id": "national.mo",
+    "name": "St. Louis, MO",
+    "jurisdiction": "MO",
+    "version": "national-town-index-1",
+    "places": [
+      {
+        "id": "home",
+        "label": "Home",
+        "kind": "house",
+        "hours": "Always open · authored fixture",
+        "coordinates": [
+          170,
+          390
+        ]
+      },
+      {
+        "id": "shop",
+        "label": "Corner Market",
+        "kind": "store",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          410,
+          185
+        ]
+      },
+      {
+        "id": "school",
+        "label": "High School & Community College",
+        "kind": "school",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          675,
+          365
+        ]
+      },
+      {
+        "id": "recruiting-office",
+        "label": "Recruiting Office",
+        "kind": "office",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          905,
+          165
+        ]
+      },
+      {
+        "id": "library",
+        "label": "Public Library",
+        "kind": "library",
+        "hours": "Authored in-game hours",
+        "coordinates": [
+          1045,
+          385
+        ]
+      },
+      {
+        "id": "bus-stop",
+        "label": "Main Street Bus Stop",
+        "kind": "stop",
+        "hours": "Authored in-game fixture; check date before relying on service",
+        "coordinates": [
+          620,
+          575
+        ]
+      }
+    ],
+    "transit": {
+      "busFareCents": 125,
+      "weekdayFirstMinute": 360,
+      "weekdayLastMinute": 1200,
+      "weekendFirstMinute": 420,
+      "weekendLastMinute": 1080
+    },
+    "offers": [
+      "national.mo.local-note"
+    ],
+    "cards": [
+      {
+        "id": "national-mo-local-note",
+        "kind": "record",
+        "basis": "fiction",
+        "town": "national.mo",
+        "date": "2003-05-19",
+        "once": "perHousehold",
+        "when": [
+          {
+            "op": "hasOffer",
+            "id": "national.mo.local-note"
+          }
+        ],
+        "speaker": "local.clerk.mo",
+        "text": "St. Louis is a geographic starting label. Local people, employers, schedules, fares and outcomes are authored fictional game material.",
+        "choices": [
+          {
+            "id": "close-local-note",
+            "label": "Close the local note",
+            "effects": [
+              {
+                "op": "releaseOffer",
+                "offer": "national.mo.local-note"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "rules": {
+      "schemaVersion": 1,
+      "predicateOperators": [
+        "hasOffer",
+        "hasExposure"
+      ],
+      "effectOperators": [
+        "acceptWithCost",
+        "releaseOffer",
+        "resolveInstitutionalChoice"
+      ],
+      "publicationRules": [
+        {
+          "id": "cps-2002",
+          "metric": "cpsVotedPercentOfCitizenAdults",
+          "releaseDate": "2004-07-28",
+          "sourceId": "CPS2002"
+        },
+        {
+          "id": "cps-2004",
+          "metric": "cpsVotedPercentOfCitizenAdults",
+          "releaseDate": "2005-05-25",
+          "sourceId": "CPS2004"
+        }
+      ],
+      "rentPolicy": {
+        "arrearsLateFeeCents": 0,
+        "manualPaymentOnly": true,
+        "effectiveDate": "2002-11-01"
+      },
+      "fuelCost": {
+        "formula": "roundOnce(millsPerGallon * gallonsThousandths / 10000)",
+        "gallonsThousandths": 8000
+      }
+    }
+  },
+  "regional": {
+    "state": "MO",
+    "sceneAsset": "region-midwest-2003",
+    "sceneAsset2026": "region-midwest-2026",
+    "city": "St. Louis",
+    "siteId": "mo-corner-market-and-bus-stop",
+    "neighborhoodId": "mo-main-street",
+    "localOpportunity": {
+      "eventId": "local-market-shift-2003-05-19",
+      "personId": "market-shift-lead-mo",
+      "personName": "Isaac Porter",
+      "role": "fictional neighborhood market shift lead",
+      "venue": "St. Louis Corner Market",
+      "date": "2003-05-19",
+      "deadlineMinute": 555,
+      "walkMinutes": 30,
+      "fareCents": 0,
+      "shift": {
+        "date": "2003-05-20",
+        "startMinute": 540,
+        "endMinute": 780,
+        "hourlyWageCents": 600
+      },
+      "termsBasis": "Authored fictional shift terms; not a historical or local wage claim."
+    },
+    "intercityCoach": {
+      "minutes": 254,
+      "fareCents": 1151,
+      "label": "fictional in-game coach estimate; not a carrier quote"
+    },
+    "fictionBoundary": "Missouri is named from the local geographic index. This authored playable neighborhood is a composite, not a claim about local transit or a named real household. Every person, employer, schedule, route, price and outcome in the town pack is fictional. The linked official election office supports state identity and source discovery only.",
+    "sources": [
+      {
+        "label": "Missouri official elections office",
+        "url": "https://www.sos.mo.gov/elections/",
+        "supports": "Current state identity and public election source discovery only; it does not substantiate this fictional town, job, transit schedule, price, household or story."
+      }
+    ]
+  }
+}

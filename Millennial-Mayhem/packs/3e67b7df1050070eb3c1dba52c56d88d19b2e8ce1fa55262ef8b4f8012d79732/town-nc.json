@@ -1,0 +1,238 @@
+{
+  "schemaVersion": 1,
+  "id": "town-nc",
+  "kind": "regional-town",
+  "dataVersion": "nc-lincolnton-2003-1",
+  "inputSha256": "4054a1ea1c5443232925661f0a603ec5ca21a906c12dc20997e515140ae95249",
+  "town": {
+    "schemaVersion": 1,
+    "id": "nc.lincolnton-route",
+    "name": "Lincolnton, North Carolina",
+    "jurisdiction": "NC",
+    "version": "nc-lincolnton-2003-1",
+    "places": [
+      {
+        "id": "home",
+        "label": "Lincolnton rental home",
+        "kind": "house",
+        "hours": "Always open",
+        "coordinates": [
+          170,
+          390
+        ]
+      },
+      {
+        "id": "shop",
+        "label": "Downtown grocery",
+        "kind": "store",
+        "hours": "Daily, 6:00 AM–9:00 PM · authored fixture",
+        "coordinates": [
+          410,
+          185
+        ]
+      },
+      {
+        "id": "school",
+        "label": "East Lincoln High School",
+        "kind": "school",
+        "hours": "Weekdays, 7:30 AM–4:00 PM · authored fixture",
+        "coordinates": [
+          675,
+          365
+        ]
+      },
+      {
+        "id": "recruiting-office",
+        "label": "Recruiting office",
+        "kind": "office",
+        "hours": "Weekdays, 9:00 AM–5:00 PM · authored fixture",
+        "coordinates": [
+          905,
+          165
+        ]
+      },
+      {
+        "id": "library",
+        "label": "Lincoln County Public Library",
+        "kind": "library",
+        "hours": "Weekdays, 9:00 AM–7:00 PM · authored fixture",
+        "coordinates": [
+          1045,
+          385
+        ]
+      },
+      {
+        "id": "bus-stop",
+        "label": "Town Square stop",
+        "kind": "stop",
+        "hours": "Limited fixed-route service · authored fixture",
+        "coordinates": [
+          620,
+          575
+        ]
+      }
+    ],
+    "transit": {
+      "busFareCents": 100,
+      "weekdayFirstMinute": 360,
+      "weekdayLastMinute": 1140,
+      "weekendFirstMinute": 480,
+      "weekendLastMinute": 1020
+    },
+    "offers": [
+      "nc.first-shift",
+      "nc.recruiting-appointment"
+    ],
+    "cards": [
+      {
+        "id": "nc.first-shift",
+        "kind": "decision",
+        "basis": "fiction",
+        "town": "nc.lincolnton-route",
+        "date": "2003-05-19",
+        "once": "perHousehold",
+        "when": [],
+        "speaker": "nc.manager",
+        "text": "A local grocery has a short shift open. Ask about the closing time before accepting; bus hours and the household ride plan both matter.",
+        "choices": [
+          {
+            "id": "ask-closing-time",
+            "label": "Ask when the shift ends",
+            "effects": [
+              {
+                "op": "resolveInstitutionalChoice",
+                "systemId": "nc.first-shift",
+                "choiceId": "ask-closing-time"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "rules": {
+      "schemaVersion": 1,
+      "predicateOperators": [
+        "hasOffer",
+        "hasExposure"
+      ],
+      "effectOperators": [
+        "acceptWithCost",
+        "releaseOffer",
+        "resolveInstitutionalChoice"
+      ],
+      "publicationRules": [],
+      "rentPolicy": {
+        "arrearsLateFeeCents": 0,
+        "manualPaymentOnly": true,
+        "effectiveDate": "2003-01-01"
+      },
+      "fuelCost": {
+        "formula": "roundOnce(millsPerGallon * gallonsThousandths / 10000)",
+        "gallonsThousandths": 8000
+      }
+    }
+  },
+  "regional": {
+    "schemaVersion": 1,
+    "state": "NC",
+    "sceneAsset": "lincolnton-route-2003",
+    "dutySceneAsset": "parris-island-posting-2003",
+    "intercityCoach": {
+      "minutes": 210,
+      "fareCents": 2400,
+      "label": "fictional in-game coach fare; not a historical quote"
+    },
+    "sources": [
+      {
+        "label": "Lincolnton City Council",
+        "url": "https://lincolntonnc.org/205/City-Council",
+        "supports": "Current local government responsibilities and public venue; not an authored 2003 event."
+      },
+      {
+        "label": "Parris Island history",
+        "url": "https://www.mcrdpi.marines.mil/About/History-of-Parris-Island/",
+        "supports": "The real South Carolina installation and its history; the player's orders and outcome are authored."
+      },
+      {
+        "label": "North Carolina official elections office",
+        "url": "https://www.ncsbe.gov/",
+        "supports": "Current state identity and public election source discovery only; it does not substantiate this fictional town, job, transit schedule, price, household or story."
+      }
+    ],
+    "fictionBoundary": "Lincolnton home, wages, offers, local transport and named contacts are fictional. The South Carolina duty station is real; the player's assignment dates are the optional authored route.",
+    "sceneAsset2026": "lincolnton-main-street-2026",
+    "city": "Lincolnton",
+    "localOpportunity": {
+      "eventId": "local-market-shift-2003-05-19",
+      "personId": "market-shift-lead-nc",
+      "personName": "Marta Ruiz",
+      "role": "fictional neighborhood market shift lead",
+      "venue": "Lincolnton Corner Market",
+      "date": "2003-05-19",
+      "deadlineMinute": 555,
+      "walkMinutes": 36,
+      "fareCents": 125,
+      "shift": {
+        "date": "2003-05-20",
+        "startMinute": 540,
+        "endMinute": 780,
+        "hourlyWageCents": 600
+      },
+      "termsBasis": "Authored fictional shift terms; not a historical or local wage claim."
+    },
+    "siteId": "nc-corner-market-and-bus-stop",
+    "neighborhoodId": "nc-main-street",
+    "sourceOrFiction": "North Carolina is named from the local geographic index. Every person, employer, schedule, route, price and outcome in the town pack is fictional. The linked official election office supports state identity and source discovery only."
+  },
+  "story": {
+    "schemaVersion": 1,
+    "id": "florida-carolinas-reference-route",
+    "residences": [
+      {
+        "town": "Okeechobee",
+        "state": "FL",
+        "from": "1994-01-01",
+        "to": "2002-01-01"
+      },
+      {
+        "town": "Lincolnton",
+        "state": "NC",
+        "from": "2002-01-01",
+        "to": null
+      }
+    ],
+    "duty": [
+      {
+        "site": "Parris Island",
+        "state": "SC",
+        "from": "2003-12-01",
+        "to": "2004-04-01",
+        "sceneAsset": "parris-island-posting-2003"
+      },
+      {
+        "site": "Jacksonville",
+        "state": "NC",
+        "from": "2004-04-01",
+        "to": "2005-01-01",
+        "sceneAsset": "jacksonville-nc-posting-2004"
+      },
+      {
+        "site": "Cherry Point",
+        "state": "NC",
+        "from": "2005-01-01",
+        "to": "2006-01-01",
+        "sceneAsset": "cherry-point-posting-2005"
+      }
+    ],
+    "separationDate": "2006-01-01",
+    "unresolved": [
+      "birth date",
+      "characterization",
+      "separation reason",
+      "VA result",
+      "SSA result",
+      "relationships",
+      "personal outcomes"
+    ]
+  }
+}

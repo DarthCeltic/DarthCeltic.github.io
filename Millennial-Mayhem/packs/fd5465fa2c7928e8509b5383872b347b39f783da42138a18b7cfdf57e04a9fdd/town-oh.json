@@ -1,0 +1,250 @@
+{
+  "schemaVersion": 1,
+  "id": "town-oh",
+  "kind": "regional-town",
+  "dataVersion": "oh-opening-1",
+  "inputSha256": "17812cd202c25e540a94f4af5a232c2e4ecd25c5b494b4d2712ea276eb2db414",
+  "town": {
+    "schemaVersion": 1,
+    "id": "oh.commuter",
+    "name": "Lakeview, Ohio",
+    "jurisdiction": "OH",
+    "version": "oh-opening-1",
+    "places": [
+      {
+        "id": "home",
+        "label": "Home",
+        "kind": "house",
+        "hours": "Always open",
+        "coordinates": [
+          170,
+          390
+        ]
+      },
+      {
+        "id": "shop",
+        "label": "Northstar Market",
+        "kind": "store",
+        "hours": "Daily, 6:00 AM–10:00 PM",
+        "coordinates": [
+          410,
+          185
+        ]
+      },
+      {
+        "id": "school",
+        "label": "Lakeview High & Community College",
+        "kind": "school",
+        "hours": "Weekdays, 7:30 AM–9:00 PM; Saturday, 9:00 AM–2:00 PM",
+        "coordinates": [
+          675,
+          365
+        ]
+      },
+      {
+        "id": "recruiting-office",
+        "label": "Recruiting Office",
+        "kind": "office",
+        "hours": "Weekdays, 9:00 AM–5:00 PM",
+        "coordinates": [
+          905,
+          165
+        ]
+      },
+      {
+        "id": "library",
+        "label": "Lakeview Public Library",
+        "kind": "library",
+        "hours": "Weekdays, 9:00 AM–8:00 PM; Saturday, 10:00 AM–5:00 PM; Sunday, 1:00–5:00 PM",
+        "coordinates": [
+          1045,
+          385
+        ]
+      },
+      {
+        "id": "bus-stop",
+        "label": "Main Street Bus Stop / Parking Lot",
+        "kind": "stop",
+        "hours": "Weekdays, 5:45 AM–8:45 PM; weekends, posted service",
+        "coordinates": [
+          620,
+          575
+        ]
+      }
+    ],
+    "transit": {
+      "busFareCents": 125,
+      "weekdayFirstMinute": 345,
+      "weekdayLastMinute": 1245,
+      "weekendFirstMinute": 420,
+      "weekendLastMinute": 1170
+    },
+    "offers": [
+      "oh.rent.deferral",
+      "oh.lab.seat"
+    ],
+    "cards": [
+      {
+        "id": "oh.rent.call",
+        "kind": "decision",
+        "basis": "fiction",
+        "town": "oh.commuter",
+        "date": "2002-10-31",
+        "once": "perHousehold",
+        "when": [
+          {
+            "op": "hasOffer",
+            "id": "oh.rent.deferral"
+          }
+        ],
+        "speaker": "oh.landlord",
+        "text": "The rent draft is tomorrow morning. Tell me which payment date you are asking about.",
+        "choices": [
+          {
+            "id": "request-noon",
+            "label": "Ask to pay after the Friday paycheck",
+            "effects": [
+              {
+                "op": "resolveInstitutionalChoice",
+                "systemId": "oh.rent.deferral",
+                "choiceId": "request-noon"
+              }
+            ]
+          },
+          {
+            "id": "keep-eight",
+            "label": "Keep the original Friday morning date",
+            "effects": [
+              {
+                "op": "resolveInstitutionalChoice",
+                "systemId": "oh.rent.deferral",
+                "choiceId": "keep-eight"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "oh.lab.materials",
+        "kind": "decision",
+        "basis": "fiction",
+        "town": "oh.commuter",
+        "date": "2002-10-31",
+        "once": "perHousehold",
+        "when": [
+          {
+            "op": "hasOffer",
+            "id": "oh.lab.seat"
+          }
+        ],
+        "speaker": "oh.lab.clerk",
+        "text": "I can hold your seat until we start.",
+        "choices": [
+          {
+            "id": "take",
+            "label": "Pay $55 and take the lab",
+            "effects": [
+              {
+                "op": "acceptWithCost",
+                "offer": "oh.lab.seat",
+                "account": "cash",
+                "cents": 5500
+              }
+            ]
+          },
+          {
+            "id": "pass",
+            "label": "Give up the seat",
+            "effects": [
+              {
+                "op": "releaseOffer",
+                "offer": "oh.lab.seat"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "oh.paper.cps-release",
+        "kind": "record",
+        "basis": "attributedHistory",
+        "town": "oh.commuter",
+        "date": "2005-05-16",
+        "once": "perHousehold",
+        "when": [
+          {
+            "op": "hasExposure",
+            "id": "CPS2004"
+          }
+        ],
+        "speaker": "oh.library.clerk",
+        "text": "This copy of the 2004 survey has a May 25, 2005 release date.",
+        "choices": [
+          {
+            "id": "wait-for-release",
+            "label": "Wait until the published table is available",
+            "effects": [
+              {
+                "op": "resolveInstitutionalChoice",
+                "systemId": "oh.paper.cps",
+                "choiceId": "wait-for-release"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "rules": {
+      "schemaVersion": 1,
+      "predicateOperators": [
+        "hasOffer",
+        "hasExposure"
+      ],
+      "effectOperators": [
+        "acceptWithCost",
+        "releaseOffer",
+        "resolveInstitutionalChoice"
+      ],
+      "publicationRules": [
+        {
+          "id": "cps-2002",
+          "metric": "cpsVotedPercentOfCitizenAdults",
+          "releaseDate": "2004-07-28",
+          "sourceId": "CPS2002"
+        },
+        {
+          "id": "cps-2004",
+          "metric": "cpsVotedPercentOfCitizenAdults",
+          "releaseDate": "2005-05-25",
+          "sourceId": "CPS2004"
+        }
+      ],
+      "rentPolicy": {
+        "arrearsLateFeeCents": 0,
+        "manualPaymentOnly": true,
+        "effectiveDate": "2002-11-01"
+      },
+      "fuelCost": {
+        "formula": "roundOnce(millsPerGallon * gallonsThousandths / 10000)",
+        "gallonsThousandths": 8000
+      }
+    }
+  },
+  "regional": {
+    "schemaVersion": 1,
+    "state": "OH",
+    "sceneAsset": "lakeview-ohio-main-street-2003",
+    "intercityCoach": {
+      "minutes": 210,
+      "fareCents": 2400,
+      "label": "fictional in-game coach fare; not a historical quote"
+    },
+    "sources": [
+      {
+        "label": "Lakeview is a fictional Ohio town",
+        "url": "https://www.ohio.gov/",
+        "supports": "No claim that the authored town or its fare existed."
+      }
+    ]
+  }
+}

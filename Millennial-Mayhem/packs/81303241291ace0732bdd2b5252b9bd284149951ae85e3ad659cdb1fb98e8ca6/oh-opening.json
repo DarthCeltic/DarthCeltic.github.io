@@ -1,0 +1,186 @@
+{
+  "schemaVersion": 1,
+  "id": "oh-opening",
+  "kind": "opening",
+  "dataVersion": "2026-11-21.2",
+  "inputSha256": "e6504cf3a180df69a49f50fa596259242da320bf6d35508ab721849e9c86c538",
+  "town": {
+    "id": "oh.commuter",
+    "name": "Lakeview, Ohio",
+    "jurisdiction": "OH",
+    "version": "oh-opening-1"
+  },
+  "cards": [
+    {
+      "id": "oh.rent.call",
+      "kind": "decision",
+      "basis": "fiction",
+      "town": "oh.commuter",
+      "date": "2002-10-31",
+      "once": "perHousehold",
+      "when": [
+        {
+          "op": "hasOffer",
+          "id": "oh.rent.deferral"
+        }
+      ],
+      "speaker": "oh.landlord",
+      "text": "The rent draft is tomorrow morning. Tell me which payment date you are asking about.",
+      "choices": [
+        {
+          "id": "request-noon",
+          "label": "Ask to pay after the Friday paycheck",
+          "effects": [
+            {
+              "op": "resolveInstitutionalChoice",
+              "systemId": "oh.rent.deferral",
+              "choiceId": "request-noon"
+            }
+          ]
+        },
+        {
+          "id": "keep-eight",
+          "label": "Keep the original Friday morning date",
+          "effects": [
+            {
+              "op": "resolveInstitutionalChoice",
+              "systemId": "oh.rent.deferral",
+              "choiceId": "keep-eight"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oh.lab.materials",
+      "kind": "decision",
+      "basis": "fiction",
+      "town": "oh.commuter",
+      "date": "2002-10-31",
+      "once": "perHousehold",
+      "when": [
+        {
+          "op": "hasOffer",
+          "id": "oh.lab.seat"
+        }
+      ],
+      "speaker": "oh.lab.clerk",
+      "text": "I can hold your seat until we start.",
+      "choices": [
+        {
+          "id": "take",
+          "label": "Pay $55 and take the lab",
+          "effects": [
+            {
+              "op": "acceptWithCost",
+              "offer": "oh.lab.seat",
+              "account": "cash",
+              "cents": 5500
+            }
+          ]
+        },
+        {
+          "id": "pass",
+          "label": "Give up the seat",
+          "effects": [
+            {
+              "op": "releaseOffer",
+              "offer": "oh.lab.seat"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oh.paper.cps-release",
+      "kind": "record",
+      "basis": "attributedHistory",
+      "town": "oh.commuter",
+      "date": "2005-05-16",
+      "once": "perHousehold",
+      "when": [
+        {
+          "op": "hasExposure",
+          "id": "CPS2004"
+        }
+      ],
+      "speaker": "oh.library.clerk",
+      "text": "This copy of the 2004 survey has a May 25, 2005 release date.",
+      "choices": [
+        {
+          "id": "wait-for-release",
+          "label": "Wait until the published table is available",
+          "effects": [
+            {
+              "op": "resolveInstitutionalChoice",
+              "systemId": "oh.paper.cps",
+              "choiceId": "wait-for-release"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "offers": [
+    "oh.rent.deferral",
+    "oh.lab.seat"
+  ],
+  "rules": {
+    "schemaVersion": 1,
+    "predicateOperators": [
+      "hasOffer",
+      "hasExposure"
+    ],
+    "effectOperators": [
+      "acceptWithCost",
+      "releaseOffer",
+      "resolveInstitutionalChoice"
+    ],
+    "publicationRules": [
+      {
+        "id": "cps-2002",
+        "metric": "cpsVotedPercentOfCitizenAdults",
+        "releaseDate": "2004-07-28",
+        "sourceId": "CPS2002"
+      },
+      {
+        "id": "cps-2004",
+        "metric": "cpsVotedPercentOfCitizenAdults",
+        "releaseDate": "2005-05-25",
+        "sourceId": "CPS2004"
+      }
+    ],
+    "rentPolicy": {
+      "arrearsLateFeeCents": 0,
+      "manualPaymentOnly": true,
+      "effectiveDate": "2002-11-01"
+    },
+    "fuelCost": {
+      "formula": "roundOnce(millsPerGallon * gallonsThousandths / 10000)",
+      "gallonsThousandths": 8000
+    }
+  },
+  "fuel": {
+    "date": "2002-05-20",
+    "jurisdiction": "OH",
+    "stateSeriesId": "SOH",
+    "stateMills": null,
+    "regionalSeriesId": "R20",
+    "regionalMills": 1405,
+    "status": "regionalEstimate",
+    "label": "Midwest weekly estimate for Ohio",
+    "gallonsThousandths": 8000,
+    "cents": 1124
+  },
+  "referenceCostFixtures": {
+    "ohioMidwestOpeningCents": 1124,
+    "californiaOpeningCents": 1246,
+    "californiaOpeningMills": 1557
+  },
+  "indexPack": {
+    "id": "us-state-index",
+    "path": "packs/12f52b0581253be487bc0f3723c06825734323961bc6c1c4f8b150bf91139be9/state-index.json",
+    "bytes": 607270,
+    "sha256": "12f52b0581253be487bc0f3723c06825734323961bc6c1c4f8b150bf91139be9"
+  }
+}
