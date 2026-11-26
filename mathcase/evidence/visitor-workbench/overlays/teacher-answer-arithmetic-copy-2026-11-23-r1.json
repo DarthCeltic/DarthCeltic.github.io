@@ -1,0 +1,31 @@
+{
+  "schema": "mathcase-pages-visitor-overlay-v1",
+  "overlay_id": "teacher-answer-arithmetic-copy-2026-11-23-r1",
+  "site_repository": "DarthCeltic/DarthCeltic.github.io",
+  "site_base_commit": "ff69562a06c9bbddf9fd3cc2f38f90553c2f8545",
+  "source_repository": "DarthCeltic/MathCase",
+  "source_branch": "main",
+  "source_commit": "17174a4a6311eb2e32556d9e4fb38255290a36be",
+  "source_manifest_path": "evidence/visitor-workbench/source-manifest.json",
+  "source_manifest_sha256": "b8a531c3d212f5106644661ec0e56058ed4d7a57e0a9aa1688ce9068293bffb1",
+  "purpose": "Make the public counterexample explanation read exactly and consistently in the HTML answer and its Markdown download.",
+  "files": [
+    {
+      "path": "visitor/teacher-guide.html",
+      "pages_base_sha256": "2fdbfd4ee83d157450141bbadecddd3e41111e469d97cdc0ec84ee727b97b4d7",
+      "overlay_sha256": "473d37f44afdececc32ec4d11e8f5c1ce803d41849d89ee55914c06df3d8fdb2",
+      "change": "Splits the n=2 conclusion into the exact plain-language sentence: Four goes into four exactly once. Four does not go into two a whole number of times. So at n = 2 the rule fails."
+    },
+    {
+      "path": "visitor/teacher-guide.md",
+      "pages_base_sha256": "113feb61661497197644726a425a68e6dc4826e42606834fccfdedcb6ff114bf",
+      "overlay_sha256": "0ddc768d898db0f89058a2e776fee836ca35685307ef110fe728665ff6c38c45",
+      "change": "Matches the HTML answer's n=2 arithmetic wording; the pinned source manifest and prior overlay receipts remain unchanged."
+    }
+  ],
+  "limits": [
+    "This is a GitHub Pages copy-only editorial overlay; it does not alter the MathCase source repository.",
+    "The pinned upstream source manifest and earlier overlay records are unchanged.",
+    "No proof or mathematical claim beyond the exact counterexample 4 divides 2 squared and 4 does not divide 2 is added."
+  ]
+}

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Search the two-phase MathCase Lean replay, compare module hashes, and inspect what the result does and does not establish.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MathCase — Replay explorer</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="research.css">
+  <script defer src="replay-explorer.js"></script>
+  <link rel="stylesheet" href="research-reading.css">
+</head>
+<body>
+  <header class="site-header shell">
+    <a class="brand" href="index.html" aria-label="MathCase home">
+      <img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Replay explorer</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="tools.html">Try math</a>
+      <a href="cases.html">Examples</a>
+      <a href="work.html">Results</a>
+      <a href="visitor/">Your proof</a>
+      <a href="visitor/teacher-guide.html">For teachers</a>
+      <details class="nav-more">
+        <summary class="current">More</summary>
+        <div class="nav-more-links">
+          <a href="frontier.html">Frontier math</a>
+          <a href="collatz.html">Collatz result</a>
+          <a href="roadmap.html">Research plan</a>
+          <a href="timeline.html">Timeline</a>
+          <a class="current" aria-current="page" href="replay.html">Replay records</a>
+          <a href="/#projects">Projects</a>
+          <a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">GitHub repo ↗</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+  <main class="reading-guide shell research-page" id="top">
+    <section class="research-hero" aria-labelledby="replay-title">
+      <p class="eyebrow">Checking a Collatz proof</p>
+      <h1 id="replay-title">Does the same proof check twice?</h1>
+      <p>Start at 239 and take 32 ordinary Collatz steps. You finish at 122. MathCase has a proof that gives the exact endpoint for every starting number in 2,652 listed families. On November 18, two runs rebuilt that proof from the same source files. Lean accepted every file both times.</p>
+      <div class="research-actions"><a class="button button-primary" href="collatz.html#exact-statement">See the math behind 239</a><a class="button button-secondary" href="#module-list-title">Compare one proof file</a></div>
+    </section>
+
+    <section class="timeline-section" aria-labelledby="replay-summary-title">
+    <div class="timeline-heading"><h2 id="replay-summary-title">What agreed in the two runs?</h2><p>Each run checked 363 files, from small pieces of the proof to the final theorem. For each file, both runs read the same text, produced identical compiled proof files and recorded the same compiler messages.</p></div>
+    <p class="reading-prose">The first run reached its two-hour timer after the mathematical checks finished. The second exited normally. Both ran in the same software environment. That agreement tells us what happened there.</p><details class="reading-details">
+    <summary>See the file counts, exit codes and formal assumptions</summary>
+    <div class="replay-summary-grid" aria-label="Replay totals">
+            <article class="replay-summary-card"><strong>363 × 2</strong><span>module records across the two phases</span></article>
+            <article class="replay-summary-card"><strong>23 × 2</strong><span>successful axiom groups, one set per phase</span></article>
+            <article class="replay-summary-card"><strong>4,262</strong><span>theorem queries covered by those axiom groups</span></article>
+            <article class="replay-summary-card"><strong>0</strong><span><code>sorryAx</code> reports in the recorded groups</span></article>
+          </div>
+
+          <div class="replay-boundary">
+            <p><strong>Important hash distinction:</strong> the two fresh runs agree with each other, but their OLEAN output hashes differ from the older expected OLEAN hashes. The replay does not claim historical OLEAN byte identity.</p>
+            <p><strong>Run exits:</strong> every inner Lean module and axiom group returned 0. The Phase 1 Docker wrapper later returned 124 when its added two-hour watchdog expired; Phase 2 returned 0. The report records no Docker OOM.</p>
+            <p><strong>Final theorem axioms:</strong> <code>[propext, Quot.sound]</code>. This replay does not change the human statement-review or formal dossier-acceptance status, and it was not a clean-room build by an independent operator.</p>
+          </div>
+    </details>
+    </section>
+
+    <section class="timeline-section" aria-labelledby="module-list-title">
+    <div class="timeline-heading"><h2 id="module-list-title">Compare the two checks of a single file</h2><p>Try the name <strong>Descent127</strong>. Open its row to see whether both runs accepted that file. A hash is a fingerprint of its exact bytes. Each row lets you compare the source and the results side by side.</p></div>
+    <details class="reading-details">
+    <summary>Search the 363 proof files</summary>
+    <div class="replay-control-panel">
+            <label for="replay-search">Search the module list
+              <input id="replay-search" type="search" autocomplete="off" placeholder="Example: CompositionShard133">
+            </label>
+            <label for="replay-kind">Show
+              <select id="replay-kind">
+                <option value="all">All modules (363)</option>
+                <option value="replay">Shard modules (229)</option>
+                <option value="composition">Composition modules (134)</option>
+              </select>
+            </label>
+          </div>
+          <p class="replay-status" id="replay-status" role="status" aria-live="polite">Loading the two phase tables…</p>
+          <div class="replay-results" id="replay-results" role="list" aria-label="Replay module results"></div>
+          <button class="replay-more" id="replay-more" type="button" hidden>Show more modules</button>
+          <p class="file-location"><strong>Included source tables:</strong> <code>evidence/collatz/m20-source-replay-2026-11-18/phase-1/compile-records.tsv</code> and <code>phase-2/compile-records.tsv</code>. Each module opens to show its relative source path and both phase digests.</p>
+          <div class="replay-boundary replay-failure" id="replay-failure" hidden>
+            The explorer could not load one of the included tables. Use the human replay report above; no result is inferred from missing data.
+          </div>
+    </details>
+    </section>
+
+    <section class="timeline-section" aria-labelledby="axiom-groups-title">
+    <div class="timeline-heading"><h2 id="axiom-groups-title">Did any proof leave a gap?</h2><p>Lean can report which assumptions a theorem uses. Across 4,262 queries in these runs, it reported zero uses of the placeholder for an unfinished proof. You can open each group to see its output.</p></div>
+    <details class="reading-details">
+    <summary>Inspect the 23 groups of assumption checks</summary>
+    <p class="replay-status" id="axiom-status" role="status" aria-live="polite">Loading the paired axiom-group receipts…</p>
+          <div class="replay-results" id="axiom-results" role="list" aria-label="Paired Lean axiom group receipts"></div>
+          <p class="file-location"><strong>Receipt files:</strong> <code>evidence/collatz/m20-source-replay-2026-11-18/phase-1/axiom-records.tsv</code> and <code>phase-2/axiom-records.tsv</code>.</p>
+          <div class="replay-boundary replay-failure" id="axiom-failure" hidden>The axiom-group receipts did not match the expected count and recorded success conditions. Inspect the source files and the human replay report.</div>
+
+          <details class="replay-output-panel" id="axiom-output-panel">
+            <summary>Load all 4,262 axiom output lines</summary>
+            <p class="replay-output-note">The output files in both phases have the same SHA-256. Opening this panel fetches each included text file, checks both against the recorded digest, and displays the Phase 1 text only if the byte content agrees.</p>
+            <p class="replay-status" id="axiom-output-status" role="status" aria-live="polite">Output text is not loaded.</p>
+            <pre class="replay-output-text" id="axiom-output-text" tabindex="0" aria-label="Lean axiom audit output"></pre>
+          </details>
+          <div class="replay-boundary replay-failure" id="axiom-output-failure" hidden>The axiom output files failed their recorded hash check or did not match each other. No output text is being displayed as verified.</div>
+          <p class="file-location"><strong>Output files:</strong> <code>evidence/collatz/m20-source-replay-2026-11-18/phase-1/axiom-output-all.txt</code> and <code>phase-2/axiom-output-all.txt</code>. The final composition theorem's output is also recorded in each phase's <code>final-composition-axiom-output.txt</code>.</p>
+    </details>
+    </section>
+
+    <section class="timeline-section" aria-labelledby="axiom-title">
+    <div class="timeline-heading"><h2 id="axiom-title">What happened when a check went wrong?</h2><p>Earlier attempts to combine many small proofs failed. A later version split the work into groups, then checked how they fit together. The records preserve both. A separate archive correction explains why a finite coverage percentage rounds to 97.394%.</p></div>
+    <details class="reading-details">
+    <summary>Read the failed attempts and the rounding correction</summary>
+    <div class="record-links">
+            <a href="evidence/collatz/m20-source-replay-2026-11-18/README.md">Read the phase-by-phase replay account</a>
+            <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/attempt-history.md">Read the preserved composition attempts</a>
+            <a href="evidence/collatz/m15-m20-pinned-replay/m20-composition-v1/CORRECTION.md">Read the archive correction</a>
+          </div>
+          <p class="file-location"><strong>Claim boundary:</strong> this is a bounded 32-step descent result for the 2,652 source-listed progressions. It does not establish convergence for every Collatz trajectory or a new theorem.</p>
+    </details>
+    </section>
+
+    <section class="timeline-section" aria-labelledby="candidate-title">
+    <div class="timeline-heading"><h2 id="candidate-title">Which source file did the second run use?</h2><p>Two archived copies of the final theorem are byte-for-byte identical. The saved record names the copy called Candidate A.</p></div>
+    <details class="reading-details">
+    <summary>See the source fingerprint and the correction about the two copies</summary>
+    <div class="replay-boundary">
+            <p><strong>Both candidate copies:</strong> <code>8e8fb280df93829c988a360b01276def73e7e5cbd8c9ce8eca70987d5733d3e5</code>.</p>
+            <p><strong>Receipt interpretation:</strong> Phase 2 is bound to Candidate A; the record does not claim that Candidate B was consumed.</p>
+            <p><strong>File location:</strong> <code>evidence/collatz/m20-source-replay-2026-11-18/phase-2/source-provenance-addendum.json</code>. The full explanation is in the human replay report above.</p>
+          </div>
+    </details>
+    </section>
+
+    <section class="timeline-section" aria-labelledby="public-rebuild"><div class="timeline-heading"><h2 id="public-rebuild">Can someone else rebuild it?</h2><p>On November 23 a separate local build from public sources completed all 363 compiles, 23 groups and 4,262 checks. The publicly posted result file covers the earlier one-file test. Independent reproduction of the full build remains open.</p></div><div class="record-links"><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/ORIGINAL_REPLAY.md">Read the public rebuild instructions</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/runs/smoke/status.json">Inspect the public one-file result</a><a href="evidence/collatz/m20-source-replay-2026-11-18/README.md">Read the November 18 report</a></div></section>
+
+    <p class="back-home"><a class="back-top" href="index.html">← Home</a><a class="back-top" href="work.html">All work →</a><a class="back-top" href="#top">Back to top ↑</a></p>
+  </main>
+
+  <footer class="site-footer shell">
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="visitor/">Make a case</a><a href="work.html">All work</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a></nav>
+    <span>Hash comparison from saved receipts · no model calls · no browser-side Lean build</span>
+  </footer>
+</body>
+</html>

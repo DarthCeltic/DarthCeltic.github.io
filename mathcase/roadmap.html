@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore the open questions behind the MathCase subject guide, the explanations available now, and what broader coverage would require.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MathCase | Open questions and future subjects</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="research.css">
+  <link rel="stylesheet" href="home.css?v=20261124-portfolio-nav">
+  <link rel="stylesheet" href="case-index.css">
+</head>
+<body>
+  <a class="home-skip" href="#top">Skip to the guide</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/mathcase/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
+    <nav aria-label="Main navigation">
+      <a href="tools.html">Activities</a>
+      <a href="cases.html">Math guide</a>
+      <details class="home-menu">
+        <summary>More</summary>
+        <div>
+          <a href="work.html">Research results</a>
+          <a href="visitor/">Your proof</a>
+          <a href="visitor/teacher-guide.html">For teachers</a>
+          <a href="frontier.html">Frontier math</a>
+          <a href="timeline.html">Timeline</a>
+          <a aria-current="page" href="roadmap.html">Open questions</a>
+          <a href="replay.html">Replay explorer</a>
+          <a href="index.html#hero-title">Judge’s guide</a>
+          <a href="/#projects">About Ryan</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+
+  <main class="shell case-index" id="top">
+    <section class="map-intro" aria-labelledby="roadmap-title">
+      <p class="eyebrow">MathCase research roadmap</p>
+      <h1 id="roadmap-title">Where does the math go next?</h1>
+      <p>Six dots are enough to force a one-color triangle. With larger graphs and different patterns, a single change can leave a question open. Explore where a proof reaches and where the next question begins.</p>
+    </section>
+    <section class="roadmap-reading" aria-labelledby="roadmap-overview-title">
+      <h2 id="roadmap-overview-title">Ways to explore today</h2>
+      <div class="subject-links"><a href="cases.html#subjects">Browse questions by subject</a><a href="cases.html#five-levels">Read one proof at five levels</a><a href="tools.html#triangle-game">Play the triangle puzzle and find its hand proof</a></div>
+    </section>
+    <details class="level-reader ways-reader">
+      <summary>Ways to do mathematics</summary>
+      <div id="ways-to-do-math">
+        <p>A subject tells you what a question is about. You can work with that question in several ways.</p>
+        <ul>
+          <li><strong>Solve or check an answer.</strong> Choose three fractions and <a href="tools.html#fraction-identity">check whether they add up to 4/21</a>.</li>
+          <li><strong>Pose a new question.</strong> What happens if the divisor of a square can be any number? <a href="visitor/lesson.html">Try changing the prime condition.</a></li>
+          <li><strong>Compare explanations for elegance.</strong> Read the product argument and the remainder argument. Which makes the conclusion feel inevitable to you? <a href="cases.html#five-levels">Compare the explanations.</a></li>
+          <li><strong>Understand why.</strong> A checker finds one triangle. <a href="tools.html#triangle-hand-proof">Follow one dot’s five lines</a> to see why every coloring must contain one.</li>
+          <li><strong>Reuse a result.</strong> A fact about prime divisors also does a job inside a larger proof. <a href="cases.html#sqrt2-child">See how it helps prove √2 is irrational.</a></li>
+          <li><strong>Choose a next investigation.</strong> A particular 101-dot graph cannot gain a dot with all its old lines fixed. <a href="frontier.html#ramsey-6-6">Could a different arrangement work?</a> That construction remains an open direction.</li>
+        </ul>
+      </div>
+    </details>
+    <section class="roadmap-reading" aria-labelledby="roadmap-items-title">
+      <h2 id="roadmap-items-title">What remains open?</h2>
+      <div class="subject-map">
+        <details>
+          <summary><span>Collatz sequences</span><strong>Which starting numbers are guaranteed to drop?</strong></summary>
+          <div class="subject-body">
+            <p>One rule guarantees a drop within 37 ordinary steps for a particular collection of starting numbers. On odd inputs it uses a shortcut that joins “triple and add 1” with a single halving. A computer count combined this rule with four others. A single proof covering that combination remains open, as does the question of whether every positive start reaches 1.</p>
+            <div class="subject-links"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the checked theorem and follow-ups</a><a href="collatz.html#basis-status">Which earlier proofs can be reused?</a></div>
+          </div>
+        </details>
+        <details>
+          <summary><span>Graph coloring · Ramsey</span><strong>Could a different coloring work where this one fails?</strong></summary>
+          <div class="subject-body">
+            <p>A known 42-dot coloring avoids five dots whose lines are all the same color. Lean checked it. Independent review remains open. Another known coloring on 101 dots avoids a one-color group of six. A computer ruled out adding a dot while keeping the old lines fixed. Could a different arrangement work?</p>
+            <div class="subject-links"><a href="work.html#ramsey">Inspect the 42-dot check</a><a href="frontier.html#ramsey-6-6">Explore the 102nd-dot question</a><a href="cases.html#subject-colorings">See pattern-avoidance questions for whole numbers</a></div>
+          </div>
+        </details>
+        <details>
+          <summary><span>Fractions · Erdős–Straus</span><strong>Which denominators admit a single formula?</strong></summary>
+          <div class="subject-body">
+            <p>The fraction search recorded 831,860 exact examples in a filtered set. Separate algebraic formulas explain whole families, including numbers of the form 28k + 21. A formula covering every integer n ≥ 2 remains the open Erdős–Straus question.</p>
+            <div class="subject-links"><a href="frontier.html#egyptian-28k-21">Read the example and its family</a><a href="work.html#egyptian">Inspect the finite search</a></div>
+          </div>
+        </details>
+        <details>
+          <summary><span>Checking research</span><strong>Can someone else reproduce the result, and does reusing a proof help?</strong></summary>
+          <div class="subject-body">
+            <p>Two historical runs of the Collatz proof agreed. A later local rebuild from public sources compiled all 363 modules and matched the recorded results for all 4,262 axiom queries. The public receipt covers a short smoke test. Independent replication of the full build remains open.</p>
+            <p>Separately, one matched comparison of proof attempts with and without saved context tied on every test group. Whether it helps on average remains open.</p>
+            <div class="subject-links"><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/ORIGINAL_REPLAY.md">Read the public-source replay guide</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m20-public-source-replay-v1/runs/smoke/status.json">Inspect the public smoke-test receipt</a><a href="replay.html">Compare saved runs</a><a href="cases.html#transfer-pilot">Inspect the matched comparison</a></div>
+          </div>
+        </details>
+      </div>
+    </section>
+    <section class="roadmap-reading roadmap-future" id="future-subjects" aria-labelledby="future-subjects-title">
+      <h2 id="future-subjects-title">Future subjects and explanations</h2>
+      <p>The longer-term aim is to make more areas of mathematics approachable at different levels. Geometry, calculus and probability are examples of areas beyond the current guided case catalog. A planned geometry example asks why the midpoint of a right triangle’s longest side is the same distance from all three corners. Its worked explanation and check are still to come.</p>
+      <p>Today you can read the prime-divisibility argument at five levels on this site. The source also describes five historical drafts for a theorem about lists. Independent teaching review and evidence about what readers learned remain open.</p>
+      <div class="subject-links"><a href="cases.html#five-levels">Compare the five explanations</a><a href="cases.html#subject-lists">Find the list example and its draft status</a></div>
+    </section>
+
+    <p class="back-home"><a class="back-top" href="index.html">← Home</a><a class="back-top" href="work.html">All work →</a><a class="back-top" href="#top">Back to top ↑</a></p>
+  </main>
+
+  <footer class="site-footer shell">
+    <nav aria-label="Footer navigation"><a href="index.html">Home</a><a href="visitor/">Make a case</a><a href="work.html">All work</a><a href="timeline.html">Timeline</a><a href="roadmap.html">Roadmap</a><a href="replay.html">Replay</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase GitHub repo</a><a href="https://devpost.com/software/mathcase" target="_blank" rel="noopener noreferrer">Devpost entry</a></nav>
+    <span>MathCase · open questions and public evidence</span>
+  </footer>
+</body>
+</html>

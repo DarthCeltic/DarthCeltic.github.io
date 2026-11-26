@@ -4,7 +4,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const vm = require("node:vm");
 const test = require("node:test");
-const root = path.resolve(__dirname, "..");
+const root = path.resolve(__dirname, "../mathcase");
 
 class NodeStub {
   constructor(tag) { this.tag = tag; this.children = []; this.attributes = {}; this.style = {}; this.classList = { add() {} }; }
@@ -57,8 +57,8 @@ test("prime and composite saved IDs accept understand and historical run suffixe
 
 test("legacy square-root child routes to its actual public case", () => {
   const reader = loadReader("#case/hero-sqrt2-parent-reuse-r2/understand");
-  assert.deepEqual(reader.replaced, ["/cases.html#sqrt2-child"]);
-  assert.deepEqual(loadRouteScript("case-desk-launch.js", "https://darthceltic.github.io/#case/hero-sqrt2-parent-reuse-r2/understand"), ["https://darthceltic.github.io/cases.html#sqrt2-child"]);
+  assert.deepEqual(reader.replaced, ["/mathcase/cases.html#sqrt2-child"]);
+  assert.deepEqual(loadRouteScript("case-desk-launch.js", "https://darthceltic.github.io/mathcase/#case/hero-sqrt2-parent-reuse-r2/understand"), ["https://darthceltic.github.io/mathcase/cases.html#sqrt2-child"]);
 });
 
 test("unknown IDs show a missing-case message and catalog link", () => {
@@ -66,13 +66,47 @@ test("unknown IDs show a missing-case message and catalog link", () => {
   const text = descendantsText(nodes["case-stage"]);
   assert.match(text, /This saved case is not available/);
   assert.match(text, /No public case matches/);
-  assert.ok(findNode(nodes["case-stage"], child => child.href === "/cases.html"));
+  assert.ok(findNode(nodes["case-stage"], child => child.href === "/mathcase/cases.html"));
   assert.doesNotMatch(text, /Try an exact integer example/);
 });
 
 test("root shared case links and the saved-demo alias preserve the requested route", () => {
-  const rootLink = loadRouteScript("case-desk-launch.js", "https://darthceltic.github.io/#case/hero-prime-divisibility-r1/run/run-17");
-  assert.deepEqual(rootLink, ["https://darthceltic.github.io/reader.html?scope=public#case/hero-prime-divisibility-r1/run/run-17"]);
-  const alias = loadRouteScript("saved-demo-redirect.js", "https://darthceltic.github.io/saved-demo/?scope=public#case/hero-composite-counterexample-r1/understand");
-  assert.deepEqual(alias, ["https://darthceltic.github.io/reader.html?scope=public#case/hero-composite-counterexample-r1/understand"]);
+  const rootLink = loadRouteScript("case-desk-launch.js", "https://darthceltic.github.io/mathcase/#case/hero-prime-divisibility-r1/run/run-17");
+  assert.deepEqual(rootLink, ["https://darthceltic.github.io/mathcase/reader.html?scope=public#case/hero-prime-divisibility-r1/run/run-17"]);
+  const alias = loadRouteScript("saved-demo-redirect.js", "https://darthceltic.github.io/mathcase/saved-demo/?scope=public#case/hero-composite-counterexample-r1/understand");
+  assert.deepEqual(alias, ["https://darthceltic.github.io/mathcase/reader.html?scope=public#case/hero-composite-counterexample-r1/understand"]);
+});
+
+function loadLegacyRoute(href, destination) {
+  const replaced = [];
+  const location = new URL(href);
+  location.replace = target => replaced.push(target);
+  const document = {
+    getElementById(id) {
+      assert.equal(id, "moved-page");
+      return destination ? { href: destination } : null;
+    }
+  };
+  const script = fs.readFileSync(path.join(root, "../legacy-route.js"), "utf8");
+  vm.runInNewContext(script, { document, location, URL, URLSearchParams });
+  return replaced;
+}
+
+test("old MathCase links retain their query and fragment on the project site", () => {
+  const base = "https://darthceltic.github.io";
+  const caseLink = "/?scope=public#case/hero-prime-divisibility-r1/run/run-17";
+  assert.deepEqual(loadLegacyRoute(base + caseLink), [base + "/mathcase" + caseLink]);
+  assert.deepEqual(loadLegacyRoute(base + "/work.html#collatz-23-of-14", base + "/mathcase/work.html"),
+    [base + "/mathcase/work.html#collatz-23-of-14"]);
+  assert.deepEqual(loadLegacyRoute(base + "/visitor/?starter=counterexample#case-title", base + "/mathcase/visitor/"),
+    [base + "/mathcase/visitor/?starter=counterexample#case-title"]);
+});
+
+test("the portfolio root and its section links stay on the portfolio", () => {
+  const base = "https://darthceltic.github.io";
+  for (const url of ["/", "/#contact", "/index.html#projects"]) {
+    assert.deepEqual(loadLegacyRoute(base + url), []);
+  }
+  assert.deepEqual(loadLegacyRoute(base + "/projects/#contributions", base + "/"),
+    [base + "/#contributions"]);
 });

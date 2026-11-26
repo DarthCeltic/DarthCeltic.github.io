@@ -3,141 +3,124 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Play a six-dot coloring puzzle, then inspect a saved proof checked by Lean. Explore MathCase activities, research, and public projects.">
-  <meta name="theme-color" content="#0b1823">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>MathCase | Play with a claim. Inspect a proof.</title>
+  <meta name="description" content="Ryan J. Gurganious builds open-source AI systems, formal proof tools, and research software. Explore MathCase, ARGUS, Determinex, and his public projects.">
+  <meta name="theme-color" content="#f4f1e9">
   <link rel="canonical" href="https://darthceltic.github.io/">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="MathCase | Play with a claim. Inspect a proof.">
-  <meta property="og:description" content="Play a six-dot coloring puzzle, then inspect a saved proof checked by Lean. Explore MathCase activities, research, and public projects.">
+  <meta property="og:title" content="Ryan J. Gurganious | AI systems and research software">
+  <meta property="og:description" content="Explore MathCase, ARGUS, Determinex, and Ryan’s open-source contributions.">
   <meta property="og:url" content="https://darthceltic.github.io/">
-  <meta property="og:image" content="https://darthceltic.github.io/assets/mathcase-branding-kit/mathcase-lockup-960.png">
-  <meta property="og:image:alt" content="MathCase wordmark">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="MathCase | Play with a claim. Inspect a proof.">
-  <meta name="twitter:description" content="Play a six-dot coloring puzzle, then inspect a saved proof checked by Lean. Explore MathCase activities, research, and public projects.">
-  <meta name="twitter:image" content="https://darthceltic.github.io/assets/mathcase-branding-kit/mathcase-lockup-960.png">
-  <meta name="twitter:image:alt" content="MathCase wordmark">
-  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
-  <link rel="stylesheet" href="judging.css">
-  <link rel="stylesheet" href="triangle.css">
-  <link rel="stylesheet" href="home.css?v=20261124-portfolio-nav">
-  <script defer src="activities-core.js"></script>
-  <script defer src="triangle-game.js?v=20261124-line-picking"></script>
-  <script defer src="case-desk-launch.js?v=20261123-case-routing"></script>
+  <title>Ryan J. Gurganious | AI systems and research software</title>
+  <link rel="stylesheet" href="/portfolio.css">
+  <script defer src="/legacy-route.js"></script>
+  <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"Person","name":"Ryan J. Gurganious","url":"https://darthceltic.github.io/","jobTitle":"AI systems engineer","sameAs":["https://github.com/DarthCeltic","https://www.linkedin.com/in/ryan-gurganious/"]}
+  </script>
 </head>
-<body class="home">
-  <a class="home-skip" href="#try-math">Skip to the challenge</a>
-  <header class="home-header home-width">
-    <a class="brand" href="/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="masthead wrap" id="top">
+    <a class="signature" href="/">Ryan J. Gurganious</a>
     <nav aria-label="Main navigation">
-      <a href="tools.html">Activities</a>
-      <a href="cases.html">Math guide</a>
-      <a href="projects/">Projects</a>
-      <details class="home-menu">
-        <summary>More</summary>
-        <div>
-          <a href="work.html">Research results</a>
-          <a href="visitor/">Your proof</a>
-          <a href="visitor/teacher-guide.html">For teachers</a>
-          <a href="frontier.html">Frontier math</a>
-          <a href="diagnostics.html">Diagnostics and lab notes</a>
-          <a href="knowledge-graph.html">Proof library</a>
-          <a href="timeline.html">Timeline</a>
-          <a href="roadmap.html">Open questions</a>
-          <a href="replay.html">Replay explorer</a>
-          <a href="#hero-title">Judge’s guide</a>
-        </div>
-      </details>
+      <a href="#projects">Projects</a>
+      <a href="#contributions">Contributions</a>
+      <a href="#contact">Contact</a>
     </nav>
   </header>
-
-  <main class="home-width">
-    <section class="puzzle" id="try-math" aria-labelledby="puzzle-title">
-      <div class="puzzle-intro">
-        <p class="home-kicker">Ramsey’s triangle puzzle</p>
-        <h1 id="puzzle-title">Can six dots avoid a <em><span>one-color</span> triangle?</em></h1>
-        <p class="puzzle-question">Every pair of dots is connected. Can you color the lines so that every triangle uses both red and blue?</p>
-        <p id="triangle-help">Tap a line to switch its color, then check your work. You can also edit each line by number.</p>
-        <p class="byline"><a href="projects/#contact">About the creator</a></p>
+  <main class="wrap" id="main">
+    <section class="hero" aria-labelledby="home-title">
+      <div>
+        <p class="role">AI systems engineer</p>
+        <h1 id="home-title">Ryan J.<br>Gurganious</h1>
       </div>
-      <div class="puzzle-board" data-start-coloring="sample">
-        <div class="triangle-widget">
-          <svg id="triangle-graph" viewBox="0 0 320 250" role="group" aria-label="Six numbered dots and 15 editable lines" aria-describedby="triangle-help">
-            <g id="triangle-lines"></g>
-            <g id="triangle-highlight" aria-hidden="true"></g>
-            <g id="triangle-vertices" aria-hidden="true"></g>
-          </svg>
-          <div class="triangle-key" aria-hidden="true"><span class="key-red">Red</span><span class="key-blue">Blue</span></div>
-          <div class="triangle-controls">
-            <div class="triangle-actions">
-              <button class="button button-primary" id="triangle-check" type="button">Check this coloring</button>
-              <button class="button button-secondary" id="triangle-sample" type="button">Load a sample coloring</button>
-            </div>
-            <p id="triangle-status" role="status" aria-live="polite" aria-atomic="true">Color the 15 lines or load a sample to begin.</p>
-            <details class="triangle-list">
-              <summary>Edit lines by number</summary>
-              <div class="triangle-edges" id="triangle-edges" role="group" aria-label="Choose a line to change its color"></div>
-            </details>
-            <details class="triangle-list triangle-explanation">
-              <summary>Why is a triangle unavoidable?</summary>
-              <p>Pick any dot. At least three of its five lines share a color. Suppose that color is red.</p>
-              <p>Look at the three dots on the other ends of those red lines. If any two are joined by red, they make a red triangle with your first dot. Otherwise all three lines between them are blue, so those three dots make a blue triangle.</p>
-              <p>The same argument works with the colors reversed.</p>
-            </details>
-          </div>
-          <noscript><p>Enable JavaScript to color the graph and check it in your browser.</p></noscript>
-        </div>
+      <div class="intro">
+        <p>I build tools that check an AI’s math, test its code, and trace how researchers get from a scroll scan to a result.</p>
+        <p class="availability">Open to engineering work in AI systems, inference, and research software.</p>
+        <div class="links"><a href="https://github.com/DarthCeltic">GitHub <span aria-hidden="true">↗</span></a><a href="https://www.linkedin.com/in/ryan-gurganious/">LinkedIn <span aria-hidden="true">↗</span></a><a href="mailto:darthceltic1985@gmail.com">Email</a></div>
       </div>
     </section>
 
-    <section class="home-section" id="case-desk" aria-labelledby="desk-title">
-      <h2 id="desk-title">Try another question</h2>
-      <div class="home-paths">
-        <article id="proof-story">
-          <p class="home-kicker">Saved Lean proof</p>
-          <h3 id="proof-title">If a prime divides a square, must it divide the root?</h3>
-          <p>Lean, a program that checks mathematical proofs, rejected the first AI attempt. See the mistake and the correction it accepted.</p>
-          <a data-case-desk-launch="hero-prime-divisibility-r1" href="reader.html?scope=public#case/hero-prime-divisibility-r1">Open the saved proof <span aria-hidden="true">→</span></a>
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <h2 id="projects-title">Projects</h2>
+      <div class="project-list">
+        <article class="project">
+          <h3><a href="/mathcase/">MathCase <span aria-hidden="true">→</span></a></h3>
+          <p>Open a saved proof, see what Lean checked, or try a math activity in your browser.</p>
+          <a class="source" href="https://github.com/DarthCeltic/MathCase" aria-label="MathCase source on GitHub">Source <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="project">
+          <h3><a href="/argus/">ARGUS <span aria-hidden="true">→</span></a></h3>
+          <p>Trace a Herculaneum scroll CT scan through surface extraction, detection, and review. Built with clexious.</p>
+          <a class="source" href="https://github.com/DarthCeltic/argus" aria-label="ARGUS source on GitHub">Source <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="project">
+          <h3><a href="/determinex/">Determinex <span aria-hidden="true">→</span></a></h3>
+          <p>A local coding agent that uses the compiler and test suite to check proposed changes.</p>
+          <a class="source" href="https://github.com/DarthCeltic/Determinex" aria-label="Determinex source on GitHub">Source <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="project">
+          <h3><a href="/herculaneum-scroll-tools/">Herculaneum Scroll Tools <span aria-hidden="true">→</span></a></h3>
+          <p>Open tools for aligning scans, comparing X-ray energies, and checking surface predictions.</p>
+          <a class="source" href="https://github.com/DarthCeltic/herculaneum-scroll-tools" aria-label="Herculaneum Scroll Tools source on GitHub">Source <span aria-hidden="true">↗</span></a>
+        </article>
+        <article class="project" id="in-development">
+          <h3><a href="/Millennial-Mayhem/">Millennial Mayhem <span aria-hidden="true">→</span></a></h3>
+          <p>An early playable slice of a browser life-strategy game about work, family, and community from 2003 onward. Ages 17 and up.</p>
+          <a class="source" href="/Millennial-Mayhem/" aria-label="Play Millennial Mayhem">Play <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="contributions" aria-labelledby="contributions-title">
+      <h2 id="contributions-title">Contributions and awards</h2>
+      <div class="credits">
+        <article>
+          <h3>Most Validated Model Ports</h3>
+          <p>The CORE-ET Hackathon credited me with 16 validated model variants across 15 families.</p>
+          <div class="links"><a href="https://blog.aifoundry.org/p/the-people-the-drama-the-kernels">Organizer recap ↗</a><a href="https://github.com/aifoundry-org/hf-hackathon/pull/61">Register assignment ↗</a><a href="https://github.com/aifoundry-org/hf-hackathon/pull/115">Vector-mask optimization ↗</a></div>
         </article>
         <article>
-          <p class="home-kicker">Hands-on arithmetic</p>
-          <h3>Can three unit fractions add up to 4/21?</h3>
-          <p>Each fraction has a 1 on top. Choose three different denominators and check their sum exactly.</p>
-          <a href="tools.html#fraction-identity">Try the fraction puzzle <span aria-hidden="true">→</span></a>
+          <h3>Vesuvius Challenge Progress Prize</h3>
+          <p>Villa merged my fixes for selecting the active volume’s dataset and recovering stalled binary transfers.</p>
+          <div class="links"><a href="https://scrollprize.org/winners">Official results ↗</a><a href="https://github.com/ScrollPrize/villa/pull/1439">Dataset fix ↗</a><a href="https://github.com/ScrollPrize/villa/pull/1440">Transfer fix ↗</a></div>
+        </article>
+        <article>
+          <h3>AMD AI DevMaster Excellent Award</h3>
+          <p>Recognized in the Agentic AI track.</p>
+          <div class="links"><a href="https://www.amd.com/en/developer/resources/technical-articles/2026/lessons-from-the-amd-devmaster-hackathon.html">AMD recap ↗</a></div>
         </article>
       </div>
     </section>
 
-    <section class="home-section research-strip" aria-labelledby="latest-title">
-      <div>
-        <p class="home-kicker">From the research notebook · November 24, 2026</p>
-        <h2 id="latest-title">When does a Collatz sequence drop?</h2>
-        <p>Halve an even number. Triple an odd number and add 1. On odd numbers, a shortcut combines that step and the next halving. A proved rule guarantees a drop within 37 ordinary steps for starts of at least 3 whose first 23 shortcuts include at most 14 odd starts.</p>
-        <a href="work.html#collatz-23-of-14">See the worked example and the theorem <span aria-hidden="true">→</span></a>
+    <section class="section repository-index" aria-labelledby="repos-title">
+      <h2 id="repos-title">More on GitHub</h2>
+      <div class="repository-columns">
+        <div>
+          <h3>Early work and archives</h3>
+          <ul>
+            <li><a href="/week3-git-lab/">Week 3 Git lab</a></li>
+            <li><a href="/python-text-calculator/">Python Text Calculator</a></li>
+            <li><a href="/linux_mint_test/">Linux Mint test</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Public forks</h3>
+          <ul>
+            <li><a href="https://github.com/DarthCeltic/villa">Villa</a></li>
+            <li><a href="https://github.com/DarthCeltic/hf-hackathon">CORE-ET model porting</a></li>
+            <li><a href="https://github.com/DarthCeltic/Radeon-hackathon-2026-07">Radeon hackathon</a></li>
+            <li><a href="https://github.com/DarthCeltic/llama.cpp">llama.cpp</a></li>
+            <li><a href="https://github.com/DarthCeltic/requests">Requests</a></li>
+            <li><a href="https://github.com/DarthCeltic/first-contributions">First Contributions</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="research-notation" aria-hidden="true"><span>5 → 16 → 8 → 4</span><small>Three ordinary steps take 5 below its start</small></div>
-    </section>
-
-    <section class="home-section home-library" aria-labelledby="browse-title">
-      <h2 id="browse-title">Explore MathCase</h2>
-      <div class="home-links">
-        <div id="your-workspace"><a id="workspace-title" href="visitor/">Bring your own proof <span aria-hidden="true">→</span></a><p>Edit a Lean statement and choose how to check it.</p></div>
-        <div><a href="cases.html">Find a question by subject <span aria-hidden="true">→</span></a><p>Compare explanations, try an example or inspect a saved check.</p></div>
-      </div>
-      <details class="judge-disclosure">
-        <summary>Hackathon judge’s guide</summary>
-        <p id="hero-title">MathCase pairs an AI proof attempt with Lean’s response. For a three-minute walkthrough, use the saved prime-divisibility case.</p>
-        <ol>
-          <li><a href="reader.html?scope=public#case/hero-prime-divisibility-r1">Read the claim and the rejected attempt.</a> The candidate supplied divisibility where Lean expected primality.</li>
-          <li>Inspect the repaired proof in the same record. It uses the known Lean theorem <code>Nat.Prime.dvd_of_dvd_pow</code>.</li>
-          <li><a href="reader.html?scope=public#case/hero-composite-counterexample-r1">Remove the prime assumption.</a> The saved arithmetic example shows what fails when the divisor is 4.</li>
-        </ol>
-        <p><a href="https://devpost.com/software/mathcase">MathCase on Devpost</a> · <a href="https://nebiusglobalaihackathon.devpost.com/details/dates">Official judging schedule</a></p>
-      </details>
+      <div class="links"><a href="https://github.com/DarthCeltic?tab=repositories">All GitHub repositories ↗</a><a href="https://github.com/DarthCeltic/DarthCeltic.github.io">This website’s source ↗</a></div>
     </section>
   </main>
-  <footer class="home-footer home-width"><span>MathCase</span><nav aria-label="Footer"><a href="projects/">Projects</a><a href="https://github.com/DarthCeltic/MathCase">Source on GitHub</a></nav></footer>
+  <footer class="wrap footer" id="contact">
+    <h2>Contact</h2>
+    <div class="links"><a href="mailto:darthceltic1985@gmail.com">Email</a><a href="https://www.linkedin.com/in/ryan-gurganious/">LinkedIn ↗</a><a href="https://github.com/DarthCeltic">GitHub ↗</a></div>
+  </footer>
 </body>
 </html>

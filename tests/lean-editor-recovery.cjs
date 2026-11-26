@@ -3,7 +3,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 
-const root = path.resolve(__dirname, "..");
+const root = path.resolve(__dirname, "../mathcase");
 const html = fs.readFileSync(path.join(root, "visitor/index.html"), "utf8");
 const js = fs.readFileSync(path.join(root, "visitor/workbench.js"), "utf8");
 const css = fs.readFileSync(path.join(root, "visitor/workbench.css"), "utf8");

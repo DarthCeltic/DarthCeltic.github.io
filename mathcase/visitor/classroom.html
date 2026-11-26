@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Assignment files · MathCase</title>
+  <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="workbench.css"><link rel="stylesheet" href="tools.css">
+  <script defer src="classroom-case.js"></script><script defer src="classroom.js"></script>
+</head>
+<body>
+  <header class="mast"><div class="mast-inner">
+    <a href="../" class="brand"><img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" width="38" height="38" alt=""><span>Math<span>Case</span></span></a>
+    <nav class="tool-nav" aria-label="MathCase pages">
+      <a href="lesson.html">Try a lesson</a>
+      <a href="index.html">Your proof</a>
+      <a href="../tools.html">Try number math</a>
+      <details class="tool-nav-group">
+        <summary aria-current="page">For teachers</summary>
+        <div class="tool-nav-links">
+          <a href="teacher-guide.html">Read the worked answer</a>
+          <a href="classroom.html" aria-current="page">Assignment files</a>
+        </div>
+      </details>
+      <details class="tool-nav-group">
+        <summary>More</summary>
+        <div class="tool-nav-links">
+          <a href="model-workflow.html">Saved proof attempts</a>
+          <a href="lab.html">Run reports</a>
+          <a href="study-lab.html">Compare saved runs</a>
+        </div>
+      </details>
+    </nav>
+  </div></header>
+  <main class="tool-page">
+    <h1>Share a proof exercise</h1>
+    <p class="tool-lede">Make an assignment, return a proof, or give feedback. Each step saves a file you share yourself. This page reads files on your device and never runs student code.</p>
+    <nav class="lesson-actions" aria-label="Choose your task"><a href="#make">Make an assignment</a><a href="#return">Return your work</a><a href="#review">Review a submission</a></nav>
+    <section class="tool-grid">
+      <article class="tool-card">
+        <h2 id="make">Make an assignment</h2>
+        <p>Choose “Save the whole claim” in <a href="index.html">your notebook</a>, then open that file here. Both older v1 and current v2 exports work. The assignment carries your prompt and exact target with its hash; the teacher's proof and receipt stay out.</p>
+        <div class="upload-row"><label for="teacher-case">Saved case JSON (v1 or v2)</label><input id="teacher-case" type="file" accept=".json,application/json"></div>
+        <label for="assignment-prompt">Learner prompt</label>
+        <textarea id="assignment-prompt" class="statement" rows="5">Review the plain statement against the exact Lean proposition. Then write a proof attempt and explain your main step.</textarea>
+        <p id="teacher-case-status" role="status">No case loaded.</p>
+        <button class="tool-action" id="make-assignment" type="button" disabled>Download assignment JSON</button>
+      </article>
+      <article class="tool-card">
+        <h2 id="return">Return your work</h2>
+        <p>Open the file your teacher gave you. Add your work, then download it to send back.</p>
+        <div class="upload-row"><label for="assignment-file">Assignment JSON</label><input id="assignment-file" type="file" accept=".json,application/json"></div>
+        <p id="assignment-status" role="status">No assignment loaded.</p>
+        <div id="learner-assignment" class="assignment-brief" aria-live="polite"></div>
+        <label for="learner-notes">Reasoning or notes</label><textarea id="learner-notes" class="statement" rows="4" placeholder="Describe your reasoning. Do not include sensitive personal information."></textarea>
+        <label for="learner-source">Lean proof source</label><textarea id="learner-source" class="lean-editor" rows="9" spellcheck="false" placeholder="Write a proof attempt. Imported or typed source is never executed here."></textarea>
+        <button class="tool-action" id="make-submission" type="button" disabled>Download submission JSON</button>
+      </article>
+      <article class="tool-card">
+        <h2 id="review">Review a submission</h2>
+        <p>Open the original assignment and the learner’s response. The page checks that the assignment and statement match before you can save feedback.</p>
+        <div class="upload-row"><label for="review-assignment">Original assignment</label><input id="review-assignment" type="file" accept=".json,application/json"></div>
+        <div class="upload-row"><label for="submission-file">Submission JSON</label><input id="submission-file" type="file" accept=".json,application/json"></div>
+        <p id="review-status" role="status">Load the assignment and submission.</p>
+        <div id="review-content"></div>
+        <label for="review-decision">Review outcome</label>
+        <select id="review-decision"><option value="needs_revision">Needs revision</option><option value="reviewed">Reviewed</option></select>
+        <label for="review-notes">Teacher feedback</label><textarea id="review-notes" class="statement" rows="5" placeholder="Write feedback. This stays in this browser until exported."></textarea>
+        <button class="tool-action" id="make-review" type="button" disabled>Download review JSON</button>
+      </article>
+      <article class="tool-card">
+        <h2 id="open-feedback">Open my feedback</h2>
+        <p>Choose the submission file you sent and the review file your teacher returned. MathCase checks that the feedback names this exact submission before showing it beside your work.</p>
+        <div class="upload-row"><label for="learner-submission-file">My original submission JSON</label><input id="learner-submission-file" type="file" accept=".json,application/json"></div>
+        <div class="upload-row"><label for="learner-review-file">Teacher feedback JSON</label><input id="learner-review-file" type="file" accept=".json,application/json"></div>
+        <p id="learner-review-status" role="status">Choose both files to open your feedback.</p>
+        <div id="learner-review-content" aria-live="polite"></div>
+      </article>
+    </section>
+    <details class="lesson-followup"><summary>About review files and self-hosting</summary>
+      <p>A review includes a fingerprint of the learner’s submitted file. It identifies which file received feedback. It does not verify anyone’s identity.</p>
+      <p>The optional Go classroom service stores accounts, assignments, and responses locally. It does not check proofs or create receipts. Keep it on your computer and read the <a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/private-classroom-service.md">setup and security limits</a> before use.</p>
+    </details>
+  </main>
+</body>
+</html>

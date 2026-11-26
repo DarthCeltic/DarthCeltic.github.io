@@ -1,0 +1,46 @@
+{
+  "schema": "mathcase-public-ramsey66-finite-check-receipt-v1",
+  "plain_claim": "A particular graph on 101 vertices has no clique of six and no independent 6-set",
+  "formal_target": "∃ G : SimpleGraph (Fin 101), G.CliqueFree 6 ∧ (Gᶜ).CliqueFree 6",
+  "conclusion": "Known lower bound R(6,6) ≥ 102; not a new result",
+  "m0_review": {
+    "decision": "YES",
+    "target_sha256": "36d0764d496b8a96b5dd9eaa804dfe4fccffbf8cb4744b9de146cfdaa9def43d",
+    "packet_sha256": "6e1382f9ad7123aad2c25f4d10e4de7cf168a296029db6144c96b64a2044fae2"
+  },
+  "graph": {
+    "sha256": "330196fd61554c66c7a3305a8257ea0a33b1b2722da95750819271438289073e",
+    "edges": 2525,
+    "degree": 50,
+    "vertices": 101,
+    "construction": "Paley P(101)"
+  },
+  "cpp_check": {
+    "exit_code": 0,
+    "source_sha256": "1f7b17dcbbd7311f4d985429370b1223191c256e415a42b78e44d1f9c331eead",
+    "search_nodes": {
+      "independent": 54976,
+      "clique": 51981
+    },
+    "build": "g++ 16.2.0; -std=c++20 -O0 -g -Wall -Wextra -Werror",
+    "binary_sha256": "bf045759e5462c96ac048ce91a250b49a3bdc035cd483da8674bf7df59dadeeb",
+    "stdout_sha256": "6f471e9a45ac1fcaeee516a1113f346d90a1c4ba1f0add9d520c4038d154b42d",
+    "elapsed_seconds": 0.134,
+    "limits": "one logical CPU, below-normal priority, 900-second cap",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "python_check": {
+    "exit_code": 0,
+    "elapsed_seconds": 0.097292,
+    "source_sha256": "a80935a27a04e80bbd405a75fbbfe3d3e8452856b307eed0fc256514c566c7b3",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "91e2b93ebe30eecd66f2081d0f5b5d87bdf23584bc1dc04233db7616ac1d67e0",
+    "receipt_sha256": "92728c2ca4552415f0fe8fb3cd51ac2ab90c5a0661d4b88f01f2a3ce38e677cd"
+  },
+  "lean_checked": false,
+  "axiom_audit": "not applicable; no Lean run",
+  "m4_promoted": false,
+  "independent_mathematical_review": false,
+  "external_calls": 0,
+  "cost_usd": 0
+}

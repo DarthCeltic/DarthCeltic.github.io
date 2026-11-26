@@ -1,0 +1,193 @@
+{
+  "schema": "mathcase-collatz-m31-first-three-above-start-summary-v1",
+  "classification": "DERIVED_EXACT_FINITE_AFFINE_RESULT",
+  "status": "PASS_DERIVED_FINITE_ABOVE_START",
+  "population": 23642078,
+  "modulus": 2147483648,
+  "class_member_convention": "n = r + k*2^31 for each saved odd residual residue r and integer k >= 0",
+  "result": {
+    "every_saved_class_member_has_T1_T2_and_T3_strictly_above_original_n": true,
+    "first_step_at_which_below_original_n_is_not_ruled_out": 4,
+    "consecutive_iterates_are_not_claimed_to_increase": true,
+    "third_step_strata": [
+      {
+        "a2": 1,
+        "a3": 1,
+        "class_count": 15348104,
+        "t2_formula": "(9*n + 5)/4",
+        "t2_minus_n_numerator": {
+          "slope": 5,
+          "constant": 5,
+          "denominator": 4
+        },
+        "t2_above_start_for_every_positive_n_in_observed_stratum": true,
+        "t3_formula": "(27*n + 19)/8",
+        "t3_minus_n_numerator": {
+          "slope": 19,
+          "constant": 19,
+          "denominator": 8
+        },
+        "t3_above_start_for_every_positive_n_in_observed_stratum": true,
+        "t2_minus_t1": {
+          "numerator": {
+            "slope": 3,
+            "constant": 3
+          },
+          "denominator": 4,
+          "sign_for_positive_n": "POSITIVE"
+        },
+        "t3_minus_t2": {
+          "numerator": {
+            "slope": 9,
+            "constant": 9
+          },
+          "denominator": 8,
+          "sign_for_positive_n": "POSITIVE"
+        }
+      },
+      {
+        "a2": 1,
+        "a3": 2,
+        "class_count": 4146987,
+        "t2_formula": "(9*n + 5)/4",
+        "t2_minus_n_numerator": {
+          "slope": 5,
+          "constant": 5,
+          "denominator": 4
+        },
+        "t2_above_start_for_every_positive_n_in_observed_stratum": true,
+        "t3_formula": "(27*n + 19)/16",
+        "t3_minus_n_numerator": {
+          "slope": 11,
+          "constant": 19,
+          "denominator": 16
+        },
+        "t3_above_start_for_every_positive_n_in_observed_stratum": true,
+        "t2_minus_t1": {
+          "numerator": {
+            "slope": 3,
+            "constant": 3
+          },
+          "denominator": 4,
+          "sign_for_positive_n": "POSITIVE"
+        },
+        "t3_minus_t2": {
+          "numerator": {
+            "slope": -9,
+            "constant": -1
+          },
+          "denominator": 16,
+          "sign_for_positive_n": "NEGATIVE"
+        }
+      },
+      {
+        "a2": 2,
+        "a3": 1,
+        "class_count": 4146987,
+        "t2_formula": "(9*n + 5)/8",
+        "t2_minus_n_numerator": {
+          "slope": 1,
+          "constant": 5,
+          "denominator": 8
+        },
+        "t2_above_start_for_every_positive_n_in_observed_stratum": true,
+        "t3_formula": "(27*n + 23)/16",
+        "t3_minus_n_numerator": {
+          "slope": 11,
+          "constant": 23,
+          "denominator": 16
+        },
+        "t3_above_start_for_every_positive_n_in_observed_stratum": true,
+        "t2_minus_t1": {
+          "numerator": {
+            "slope": -3,
+            "constant": 1
+          },
+          "denominator": 8,
+          "sign_for_positive_n": "NEGATIVE"
+        },
+        "t3_minus_t2": {
+          "numerator": {
+            "slope": 9,
+            "constant": 13
+          },
+          "denominator": 16,
+          "sign_for_positive_n": "POSITIVE"
+        }
+      },
+      {
+        "a2": 2,
+        "a3": 2,
+        "class_count": 0,
+        "t2_formula": "(9*n + 5)/8",
+        "t2_minus_n_numerator": {
+          "slope": 1,
+          "constant": 5,
+          "denominator": 8
+        },
+        "t2_above_start_for_every_positive_n_in_observed_stratum": false,
+        "t3_formula": "(27*n + 23)/32",
+        "t3_minus_n_numerator": {
+          "slope": -5,
+          "constant": 23,
+          "denominator": 32
+        },
+        "t3_above_start_for_every_positive_n_in_observed_stratum": false,
+        "t2_minus_t1": {
+          "numerator": {
+            "slope": -3,
+            "constant": 1
+          },
+          "denominator": 8,
+          "sign_for_positive_n": "NEGATIVE"
+        },
+        "t3_minus_t2": {
+          "numerator": {
+            "slope": -9,
+            "constant": 3
+          },
+          "denominator": 32,
+          "sign_for_positive_n": "NEGATIVE"
+        }
+      }
+    ]
+  },
+  "input_sha256": {
+    "research/collatz/structure-sample/m31-residual-initial-valuation-v1/protocol.md": "7a2c8624f317682066cf0614bbfff11e021cc4bd7db2348e3a8e0bddf8a94bb6",
+    "scripts/audit_collatz_m31_residual_initial_valuation.py": "06f4805379accd0f732299142b0e68dd13b58949ec77b30a2b75b56e9231c415",
+    "research/collatz/structure-sample/m31-residual-initial-valuation-v1/run-manifest.json": "a97e19d2bb8b43620e551ef713fd364cba04dc760971db4023392740c1ffb75b",
+    "research/collatz/structure-sample/m31-residual-initial-valuation-v1/summary.json": "0aec5a99db46951071e03fa030f2b6ddacb31944cb98ee2be6369d16ea150896",
+    "research/collatz/structure-sample/m31-residual-second-valuation-v1/protocol.md": "6fad4096def3916ddf7de0eaebc9ff639f645869d3a7f9811a4052b361da08e2",
+    "scripts/audit_collatz_m31_residual_second_valuation.py": "526860cf6f877d3fb5cc683c961db498f800464a97cabe6c8528d63415ff71cd",
+    "research/collatz/structure-sample/m31-residual-second-valuation-v1/run-1/run-manifest.json": "6f891e898648ef3311175539badee0d57654aa81409086ea3eedfbcb83acb7c5",
+    "research/collatz/structure-sample/m31-residual-second-valuation-v1/run-1/summary.json": "1c7f3000fb700cda2a04e650ec8e5e5bc6b2aefabc2f62675a935548b3a3b296",
+    "research/collatz/structure-sample/m31-residual-third-valuation-v1/protocol.md": "4f72f4014efd6ceb1b73e499b0f3d51a4b219d06ba83d8a075159bec8c55ddc8",
+    "scripts/audit_collatz_m31_residual_third_valuation.py": "c96cdbaa912880325e29a87b9764cc1335e02645de8355568b8b362d3f786d8b",
+    "research/collatz/structure-sample/m31-residual-third-valuation-v1/run-1/run-manifest.json": "15a77151be8e75457e1a1dee6675fb5207df7bb319f1548633df8a07d54a3258",
+    "research/collatz/structure-sample/m31-residual-third-valuation-v1/run-1/summary.json": "a0d10e2006f3f4d27bc894b45acedf804b54028094b5fab7a1362fd4bbd9b1d3",
+    "scripts/verify_collatz_m31_residual_third_valuation.py": "dda88efff401adcd4777f796ef53ea5298e38c265e7a72d0bf1573f34307d3b3",
+    "scripts/test_collatz_m31_residual_third_valuation.py": "28a52207028ab6a3710953af88aa7fe59b32660a15c3c89e305a190572a5ab8c",
+    "research/collatz/structure-sample/m31-residual-third-valuation-v1/run-1/residual-classes.u32le": "e04b6be58d34f2c2ce935cd87356cfbc7743a270b2c007432c3c724597b1d202",
+    "research/collatz/structure-sample/m31-residual-third-valuation-v1/run-1/verification-receipt.json": "7769ecb6e201e072318eabba2ac3637d6ae1600d03dea15536538631b7df9e1d",
+    "research/collatz/structure-sample/m31-residual-third-valuation-v1/analysis-protocol.md": "12dd2d904a7fb97b2aeae0982e7f68001ae6a23f701cd2972208a7bccc544b4e",
+    "scripts/derive_collatz_m31_residual_third_valuation_analysis.py": "3f39ba7f0821a9213eb0f45c5265092b5536d22174a214722bb8a569fe1ad3a1",
+    "research/collatz/structure-sample/m31-residual-third-valuation-v1/run-1/analysis.json": "40fa628165db76837137d11e0c3471759abb9d03cd41d006a215645696028c5d",
+    "research/collatz/structure-sample/m31-residual-third-valuation-v1/run-1/analysis-receipt.json": "248eab7be9214e85e299a698e45f2189a35566db58fb5dece73726660de5b365",
+    "research/collatz/structure-sample/m31-first-three-above-start-v1/protocol.md": "09e499436b5b6c5598e48d2886df2028c52afaf48b378ce3d3abcd24e2764511"
+  },
+  "source_statuses": {
+    "initial": "PASS_EXACT_FINITE_RESIDUAL_CLASS_AUDIT",
+    "second": "PASS_EXACT_FINITE_RESIDUAL_CLASS_CENSUS",
+    "third": "PASS_EXACT_FINITE_RESIDUAL_CLASS_CENSUS",
+    "third_independent_verification": "PASS_INDEPENDENT_DIRECT_TRAJECTORY_AND_POPULATION_CHECK",
+    "third_aggregate_decomposition": "PASS_DERIVED_EXACT_FINITE_AGGREGATE_DECOMPOSITION"
+  },
+  "limits": [
+    "Finite result for every positive member of the saved M31 residual classes, conditioned on the hash-bound valuation audits.",
+    "T2 can be below T1 in the observed a2=2 strata; T3 can be below T2 in the observed (a2,a3)=(1,2) stratum.",
+    "No new trajectory scan, Lean compilation, M4 promotion, convergence proof, probability claim, or novelty claim.",
+    "A value below the original n at step four or later is not established; step four is only the first step not excluded by this result."
+  ],
+  "external_calls": 0,
+  "cost_usd": 0
+}

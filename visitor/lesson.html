@@ -3,71 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>A divisor of a square · MathCase</title>
-  <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
-  <link rel="stylesheet" href="workbench.css">
-  <link rel="stylesheet" href="tools.css">
+  <meta name="robots" content="noindex,follow">
+  <link rel="canonical" href="https://darthceltic.github.io/mathcase/visitor/lesson.html">
+  <title>Open this activity in MathCase</title>
+  <script defer src="/legacy-route.js"></script>
 </head>
 <body>
-  <header class="mast"><div class="mast-inner">
-    <a href="../" class="brand"><img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" width="38" height="38" alt=""><span>Math<span>Case</span></span></a>
-    <nav class="tool-nav" aria-label="MathCase pages">
-      <a href="lesson.html" aria-current="page">Try a lesson</a>
-      <a href="index.html">Your proof</a>
-      <a href="../tools.html">Try number math</a>
-      <details class="tool-nav-group">
-        <summary>For teachers</summary>
-        <div class="tool-nav-links">
-          <a href="teacher-guide.html">Read the worked answer</a>
-          <a href="classroom.html">Assignment files</a>
-        </div>
-      </details>
-      <details class="tool-nav-group">
-        <summary>More</summary>
-        <div class="tool-nav-links">
-          <a href="model-workflow.html">Saved proof attempts</a>
-          <a href="lab.html">Run reports</a>
-          <a href="study-lab.html">Compare saved runs</a>
-        </div>
-      </details>
-    </nav>
-  </div></header>
-  <main class="tool-page lesson-page">
-    <h1>If 4 divides <em>n</em>², must it divide <em>n</em>?</h1>
-    <section class="lesson-example" aria-labelledby="lesson-example-heading">
-      <h2 id="lesson-example-heading">Try <em>n</em> = 2</h2>
-      <p>Four goes into 2 × 2 exactly once. Can you split two objects into groups of four with none left over?</p>
-      <details class="lesson-answer"><summary>Check your answer</summary>
-        <p>No. Four divides the square, but it leaves a remainder when you divide 2 by 4. One example is enough to disprove a rule that claims to work every time. That’s a <strong>counterexample</strong>.</p>
-      </details>
-      <div class="lesson-actions">
-        <a class="tool-action" href="index.html?starter=counterexample#case-title">Open this example in your notebook</a>
-        <details><summary>See the statement in Lean</summary><code class="formula">(4 : Nat) ∣ 2 ^ 2 ∧ ¬ (4 : Nat) ∣ 2</code></details>
-      </div>
-    </section>
-
-    <section class="lesson-followup" aria-labelledby="lesson-prime-heading">
-      <h2 id="lesson-prime-heading">What if the divisor is prime?</h2>
-      <p>If a prime divides a whole number’s square, it divides the number too. For example, 3 divides 36 and also divides 6. The proof in the notebook uses a known theorem about primes to cover every case.</p>
-      <div class="lesson-actions"><a href="index.html?starter=prime#case-title">Read the prime proof</a>
-        <details><summary>See the statement in Lean</summary><code class="formula">∀ (p n : Nat), p.Prime → p ∣ n ^ 2 → p ∣ n</code></details>
-      </div>
-    </section>
-
-    <section class="lesson-followup" aria-labelledby="lesson-product-heading">
-      <h2 id="lesson-product-heading">Your turn with two factors</h2>
-      <p>Suppose a prime divides (<em>a</em> × <em>b</em>)². Can you show that it divides at least one of the two factors?</p>
-      <details class="lesson-answer"><summary>Show a hint</summary><p>First apply the square rule to <em>a</em> × <em>b</em>. Then use the fact that a prime dividing a product divides at least one factor.</p></details>
-      <div class="lesson-actions"><a href="index.html?starter=transfer#case-title">Write your proof</a>
-        <details><summary>See the statement in Lean</summary><code class="formula">∀ (p a b : Nat), p.Prime → p ∣ (a * b) ^ 2 → p ∣ a ∨ p ∣ b</code></details>
-      </div>
-    </section>
-
-    <footer class="tool-footer"><h2>For teachers</h2>
-      <p><a href="teacher-guide.html">Read the worked answer</a> for both steps and the example with 6. You can also <a href="teacher-guide.md" download>download the answer (.md)</a> or <a href="classroom.html">make an assignment file</a>.</p>
-    </footer>
-  </main>
+  <main><p><a id="moved-page" href="/mathcase/visitor/lesson.html">Open this activity in MathCase</a></p></main>
 </body>
 </html>

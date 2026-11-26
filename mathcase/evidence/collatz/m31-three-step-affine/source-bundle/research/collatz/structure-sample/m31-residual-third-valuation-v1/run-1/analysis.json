@@ -1,0 +1,24 @@
+{
+  "a2_by_a3": {
+    "1": {
+      "1": 15348104,
+      "2": 4146987
+    },
+    "2": {
+      "1": 4146987,
+      "2": 0
+    }
+  },
+  "classification": "DERIVED_EXACT_FINITE_AGGREGATE_DECOMPOSITION",
+  "derivation": "The direct verifier confirms zero representative descents. With the registered thresholds, every a2=2 case must therefore have a3=1. Its count equals the full a3=2 marginal, so all a3=2 cases lie in a2=1; subtraction gives the remaining a2=1,a3=1 count.",
+  "global_collatz_proof": false,
+  "interpretation": "Every saved residual class has a third valuation below its registered congruence-uniformity cutoff, so that valuation is fixed across the class. The directly checked representatives all fail the three-step strict-descent threshold. This adds no descent family and says nothing about global Collatz convergence.",
+  "lean_compiled": false,
+  "network_calls": 0,
+  "population": 23642078,
+  "provider_calls": 0,
+  "schema": "mathcase-collatz-m31-residual-third-valuation-derived-analysis-v1",
+  "trajectory_rescan_performed": false,
+  "uniform_third_valuation_classes": 23642078,
+  "uniform_three_odd_step_descent_classes": 0
+}

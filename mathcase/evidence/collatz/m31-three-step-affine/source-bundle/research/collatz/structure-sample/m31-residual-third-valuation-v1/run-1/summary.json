@@ -1,0 +1,53 @@
+{
+  "axiom_checked": false,
+  "classification": "EXACT_FINITE_RESIDUAL_CLASS_CENSUS",
+  "global_collatz_proof": false,
+  "lean_compiled": false,
+  "protocol_path": "research/collatz/structure-sample/m31-residual-third-valuation-v1/protocol.md",
+  "result": {
+    "base_modulus": 1073741824,
+    "first_odd_to_odd_valuation_histogram": {
+      "1": 23642078
+    },
+    "m31_modulus": 2147483648,
+    "m31_residual_classes_examined": 25542548,
+    "m31_saved_family_rows_matched": 1900470,
+    "m31_unresolved_classes": 23642078,
+    "minimum_unresolved_residue": 27,
+    "minimum_unresolved_residue_by_a2": {
+      "1": 31,
+      "2": 27
+    },
+    "representative_convention": "n = r + 2^31",
+    "residual_class_index": {
+      "encoding": "sorted uint32 little-endian M31 residue IDs",
+      "records": 23642078,
+      "sha256": "e04b6be58d34f2c2ce935cd87356cfbc7743a270b2c007432c3c724597b1d202"
+    },
+    "scope": "Exact finite census on the saved M31 residual classes and fixed representatives; no global Collatz or probability claim.",
+    "second_odd_to_odd_valuation_histogram": {
+      "1": 19495091,
+      "2": 4146987
+    },
+    "third_odd_to_odd_valuation_histogram": {
+      "1": 19495091,
+      "2": 4146987
+    },
+    "third_valuation_uniformity_by_congruence": {
+      "a2_1_cutoff_exclusive": 29,
+      "a2_2_cutoff_exclusive": 28,
+      "classes_not_certified_uniform_by_bound": 0,
+      "classes_uniformly_certified": 23642078
+    },
+    "three_odd_step_descent": {
+      "direct_formula_checks": 23642078,
+      "fixed_representatives_with_t3_below_n": 0,
+      "thresholds": {
+        "a2_1_requires_a3_at_least": 3,
+        "a2_2_requires_a3_at_least": 2
+      },
+      "uniform_classes_with_t3_below_every_positive_member": 0
+    }
+  },
+  "schema": "mathcase-collatz-m31-residual-third-valuation-summary-v1"
+}

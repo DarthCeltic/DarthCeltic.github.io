@@ -1,37 +1,24 @@
-# darthceltic.github.io
+# Ryan J. Gurganious on GitHub Pages
 
-The live site for MathCase and Ryan Gurganious's public projects: https://darthceltic.github.io/
+[The portfolio](https://darthceltic.github.io/) introduces the projects and links to their source, demos, and upstream contributions.
 
-## What this is
+- [MathCase](https://darthceltic.github.io/mathcase/) contains the activities, proof reader, workbench, classroom materials, research results, and public evidence.
+- [ARGUS](https://darthceltic.github.io/argus/), [Determinex](https://darthceltic.github.io/determinex/), and [Herculaneum Scroll Tools](https://darthceltic.github.io/herculaneum-scroll-tools/) have project guides with setup or source links.
+- [Millennial Mayhem](https://darthceltic.github.io/Millennial-Mayhem/) hosts the playable preview.
 
-- **MathCase** — a provenance-first formal mathematics system (Lean 4). Try the guided lesson, inspect saved cases in the Case Desk reader, or bring your own claim to the visitor workbench. The demo is the judged work: see below.
-- **Projects** — [/projects/](https://darthceltic.github.io/projects/) lists the public work: MathCase, Determinex, ARGUS, Herculaneum Scroll Tools, plus upstream contributions.
+## MathCase updates
 
-## Judging
+Edit public MathCase pages and their assets in `mathcase/`. The [visitor sync script](scripts/sync_mathcase_visitor.py) copies the approved workbench from a pinned public MathCase commit into `mathcase/visitor/`.
 
-MathCase is entered in the Nebius × NVIDIA Global AI Hackathon. Judging runs Nov 16–Dec 4, 2026; winners are announced Jan 25, 2027 at 12:00pm PST. The demo stays live through Dec 23. [Official schedule](https://nebiusglobalaihackathon.devpost.com/details/dates).
+Older page URLs redirect to the corresponding MathCase page, including the query and fragment. The root portfolio also forwards bookmarked MathCase case IDs and section anchors. Existing direct evidence and asset URLs remain at their original paths for compatibility. Add new evidence under `mathcase/evidence/`.
 
-## How the site works
+For a research result, give readers a question, a small example, the exact claim, and one action they can try. Link to the scoped proof or computation and its receipt. A saved-case reader shows recorded evidence, and the visitor workbench can open the public Lean editor to check a draft.
 
-A static GitHub Pages site. No backend, no accounts. Opening a saved case makes no model, Lean, or search call — the results shown are saved evidence. The visitor workbench runs in your browser; its optional Lean check hands source to the public Lean web editor (live.lean-lang.org) and produces no MathCase receipt.
+## Local preview and checks
 
-## Pages
-
-- `/` — MathCase guide and judge path
-- `/reader.html` — Saved Case Desk: two saved cases, a counterexample and a checked lemma
-- `/saved-demo/` — the saved data files behind the reader; its index redirects to `/reader.html`
-- `/visitor/` — visitor workbench: make your own case
-- `/work.html` — results by subject, with worked examples and the records behind each answer
-- `/projects/` — portfolio
-- `/collatz.html`, `/replay.html`, `/timeline.html`, `/roadmap.html`, `/tools.html` — theorem, replay, timeline, roadmap, tools
-
-## Adding a research result
-
-Name the subject and ask the mathematical question in the heading. Start with a number, diagram, or calculation a reader can follow. Explain what the result adds, which examples it covers, and one thing the reader can try next. When two studies count steps differently, show both on the same starting number.
-
-Label a count from a sample as a count. State the conditions for a proof. Keep the exact theorem, run identifiers, hashes, and historical corrections in a labeled disclosure with a permanent link. A direct link to a result should open the relevant section.
-
-Run `python tests/public_reading.py` to check that research identifiers stay in the technical view, and `node --test tests/public-case-routing.cjs` to check saved case links.
+    python -B -m http.server 8000 --bind 127.0.0.1
+    python -B tests/public_reading.py
+    node --test tests/*.cjs test-*.cjs
 
 ## License
 

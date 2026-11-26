@@ -45,7 +45,7 @@ class ReadingView(HTMLParser):
 
 class PublicReadingTests(unittest.TestCase):
     def test_research_identifiers_stay_in_the_evidence(self):
-        root = Path(__file__).resolve().parents[1]
+        root = Path(__file__).resolve().parents[1] / "mathcase"
         technical_label = re.compile(r"\b[0-9a-f]{64}\b|\bM31[ -]step[ -]34\b|\bM0 packet SHA", re.I)
         for name in ("work.html", "collatz.html", "frontier.html", "roadmap.html"):
             with self.subTest(page=name):
@@ -55,7 +55,7 @@ class PublicReadingTests(unittest.TestCase):
                 self.assertNotRegex(" ".join(view.text), technical_label)
 
     def test_research_cards_explain_the_860_families_and_current_ramsey_replay(self):
-        root = Path(__file__).resolve().parents[1]
+        root = Path(__file__).resolve().parents[1] / "mathcase"
         cases = (root / "cases.html").read_text(encoding="utf-8")
         diagnostics = (root / "diagnostics.html").read_text(encoding="utf-8")
 
@@ -91,7 +91,7 @@ class PublicReadingTests(unittest.TestCase):
         self.assertIn("Browse the replay files and earlier run history", frontier)
 
     def test_collatz_twelve_of_twenty_density_is_plain_and_bounded(self):
-        root = Path(__file__).resolve().parents[1]
+        root = Path(__file__).resolve().parents[1] / "mathcase"
         collatz = (root / "collatz.html").read_text(encoding="utf-8")
         self.assertIn("natural density exactly 62,985/524,288", collatz)
         self.assertIn("about 12.0134%", collatz)

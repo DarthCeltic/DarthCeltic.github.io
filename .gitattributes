@@ -10,3 +10,9 @@ evidence/** -text whitespace=cr-at-eol
 
 # Preserve the compiled game's exact bytes for its own integrity manifests.
 Millennial-Mayhem/** -text
+
+# Match original byte-preserving evidence attributes at the new MathCase paths.
+mathcase/evidence/** -text whitespace=cr-at-eol
+mathcase/proofs/first-rung/evidence/composite-counterexample-r1/** -text -eol -diff
+mathcase/proofs/first-rung/MathCasePrimeInfiniteDescent.lean -text -eol -diff
+mathcase/data/local/staging/problem-queue/experimental-campaign/post30-prime-divisibility-r1/source-binding.json -text -eol -diff

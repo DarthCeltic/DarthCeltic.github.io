@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'; frame-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <meta name="theme-color" content="#0b1a27">
+  <title>MathCase · Saved proof journey</title>
+  <link rel="icon" href="/mathcase/assets/mathcase-branding-kit/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="/mathcase/app.css">
+  <script defer src="/mathcase/saved-demo/public-reader-data.js"></script>
+  <script defer src="/mathcase/app.js?v=20261124-reading"></script>
+</head>
+<body class="proof-reader">
+  <a class="skip-reader" id="skip-reader" href="#case-stage">Skip to the proof</a>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="/mathcase/#case-desk" aria-label="MathCase saved demo home">
+        <img src="/mathcase/assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="46" height="46">
+        <span>Math<span class="brand-accent">Case</span><small>Saved proof journey</small></span>
+      </a>
+      <nav class="reader-nav" aria-label="Site navigation">
+        <a href="/mathcase/">Home</a>
+        <a href="/mathcase/cases.html">Math guide</a>
+        <a href="/mathcase/work.html">Results</a>
+        <a href="/mathcase/visitor/">Try your own proof</a>
+      </nav>
+    </header>
+
+    <section class="intro" aria-labelledby="intro-title">
+      <div>
+        <p class="eyebrow">Saved cases · Number theory</p>
+        <h1 id="intro-title">What can a square tell you about its factors?</h1>
+        <p class="intro-copy">Try it with 4 and 2. Then see how Lean, a proof checker, caught a mistake in an AI’s argument about primes.</p>
+      </div>
+    </section>
+
+    <nav class="case-nav" id="case-nav" aria-label="Saved cases"></nav>
+
+    <main class="case-stage" id="case-stage" tabindex="-1"></main>
+    <noscript><p><a href="/mathcase/cases.html#five-levels">Read the prime-number explanation</a>. Turn on JavaScript to step through the saved attempts.</p></noscript>
+
+    <details class="tavily" id="tavily-panel">
+      <summary><span>Source search for a separate addition problem</span><span class="disclosure-mark" aria-hidden="true">+</span></summary>
+      <div class="tavily-body" id="tavily-body"></div>
+    </details>
+
+    <footer>
+      <span>MathCase · Saved Case Desk reader</span>
+      <a href="/mathcase/roadmap.html">What else can I investigate?</a>
+    </footer>
+  </div>
+</body>
+</html>

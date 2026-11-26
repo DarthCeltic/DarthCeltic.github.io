@@ -1,0 +1,62 @@
+/* The subject guide's reading measure, colors and disclosure controls. */
+.reading-guide {
+  --reading-ink: #e8efe8;
+  --reading-muted: #c3d1ca;
+  --reading-gold: #ffd9a6;
+  max-width: min(100%, 70rem);
+}
+.reading-guide .research-hero { max-width: 50rem; padding-bottom: 2rem; }
+.reading-guide .research-hero h1 { max-width: 19ch; }
+.reading-guide .research-hero > p:not(.eyebrow),
+.reading-guide .record-section > p,
+.reading-guide .timeline-heading > p:not(.eyebrow),
+.reading-guide .timeline-card > p:not(.timeline-kind),
+.reading-guide .frontier-card > p:not(.frontier-kicker),
+.reading-guide .reading-prose {
+  max-width: 68ch;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--reading-ink);
+}
+.reading-guide .record-section,
+.reading-guide .timeline-section { max-width: 56rem; }
+.reading-guide details.reading-comparison { max-width: 56rem; margin: 1rem 0; }
+.reading-guide .reading-comparison .record-section { margin-block: .75rem; }
+.reading-guide .reading-details {
+  min-width: 0;
+  margin: .9rem 0 .25rem;
+  padding: 0 .85rem;
+  border: 1px solid #51675c;
+  border-radius: .4rem;
+  background: #132826;
+  color: var(--reading-muted);
+  overflow-wrap: anywhere;
+}
+.reading-guide .reading-details > summary {
+  min-height: 44px;
+  padding: .7rem 0;
+  color: var(--reading-gold);
+  font: 600 .95rem/1.45 system-ui,sans-serif;
+  cursor: pointer;
+}
+.reading-guide .reading-details[open] { padding-bottom: .8rem; }
+.reading-guide .reading-details :is(p,li), .reading-guide .reading-details .file-location {
+  color: var(--reading-muted);
+  font-size: .9rem;
+  line-height: 1.6;
+}
+.reading-guide .reading-details .record-command { overflow-x: auto; }
+.reading-guide .reading-details a,
+.reading-guide .reading-prose a,
+.reading-guide .frontier-card > p a,
+.reading-guide .record-section > p a { color: var(--reading-gold); text-underline-offset: .2em; }
+.reading-guide :is(summary, a, button, input, select):focus-visible { outline: 2px solid var(--reading-gold); outline-offset: 3px; }
+.reading-guide :is(section, article, h2)[id] { scroll-margin-top: 1rem; }
+.reading-guide .frontier-grid { align-items: start; }
+.reading-guide .timeline-heading { margin-bottom: .85rem; }
+.reading-guide .reading-details .record-links { margin-top: .8rem; }
+@media (max-width: 700px) {
+  .reading-guide .research-actions { gap: .5rem; }
+  .reading-guide .reading-details { padding-inline: .65rem; }
+  .reading-guide .research-hero { padding-top: 1.75rem; }
+}
