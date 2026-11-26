@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse 155 aiXiv subject categories paired with MathCase topics, possible checks, and clearly labeled evidence levels.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Research by subject | MathCase</title>
+  <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="../judging.css">
+  <link rel="stylesheet" href="../research.css">
+  <link rel="stylesheet" href="subjects.css">
+  <script defer src="subjects.js"></script>
+</head>
+<body>
+  <a class="subject-skip" href="#subject-browser">Skip to the subject directory</a>
+  <header class="site-header subject-shell">
+    <a class="brand" href="../index.html" aria-label="MathCase home">
+      <img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Research by subject</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../tools.html">Activities</a>
+      <a href="../results-index.html">Results</a>
+      <a href="../collatz-windows/">Collatz explorer</a>
+    </nav>
+  </header>
+
+  <main class="subject-shell subject-page" id="top">
+    <section class="subject-hero" aria-labelledby="subject-title">
+      <h1 id="subject-title">MathCase, by subject</h1>
+      <p>Each entry gives a question to test and links any public evidence. aiXiv availability was recorded November 26, 2026.</p>
+    </section>
+
+    <section class="subject-browser" id="subject-browser" aria-labelledby="browser-title">
+      <div class="subject-browser-heading">
+        <div>
+          <p class="eyebrow">155 subject codes</p>
+          <h2 id="browser-title">Find a topic and its evidence status</h2>
+        </div>
+        <p id="subject-status" role="status" aria-live="polite" aria-atomic="true">Loading the pinned subject table…</p>
+      </div>
+
+      <div class="subject-counts" aria-label="Snapshot totals">
+        <div><span>Categories</span><strong id="count-all">—</strong></div>
+        <div><span>Open on aiXiv snapshot</span><strong id="count-open">—</strong></div>
+        <div><span>Coming soon on aiXiv snapshot</span><strong id="count-coming">—</strong></div>
+      </div>
+
+      <form class="subject-filters" id="subject-filters">
+        <label class="subject-search"><span>Search code, name, topic, or check</span><input id="subject-search" type="search" autocomplete="off" placeholder="For example: math.CO, Collatz, or topology"></label>
+        <label><span>Field</span><select id="field-filter"><option value="">All fields</option></select></label>
+        <label><span>aiXiv category status</span><select id="availability-filter"><option value="">All statuses</option><option value="open">Open</option><option value="coming soon">Coming soon</option></select></label>
+        <label><span>MathCase evidence level</span><select id="coverage-filter"><option value="">All evidence levels</option><option value="Checked case">Checked case</option><option value="Supporting artifact">Supporting artifact</option><option value="Proposed">Proposed</option></select></label>
+        <button class="subject-reset" type="reset" id="clear-filters">Clear filters</button>
+      </form>
+
+      <div id="subject-groups" class="subject-groups" aria-live="polite" aria-busy="true"></div>
+      <p id="subject-empty" class="subject-empty" hidden>No categories match those filters. Clear one filter or try a broader search.</p>
+    </section>
+
+    <section class="subject-notes" aria-labelledby="evidence-title">
+      <h2 id="evidence-title">What the labels mean</h2>
+      <div class="subject-label-notes">
+        <p><strong>Checked case</strong> points to a bounded MathCase case with public evidence and stated scope.</p>
+        <p><strong>Supporting artifact</strong> points to work that supports a subject connection or workflow claim. It may not be a standalone checked case in that subject.</p>
+        <p><strong>Proposed</strong> is a topic and a suggested check. It has not been completed and verified as a public case. An em dash means no artifact is linked in this table.</p>
+      </div>
+      <p>A category can share a case with another category. Papers submitted to aiXiv have a separate publication record.</p>
+      <div class="subject-source-links">
+        <a href="https://aixiv.online/categories">Open the aiXiv categories page ↗</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/819e088d1fe13cdd294edf7f5dc7c09be0dd1090/research/subjects/README.md">Read the snapshot guide and status definitions ↗</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/819e088d1fe13cdd294edf7f5dc7c09be0dd1090/research/subjects/aixiv-subjects.tsv">Inspect the pinned source table ↗</a>
+        <a href="aixiv-subjects.tsv" download>Download this directory's data</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer subject-shell">
+    <span>MathCase · bounded mathematics with evidence readers can inspect</span>
+    <nav aria-label="Footer navigation"><a href="../index.html">Home</a><a href="../tools.html">Activities</a><a href="../results-index.html">Results</a><a href="../collatz-windows/">Collatz explorer</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase source ↗</a></nav>
+  </footer>
+</body>
+</html>
