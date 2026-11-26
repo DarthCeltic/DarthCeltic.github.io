@@ -7,3 +7,6 @@ proofs/first-rung/evidence/composite-counterexample-r1/** -text -eol -diff
 proofs/first-rung/MathCasePrimeInfiniteDescent.lean -text -eol -diff
 data/local/staging/problem-queue/experimental-campaign/post30-prime-divisibility-r1/source-binding.json -text -eol -diff
 evidence/** -text whitespace=cr-at-eol
+
+# Preserve the compiled game's exact bytes for its own integrity manifests.
+Millennial-Mayhem/** -text
