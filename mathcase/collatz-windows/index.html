@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore how two 12-step odd-count filters change the first Collatz drop. Compare verified class counts, coverage, witnesses, and unresolved examples.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Collatz window explorer | MathCase</title>
+  <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="../judging.css">
+  <link rel="stylesheet" href="../research.css">
+  <link rel="stylesheet" href="explorer.css">
+  <script defer src="explorer.js"></script>
+</head>
+<body>
+  <a class="window-skip" href="#explorer">Skip to the explorer</a>
+  <header class="site-header window-shell">
+    <a class="brand" href="../index.html" aria-label="MathCase home">
+      <img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42">
+      <span>MathCase<small>Collatz window explorer</small></span>
+    </a>
+    <nav aria-label="Main navigation">
+      <a href="../index.html">Home</a>
+      <a href="../tools.html">Activities</a>
+      <a href="../results-index.html">Results</a>
+      <a href="../collatz.html">Collatz notes</a>
+    </nav>
+  </header>
+
+  <main class="window-shell window-page" id="top">
+    <section class="window-hero" aria-labelledby="window-title">
+      <p class="eyebrow">Number patterns · Collatz</p>
+      <h1 id="window-title">How do two windows shape the first drop?</h1>
+      <p>Use the shortcut rule: halve an even input; for an odd input, apply <code>(3n + 1)/2</code>. Count odd inputs in the first 12 shortcut steps, then in the next 12. The atlas compares every pair of allowed counts and records when a start first falls below itself.</p>
+      <p class="window-hero-note">This explores bounded first-drop conditions. It does not test whether every Collatz sequence eventually reaches 1.</p>
+    </section>
+
+    <section class="window-explorer" id="explorer" aria-labelledby="explorer-title">
+      <div class="window-intro">
+        <p class="eyebrow">Interactive atlas</p>
+        <h2 id="explorer-title">Choose the two odd-count caps</h2>
+        <p>A cap means “at most this many odd inputs” in that 12-step window. Every displayed count and bound comes from the published atlas.</p>
+      </div>
+
+      <div class="window-layout">
+        <form class="window-controls" id="window-form">
+          <label for="cap-first">First window <span>shortcut steps 1–12</span></label>
+          <select id="cap-first" name="cap-first" disabled aria-describedby="window-help"></select>
+          <label for="cap-second">Second window <span>shortcut steps 13–24</span></label>
+          <select id="cap-second" name="cap-second" disabled aria-describedby="window-help"></select>
+          <p id="window-help" class="window-help">Choose a maximum odd-input count for each window.</p>
+          <div class="window-presets" aria-label="Published example filters">
+            <button type="button" class="window-preset" data-first="9" data-second="6">Example: 9 then 6</button>
+            <button type="button" class="window-preset" data-first="6" data-second="9">Example: 6 then 9</button>
+          </div>
+          <p id="atlas-status" class="window-status" role="status" aria-live="polite" aria-atomic="true">Loading the verified atlas…</p>
+        </form>
+
+        <section class="window-result" aria-labelledby="selected-filter-title">
+          <div class="window-result-heading">
+            <div>
+              <p class="eyebrow">Selected condition</p>
+              <h3 id="selected-filter-title">Choose two caps</h3>
+            </div>
+            <span id="coverage-pill" class="coverage-pill" hidden></span>
+          </div>
+          <p id="result-summary" class="result-summary">The atlas will show the qualifying parity classes, their first-drop coverage, and the sharpest verified endpoint when the full condition is covered.</p>
+          <dl class="window-metrics" id="window-metrics" aria-live="polite">
+            <div><dt>Qualifying parity classes</dt><dd id="admitted-count">—</dd></div>
+            <div><dt>Classes where every start drops by step <span id="horizon-label">24</span></dt><dd id="covered-count">—</dd></div>
+            <div><dt>Classes without a uniform drop by step <span id="horizon-label-2">24</span></dt><dd id="unresolved-count">—</dd></div>
+          </dl>
+          <div id="first-drop-panel" class="first-drop-panel" hidden>
+            <h4>Sharp first-drop bound</h4>
+            <p id="first-drop-copy"></p>
+            <p id="witness-copy" class="witness-copy"></p>
+            <p id="six-ten-note" class="six-ten-note" hidden>This 16 ordinary-step drop is also covered by a separate Lean theorem for a cap of six odd inputs in the first 12 shortcut steps. <a href="https://github.com/DarthCeltic/MathCase/blob/159e92d9c719896582d36dc6042866f03316184b/reproduction/collatz-six-of-ten-lean-v1/README.md">Read the theorem and pinned Lean replay ↗</a>.</p>
+            <details class="window-trace" id="witness-trace-details">
+              <summary>Show the witness trajectory</summary>
+              <p id="witness-trace-intro"></p>
+              <ol id="witness-trace"></ol>
+            </details>
+          </div>
+          <div id="unresolved-panel" class="unresolved-panel" hidden>
+            <h4>No uniform 24-step guarantee for this condition</h4>
+            <p id="unresolved-copy"></p>
+            <details class="window-trace" id="unresolved-trace-details">
+              <summary>Show the representative’s first 24 shortcut steps</summary>
+              <p id="unresolved-trace-intro"></p>
+              <ol id="unresolved-trace"></ol>
+            </details>
+          </div>
+          <p id="empty-result" class="empty-result" hidden>No 24-step parity classes satisfy these caps.</p>
+        </section>
+      </div>
+    </section>
+
+    <section class="window-method" aria-labelledby="method-title">
+      <h2 id="method-title">What the atlas counts</h2>
+      <p>The atlas divides the first 24 shortcut inputs into 16,777,216 parity classes modulo 2<sup>24</sup>. It checks the least start n ≥ 3 in each class. A separate affine audit then classifies all larger members of that class: every start drops by step 24, some do, or none do. Each cap pair combines the exact classes it allows. A full-coverage filter guarantees a first drop for every qualifying start. A partial filter shows its non-dropping example instead of presenting it as a bound.</p>
+      <p>The shortcut step combines two ordinary moves when its input is odd and one ordinary move when it is even. If the first drop takes <em>t</em> shortcut steps and those inputs include <em>h</em> odd terms, it takes <em>t + h</em> ordinary steps.</p>
+      <p id="atlas-provenance">This page loads a same-site copy of the verified 12+12 atlas at SHA-256 <code>6d519d69792c5036e8d01fd7c226b706a3eaebd5331051a666d3f0f7a82d07cb</code>, copied from MathCase commit <code>6649e9490648e74b8c9bc76c6e6a13901aba225c</code>.</p>
+      <div class="window-links">
+        <a id="atlas-download" href="atlas-12-12.json" download>Download the atlas JSON</a>
+        <a id="source-readme" href="https://github.com/DarthCeltic/MathCase/blob/6649e9490648e74b8c9bc76c6e6a13901aba225c/reproduction/collatz-window-atlas-v1/README.md">Read the atlas method and evidence ↗</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/6649e9490648e74b8c9bc76c6e6a13901aba225c/reproduction/collatz-window-atlas-v1/atlas-12-12.json">Inspect the pinned atlas data ↗</a>
+        <a href="https://github.com/DarthCeltic/MathCase/blob/6649e9490648e74b8c9bc76c6e6a13901aba225c/reproduction/collatz-window-atlas-v1/affine-audit-12-12.csv">Inspect the independent affine classification ↗</a>
+        <a href="../results-index.html#update-collatz-two-window">Read the dated result summary</a>
+      </div>
+      <noscript><p class="window-status">Enable JavaScript to load the atlas and use the filters. The source and data links remain available above.</p></noscript>
+    </section>
+  </main>
+
+  <footer class="site-footer window-shell">
+    <span>MathCase · bounded mathematics with evidence readers can inspect</span>
+    <nav aria-label="Footer navigation"><a href="../index.html">Home</a><a href="../tools.html">Activities</a><a href="../results-index.html">Results</a><a href="../collatz.html">Collatz notes</a><a href="https://github.com/DarthCeltic/MathCase" target="_blank" rel="noopener noreferrer">MathCase source ↗</a></nav>
+  </footer>
+</body>
+</html>
