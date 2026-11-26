@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A dated guide to MathCase results, saved checks, research notes, and open questions, with links to the supporting evidence.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>MathCase | Results and dated updates</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="home.css?v=20261124-portfolio-nav">
+  <link rel="stylesheet" href="results.css">
+</head>
+<body class="home">
+  <a class="home-skip" href="#top">Skip to results and updates</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/mathcase/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
+    <nav aria-label="Main navigation">
+      <a href="tools.html">Activities</a>
+      <a href="cases.html">Math guide</a>
+      <details class="home-menu">
+        <summary>More</summary>
+        <div>
+          <a aria-current="page" href="results-index.html">Results and updates</a>
+          <a href="work.html">Research results</a>
+          <a href="visitor/">Your proof</a>
+          <a href="visitor/teacher-guide.html">For teachers</a>
+          <a href="frontier.html">Frontier math</a>
+          <a href="diagnostics.html">Diagnostics and lab notes</a>
+          <a href="knowledge-graph.html">Proof library</a>
+          <a href="timeline.html">Timeline</a>
+          <a href="roadmap.html">Open questions</a>
+          <a href="replay.html">Replay explorer</a>
+          <a href="index.html#hero-title">Judge’s guide</a>
+          <a href="/#projects">About Ryan</a>
+        </div>
+      </details>
+    </nav>
+  </header>
+  <main class="home-width results-page" id="top">
+    <header class="results-heading">
+      <p class="home-kicker">MathCase public research log · Updated November 26, 2026</p>
+      <h1 id="results-title">Results and dated updates</h1>
+      <p>This page points to the full public record: mathematical examples, bounded results, Lean checks, source audits, historical failures, and questions still open. Each item is scoped to what its linked evidence supports. A recorded check is not, by itself, independent review or a new theorem.</p>
+      <nav class="results-nav" aria-label="Sections"><a href="#recent">Recent updates</a><a href="#results">Results by subject</a><a href="#research-checks">Research checks</a><a href="#limits">Open questions and failures</a></nav>
+    </header>
+
+    <section class="result-chapter" id="recent" aria-labelledby="recent-title">
+      <p class="home-kicker">Dated record</p>
+      <h2 id="recent-title">Recent updates</h2>
+      <div class="result-detail-body">
+        <article id="update-collatz-23-14"><h3>November 24, 2026 · A fixed-endpoint Collatz descent theorem</h3><p>The Lean statement proves the exact endpoint T<sup>23</sup>(n) &lt; n when n ≥ 3 and the first 23 odd-to-odd steps contain at most 14 odd starts; its ordinary-step reading is a drop after 23 + h steps. Earlier work already implies this result: <a href="https://matwbn.icm.edu.pl/ksiazki/aa/aa30/aa3034.pdf">Terras (1976, p. 252 and Theorem 1.2)</a> gives a drop within 37 ordinary steps, and <a href="https://arxiv.org/html/2502.00948v2#S5">Rozier and Terracol (Theorem 5.1 and Table 1)</a> imply the same fixed endpoint. MathCase records a formalization of a known consequence, not a first proof of the result or a solution to the conjecture. <a href="work.html#collatz-23-of-14">Read the statement, example, and proof links</a>; <a href="timeline.html">see the dated research timeline</a>.</p></article>
+        <article id="update-vp-vnp"><h3>November 24–26, 2026 · VP/VNP explainer and MathCase source audit</h3><p>Michael Fried and H. Turgay U. Gil’s explainer on November 24 describes VP/VNP and links to Anthropic’s formalization. Ryan selected it for MathCase on November 25. The MathCase source-audit receipt records a run at 2026-11-26 00:15:08 UTC (November 25, 7:15 p.m. EST). It checked a two-by-two permanent-versus-determinant example and matched pinned source files; it did not replay the upstream Lean proof or independently validate the theorems. Credit for the result and formalization belongs to the upstream authors. <a href="diagnostics.html#vp-vnp">Read the MathCase record and its exact limits</a>; <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/vp-vnp-source-audit-v1/source-audit-receipt.json">view the dated MathCase receipt</a>; <a href="https://www.friedgil.com/vpvnp">read the dated explainer</a>; <a href="https://github.com/anthropics/formal-math/tree/11b6c7e3c927df2658f513b6b68ea7f8929c62c5/vp-vnp">inspect the pinned formalization</a>.</p></article>
+        <article id="update-matrix"><h3>November 24–25, 2026 · Matrix multiplication exponent paper and MathCase example</h3><p>OpenAI’s preprint is dated November 24 and states an exponent bound of 9/4. A MathCase local-check summary is dated November 25; the record gives no time zone. It reports one ordinary and one Strassen calculation for a two-by-two example. A local Lean build timed out in a prerequisite before reaching the pinned theorem, and the separate comparator was not run. <a href="diagnostics.html#matrix-multiplication">Read the example and limits</a>; <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/matrix-exponent-2x2-v1/attempt-02-summary.json">view the dated MathCase run summary</a>; <a href="https://github.com/openai/math/blob/3344da59991ed94f9ba711217b29c1d760badfa6/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf">read the upstream paper</a>.</p></article>
+        <article id="update-riemann"><h3>November 20–23, 2026 · Riemann hypothesis announcement and MathCase source check</h3><p>Levent Alpöge announced a proof with a Lean formalization on November 20. The Lean FRO and Mathlib Initiative reported independent checks on November 21. MathCase checked hashes and byte counts for four pinned files at 2026-11-23 13:28:08 UTC (8:28 a.m. EST); it did not elaborate or replay the proof. <a href="diagnostics.html#riemann-source-audit">Read the MathCase source-check record</a>; <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/riemann-source-audit-v1/source-check.json">view the dated MathCase receipt</a>; <a href="https://leanprover-community.github.io/blog/posts/riemann-hypothesis/">read the Lean community verification report</a>; <a href="https://math.mit.edu/~drew/grh/">see MIT’s verification notes</a>.</p></article>
+        <article id="update-m20"><h3>November 23, 2026 · Public-source Collatz rebuild record</h3><p>A local rebuild compiled 363 modules and completed 4,262 assumption checks against recorded results. The published receipt covers an earlier smoke test; independent reproduction of the complete build remains open. <a href="work.html#reproduction">Read the rebuild scope and receipts</a>; <a href="replay.html#public-rebuild">see what can be repeated</a>.</p></article>
+      </div>
+    </section>
+
+    <section class="result-chapter" id="results" aria-labelledby="results-by-subject-title">
+      <p class="home-kicker">Browse the evidence</p>
+      <h2 id="results-by-subject-title">Results by subject</h2>
+      <div class="result-detail-body">
+        <article><h3>Collatz sequences</h3><p>Browse the bounded 23/14 descent theorem, finite residue counts, archived proof development, saved receipts, and reproducibility status. These records do not establish eventual descent for every integer or solve the conjecture. <a href="work.html#collatz-23-of-14">Featured theorem</a> · <a href="timeline.html">dated development</a> · <a href="knowledge-graph.html">proof library</a> · <a href="replay.html">replay and build limits</a>.</p></article>
+        <article><h3>Ramsey and finite graphs</h3><p>Inspect finite graph witnesses for known Ramsey lower bounds, the associated Lean statements, and the separate graph checkers. They reproduce known bounds; they are not new Ramsey discoveries. Independent review and fresh-checkout replay status vary by record. <a href="work.html#ramsey">Ramsey results, graph files, and Lean evidence</a>.</p></article>
+        <article><h3>Erdős–Straus fractions</h3><p>Review the exact bounded candidate sets, decomposition witnesses, search caps, and resolved search misses. The saved scope does not establish the conjecture for every integer. <a href="work.html#egyptian">Worked results and receipts</a> · <a href="timeline.html">campaign history</a>.</p></article>
+        <article><h3>Geometry and elementary number theory</h3><p>See the right-triangle construction, prime-divisibility proof example, rejected attempt, and corrected Lean-accepted proof using a known theorem. The saved proof demonstrates checking and repair, not a new theorem. <a href="work.html#geometry-midpoint">Geometry result</a> · <a href="work.html#proof-workbench">saved proof case</a>.</p></article>
+        <article><h3>Frontier experiments and source audits</h3><p>Read the bounded search records, timed-out or unresolved probes, and worked examples for VP/VNP, matrix multiplication, and Riemann. Those MathCase artifacts have narrower scopes than the upstream results. <a href="frontier.html">Frontier math</a> · <a href="diagnostics.html">Diagnostics and lab notes</a>.</p></article>
+      </div>
+    </section>
+
+    <section class="result-chapter" id="research-checks" aria-labelledby="research-checks-title">
+      <p class="home-kicker">How to read a record</p>
+      <h2 id="research-checks-title">Research checks and provenance</h2>
+      <div class="result-detail-body">
+        <p>“Lean checked” refers to the exact saved statement and stated environment or replay. “Recorded” means a result is preserved in a receipt or artifact; it does not imply a fresh independent run. “Independent review” is used only where the cited reviewer or separate checker is named and the scope is described. A source hash confirms file identity, not theorem correctness.</p>
+        <p>Browse the <a href="knowledge-graph.html">proof library</a> for indexed statements and receipts, the <a href="replay.html">replay explorer</a> for reproducibility details, and <a href="diagnostics.html">diagnostics</a> for examples, audits, and preserved failures.</p>
+      </div>
+    </section>
+
+    <section class="result-chapter" id="limits" aria-labelledby="limits-title">
+      <p class="home-kicker">What remains open</p>
+      <h2 id="limits-title">Open questions and historical failures</h2>
+      <div class="result-detail-body">
+        <p>Independent reproduction of the full Collatz rebuild, mathematical review of individual statements, and review or clean-checkout replay of some finite graph records remain open. The research pages preserve timeouts, failed builds, earlier encoding errors, and corrected records so their scope stays visible.</p>
+        <p><a href="work.html#limits">Review the current limits</a> · <a href="work.html#failures">Inspect preserved failures</a> · <a href="roadmap.html">Read open questions</a> · <a href="timeline.html">Follow dated updates</a>.</p>
+      </div>
+    </section>
+    <p class="back-home"><a href="index.html">← MathCase home</a><a href="work.html">Research results →</a><a href="https://github.com/DarthCeltic/MathCase">Source and evidence on GitHub ↗</a></p>
+  </main>
+  <footer class="site-footer shell"><span>MathCase · public results and evidence</span><nav aria-label="Footer"><a href="index.html">Home</a><a href="work.html">Research results</a><a href="timeline.html">Timeline</a><a href="https://github.com/DarthCeltic/MathCase">MathCase source</a></nav></footer>
+</body>
+</html>
