@@ -235,15 +235,15 @@
           </div>
         </details>
         <details class="result-detail">
-          <summary>Which part of the 2,652 proofs is the same?</summary>
+          <summary>Can one broader rule cover the 2,652 listed families?</summary>
           <div class="result-detail-body">
-            <article id="collatz-shared-structure" aria-label="Which part of the 2,652 proofs is the same?"><div id="collatz-shared-structure-title">
-          <p>Many starts share the same subtraction at the end of the proof. Each still needs its own argument showing how the sequence got to that endpoint.</p>
-            <p><strong>Plain statement:</strong> every listed endpoint is smaller because the shared coefficient gap is positive, once its row’s exact 32-step trajectory equality is established.</p>
+            <article id="collatz-shared-structure" aria-label="Can one broader rule cover the 2,652 listed families?"><div id="collatz-shared-structure-title">
+          <p>Every one of the 2,652 listed starting-number patterns has exactly 12 odd inputs in its first 20 shortcut steps. A shortcut halves an even number; for an odd number it computes <code>(3n+1)/2</code>.</p>
+            <p>A separate Lean theorem proves that any starting number with this 12-of-20 pattern falls below its start after 32 ordinary steps. A new finite audit checks that each listed row fits the pattern and that its recorded endpoint matches both a 20-step shortcut calculation and a separate 32-step ordinary calculation. Combining that row-by-row check with the existing theorem covers every listed progression <code>1,048,576k+r</code>.</p>
                   <p class="record-formula">start − endpoint = 517,135k + (r−q), with every listed r−q ≥ 117</p>
-                  <p>All rows share modulus 2²⁰, step count 32, and slope 3¹². The 133 modules group 132 sets of 20 rows and one set of 12. That organization and the shared algebra clarify the proof; they do not remove any row’s trajectory equality or reduce the 2,652 mathematical cases. The earlier prefix screen also found zero reduction and was not rerun.</p>
-                  <p>This is source analysis, not a new theorem or a refactored proof. It describes exactly the listed families and does not imply a general Collatz rule or convergence.</p>
-                  <a class="text-link" href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-shared-affine-structure-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the full structure review ↗</a>
+                  <p>The earlier M20-specific prefix screen is a different result: it found no reduction in the number of table rows and was not rerun. The new bridge supplies an alternative route through the broader 12-of-20 theorem; it does not rewrite or replace the historical M20 composition replay.</p>
+                  <p>This remains bounded first descent for the listed progressions. It does not show that every Collatz sequence reaches 1, establish a general convergence rule, or claim novelty.</p>
+                  <div class="record-links"><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/collatz-m20-twelve-of-twenty-bridge-v1/README.md" target="_blank" rel="noopener noreferrer">Read the row-by-row bridge explanation ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/docs/collatz-shared-affine-structure-2026-11-20.md" target="_blank" rel="noopener noreferrer">Read the original structure review ↗</a></div>
             </div></article>
           </div>
         </details>
