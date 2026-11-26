@@ -81,7 +81,8 @@ class PublicReadingTests(unittest.TestCase):
         self.assertIn("Read what Lean checked and how to rebuild it", r66.group(1))
         self.assertIn("Browse the replay files and earlier run history", r66.group(1))
         self.assertNotRegex(r66.group(1), r'href="[^"]+\.json')
-        self.assertIn("A stranger’s rebuild and independent review remain open", r66.group(1))
+        self.assertIn("A stranger has not yet independently rebuilt it", r66.group(1))
+        self.assertIn("independent mathematical review remains open", r66.group(1))
         self.assertNotIn("fresh replay remains open", r66.group(1))
 
         frontier = (root / "frontier.html").read_text(encoding="utf-8")
