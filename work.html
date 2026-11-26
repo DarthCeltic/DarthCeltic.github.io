@@ -32,6 +32,7 @@
           <a href="visitor/">Your proof</a>
           <a href="visitor/teacher-guide.html">For teachers</a>
           <a href="frontier.html">Frontier math</a>
+          <a href="diagnostics.html">Diagnostics and lab notes</a>
           <a href="timeline.html">Timeline</a>
           <a href="roadmap.html">Open questions</a>
           <a href="replay.html">Replay explorer</a>
@@ -56,6 +57,7 @@
           <p>Start with a whole number. If it’s even, halve it. If it’s odd, triple it and add 1. Each of those is one ordinary step.</p>
           <p>A shortcut combines the odd step and the next halving. For a start of 3 or more, count how many of the first 23 shortcuts begin on an odd number. If the count is 14 or fewer, the sequence falls below its start within <strong>37 ordinary steps</strong>. Lean, a mathematical proof checker, verified that guarantee. Whether every positive start eventually reaches 1 remains open.</p>
           <a class="result-next" href="tools.html#collatz-tool">Follow 239 step by step <span aria-hidden="true">→</span></a>
+          <p><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/collatz-parity-envelopes-2026-11-v1/README.md#reproduce-the-reviewed-2314-proof">Run the Lean proof from a fresh checkout ↗</a></p>
         </div>
         <aside class="number-example" aria-label="Compare three ways of counting from 5">
           <p class="example-label">When does 5 first drop below 5?</p>
@@ -78,37 +80,18 @@
         <p><strong>Plain statement:</strong> for every start <code>n ≥ 3</code>, if at most 14 of the first 23 accelerated inputs are odd, the ordinary Collatz iterate at step <code>23+h</code> is smaller than <code>n</code>, where <code>h</code> is the exact odd-input count.</p>
               <p>The Lean count is <strong>7,507,638 of 8,388,608</strong> residue classes modulo <code>2^23</code>. The descent theorem reports <code>[propext, Quot.sound]</code>; its count and combined theorem report <code>[Classical.choice, propext, Quot.sound]</code>. No <code>sorryAx</code> was reported. Reviewed statement file, SHA-256: <code>cab441ca8079f71a6c9dbaadcea53a8e38cc8d4e9ee68f18f874f6bf39fb66bb</code>. The bound is at most 37 ordinary steps.</p>
               <p class="record-note"><strong>Limits:</strong> this is one parity-conditioned first drop. It does not prove convergence for every start, novelty, or closure of the smaller-basis search.</p>
-              <details class="record-note">
-                <summary>Show the exploratory companion counts</summary>
-                <ul>
-                  <li>24/15: 15,505,590 of 16,777,216 classes; at most 39 ordinary steps; exploratory, wording review remains open.</li>
-                  <li>31/19: 1,986,838,144 of 2,147,483,648; at most 50 steps; separate audit passed with <code>[Classical.choice, propext, Quot.sound]</code>. The original receipt remains <code>FAIL_AUDIT</code>; exploratory, wording review remains open.</li>
-                  <li>32/20: 4,058,348,603 of 4,294,967,296; at most 52 steps; exploratory, wording review remains open.</li>
-                </ul>
-                <p>The exact union of five conditions is 4,138,588,909 of 4,294,967,296 length-32 parity words by two agreeing Python counting methods. The first faulty count and its correction are both retained. This does not make one combined Lean theorem or close the basis search.</p>
-              </details>
+              <p>We replayed the reviewed proof from a fresh public checkout with Lean 4.33.1. The four modules passed in 14.251 seconds on Windows. <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/collatz-parity-envelopes-2026-11-v1/evidence/23-14-official-replay/public-launcher/replay-result.json">Read the replay receipt ↗</a></p>
+              <p><a href="diagnostics.html#collatz-companions">Explore the other parity counts in the lab notes →</a></p>
               <div class="record-links"><a href="collatz.html#at-most-fourteen-of-twenty-three">Read the plain explanation</a><a href="cases.html#collatz-parity-envelope-23-14">Open the source-and-replay case</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1" target="_blank" rel="noopener noreferrer">Open source and receipt bundle ↗</a></div>
       </div>
     </details>
-      <details class="result-detail">
-      <summary>What happened in a sample of 23.6 million odd starts?</summary>
-      <div class="result-detail-body">
-        <article id="m31-step34-crlf-binding" aria-labelledby="m31-step34-crlf-title">
-          <h3 id="m31-step34-crlf-title">How many of the sampled numbers dropped within 34 moves?</h3>
-          <p>Two calculations agreed. Of the 23,642,078 odd starting numbers in the sample, <strong>18,391,741</strong> reached a smaller number within 34 odd-to-odd moves.</p>
-          <p>This study counts moves from one odd number to the next. Start at 5, triple it and add 1 to get 16, then halve until the next odd number, 1. Here that entire journey counts as one move. The calculation used one starting number from each selected group. Other numbers in the same groups can behave differently.</p>
-          <details class="result-detail">
-          <summary>Inspect the sample, independent check and original file-format issue</summary>
-          <div class="result-detail-body">
-            <p>In the files, M31 means grouping numbers by their remainder after division by 2³¹ (2,147,483,648). Here “step 34” counts odd-to-odd moves.</p>
-            <p>The original package failed a formatting check because its protocol files used Windows line endings (CRLF). The original CRLF input bytes are now matched to the exact hashes in the primary attempt record and independent verification receipt. The normalized Markdown copies are documentation derivatives. No large calculation was rerun.</p>
-                  <p class="record-note"><strong>Limits:</strong> this counts one chosen representative per odd residue class. It proves no rule for every number in a class and does not establish eventual descent or Collatz convergence. The original packaging failure remains part of the record.</p>
-                  <div class="record-links"><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/m31-step34-crlf-binding-v1/README.md" target="_blank" rel="noopener noreferrer">Read the failure and byte-binding record ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/m31-step34-crlf-binding-v1" target="_blank" rel="noopener noreferrer">Open the copied receipts and exact protocol bytes ↗</a></div>
-          </div>
-        </details>
-        </article>
-      </div>
-    </details>
+      <details class="result-detail" id="m31-step34-crlf-binding">
+        <summary>Archived: M31 finite sample and input-byte record</summary>
+        <div class="result-detail-body">
+          <p>This secondary record covers a finite representative sample, not every start in a residue class. It does not establish eventual descent or Collatz convergence.</p>
+          <p><a href="diagnostics.html#m31-step34-crlf-binding">Read the sample count, file-format history, and exact limits →</a></p>
+        </div>
+      </details>
     <details class="result-detail">
       <summary>Other Collatz results and the starting-number calculator</summary>
       <div class="result-detail-body">
@@ -230,7 +213,8 @@
             <article id="collatz-coverage" aria-label="How were groups of starting numbers counted?"><div id="collatz-coverage-title">
           <p>Group numbers by the remainder they leave after division. For example, 3 and 11 both leave 3 when divided by 8. This table counts groups in one specified list.</p>
             <p><strong>Plain statement:</strong> among the 1,048,576 residue classes modulo <code>2²⁰</code>, the largest recorded power-of-two tier has checked bounded-descent certificates for 1,021,248 classes.</p>
-                  <div class="record-statline"><strong>1,021,248 / 1,048,576</strong><span>97.393798828125% · rounds to 97.394%</span></div>
+                  <p>The count is for one modulus and a fixed number of steps. The convergence and cycle questions remain open.</p>
+                  <div class="record-statline"><strong>1,021,248 / 1,048,576</strong><span>97.394% of that residue space</span></div>
                   <table class="result-table">
                     <thead><tr><th>Modulus</th><th>Residue space</th><th>Checked descent classes</th><th>Finite share</th></tr></thead>
                     <tbody>

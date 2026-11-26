@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Secondary MathCase records: worked arithmetic, source identity checks, saved exploratory runs, and their exact limits.">
+  <meta name="theme-color" content="#0b1823">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; img-src 'self'; script-src 'self'; connect-src 'self' https://raw.githubusercontent.com; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <link rel="canonical" href="https://darthceltic.github.io/diagnostics.html">
+  <title>MathCase | Diagnostics and lab notes</title>
+  <link rel="icon" href="assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="judging.css">
+  <link rel="stylesheet" href="home.css?v=20261124-portfolio-nav">
+  <link rel="stylesheet" href="case-index.css">
+  <script defer src="riemann-reference.js"></script>
+</head>
+<body>
+  <a class="home-skip" href="#top">Skip to the records</a>
+  <header class="home-header home-width">
+    <a class="brand" href="/" aria-label="MathCase home"><img src="assets/mathcase-branding-kit/mathcase-icon-128.png" alt="" width="42" height="42"><span>MathCase</span></a>
+    <nav aria-label="Main navigation">
+      <a href="tools.html">Activities</a>
+      <a href="cases.html">Math guide</a>
+      <details class="home-menu"><summary>More</summary><div>
+        <a href="work.html">Research results</a><a href="visitor/">Your proof</a>
+        <a href="visitor/teacher-guide.html">For teachers</a><a href="frontier.html">Frontier math</a>
+        <a href="knowledge-graph.html">Proof library</a><a href="projects/">About Ryan</a>
+      </div></details>
+    </nav>
+  </header>
+  <main class="shell case-index" id="top">
+    <section class="map-intro" aria-labelledby="diagnostics-title">
+      <p class="eyebrow">Secondary records</p>
+      <h1 id="diagnostics-title">Diagnostics and lab notes</h1>
+      <p>These examples and checks are kept for inspection. A worked calculation, source hash, saved receipt, or bounded search is not the same as a fresh proof replay or an independent check of the larger theorem.</p>
+      <p><a href="work.html#collatz-23-of-14">Start with the bounded 23/14 Collatz proof →</a> · <a href="cases.html">Browse the math guide</a></p>
+    </section>
+    <section class="case-grid" aria-label="Diagnostic records">
+      <article class="case-card-page" id="vp-vnp">
+        <span class="case-status">Worked arithmetic · upstream proof not replayed</span>
+        <h2>VP versus VNP: a two-by-two example</h2>
+        <p>In a 2×2 grid of ones, two choices take one entry from each row and column. The permanent adds them to 2; the determinant subtracts one to give 0. This example does not prove the upstream result.</p>
+        <p>MathCase checked the example, rejected a deliberately wrong answer, and matched seven source files at the pinned upstream commit. It did not compile the upstream Lean proof or validate the theorem independently. The result concerns arithmetic circuits, not ordinary P versus NP. Credit for the result and formalization belongs to Anthropic's formal-math project.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/vp-vnp-source-audit-v1">Open the example and exact limits ↗</a><a href="https://github.com/anthropics/formal-math/tree/11b6c7e3c927df2658f513b6b68ea7f8929c62c5/vp-vnp" target="_blank" rel="noopener noreferrer">Open the upstream formalization ↗</a></div>
+      </article>
+      <article class="case-card-page" id="matrix-multiplication">
+        <span class="case-status">Worked arithmetic · Lean target not reached</span>
+        <h2>Matrix multiplication exponent 9/4</h2>
+        <p>For A = [[1, 2], [3, 4]] and B = [[5, 6], [7, 8]], the ordinary and Strassen formulas both give [[19, 22], [43, 50]]. The ordinary calculation uses eight multiplications and four additions; Strassen's uses seven multiplications and 18 additions or subtractions.</p>
+        <p>The local checker covers this one exact example and a deliberately damaged sign. A local Lean build timed out in a prerequisite before reaching the pinned theorem or an axiom audit. The separate Comparator workflow was not run. The exponent claim belongs to the upstream authors.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/matrix-exponent-2x2-v1">Open the runnable example and limits ↗</a><a href="https://github.com/openai/math/blob/3344da59991ed94f9ba711217b29c1d760badfa6/preprints/The-matrix-multiplication-exponent-is-nine-fourths-November-24-2026/paper.pdf" target="_blank" rel="noopener noreferrer">Read the upstream paper ↗</a><a href="https://github.com/openai/math/blob/3344da59991ed94f9ba711217b29c1d760badfa6/lean/docs/107.md" target="_blank" rel="noopener noreferrer">Read the formal scope ↗</a></div>
+      </article>
+      <article class="case-card-page" id="riemann-source-audit">
+        <span class="case-status">External result · source identity only</span>
+        <h2>Riemann hypothesis source check</h2>
+        <p>The statement is that every nontrivial zero of the Riemann zeta function has real part ½. Levent Alpöge published the Claude-assisted proof; the Lean FRO and Mathlib Initiative coordinated independent checks. The proof and result belong to those upstream authors and community.</p>
+        <p>MathCase checks byte counts and SHA-256 values for four pinned public source files. It does not download the proof export, elaborate the theorem, replay the proof, or independently validate the result.</p>
+        <button type="button" class="button button-primary" id="check-riemann-files">Check four source files</button>
+        <p id="riemann-file-summary" role="status" aria-live="polite">Downloads 14 KB from GitHub when clicked. This checks source identity only.</p>
+        <ul id="riemann-file-results"></ul>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/riemann-source-audit-v1">Open the source checker and receipt ↗</a><a href="https://github.com/leanprover-community/riemann-hypothesis" target="_blank" rel="noopener noreferrer">Open the upstream project ↗</a><a href="https://math.mit.edu/~drew/grh/" target="_blank" rel="noopener noreferrer">Read upstream verification notes ↗</a></div>
+      </article>
+      <article class="case-card-page" id="collatz-companions">
+        <span class="case-status">Exploratory counts · wording review open</span>
+        <h2>Other Collatz parity limits</h2>
+        <p>The 24/15, 31/19, and 32/20 checks cover separate step counts and parity conditions. Each count belongs to its own finite residue space. The saved source explains the conditions, checks, and earlier audit failure.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1">Read the exact statements and receipts ↗</a></div>
+      </article>
+      <article class="case-card-page" id="m31-v1">
+        <span class="case-status candidate">Saved Lean attempt · wording review and independent replay open</span>
+        <h2>M31 v1: 860 listed progressions</h2>
+        <p>A saved Lean 4.33.1 attempt record reports a first-drop statement for each of 860 listed progressions. The public Python route checks saved source/receipt bindings and recomputes the listed row arithmetic; it does not run Lean.</p>
+        <p>The source-selection process has not been independently reproduced, the exact statement has not received a recorded M0 review, and a fresh anonymous Lean replay remains open. This does not prove Collatz convergence or cover every start.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-m31-lift-v1">Open the sources, receipt, and checker ↗</a><a href="cases.html#collatz-m31-lift">Open the preserved case record ↗</a></div>
+      </article>
+      <article class="case-card-page" id="m31-step34-crlf-binding">
+        <span class="case-status">Finite representative sample · not a family theorem</span>
+        <h2>M31 step-34 sample and input-byte record</h2>
+        <p>The recorded sample contains 23,642,078 selected odd starts; 18,391,741 reached a smaller value within 34 odd-to-odd moves. It covers one selected representative per residue class, not every number in a class, and does not establish eventual descent or convergence.</p>
+        <p>The package preserves an original CRLF formatting failure and a later exact-byte binding check. The check matched input bytes to records; it did not rerun the large calculation.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/m31-step34-crlf-binding-v1">Open the sample, byte bindings, and failure record ↗</a><a href="work.html#m31-step34-crlf-binding">Open the original work-page location ↗</a></div>
+      </article>
+      <article class="case-card-page" id="solver-probes">
+        <span class="case-status">Bounded search logs · no general impossibility claim</span>
+        <h2>Timed-out and local-repair solver probes</h2>
+        <p>The 171-position W(5,3) probe stopped after 20 seconds with <code>UNKNOWN</code>. In Weak Schur, selected saved colorings were tested within specified edit neighborhoods; the reported outcomes apply only to those exact colorings and caps. They do not rule out another coloring or prove a general bound.</p>
+        <p>These records are not solver certificates. The exact inputs, commands, caps, controls, and preserved outcomes remain in the public frontier package. A reported solver package version identifies a distribution string; it does not, by itself, establish which executable or engine produced a result.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11">Open the bounded search sources and receipts ↗</a><a href="frontier.html#vdw-5-3">Open W(5,3) record ↗</a><a href="frontier.html#ws-5">Open Weak Schur record ↗</a></div>
+      </article>
+    </section>
+    <p class="back-home"><a href="index.html">← Home</a><a href="cases.html">Math guide →</a><a href="work.html#collatz-23-of-14">Featured 23/14 proof →</a></p>
+  </main>
+  <footer class="site-footer shell"><span>MathCase · records and limits</span><nav aria-label="Footer"><a href="index.html">Home</a><a href="cases.html">Math guide</a><a href="work.html">Research results</a><a href="https://github.com/DarthCeltic/MathCase">MathCase source</a></nav></footer>
+</body>
+</html>
