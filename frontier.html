@@ -88,18 +88,20 @@
     <p class="frontier-kicker">Addition · five colors</p>
     <h2>Where can you put 208 without creating a same-color sum?</h2>
     <p>If 2 and 3 are blue, 5 cannot also be blue, because 2 + 3 = 5. Only sums of two <em>distinct</em> positive numbers count.</p>
-    <p>Two known colorings get through 207. MathCase tried all five colors for 208 and allowed up to 18 earlier numbers to change color. Neither starting arrangement could extend that way. A more extensive rearrangement could still work.</p>
+    <p>Two known five-color arrangements cover 1 through 207. Starting from either one, MathCase tried every color for 208 and every change of up to 18 earlier entries; neither small neighborhood extended it. A larger rearrangement or a different starting arrangement could still work.</p>
+    <p>A separate saved arrangement of 1 through 208 fails at one sum: 4 + 8 = 12. Changing one, two, or three entries cannot repair that arrangement. A different arrangement or a larger repair may still work.</p>
     <details class="reading-details">
     <summary>Inspect the exact result, its limits and sources</summary>
     <p>The rule forbids same-color sums <code>a + b = c</code> when <code>a</code> and <code>b</code> are distinct positive numbers. Two known colorings cover 1 through 207; MathCase checked both and searched every color for 208 while changing up to 18 old entries.</p>
-            <p>All ten bounded searches finished. Starting from either published coloring, at least 19 old positions must change before an extension can work. A coloring farther from both starting points could still exist.</p>
+            <p>All ten searches around the two published colorings finished. Starting from either one, at least 19 old positions must change before an extension can work. The separate one-conflict arrangement was also checked: all 4,064,044 possible one-, two-, and three-entry recolorings that could break 4 + 8 = 12 were exhausted. The best still had 9, 8, and 7 forbidden sums at those respective distances.</p>
+            <p>The one-conflict result applies to that exact saved arrangement. It does not rule out another valid arrangement of 1 through 208 or establish that 208 is impossible.</p>
             <p>These saved local-repair probes are secondary diagnostics, not certificates and not claims that 208 is impossible. They apply only to the exact saved coloring and edit limit.</p>
             <p><a href="diagnostics.html#solver-probes">See the saved probes, controls, and limits →</a></p>
             <p class="frontier-next"><strong>Next question.</strong> find a valid 208 coloring outside those neighborhoods, or check a proof that covers every five-coloring.</p>
             <div class="frontier-links">
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/weak-schur-5">Run the witness and radius checks ↗</a>
               <a href="https://github.com/DarthCeltic/MathCase/tree/codex/collatz-parity-envelopes-20261124/research/frontier-2026-11/weak-schur-5/repair-radius-ten-v1">Read the exact ten-change query and its limits ↗</a>
-              <a href="https://github.com/DarthCeltic/MathCase/tree/codex/collatz-parity-envelopes-20261124/research/frontier-2026-11/weak-schur-5/repair-radius-three-v1">Read the three-change query and exhaustive checker ↗</a>
+              <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/weak-schur-5/repair-radius-three-v1">Read the near-miss result and how to reproduce it ↗</a>
               <a href="https://oeis.org/A072842" target="_blank" rel="noopener noreferrer">Rowley's published sequence record ↗</a>
               <a href="https://arxiv.org/abs/2611.22032" target="_blank" rel="noopener noreferrer">Vicenzi et al., 2026 ↗</a>
             </div>
