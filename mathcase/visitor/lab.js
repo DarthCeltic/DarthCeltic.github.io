@@ -282,11 +282,15 @@ partitionFile.addEventListener("change", async () => {
     const receipt = JSON.parse(await file.text());
     if (receipt?.schema_version !== "mathcase-visitor-partition-receipt-v1" || receipt?.predicate !== "weak-schur-distinct-addends-v1") throw new Error("This is not a MathCase partition receipt.");
     const data = partitionValidateData(receipt.data); const canonical = partitionCanonical(data);
-    if (typeof receipt.input_sha256 !== "string" || receipt.input_sha256 !== await partitionDigest(canonical)) throw new Error("Receipt content hash does not match its data (it may have been edited or corrupted).");
+    const digest = await partitionDigest(canonical);
+    if (generation !== partitionGeneration) return;
+    if (typeof receipt.input_sha256 !== "string" || receipt.input_sha256 !== digest) throw new Error("Receipt content hash does not match its data (it may have been edited or corrupted).");
+    if (generation !== partitionGeneration) return;
     const evaluation = partitionEvaluate(data);
     if (JSON.stringify(evaluation) !== JSON.stringify(receipt.result)) throw new Error("Receipt result does not match recomputation; it may have been edited.");
+    if (generation !== partitionGeneration) return;
     partitionN.value = String(data.n); partitionColors.value = String(data.color_count); partitionData.value = data.colors.join(", ");
     await runPartition(data, true);
     partitionMessage("Receipt imported, hash-verified, and recomputed locally.");
-  } catch (error) { partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage(error.message, true); }
+  } catch (error) { if (generation !== partitionGeneration) return; partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage(error.message, true); }
 });

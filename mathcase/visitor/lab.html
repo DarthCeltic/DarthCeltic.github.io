@@ -34,11 +34,11 @@
     </nav>
   </div></header>
   <main class="tool-page">
-    <h1>Make a report from saved runs</h1>
-    <p class="tool-lede">See which proof attempts reported a pass or a failure, along with their recorded time and cost. Your files stay in this browser.</p>
+    <h1>Check your math or make a run report</h1>
+    <p class="tool-lede">Use the local partition checker for your own finite coloring, or review saved proof-run packets below. Your files stay in this browser.</p>
     <section class="tool-card" aria-labelledby="partition-title">
       <h2 id="partition-title">Check your own weak-Schur partition</h2>
-      <p>Choose a finite bound <em>n</em>, then enter one color for each integer 1 through <em>n</em>. The checker tests the exact predicate “no monochromatic <em>a &lt; b</em> with <em>a + b ≤ n</em>,” excluding equal addends. It runs locally; a pass is only a pass for the data and bound you supplied.</p>
+      <p>Choose a finite bound <em>n</em>, then enter one color for each integer 1 through <em>n</em>. The checker tests this rule: no distinct <em>a &lt; b</em> may have <em>a</em>, <em>b</em>, and <em>a+b</em> all the same color while <em>a+b ≤ n</em>. It runs locally; a pass is only a pass for the data and bound you supplied.</p>
       <div class="partition-fields">
         <label for="partition-n">Bound <em>n</em> (1–208)<input id="partition-n" type="number" min="1" max="208" value="12" inputmode="numeric"></label>
         <label for="partition-colors">Number of colors (1–12)<input id="partition-colors" type="number" min="1" max="12" value="3" inputmode="numeric"></label>
@@ -52,7 +52,7 @@
       <p class="tool-note">Want a human to look at your own question? <a href="https://github.com/DarthCeltic/MathCase/issues/new?template=own-problem.yml">Open an own-problem issue draft</a> or <a href="https://github.com/DarthCeltic/MathCase/issues/new?template=mathematical-review.yml">request mathematical review</a>. Nothing is posted until you submit it.</p>
     </section>
     <section class="tool-card">
-      <h2>Choose your run summaries</h2>
+      <h2>Make a report from saved runs</h2>
       <div class="upload-row"><label for="run-files">Run summaries (.json, choose one or more)</label><input id="run-files" type="file" accept=".json,application/json" multiple></div>
       <p id="status" role="status">No files selected.</p>
       <div id="summary"></div>
