@@ -156,6 +156,18 @@ python scripts/run_public_case.py ramsey66</pre>
       </article>
       </details>
       <details class="case-record">
+        <summary>Can a small Ising grid have a smooth count profile?</summary>
+      <article class="case-card-page" id="ising-3x3-fixed-up">
+        <span class="case-status candidate">Ising · exact finite computation · counterexample found</span>
+
+        <p><strong>Plain question:</strong> if we fix how many of the nine sites point up, do the numbers of arrangements with 8, 10, 12 broken neighboring links change in a smoothly log-concave way?</p>
+        <p>On the periodic 3×3 grid, fixing four up sites gives the exact counts <code>45, 36, 45</code>. Smooth log-concavity would require <code>36² ≥ 45×45</code>, but <code>1,296 &lt; 2,025</code>. The same profile appears for five up sites by flipping every spin.</p>
+        <p>Every one of the <code>2⁹ = 512</code> labeled arrangements was checked two ways: direct edge enumeration and an independent eight-state column-transfer calculation. The other eight fixed-up-spin profiles passed this finite test.</p>
+        <p>This is a bounded computation on one small torus. It is not a general Ising theorem, a thermodynamic-limit claim, or a novelty claim.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ising-3x3-fixed-up-logconcavity-v1">Open the checker, receipts, and limits ↗</a><a href="tools.html">Try the other math activities →</a></div>
+      </article>
+      </details>
+      <details class="case-record">
         <summary>When do 32 Collatz steps take a number downhill?</summary>
       <article class="case-card-page" id="collatz-twelve-of-twenty">
         <span class="case-status pass">Collatz · number patterns · Lean checked</span>
