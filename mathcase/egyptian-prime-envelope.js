@@ -1,48 +1,99 @@
 "use strict";
 
 const primeInput = document.getElementById("envelope-prime");
-const sInput = document.getElementById("envelope-s");
-const status = document.getElementById("envelope-status");
+const slackInput = document.getElementById("envelope-s");
+const statusLine = document.getElementById("envelope-status");
 const result = document.getElementById("envelope-result");
 
-function setStatus(message, error = false) { status.textContent = message; status.classList.toggle("envelope-error", error); }
-function isPrime(value) {
-  if (value < 2 || value % 2 === 0) return value === 2;
-  for (let divisor = 3; divisor * divisor <= value; divisor += 2) if (value % divisor === 0) return false;
+function showStatus(message, error = false) {
+  statusLine.textContent = message;
+  statusLine.classList.toggle("envelope-error", error);
+}
+
+function isPrime(p) {
+  for (let divisor = 2; divisor * divisor <= p; divisor += 1) {
+    if (p % divisor === 0) return false;
+  }
   return true;
 }
-function D(b) { return 4 * b * b - 6 * b + 1; }
-function maxBand(B) { return B < 16 ? 0 : Math.floor(Math.sqrt(B)) - 1; }
+
+function upperPolynomial(b) {
+  return 4 * b * b - 6 * b + 1;
+}
+
 function checkPrime() {
   result.replaceChildren();
   const p = Number(primeInput.value);
-  if (!Number.isInteger(p) || p < 43 || p > 1000000) return setStatus("Enter an integer p from 43 through 1,000,000.", true);
-  if (!isPrime(p)) return setStatus(`${p} is composite. The pinned criterion is stated for primes p ≥ 43.`, true);
-  let B = 2; while (D(B) < p) B += 1;
-  const ceiling = maxBand(B);
-  const requested = sInput.value.trim() === "" ? ceiling : Number(sInput.value);
-  if (!Number.isInteger(requested) || requested < 0 || requested > ceiling) return setStatus(B < 16 ? `For this p, only s = 0 (the floor cap Bp) is supported because B < 16.` : `For this p, choose an integer s from 0 through ${ceiling}; the theorem requires (s+1)² ≤ B.`, true);
-  const cap = (B + requested) * p;
-  const diff = D(B) - p;
-  let found = null;
-  for (let t = 0; t <= requested; t += 1) if (diff === 4 * t * (t + 1)) {
-    const a = B - t - 1; const b = B + t;
-    found = { t, x: a * b, y: a * p, z: b * p };
+  if (!Number.isInteger(p) || p < 43 || p > 1000000) {
+    return showStatus("Enter a whole number from 43 through 1,000,000.", true);
   }
-  const share = `${location.origin}${location.pathname}?prime=${p}&s=${requested}#prime-envelope-checker`;
+  if (!isPrime(p)) return showStatus(`${p} is composite. Choose a prime to use this test.`, true);
+
+  let base = 2;
+  while (upperPolynomial(base) < p) base += 1;
+  const maxSlack = base < 16 ? 0 : Math.floor(Math.sqrt(base)) - 1;
+  const slack = slackInput.value === "" ? maxSlack : Number(slackInput.value);
+  if (slackInput.validity.badInput || !Number.isInteger(slack) || slack < 0 || slack > maxSlack) {
+    const hint = base < 16
+      ? `Here B = ${base}, below 16. Only the lower bound itself (s = 0) can be tested.`
+      : `Choose a whole number from 0 through ${maxSlack} so that (s + 1)² ≤ ${base}.`;
+    return showStatus(hint, true);
+  }
+
+  const cap = (base + slack) * p;
+  const difference = upperPolynomial(base) - p;
+  const t = Math.floor((Math.sqrt(1 + difference) - 1) / 2);
+  const found = t <= slack && 4 * t * (t + 1) === difference;
   const heading = document.createElement("h4");
-  heading.textContent = found ? `Found the unique triple with z ≤ ${cap.toLocaleString()}` : `No triple has z ≤ ${cap.toLocaleString()}`;
-  result.append(heading);
-  const copy = document.createElement("p");
-  copy.textContent = found
-    ? `B = ${B}; t = ${found.t}; 4/${p} = 1/${found.x} + 1/${found.y} + 1/${found.z}, with z = ${found.z.toLocaleString()}.`
-    : `B = ${B}; D(B) − p = ${diff}. The tested offsets require D(B) − p = 4t(t+1) for some 0 ≤ t ≤ ${requested}; this cap was excluded, but a larger denominator may still work.`;
-  result.append(copy);
-  const link = document.createElement("a"); link.href = share; link.textContent = "Copyable reproducible link"; link.className = "envelope-link"; result.append(link);
-  setStatus(`Checked prime ${p}; numeric cap is z ≤ ${cap.toLocaleString()}.`);
-  const query = new URLSearchParams(location.search); if (query.get("prime") !== String(p) || query.get("s") !== String(requested)) history.replaceState(null, "", share);
+  const detail = document.createElement("p");
+  if (found) {
+    const a = base - t - 1;
+    const b = base + t;
+    heading.textContent = `Exactly one triple has z ≤ ${cap.toLocaleString()}.`;
+    detail.textContent = `4/${p} = 1/${a * b} + 1/${a * p} + 1/${b * p}. Its largest denominator is ${(b * p).toLocaleString()} (t = ${t}).`;
+  } else {
+    heading.textContent = `No triple has z ≤ ${cap.toLocaleString()}.`;
+    detail.textContent = `The difference D(B) − p is ${difference}. None of the allowed offsets 4t(t + 1) equals it for t from 0 through ${slack}. A larger denominator may still work.`;
+  }
+
+  const url = new URL(location.pathname, location.origin);
+  url.searchParams.set("prime", p);
+  url.searchParams.set("s", slack);
+  url.hash = "prime-envelope-checker";
+  const link = document.createElement("a");
+  link.href = url.href;
+  link.className = "envelope-link";
+  link.textContent = "Link to this calculation";
+  result.append(heading, detail, link);
+  showStatus(`For p = ${p}, B = ${base} and s = ${slack}. The cap is ${cap.toLocaleString()}.`);
+  history.replaceState(null, "", url);
 }
-document.getElementById("envelope-check").addEventListener("click", checkPrime);
-for (const field of [primeInput, sInput]) field.addEventListener("input", () => { result.replaceChildren(); setStatus("Inputs changed; check again to refresh the result."); });
+
+function clearCalculation() {
+  result.replaceChildren();
+  showStatus("Check this prime to see the result for these inputs.");
+  const url = new URL(location.href);
+  if (url.searchParams.has("prime") || url.searchParams.has("s")) {
+    url.searchParams.delete("prime");
+    url.searchParams.delete("s");
+    history.replaceState(null, "", url);
+  }
+}
+
+document.getElementById("envelope-form").addEventListener("submit", event => {
+  event.preventDefault();
+  checkPrime();
+});
+primeInput.addEventListener("input", clearCalculation);
+slackInput.addEventListener("input", clearCalculation);
+
 const params = new URLSearchParams(location.search);
-if (params.has("prime")) { primeInput.value = params.get("prime"); if (params.has("s")) sInput.value = params.get("s"); checkPrime(); }
+if (params.has("prime")) {
+  primeInput.value = params.get("prime");
+  slackInput.value = params.get("s") ?? "";
+  if (params.has("s") && params.get("s") !== "" && slackInput.value === "") {
+    showStatus("Enter a whole number for the optional width s.", true);
+  } else {
+    checkPrime();
+  }
+}
