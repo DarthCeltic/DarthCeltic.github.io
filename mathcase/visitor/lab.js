@@ -248,25 +248,51 @@ function partitionRender(data, evaluation, receiptVerified = false) {
     partitionResult.append(pre);
   }
 }
-async function runPartition(data, receiptVerified = false) {
-  const generation = partitionGeneration;
-  const evaluation = partitionEvaluate(data);
-  const canonical = partitionCanonical(data);
-  partition.result = { schema_version: "mathcase-visitor-partition-receipt-v1", created_at_utc: new Date().toISOString(), predicate: "weak-schur-distinct-addends-v1", data, result: evaluation, input_sha256: await partitionDigest(canonical) };
-  if (generation !== partitionGeneration) return;
-  partitionRender(data, evaluation, receiptVerified);
-  partitionExport.disabled = false;
-  partitionMessage(evaluation.violation_count ? "Checked locally. The listed violations are counterexamples for this supplied coloring." : "Checked locally. This finite coloring has no listed violations for the selected bound.");
-}
-document.getElementById("partition-example").addEventListener("click", () => {
+function clearPartitionResult(message, error = false) {
   partitionGeneration += 1;
-  partitionN.value = "12"; partitionColors.value = "3"; partitionData.value = "1,2,3,1,2,3,1,2,3,1,2,3"; partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage("Example loaded. Choose Check partition when ready.");
+  partition.result = null;
+  partitionExport.disabled = true;
+  partitionResult.replaceChildren();
+  partitionMessage(message, error);
+  return partitionGeneration;
+}
+
+function publishPartition(data, evaluation, digest, imported) {
+  partition.result = {
+    schema_version: "mathcase-visitor-partition-receipt-v1",
+    created_at_utc: new Date().toISOString(),
+    predicate: "weak-schur-distinct-addends-v1",
+    data,
+    result: evaluation,
+    input_sha256: digest
+  };
+  partitionRender(data, evaluation, imported);
+  partitionExport.disabled = false;
+  partitionMessage(imported ? "Receipt imported, hash-verified, and recomputed locally." : "Coloring checked locally.");
+}
+
+document.getElementById("partition-example").addEventListener("click", () => {
+  partitionN.value = "12";
+  partitionColors.value = "3";
+  partitionData.value = "1,2,3,1,2,3,1,2,3,1,2,3";
+  clearPartitionResult("Example loaded. Choose Check partition when ready.");
 });
+
 document.getElementById("partition-check").addEventListener("click", async () => {
-  const generation = ++partitionGeneration;
-  try { await runPartition(partitionRead()); } catch (error) { partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage(error.message, true); }
+  const generation = clearPartitionResult("Checking this coloring…");
+  try {
+    const data = partitionRead();
+    const evaluation = partitionEvaluate(data);
+    const digest = await partitionDigest(partitionCanonical(data));
+    if (generation === partitionGeneration) publishPartition(data, evaluation, digest, false);
+  } catch (error) {
+    if (generation === partitionGeneration) clearPartitionResult(error.message, true);
+  }
 });
-for (const field of [partitionN, partitionColors, partitionData]) field.addEventListener("input", () => { partitionGeneration += 1; partition.result = null; partitionExport.disabled = true; });
+
+for (const field of [partitionN, partitionColors, partitionData]) {
+  field.addEventListener("input", () => clearPartitionResult("Input changed. Check this coloring to see its result."));
+}
 partitionExport.addEventListener("click", () => {
   if (!partition.result) return;
   const blob = new Blob([JSON.stringify(partition.result, null, 2) + "\n"], { type: "application/json" });
@@ -275,8 +301,10 @@ partitionExport.addEventListener("click", () => {
 });
 document.getElementById("partition-import").addEventListener("click", () => partitionFile.click());
 partitionFile.addEventListener("change", async () => {
-  const generation = ++partitionGeneration;
-  const file = partitionFile.files?.[0]; partitionFile.value = ""; if (!file) return;
+  const file = partitionFile.files?.[0];
+  partitionFile.value = "";
+  if (!file) return;
+  const generation = clearPartitionResult("Checking the receipt…");
   try {
     if (file.size > 1024 * 1024) throw new Error("Receipt is limited to 1 MiB.");
     const receipt = JSON.parse(await file.text());
@@ -285,12 +313,11 @@ partitionFile.addEventListener("change", async () => {
     const digest = await partitionDigest(canonical);
     if (generation !== partitionGeneration) return;
     if (typeof receipt.input_sha256 !== "string" || receipt.input_sha256 !== digest) throw new Error("Receipt content hash does not match its data (it may have been edited or corrupted).");
-    if (generation !== partitionGeneration) return;
     const evaluation = partitionEvaluate(data);
     if (JSON.stringify(evaluation) !== JSON.stringify(receipt.result)) throw new Error("Receipt result does not match recomputation; it may have been edited.");
-    if (generation !== partitionGeneration) return;
     partitionN.value = String(data.n); partitionColors.value = String(data.color_count); partitionData.value = data.colors.join(", ");
-    await runPartition(data, true);
-    partitionMessage("Receipt imported, hash-verified, and recomputed locally.");
-  } catch (error) { if (generation !== partitionGeneration) return; partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage(error.message, true); }
+    publishPartition(data, evaluation, digest, true);
+  } catch (error) {
+    if (generation === partitionGeneration) clearPartitionResult(error.message, true);
+  }
 });
