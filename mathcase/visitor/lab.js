@@ -203,6 +203,7 @@ const partitionStatus = document.getElementById("partition-status");
 const partitionResult = document.getElementById("partition-result");
 const partitionExport = document.getElementById("partition-export");
 const partitionFile = document.getElementById("partition-file");
+let partitionGeneration = 0;
 
 function partitionMessage(message, error = false) {
   partitionStatus.textContent = message;
@@ -224,11 +225,13 @@ function partitionRead() {
 }
 function partitionEvaluate(data) {
   const violations = [];
+  let checkedCount = 0;
   for (let a = 1; a <= data.n; a += 1) for (let b = a + 1; b <= data.n - a; b += 1) {
+    checkedCount += 1;
     const sum = a + b;
     if (data.colors[a - 1] === data.colors[b - 1] && data.colors[a - 1] === data.colors[sum - 1]) violations.push({ a, b, sum, color: data.colors[a - 1] });
   }
-  return { violation_count: violations.length, violations };
+  return { checked_count: checkedCount, violation_count: violations.length, violations };
 }
 async function partitionDigest(value) {
   const bytes = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)));
@@ -238,7 +241,7 @@ function partitionCanonical(data) { return JSON.stringify({ predicate: "weak-sch
 function partitionRender(data, evaluation, receiptVerified = false) {
   partitionResult.replaceChildren();
   text(partitionResult, "h3", evaluation.violation_count ? `Not a valid partition: ${evaluation.violation_count} violation${evaluation.violation_count === 1 ? "" : "s"}` : "No violations found for this bound");
-  text(partitionResult, "p", `Checked ${data.n} positions and ${evaluation.violation_count ? "listed" : "enumerated"} all admissible triples (a < b, a + b ≤ n).${receiptVerified ? " Receipt hash verified and predicate recomputed." : ""}`);
+  text(partitionResult, "p", `Checked ${data.n} positions and ${evaluation.checked_count} admissible triples (a < b, a + b ≤ n); conflicts: ${evaluation.violation_count}.${evaluation.violations.length > 500 ? " The full conflict list is in the exported JSON receipt." : ""}${receiptVerified ? " Receipt hash verified and predicate recomputed." : ""}`);
   if (evaluation.violations.length) {
     const pre = document.createElement("pre");
     pre.textContent = evaluation.violations.slice(0, 500).map((item) => `(${item.a}, ${item.b}, ${item.sum}) all color ${item.color}`).join("\n") + (evaluation.violations.length > 500 ? "\n…additional violations omitted from the display" : "");
@@ -246,19 +249,24 @@ function partitionRender(data, evaluation, receiptVerified = false) {
   }
 }
 async function runPartition(data, receiptVerified = false) {
+  const generation = partitionGeneration;
   const evaluation = partitionEvaluate(data);
   const canonical = partitionCanonical(data);
   partition.result = { schema_version: "mathcase-visitor-partition-receipt-v1", created_at_utc: new Date().toISOString(), predicate: "weak-schur-distinct-addends-v1", data, result: evaluation, input_sha256: await partitionDigest(canonical) };
+  if (generation !== partitionGeneration) return;
   partitionRender(data, evaluation, receiptVerified);
   partitionExport.disabled = false;
   partitionMessage(evaluation.violation_count ? "Checked locally. The listed violations are counterexamples for this supplied coloring." : "Checked locally. This finite coloring has no listed violations for the selected bound.");
 }
 document.getElementById("partition-example").addEventListener("click", () => {
+  partitionGeneration += 1;
   partitionN.value = "12"; partitionColors.value = "3"; partitionData.value = "1,2,3,1,2,3,1,2,3,1,2,3"; partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage("Example loaded. Choose Check partition when ready.");
 });
 document.getElementById("partition-check").addEventListener("click", async () => {
+  const generation = ++partitionGeneration;
   try { await runPartition(partitionRead()); } catch (error) { partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage(error.message, true); }
 });
+for (const field of [partitionN, partitionColors, partitionData]) field.addEventListener("input", () => { partitionGeneration += 1; partition.result = null; partitionExport.disabled = true; });
 partitionExport.addEventListener("click", () => {
   if (!partition.result) return;
   const blob = new Blob([JSON.stringify(partition.result, null, 2) + "\n"], { type: "application/json" });
@@ -267,6 +275,7 @@ partitionExport.addEventListener("click", () => {
 });
 document.getElementById("partition-import").addEventListener("click", () => partitionFile.click());
 partitionFile.addEventListener("change", async () => {
+  const generation = ++partitionGeneration;
   const file = partitionFile.files?.[0]; partitionFile.value = ""; if (!file) return;
   try {
     if (file.size > 1024 * 1024) throw new Error("Receipt is limited to 1 MiB.");
