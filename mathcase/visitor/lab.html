@@ -36,6 +36,20 @@
   <main class="tool-page">
     <h1>Make a report from saved runs</h1>
     <p class="tool-lede">See which proof attempts reported a pass or a failure, along with their recorded time and cost. Your files stay in this browser.</p>
+    <section class="tool-card" aria-labelledby="partition-title">
+      <h2 id="partition-title">Check your own weak-Schur partition</h2>
+      <p>Choose a finite bound <em>n</em>, then enter one color for each integer 1 through <em>n</em>. The checker tests the exact predicate “no monochromatic <em>a &lt; b</em> with <em>a + b ≤ n</em>,” excluding equal addends. It runs locally; a pass is only a pass for the data and bound you supplied.</p>
+      <div class="partition-fields">
+        <label for="partition-n">Bound <em>n</em> (1–208)<input id="partition-n" type="number" min="1" max="208" value="12" inputmode="numeric"></label>
+        <label for="partition-colors">Number of colors (1–12)<input id="partition-colors" type="number" min="1" max="12" value="3" inputmode="numeric"></label>
+      </div>
+      <label for="partition-data">Colors for 1, 2, …, n (comma or whitespace separated)</label>
+      <textarea id="partition-data" rows="3" spellcheck="false" placeholder="Example: 1, 2, 3, 1, 2, 3, 1, 2, 3, 1, 2, 3"></textarea>
+      <div class="partition-actions"><button class="tool-action" type="button" id="partition-example">Load example</button><button class="tool-action" type="button" id="partition-check">Check partition</button><button class="tool-action" type="button" id="partition-export" disabled>Export receipt</button><button class="tool-action" type="button" id="partition-import">Import and recheck receipt</button><input id="partition-file" type="file" accept=".json,application/json" hidden></div>
+      <p id="partition-status" role="status" aria-live="polite">Enter exactly n color labels, then check.</p>
+      <div id="partition-result" class="partition-result" aria-live="polite"></div>
+      <details><summary>What this does and does not establish</summary><p>This is an exhaustive browser enumeration of the finite triples for your selected bound. It does not search for a better coloring, prove a general theorem, run Lean, or identify who supplied the data. Exported receipts are unsigned JSON artifacts: import verifies their content hash and recomputes the predicate before displaying the result.</p></details>
+    </section>
     <section class="tool-card">
       <h2>Choose your run summaries</h2>
       <div class="upload-row"><label for="run-files">Run summaries (.json, choose one or more)</label><input id="run-files" type="file" accept=".json,application/json" multiple></div>

@@ -32,6 +32,16 @@
 .attempt-card h3 { margin: 0 0 6px; }
 .attempt-card pre { max-height: 18rem; overflow: auto; }
 .warning { color: #72351f; font-weight: 650; }
+.partition-fields { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 15px 0; }
+.partition-fields label { display: grid; gap: 6px; color: var(--ink); font-weight: 700; }
+.partition-fields input, #partition-data { width: 100%; padding: 10px; border: 1px solid var(--line); border-radius: 6px; background: #fffdf8; color: var(--ink); font: inherit; }
+#partition-data { min-height: 74px; resize: vertical; }
+.partition-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.partition-result { margin-top: 14px; }
+.partition-result:empty { display: none; }
+.partition-result h3 { margin: 0 0 7px; color: var(--ink); font: 600 1.15rem Georgia, serif; }
+.partition-result p { margin: 5px 0; color: var(--muted); line-height: 1.5; }
+.partition-result pre { max-height: 220px; overflow: auto; margin: 9px 0 0; padding: 9px; border-radius: 6px; background: #18242b; color: #f2e8d8; font: .8rem/1.5 ui-monospace, Consolas, monospace; white-space: pre-wrap; }
 .tool-footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: .9rem; }
 .tool-lede + .tool-card { margin-top: 24px; }
 .tool-card + .tool-card { margin-top: 14px; }
@@ -52,4 +62,7 @@
   .tool-grid { grid-template-columns: minmax(0, 1fr); }
   .tool-card { padding: 16px; }
   .report-table { display: block; overflow-x: auto; }
+  .partition-fields { grid-template-columns: 1fr; }
+  .partition-actions { display: grid; grid-template-columns: 1fr 1fr; }
+  .partition-actions .tool-action { width: 100%; }
 }

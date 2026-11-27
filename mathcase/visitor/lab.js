@@ -193,3 +193,91 @@ document.getElementById("clear-report").addEventListener("click", () => {
   statusNode.classList.remove("warning");
   draw();
 });
+
+// Independent visitor checker: deliberately separate from provider-run reporting above.
+const partition = { result: null };
+const partitionN = document.getElementById("partition-n");
+const partitionColors = document.getElementById("partition-colors");
+const partitionData = document.getElementById("partition-data");
+const partitionStatus = document.getElementById("partition-status");
+const partitionResult = document.getElementById("partition-result");
+const partitionExport = document.getElementById("partition-export");
+const partitionFile = document.getElementById("partition-file");
+
+function partitionMessage(message, error = false) {
+  partitionStatus.textContent = message;
+  partitionStatus.classList.toggle("warning", error);
+}
+function partitionValidateData(data) {
+  if (!data || typeof data !== "object" || !Number.isInteger(data.n) || data.n < 1 || data.n > 208 || !Number.isInteger(data.color_count) || data.color_count < 1 || data.color_count > 12 || !Array.isArray(data.colors) || data.colors.length !== data.n || data.colors.some((value) => !Number.isInteger(value) || value < 1 || value > data.color_count)) throw new Error("Receipt data is outside the supported bound, color, or length limits.");
+  return data;
+}
+function partitionRead() {
+  const n = Number(partitionN.value);
+  const colorCount = Number(partitionColors.value);
+  const values = partitionData.value.trim().split(/[\s,]+/).filter(Boolean).map(Number);
+  if (!Number.isInteger(n) || n < 1 || n > 208) throw new Error("Bound n must be a whole number from 1 through 208.");
+  if (!Number.isInteger(colorCount) || colorCount < 1 || colorCount > 12) throw new Error("Number of colors must be a whole number from 1 through 12.");
+  if (values.length !== n) throw new Error(`Enter exactly ${n} color labels; found ${values.length}.`);
+  if (values.some((value) => !Number.isInteger(value) || value < 1 || value > colorCount)) throw new Error(`Every color must be a whole number from 1 through ${colorCount}.`);
+  return partitionValidateData({ n, color_count: colorCount, colors: values });
+}
+function partitionEvaluate(data) {
+  const violations = [];
+  for (let a = 1; a <= data.n; a += 1) for (let b = a + 1; b <= data.n - a; b += 1) {
+    const sum = a + b;
+    if (data.colors[a - 1] === data.colors[b - 1] && data.colors[a - 1] === data.colors[sum - 1]) violations.push({ a, b, sum, color: data.colors[a - 1] });
+  }
+  return { violation_count: violations.length, violations };
+}
+async function partitionDigest(value) {
+  const bytes = new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(value)));
+  return Array.from(bytes, (byte) => byte.toString(16).padStart(2, "0")).join("");
+}
+function partitionCanonical(data) { return JSON.stringify({ predicate: "weak-schur-distinct-addends-v1", n: data.n, color_count: data.color_count, colors: data.colors }); }
+function partitionRender(data, evaluation, receiptVerified = false) {
+  partitionResult.replaceChildren();
+  text(partitionResult, "h3", evaluation.violation_count ? `Not a valid partition: ${evaluation.violation_count} violation${evaluation.violation_count === 1 ? "" : "s"}` : "No violations found for this bound");
+  text(partitionResult, "p", `Checked ${data.n} positions and ${evaluation.violation_count ? "listed" : "enumerated"} all admissible triples (a < b, a + b ≤ n).${receiptVerified ? " Receipt hash verified and predicate recomputed." : ""}`);
+  if (evaluation.violations.length) {
+    const pre = document.createElement("pre");
+    pre.textContent = evaluation.violations.slice(0, 500).map((item) => `(${item.a}, ${item.b}, ${item.sum}) all color ${item.color}`).join("\n") + (evaluation.violations.length > 500 ? "\n…additional violations omitted from the display" : "");
+    partitionResult.append(pre);
+  }
+}
+async function runPartition(data, receiptVerified = false) {
+  const evaluation = partitionEvaluate(data);
+  const canonical = partitionCanonical(data);
+  partition.result = { schema_version: "mathcase-visitor-partition-receipt-v1", created_at_utc: new Date().toISOString(), predicate: "weak-schur-distinct-addends-v1", data, result: evaluation, input_sha256: await partitionDigest(canonical) };
+  partitionRender(data, evaluation, receiptVerified);
+  partitionExport.disabled = false;
+  partitionMessage(evaluation.violation_count ? "Checked locally. The listed violations are counterexamples for this supplied coloring." : "Checked locally. This finite coloring has no listed violations for the selected bound.");
+}
+document.getElementById("partition-example").addEventListener("click", () => {
+  partitionN.value = "12"; partitionColors.value = "3"; partitionData.value = "1,2,3,1,2,3,1,2,3,1,2,3"; partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage("Example loaded. Choose Check partition when ready.");
+});
+document.getElementById("partition-check").addEventListener("click", async () => {
+  try { await runPartition(partitionRead()); } catch (error) { partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage(error.message, true); }
+});
+partitionExport.addEventListener("click", () => {
+  if (!partition.result) return;
+  const blob = new Blob([JSON.stringify(partition.result, null, 2) + "\n"], { type: "application/json" });
+  const url = URL.createObjectURL(blob); const link = document.createElement("a"); link.href = url; link.download = "mathcase-partition-receipt.json"; link.click(); setTimeout(() => URL.revokeObjectURL(url), 60000);
+  partitionMessage("Receipt downloaded. Keep it with the coloring data; it is unsigned and local.");
+});
+document.getElementById("partition-import").addEventListener("click", () => partitionFile.click());
+partitionFile.addEventListener("change", async () => {
+  const file = partitionFile.files?.[0]; partitionFile.value = ""; if (!file) return;
+  try {
+    if (file.size > 1024 * 1024) throw new Error("Receipt is limited to 1 MiB.");
+    const receipt = JSON.parse(await file.text());
+    if (receipt?.schema_version !== "mathcase-visitor-partition-receipt-v1" || receipt?.predicate !== "weak-schur-distinct-addends-v1") throw new Error("This is not a MathCase partition receipt.");
+    const data = partitionValidateData(receipt.data); const canonical = partitionCanonical(data);
+    if (typeof receipt.input_sha256 !== "string" || receipt.input_sha256 !== await partitionDigest(canonical)) throw new Error("Receipt content hash does not match its data (it may have been edited or corrupted).");
+    const evaluation = partitionEvaluate(data);
+    if (JSON.stringify(evaluation) !== JSON.stringify(receipt.result)) throw new Error("Receipt result does not match recomputation; it may have been edited.");
+    partitionN.value = String(data.n); partitionColors.value = String(data.color_count); partitionData.value = data.colors.join(", ");
+    await runPartition(data, true);
+    partitionMessage("Receipt imported, hash-verified, and recomputed locally.");
+  } catch (error) { partition.result = null; partitionExport.disabled = true; partitionResult.replaceChildren(); partitionMessage(error.message, true); }
+});
