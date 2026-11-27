@@ -21,7 +21,7 @@ function checkPrime() {
   let B = 2; while (D(B) < p) B += 1;
   const ceiling = maxBand(B);
   const requested = sInput.value.trim() === "" ? ceiling : Number(sInput.value);
-  if (!Number.isInteger(requested) || requested < 0 || requested > ceiling) return setStatus(`For this p, choose an integer s from 0 through ${ceiling}; the theorem requires (s+1)² ≤ B.`, true);
+  if (!Number.isInteger(requested) || requested < 0 || requested > ceiling) return setStatus(B < 16 ? `For this p, only s = 0 (the floor cap Bp) is supported because B < 16.` : `For this p, choose an integer s from 0 through ${ceiling}; the theorem requires (s+1)² ≤ B.`, true);
   const cap = (B + requested) * p;
   const diff = D(B) - p;
   let found = null;
@@ -31,7 +31,7 @@ function checkPrime() {
   }
   const share = `${location.origin}${location.pathname}?prime=${p}&s=${requested}#prime-envelope-checker`;
   const heading = document.createElement("h4");
-  heading.textContent = found ? `Found the unique triple at or below z ≤ ${cap.toLocaleString()}` : `No triple found at or below z ≤ ${cap.toLocaleString()}`;
+  heading.textContent = found ? `Found the unique triple with z ≤ ${cap.toLocaleString()}` : `No triple has z ≤ ${cap.toLocaleString()}`;
   result.append(heading);
   const copy = document.createElement("p");
   copy.textContent = found
@@ -43,5 +43,6 @@ function checkPrime() {
   const query = new URLSearchParams(location.search); if (query.get("prime") !== String(p) || query.get("s") !== String(requested)) history.replaceState(null, "", share);
 }
 document.getElementById("envelope-check").addEventListener("click", checkPrime);
+for (const field of [primeInput, sInput]) field.addEventListener("input", () => { result.replaceChildren(); setStatus("Inputs changed; check again to refresh the result."); });
 const params = new URLSearchParams(location.search);
 if (params.has("prime")) { primeInput.value = params.get("prime"); if (params.has("s")) sInput.value = params.get("s"); checkPrime(); }
