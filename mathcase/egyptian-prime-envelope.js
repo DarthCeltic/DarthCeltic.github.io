@@ -33,17 +33,19 @@ function checkPrime() {
   let base = 2;
   while (upperPolynomial(base) < p) base += 1;
   const wide = windowInput.value === "wide";
+  const centered = windowInput.value === "centered";
   let maxSlack = base < 16 ? 0 : Math.floor(Math.sqrt(base)) - 1;
-  if (wide && base >= 16) {
+  const centeredBlank = centered && slackInput.value === "";
+  if ((wide || centered) && base >= 16) {
     maxSlack = 0;
-    while (4 * (base + maxSlack + 1) - 1 < p && upperPolynomial(base + maxSlack + 1) < 2 * p && (maxSlack + 1) * (maxSlack - 2) < 4 * base - 1) maxSlack += 1;
+    while (4 * (base + maxSlack + 1) - 1 < p && upperPolynomial(base + maxSlack + 1) < 2 * p && (!wide || (maxSlack + 1) * (maxSlack - 2) < 4 * base - 1) && (!centeredBlank || (maxSlack + 1) * (maxSlack - 6) < 8 * base - 2)) maxSlack += 1;
   }
   const slack = slackInput.value === "" ? maxSlack : Number(slackInput.value);
-  const slackInvalid = slackInput.validity.badInput || !Number.isInteger(slack) || slack < 0 || (!wide && slack > maxSlack);
+  const slackInvalid = slackInput.validity.badInput || !Number.isInteger(slack) || slack < 0 || (!wide && !centered && slack > maxSlack);
   if (slackInvalid) {
     const hint = base < 16
       ? `Here B = ${base}, below 16. Only the lower bound itself (s = 0) can be tested.`
-      : `Choose a whole number from 0 through ${maxSlack} so that (s + 1)² ≤ ${base}.`;
+      : (wide || centered ? "Choose a nonnegative integer s; this theorem's size conditions will be checked for it." : `Choose a whole number from 0 through ${maxSlack} so that (s + 1)² ≤ ${base}.`);
     return showStatus(hint, true);
   }
   if (wide) {
@@ -55,6 +57,38 @@ function checkPrime() {
     ];
     const failed = wideChecks.find(([ok]) => !ok);
     if (failed) return showStatus(`The wider window is not justified for this input: ${failed[1]} fails at B = ${base}, s = ${slack}.`, true);
+  }
+  if (centered) {
+    if (base < 16) return showStatus(`The centered window is unavailable because B = ${base}, below 16. Choose the original window with s = 0.`, true);
+    const centeredChecks = [
+      [4 * (base + slack) - 1 < p, `4(B+s) − 1 < p`],
+      [upperPolynomial(base + slack) < 2 * p, `D(B+s) < 2p`]
+    ];
+    const failed = centeredChecks.find(([ok]) => !ok);
+    if (failed) return showStatus(`The centered window is not justified for this input: ${failed[1]} fails at B = ${base}, s = ${slack}.`, true);
+    const hits = [];
+    for (let c = base; c <= base + slack; c += 1) {
+      const differenceAtC = upperPolynomial(c) - p;
+      const oddSquare = 1 + differenceAtC;
+      if (oddSquare < 0) continue;
+      const root = Math.floor(Math.sqrt(oddSquare));
+      if (root * root !== oddSquare || root % 2 !== 1) continue;
+      const r = (root - 1) / 2;
+      const a = c - r - 1; const b = c + r;
+      if (r <= base + slack - c && a >= 1 && a < b) hits.push({ c, r, x: a * b, y: a * p, z: b * p });
+    }
+    const cap = (base + slack) * p;
+    const heading = document.createElement("h4");
+    heading.textContent = hits.length ? `${hits.length} triple${hits.length === 1 ? "" : "s"} with z ≤ ${cap.toLocaleString()}` : `No triple has z ≤ ${cap.toLocaleString()}`;
+    const detail = document.createElement("p");
+    const uniqueGuaranteed = slack * (slack - 7) < 8 * base - 2;
+    detail.textContent = hits.length
+      ? hits.map(hit => `4/${p} = 1/${hit.x} + 1/${hit.y} + 1/${hit.z} (c = ${hit.c}, r = ${hit.r})`).join("\n") + (uniqueGuaranteed ? "\nUniqueness is guaranteed by the centered bound." : "\nThe centered size conditions hold, but the uniqueness guarantee is inapplicable for this s.")
+      : (uniqueGuaranteed ? "The exact centered enumeration found no hit; uniqueness is guaranteed by the centered bound." : "The exact centered enumeration found no hit; the uniqueness guarantee is inapplicable for this s.");
+    detail.style.whiteSpace = "pre-line";
+    const url = new URL(location.pathname, location.origin); url.searchParams.set("prime", p); url.searchParams.set("s", slack); url.searchParams.set("window", "centered"); url.hash = "prime-envelope-checker";
+    const link = document.createElement("a"); link.href = url.href; link.className = "envelope-link"; link.textContent = "Link to this calculation";
+    result.append(heading, detail, link); showStatus(`For p = ${p}, B = ${base} and s = ${slack}. The centered cap is ${cap.toLocaleString()}.`); history.replaceState(null, "", url); return;
   }
 
   const cap = (base + slack) * p;
@@ -79,7 +113,9 @@ function checkPrime() {
     detail.textContent = `4/${p} = 1/${a * b} + 1/${a * p} + 1/${b * p}. Its largest denominator is ${(b * p).toLocaleString()} (t = ${triple.t}; ${wide ? "wider criterion" : "original criterion"}).`;
   } else {
     heading.textContent = `No triple has z ≤ ${cap.toLocaleString()}.`;
-    detail.textContent = `The difference D(B) − p is ${difference}. None of the allowed offsets 4t(t + 1) equals it for t from 0 through ${slack}. A larger denominator may still work.`;
+    detail.textContent = wide
+      ? `The two allowed diagonal tests (4t(t + 1) and 4t(t − 1) − 8B + 2) found no exact offset through t = ${slack}. A larger denominator may still work.`
+      : `The difference D(B) − p is ${difference}. None of the allowed offsets 4t(t + 1) equals it for t from 0 through ${slack}. A larger denominator may still work.`;
   }
 
   const url = new URL(location.pathname, location.origin);
@@ -120,7 +156,7 @@ const params = new URLSearchParams(location.search);
 if (params.has("prime")) {
   primeInput.value = params.get("prime");
   slackInput.value = params.get("s") ?? "";
-  windowInput.value = params.get("window") === "wide" ? "wide" : "original";
+  windowInput.value = params.get("window") === "centered" ? "centered" : (params.get("window") === "wide" ? "wide" : "original");
   if (params.has("s") && params.get("s") !== "" && slackInput.value === "") {
     showStatus("Enter a whole number for the optional width s.", true);
   } else {
