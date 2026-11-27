@@ -59,15 +59,21 @@
           <div class="prime-envelope-checker" id="prime-envelope-checker">
             <h4>Try your own prime</h4>
             <p>Choose a prime from 43 through 1,000,000. Leave s blank to check the widest range the proof covers, or enter a smaller width.</p>
+            <p>Examples: the original window finds <code>(228, 10572, 16739)</code> for p = 881; the wider criterion finds <code>(420, 24555, 45836)</code> for p = 1637 with s = 7. For p = 887 with s = 7, its theorem-side upper condition fails and the checker stops without claiming a result.</p>
             <form class="prime-envelope-fields" id="envelope-form" novalidate>
               <label for="envelope-prime">Prime p<input id="envelope-prime" type="number" min="43" max="1000000" value="881" inputmode="numeric"></label>
               <label for="envelope-s">Width s (optional)<input id="envelope-s" type="number" min="0" inputmode="numeric"></label>
+              <label for="envelope-window">Criterion<select id="envelope-window"><option value="original">Original window</option><option value="wide">Wider verified window</option></select></label>
               <button type="submit" id="envelope-check">Check this prime</button>
             </form>
             <p id="envelope-status" role="status" aria-live="polite"></p>
             <div id="envelope-result" class="prime-envelope-result" aria-live="polite"></div>
           </div>
         </article>
+        <article id="update-egyptian-prime-envelope-lean"><h3>November 27, 2026 · Lean checks the prime-envelope first band</h3><p>The pinned Lean development checks the general floor bound, the equality case, the exact near-minimum window, and uniqueness for the distinct-denominator 4/p triples. The broader prime-density statement remains outside Lean and is reported only as a separate numerical calculation. <a href="https://github.com/DarthCeltic/MathCase/tree/3fadbbb68c81d539c160475b842512836cae8138/research/number-theory/egyptian-fractions/prime-envelope-v1/lean">Read the pinned Lean source and replay entry</a>.</p></article>
+        <article id="update-egyptian-two-diagonal"><h3>November 27, 2026 · A sharp centered window can gain a second triple</h3><p>For the centered enumeration <code>a = c − r − 1</code>, <code>b = c + r</code>, the size caps remain necessary; uniqueness additionally requires <code>s(s − 7) &lt; 8B − 2</code>. At p = 25,121, B = 80: s = 28 gives only <code>(6,320, 1,984,559, 2,009,680)</code>, while s = 29 also admits <code>(6,322, 1,457,018, 2,738,189)</code>. The count changes because the second triple has b = 109 = B + 29, so it enters exactly at s = 29. <a href="https://github.com/DarthCeltic/MathCase/tree/f68a3f84330b0e4fb3a84319ff1ec08e6e35fe9e/research/number-theory/egyptian-fractions/two-diagonal-envelope-v1">Read the checked two-diagonal calculation and Lean files</a>.</p></article>
+        <article id="update-weak-schur-positive-anchors"><h3>November 27, 2026 · Any extension of Rowley’s coloring must change one of these 65 positions</h3><p>Fix the original colors on 65 specified members of Rowley’s first and third classes. Even if every other integer and 208 can take any color, no valid coloring remains. A checked refutation lets searches skip every assignment preserving all 65. <a href="https://github.com/DarthCeltic/MathCase/tree/b95753ec4607c38e5e5abe4b7cd21e69e7025c06/reproduction/weak-schur-positive-anchors-v1">Read the pinned checker and scope</a>.</p></article>
+        <article id="update-weak-schur-offseed"><h3>November 27, 2026 · Independent-seed Weak Schur near-miss campaign</h3><p>A greedy campaign started from 38 independent seeds and found no 208 witness; its best candidate still had four conflicts under the stated five-color predicate. This is a bounded search record, not an impossibility result or a proof that no coloring exists. <a href="https://github.com/DarthCeltic/MathCase/tree/3ee81d6b3d08bd607e89e0efcbeb6a29a44c3f06/research/frontier-2026-11/weak-schur-5/offseed-greedy-2026-11-27">Read the search receipt and limits</a>.</p></article>
         <article id="update-collatz-six-of-ten">
           <h3>November 27, 2026 · Replay the six-of-ten Collatz result</h3>
           <p>Take an integer n ≥ 3. If at most six of its first ten accelerated Collatz inputs are odd, an ordinary iterate drops below n by step 16. The public case launcher rebuilds the existing Lean proof and checks its receipt. <a href="https://github.com/DarthCeltic/MathCase/tree/790f5e3c68372beb691256d8511c1683a52bbd22/reproduction/collatz-six-of-ten-lean-v1">Run the six-of-ten proof</a> · <a href="collatz-windows/">Explore the related two-window results</a>.</p>
@@ -135,6 +141,6 @@
     <p class="back-home"><a href="index.html">← MathCase home</a><a href="work.html">Research results →</a><a href="https://github.com/DarthCeltic/MathCase">Source and evidence on GitHub ↗</a></p>
   </main>
   <footer class="site-footer shell"><span>MathCase · public results and evidence</span><nav aria-label="Footer"><a href="index.html">Home</a><a href="work.html">Research results</a><a href="subjects/">Research by subject</a><a href="timeline.html">Timeline</a><a href="https://github.com/DarthCeltic/MathCase">MathCase source</a></nav></footer>
-  <script defer src="egyptian-prime-envelope.js?v=20261127-replay"></script>
+  <script defer src="egyptian-prime-envelope.js?v=20261127-wide"></script>
 </body>
 </html>
