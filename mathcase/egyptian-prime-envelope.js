@@ -33,13 +33,14 @@ function checkPrime() {
   let base = 2;
   while (upperPolynomial(base) < p) base += 1;
   const wide = windowInput.value === "wide";
+  const centered = windowInput.value === "centered";
   let maxSlack = base < 16 ? 0 : Math.floor(Math.sqrt(base)) - 1;
   if (wide && base >= 16) {
     maxSlack = 0;
     while (4 * (base + maxSlack + 1) - 1 < p && upperPolynomial(base + maxSlack + 1) < 2 * p && (maxSlack + 1) * (maxSlack - 2) < 4 * base - 1) maxSlack += 1;
   }
   const slack = slackInput.value === "" ? maxSlack : Number(slackInput.value);
-  const slackInvalid = slackInput.validity.badInput || !Number.isInteger(slack) || slack < 0 || (!wide && slack > maxSlack);
+  const slackInvalid = slackInput.validity.badInput || !Number.isInteger(slack) || slack < 0 || (!wide && !centered && slack > maxSlack);
   if (slackInvalid) {
     const hint = base < 16
       ? `Here B = ${base}, below 16. Only the lower bound itself (s = 0) can be tested.`
@@ -55,6 +56,35 @@ function checkPrime() {
     ];
     const failed = wideChecks.find(([ok]) => !ok);
     if (failed) return showStatus(`The wider window is not justified for this input: ${failed[1]} fails at B = ${base}, s = ${slack}.`, true);
+  }
+  if (centered) {
+    if (base < 16) return showStatus(`The centered window is unavailable because B = ${base}, below 16. Choose the original window with s = 0.`, true);
+    const centeredChecks = [
+      [4 * (base + slack) - 1 < p, `4(B+s) − 1 < p`],
+      [upperPolynomial(base + slack) < 2 * p, `D(B+s) < 2p`]
+    ];
+    const failed = centeredChecks.find(([ok]) => !ok);
+    if (failed) return showStatus(`The centered window is not justified for this input: ${failed[1]} fails at B = ${base}, s = ${slack}.`, true);
+    const hits = [];
+    for (let c = base; c <= base + slack; c += 1) {
+      const differenceAtC = upperPolynomial(c) - p;
+      for (let r = 0; r <= Math.min(c - 2, base + slack - c); r += 1) {
+        if (differenceAtC !== 4 * r * (r + 1)) continue;
+        const a = c - r - 1; const b = c + r;
+        if (a >= 1 && a < b) hits.push({ c, r, x: a * b, y: a * p, z: b * p });
+      }
+    }
+    const cap = (base + slack) * p;
+    const heading = document.createElement("h4");
+    heading.textContent = hits.length ? `${hits.length} triple${hits.length === 1 ? "" : "s"} with z ≤ ${cap.toLocaleString()}` : `No triple has z ≤ ${cap.toLocaleString()}`;
+    const detail = document.createElement("p");
+    const uniqueGuaranteed = slack * (slack - 7) < 8 * base - 2;
+    detail.textContent = hits.length
+      ? hits.map(hit => `4/${p} = 1/${hit.x} + 1/${hit.y} + 1/${hit.z} (c = ${hit.c}, r = ${hit.r})`).join("; ") + (uniqueGuaranteed ? " Uniqueness is guaranteed by the centered bound." : " The centered size conditions hold, but the uniqueness guarantee is inapplicable for this s.")
+      : (uniqueGuaranteed ? "The exact centered enumeration found no hit; uniqueness is guaranteed by the centered bound." : "The exact centered enumeration found no hit; the uniqueness guarantee is inapplicable for this s.");
+    const url = new URL(location.pathname, location.origin); url.searchParams.set("prime", p); url.searchParams.set("s", slack); url.searchParams.set("window", "centered"); url.hash = "prime-envelope-checker";
+    const link = document.createElement("a"); link.href = url.href; link.className = "envelope-link"; link.textContent = "Link to this calculation";
+    result.append(heading, detail, link); showStatus(`For p = ${p}, B = ${base} and s = ${slack}. The centered cap is ${cap.toLocaleString()}.`); history.replaceState(null, "", url); return;
   }
 
   const cap = (base + slack) * p;
@@ -120,7 +150,7 @@ const params = new URLSearchParams(location.search);
 if (params.has("prime")) {
   primeInput.value = params.get("prime");
   slackInput.value = params.get("s") ?? "";
-  windowInput.value = params.get("window") === "wide" ? "wide" : "original";
+  windowInput.value = params.get("window") === "centered" ? "centered" : (params.get("window") === "wide" ? "wide" : "original");
   if (params.has("s") && params.get("s") !== "" && slackInput.value === "") {
     showStatus("Enter a whole number for the optional width s.", true);
   } else {
