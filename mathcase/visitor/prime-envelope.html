@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Try a bounded prime-denominator question from the MathCase proof library, in plain language and with a replayable receipt.">
+  <meta name="theme-color" content="#122b36">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; img-src 'self'; style-src 'self'; script-src 'self'; connect-src 'none'; object-src 'none'; frame-src https://live.lean-lang.org; base-uri 'none'; form-action 'none'">
+  <title>Prime denominators · MathCase</title>
+  <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
+  <link rel="stylesheet" href="workbench.css">
+  <link rel="stylesheet" href="prime-envelope-case.css">
+  <script defer src="prime-envelope-case.js"></script>
+</head>
+<body>
+  <a class="skip" href="#case-title">Skip to the case</a>
+  <header class="mast">
+    <div class="mast-inner">
+      <a href="../" class="brand" aria-label="MathCase home"><img src="../assets/mathcase-branding-kit/mathcase-icon-128.png" width="38" height="38" alt=""><span>Math<span>Case</span></span></a>
+      <span class="mast-label">A bounded case</span>
+      <nav class="tool-nav" aria-label="MathCase pages">
+        <a href="lesson.html">Try a lesson</a>
+        <a href="index.html">Your proof</a>
+        <a href="prime-envelope.html" aria-current="page">Prime denominators</a>
+        <a href="../cases.html">Math guide</a>
+        <details class="tool-nav-group">
+          <summary>For teachers</summary>
+          <div class="tool-nav-links">
+            <a href="teacher-guide.html">Read the worked answer</a>
+            <a href="classroom.html">Assignment files</a>
+          </div>
+        </details>
+        <details class="tool-nav-group">
+          <summary>More</summary>
+          <div class="tool-nav-links">
+            <a href="../results-index.html">Results and updates</a>
+            <a href="../knowledge-graph.html">Proof library</a>
+            <a href="../frontier.html">Frontier math</a>
+          </div>
+        </details>
+      </nav>
+      <a class="desk-link" href="../reader.html?scope=public#case/hero-prime-divisibility-r1">Saved Case Desk <span aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <main class="prime-desk" id="case-title">
+    <section class="prime-intro" aria-labelledby="prime-title">
+      <p class="prime-kicker">Number theory · your first bounded case</p>
+      <h1 id="prime-title">How close can a fraction get to its smallest possible largest denominator?</h1>
+      <p class="prime-lead">Write <strong>4/p</strong> as three different unit fractions, <strong>1/x + 1/y + 1/z</strong>. This case asks a smaller, precise question: for your prime <strong>p</strong>, can the largest denominator <strong>z</strong> fit below a stated cap?</p>
+      <div class="prime-next-action"><strong>Start here:</strong> try <button type="button" class="example-link" data-example="881">p = 881</button>, then compare it with <button type="button" class="example-link" data-example="883">p = 883</button>.</div>
+      <details class="prime-explain">
+        <summary>What MathCase is checking</summary>
+        <div class="prime-explain-grid">
+          <p><strong>The question.</strong> The denominators must be positive and strictly ordered: <code>0 &lt; x &lt; y &lt; z</code>. We test a cap chosen from the pinned theorem, not every possible denominator.</p>
+          <p><strong>The result.</strong> A green answer means the theorem's arithmetic criterion found the one allowed triple under this cap. A blue answer means the theorem proves there is no triple under this cap. A gray answer means the hypotheses do not justify a conclusion.</p>
+          <p><strong>What is formal.</strong> The general floor, offset classification, and uniqueness statements were checked once in the pinned Lean source. This page does local exact integer arithmetic for your input; it does not start a new Lean proof for each input.</p>
+        </div>
+      </details>
+    </section>
+
+    <section class="prime-workbench" aria-labelledby="workbench-title">
+      <div class="prime-card">
+        <div class="prime-card-head">
+          <div>
+            <p class="prime-kicker">Your calculation</p>
+            <h2 id="workbench-title">Choose a prime and a cap</h2>
+          </div>
+          <span class="draft-state" id="draft-state" role="status">Saved in this browser</span>
+        </div>
+        <form id="prime-form" novalidate>
+          <div class="prime-fields">
+            <label for="prime-input">Prime p <span class="field-help">43 to 1,000,000</span><input id="prime-input" type="number" min="43" max="1000000" step="1" value="881" inputmode="numeric"></label>
+            <label for="offset-input">Offset s <span class="field-help">a whole number</span><input id="offset-input" type="number" min="0" max="1000" step="1" value="3" inputmode="numeric"></label>
+          </div>
+          <p class="cap-note">The cap is <code>z ≤ (B + s)p</code>. MathCase computes <code>B</code> from your prime and shows every condition it used.</p>
+          <div class="example-row" aria-label="Worked examples">
+            <span>Worked inputs:</span>
+            <button type="button" class="small-example" data-example="881">881 · one triple</button>
+            <button type="button" class="small-example" data-example="883">883 · excluded under cap</button>
+            <button type="button" class="small-example" data-example="1283">1283 · new example</button>
+          </div>
+          <button class="primary" id="check-prime" type="submit">Check this case</button>
+        </form>
+        <div id="prime-result" class="prime-result" aria-live="polite" tabindex="-1"></div>
+        <div class="receipt-actions">
+          <button class="secondary" id="download-receipt" type="button" disabled>Save this result</button>
+          <button class="secondary" id="load-receipt" type="button">Load a result receipt</button>
+          <input id="receipt-file" type="file" accept=".json,application/json" hidden>
+        </div>
+        <p id="receipt-status" class="receipt-status" role="status" aria-live="polite"></p>
+      </div>
+      <aside class="prime-card prime-meaning" aria-labelledby="meaning-title">
+        <p class="prime-kicker">Read the answer</p>
+        <h2 id="meaning-title">What the labels mean</h2>
+        <dl>
+          <dt class="status-key status-witness">Checked witness under the cap</dt>
+          <dd>We found the exact three denominators and checked the fraction identity with integers.</dd>
+          <dt class="status-key status-exclusion">Proved exclusion under the cap</dt>
+          <dd>The pinned theorem says no allowed offset reaches this cap. A larger denominator may still work.</dd>
+          <dt class="status-key status-inconclusive">Inconclusive or out of scope</dt>
+          <dd>The input is composite, outside the theorem's range, or fails a size condition. MathCase does not guess.</dd>
+        </dl>
+        <details>
+          <summary>Open the exact source and replay</summary>
+          <p>This class uses <code>MathCase.PrimeBand.classification</code> and <code>MathCase.PrimeBand.unique_under_cap</code> from <a href="https://github.com/DarthCeltic/MathCase/blob/main/research/number-theory/egyptian-fractions/prime-envelope-v1/lean/PrimeBand.lean">prime-envelope-v1</a>. The pinned source SHA-256 is <code>2143c9c2e25d2657489284036a7c7b677088131bdeddb66478ed1b3752cfedbb</code>; the toolchain is Lean 4.33.1. The source package has a Python replay for the broader finite sweep.</p>
+        </details>
+      </aside>
+    </section>
+
+    <section class="prime-followup" aria-labelledby="next-title">
+      <h2 id="next-title">Where to go next</h2>
+      <p>Try the saved proof case to see how an AI mistake is repaired, or bring your own claim to the general notebook. The prime question is one reusable example of the larger MathCase loop: state the problem, check the conditions, run a bounded test, save the evidence, and say exactly what remains open.</p>
+      <p class="prime-links"><a class="welcome-action" href="index.html">Open your proof notebook</a><a href="../cases.html">See the subject guide</a><a href="../results-index.html#update-egyptian-prime-envelope">Read the research record</a></p>
+    </section>
+  </main>
+</body>
+</html>

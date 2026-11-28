@@ -98,6 +98,18 @@ class PublicReadingTests(unittest.TestCase):
         self.assertIn("other starts may also be", collatz)
         self.assertIn("proves no global convergence", collatz)
 
+    def test_prime_envelope_case_is_human_facing_and_bounded(self):
+        root = Path(__file__).resolve().parents[1] / "mathcase"
+        page = (root / "visitor" / "prime-envelope.html").read_text(encoding="utf-8")
+        script = (root / "visitor" / "prime-envelope-case.js").read_text(encoding="utf-8")
+        self.assertIn("How close can a fraction get", page)
+        self.assertIn("Try a bounded prime-denominator question", (root / "cases.html").read_text(encoding="utf-8"))
+        self.assertIn("CHECKED_WITNESS_UNDER_CAP", script)
+        self.assertIn("PROVED_EXCLUSION_UNDER_CAP", script)
+        self.assertIn("A larger denominator may still work", script)
+        self.assertIn("does not start a new Lean proof", page)
+        self.assertIn("receipt_sha256", script)
+
 
 if __name__ == "__main__":
     unittest.main()
