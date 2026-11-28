@@ -97,11 +97,12 @@
         <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11">Open the bounded search sources and receipts ↗</a><a href="frontier.html#vdw-5-3">Open W(5,3) record ↗</a><a href="frontier.html#ws-5">Open Weak Schur record ↗</a></div>
       </article>
       <article class="case-card-page" id="geometry-midpoint-replay">
-        <span class="case-status">Setup interrupted · theorem not claimed</span>
+        <span class="case-status">Lean checked · bounded coordinate model</span>
         <h2>Geometry: the midpoint of a right triangle</h2>
         <p>Question: if a right triangle has corners <code>(0,0)</code>, <code>(a,0)</code>, and <code>(0,b)</code>, is the midpoint of the longest side equally far from all three corners? The small coordinate calculation says yes.</p>
-        <p>MathCase started the exact pinned Lean replay, but dependency setup stopped before the source compiled and before an axiom audit ran. That means this page makes no formal-proof claim yet. The interruption and partial files are preserved so the next run can be compared honestly.</p>
-        <p class="case-command">Run from a MathCase clone: <code>python scripts/run_public_case.py geometry-midpoint</code>. A future PASS must include the theorem output, the axiom list, and a clean receipt.</p>
+        <p>A fresh replay of the exact pinned source compiled and passed its axiom audit. The result is for this normalized coordinate model only; it does not formalize the conversion from every abstract Euclidean triangle into coordinates.</p>
+        <p>The audit reported <code>[propext, Classical.choice, Quot.sound]</code> and no <code>sorryAx</code>. Earlier setup failures remain preserved in the package history.</p>
+        <p class="case-command">Run from a MathCase clone: <code>python scripts/run_public_case.py geometry-midpoint</code>. This checks the source, pinned lock, build, and audit.</p>
         <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/coordinate-right-triangle-midpoint-v1">Open the source and replay route ↗</a><a href="#geometry-midpoint-replay">Keep this status with the saved failure ↗</a></div>
       </article>
     </section>
