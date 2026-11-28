@@ -90,6 +90,7 @@
     <p>If 2 and 3 are blue, 5 cannot also be blue, because 2 + 3 = 5. Only sums of two <em>distinct</em> positive numbers count.</p>
     <p>Two known five-color arrangements cover 1 through 207. Starting from either one, MathCase tried every color for 208 and every change of up to 18 earlier entries; neither small neighborhood extended it. A larger rearrangement or a different starting arrangement could still work.</p>
     <p>A separate saved arrangement of 1 through 208 fails at one sum: 4 + 8 = 12. Changing one, two, or three entries cannot repair that arrangement. A different arrangement or a larger repair may still work.</p>
+    <p>A newer block-crossover pilot mixed pieces of the two published 207 arrangements and tried 39 starts in 30 seconds. Its best candidate still had one conflict, <strong>12 + 196 = 208</strong> in one color. It is a distinct near miss, not a 208-coloring and not an impossibility proof.</p>
     <details class="reading-details">
     <summary>Inspect the exact result, its limits and sources</summary>
     <p>The rule forbids same-color sums <code>a + b = c</code> when <code>a</code> and <code>b</code> are distinct positive numbers. Two known colorings cover 1 through 207; MathCase checked both and searched every color for 208 while changing up to 18 old entries.</p>
@@ -101,7 +102,8 @@
             <div class="frontier-links">
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/weak-schur-5">Run the witness and radius checks ↗</a>
               <a href="https://github.com/DarthCeltic/MathCase/blob/main/research/frontier-2026-11/weak-schur-5/WEAK_SCHUR.md">Read the saved repair query and its limits ↗</a>
-              <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/weak-schur-5/repair-radius-three-v1">Read the near-miss result and how to reproduce it ↗</a>
+                <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/weak-schur-5/repair-radius-three-v1">Read the near-miss result and how to reproduce it ↗</a>
+                <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/weak-schur-5/block-crossover-2026-11-28">Read the block-crossover pilot and its controls ↗</a>
               <a href="https://oeis.org/A072842" target="_blank" rel="noopener noreferrer">Rowley's published sequence record ↗</a>
               <a href="https://arxiv.org/abs/2611.22032" target="_blank" rel="noopener noreferrer">Vicenzi et al., 2026 ↗</a>
             </div>
