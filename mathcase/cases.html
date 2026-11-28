@@ -221,6 +221,8 @@ py -3 -B reproduction/collatz-twelve-of-twenty-v1/verify_count.py</pre>
       <article class="case-card-page" id="collatz-at-most-seventeen-27">
         <span class="case-status pass">Collatz · Lean checked</span>
 
+        <p class="case-limit"><strong>Review status:</strong> the Lean replay is recorded, but no separate M0 statement review is recorded for this case. Read it as bounded evidence, not a general Collatz result.</p>
+
         <p><strong>The rule:</strong> halve an even number. For an odd number, triple it, add 1, and halve once. Repeat 27 times.</p>
         <p><strong>Plain claim:</strong> for every start <code>n ≥ 26,018</code> with at most 17 odd moves, the ordinary Collatz value at step <code>27+h</code> is below its start, no later than step 44.</p>
         <p>Example: <code>26,018</code> has 12 odd moves and falls below its start after 39 ordinary steps, reaching <code>107</code>. That example illustrates the rule; it is not the proof.</p>
