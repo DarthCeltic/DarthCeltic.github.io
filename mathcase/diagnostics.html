@@ -102,7 +102,7 @@
         <p>Question: if a right triangle has corners <code>(0,0)</code>, <code>(a,0)</code>, and <code>(0,b)</code>, is the midpoint of the longest side equally far from all three corners? The small coordinate calculation says yes.</p>
         <p>A fresh replay of the exact pinned source compiled and passed its axiom audit. The result is for this normalized coordinate model only; it does not formalize the conversion from every abstract Euclidean triangle into coordinates.</p>
         <p>The audit reported <code>[propext, Classical.choice, Quot.sound]</code> and no <code>sorryAx</code>. Earlier setup failures remain preserved in the package history.</p>
-        <p class="case-command">Run from a MathCase clone: <code>python scripts/run_public_case.py geometry-midpoint</code>. This checks the source, pinned lock, build, and audit.</p>
+        <p class="case-command">Run from a MathCase clone: <code>python scripts/run_public_case.py geometry-midpoint --stage-timeout 600</code>. This checks the source, pinned lock, build, and audit with a ten-minute stage cap.</p>
         <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/coordinate-right-triangle-midpoint-v1">Open the source and replay route ↗</a><a href="#geometry-midpoint-replay">Keep this status with the saved failure ↗</a></div>
       </article>
     </section>
