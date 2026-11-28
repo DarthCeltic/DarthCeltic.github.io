@@ -97,13 +97,13 @@
         <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11">Open the bounded search sources and receipts ↗</a><a href="frontier.html#vdw-5-3">Open W(5,3) record ↗</a><a href="frontier.html#ws-5">Open Weak Schur record ↗</a></div>
       </article>
       <article class="case-card-page" id="geometry-midpoint-replay">
-        <span class="case-status">Lean checked · bounded coordinate model</span>
+        <span class="case-status">Lean checked · general coordinate theorem</span>
         <h2>Geometry: the midpoint of a right triangle</h2>
-        <p>Question: if a right triangle has corners <code>(0,0)</code>, <code>(a,0)</code>, and <code>(0,b)</code>, is the midpoint of the longest side equally far from all three corners? The small coordinate calculation says yes.</p>
-        <p>A fresh replay of the exact pinned source compiled and passed its axiom audit. The result is for this normalized coordinate model only; it does not formalize the conversion from every abstract Euclidean triangle into coordinates.</p>
+        <p>Question: if the two vectors from a corner of a right triangle have dot product zero, is the midpoint of the opposite side equally far from all three corners? The coordinate calculation says yes.</p>
+        <p>The general-coordinate Lean source compiled and passed its axiom audit for any three real-coordinate points satisfying that dot-product condition. It is a formal coordinate theorem, not a new geometry claim about every abstract Euclidean plane.</p>
         <p>The audit reported <code>[propext, Classical.choice, Quot.sound]</code> and no <code>sorryAx</code>. Earlier setup failures remain preserved in the package history.</p>
-        <p class="case-command">Run from a MathCase clone: <code>python scripts/run_public_case.py geometry-midpoint --stage-timeout 600</code>. This checks the source, pinned lock, build, and audit with a ten-minute stage cap.</p>
-        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/coordinate-right-triangle-midpoint-v1">Open the source and replay route ↗</a><a href="#geometry-midpoint-replay">Keep this status with the saved failure ↗</a></div>
+        <p class="case-command">General replay: open the pinned package below and run <code>python -B replay.py --output-dir &lt;new-folder&gt;</code> from that package. The catalog launcher remains available for the smaller normalized teaching example.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/coordinate-right-triangle-midpoint-general-v1">Open the general source and replay route ↗</a><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/coordinate-right-triangle-midpoint-v1">Open the normalized teaching example ↗</a><a href="#geometry-midpoint-replay">Keep this status with the saved history ↗</a></div>
       </article>
     </section>
     <p class="back-home"><a href="index.html">← Home</a><a href="cases.html">Math guide →</a><a href="work.html#collatz-23-of-14">Featured 23/14 proof →</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/research/knowledge-graph-v1/README.md">Evidence graph ↗</a><a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/INDEPENDENT_REVIEW_CHECKLIST.md">Human review checklist ↗</a></p>
