@@ -391,7 +391,7 @@
         <p><strong>Plain statement:</strong> there is a simple graph on 101 labeled vertices with no clique of six and no independent set of six. This is a witness for the known lower bound <code>R(6,6) ≥ 102</code>.</p>
               <p><strong>Exact target:</strong> <code>∃ G : SimpleGraph (Fin 101), G.CliqueFree 6 ∧ (Gᶜ).CliqueFree 6</code>. Ryan reviewed that the English statement matches this target.</p>
               <p>The saved graph is the known Paley graph P(101), with 2,525 edges and degree 50 at every vertex. Two separately written local checkers found no six-clique and no independent six-set; both exited 0. The browser control below checks the saved certificate and displays one vertex; it does not rerun those exhaustive searches.</p>
-              <p>Separately, Lean 4.33.1 rebuilt the three MathCase theorem files from source under the current pinned Mathlib dependencies, using a fresh MathCase output folder. It reused the public Mathlib cache fetched during setup; no MathCase proof output was reused. The axiom report lists <code>[propext, Classical.choice, Quot.sound]</code>; no <code>sorryAx</code> was reported. This run took 147.929 seconds, with no Windows-enforced memory cap. It verifies a known bound, not new mathematics or independent review.</p>
+              <p>Separately, Lean 4.33.1 rebuilt the three MathCase theorem files from source under the current pinned Mathlib dependencies, using a fresh MathCase output folder. It reused the public Mathlib cache fetched during setup; no MathCase proof output was reused. The axiom report lists <code>[propext, Classical.choice, Quot.sound]</code>; no <code>sorryAx</code> was reported. The current-lock run took 147.929 seconds. A second fresh anonymous public-clone replay also passed all five setup, build, and audit commands in 1,319.372 seconds including dependency setup. These replays verify a known bound, not new mathematics or independent human review.</p>
               <div class="ramsey-certificate-panel">
                 <p class="coefficient-local-note">Inspect the saved graph in this browser. The page checks the certificate hash and degree sequence, then displays one vertex’s neighbors. It does not rerun the exhaustive clique searches.</p>
                 <form class="coefficient-form" id="ramsey66-inspect-form">
@@ -406,6 +406,7 @@
               <div class="record-links">
                 <a href="evidence/finite-graphs/ramsey-r66-paley101/README.md">Read the graph-certificate guide</a>
                 <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/ramsey-r66-lean-v1/README.md">Read what Lean checked and how to rebuild it ↗</a>
+                <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/ramsey-r66-lean-v1/verification/anonymous-public-main-replay-2026-11-28.json">Inspect the anonymous replay receipt ↗</a>
                 <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ramsey-r66-lean-v1">Browse the replay files and earlier run history ↗</a>
                 <a href="frontier.html#ramsey-6-6">See what MathCase checked next and what remains</a>
                 <a href="tools.html#triangle-game">Try the six-dot triangle activity</a>
