@@ -174,16 +174,16 @@
     <p class="frontier-kicker">Codes · five-symbol words</p>
     <h2>Can 368 five-symbol words avoid every forbidden pair?</h2>
     <p>Two words conflict when every coordinate differs by 0, 1, or 6 modulo 7. A valid code keeps every pair out of that conflict pattern.</p>
-    <p>A bounded whole-graph search started from an empty set and tried 12,690 randomized greedy constructions. Its best valid set had 253 words. The known 367-word construction still passes the independent checker.</p>
+    <p>A bounded whole-graph search started from an empty set and tried 12,690 randomized greedy constructions. Its best valid set had 253 words. A separate 120-second multi-ejection run started from the known 367-word code plus eight independently checked one-swap variants; it made 9,941 moves across 83 starts and still found no 368-word code or new equal-size seed. The known 367-word construction still passes the independent checker.</p>
     <details class="reading-details">
     <summary>Inspect the exact result, its limits and sources</summary>
     <p>The run ended <code>NO_368_FOUND_UNKNOWN</code>. A planted conflicting pair was rejected by the separate checker, which also checked all 67,161 pairs in the known 367-word control. This is a search miss, not a proof that 368 is impossible and not a change to the known <strong>367 ≤ α(C7⁵) ≤ 401</strong> interval.</p>
-            <p class="frontier-next"><strong>Next question.</strong> use an exchange or surplus search that starts from the known 367-word construction without freezing its core.</p>
+            <p class="frontier-next"><strong>Next question.</strong> try a construction family outside these known-seed neighborhoods; neither bounded search proves that 368 is impossible.</p>
             <div class="frontier-links">
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/shannon-c7-368-whole-graph-greedy-v2">Run the latest saved search and independent checker ↗</a>
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier/c7-five-symbol-ejection-v1">Read the distinct ejection-chain miss ↗</a>
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier/c7-five-symbol-surplus-v1">Read the surplus-neighborhood miss ↗</a>
-              <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/shannon-c7-368-equal-seed-persist-v1">Read the equal-size-seed persistence miss ↗</a>
+              <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/shannon-c7-368-persistence-v3">Read the equal-size-seed persistence miss ↗</a>
               <a href="https://arxiv.org/abs/1808.07438" target="_blank" rel="noopener noreferrer">Polak and Schrijver's construction ↗</a>
             </div>
     </details>
