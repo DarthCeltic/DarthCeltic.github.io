@@ -53,6 +53,18 @@ test("normalizes spacing for human text searches without claiming semantic match
   assert.equal(core.matchesSearch(record, "not a theorem here"), false);
 });
 
+test("searches explicit source and dependency fields for reusable neighbors", () => {
+  const record = {
+    case_id: "collatz:m16:sample",
+    lean_statement_exact: "theorem sample : True",
+    source: { package_path: "sources/repository/research/collatz/m16/lean/modules/M16ShardA.lean" },
+    dependencies: { imports: ["Mathlib.Data.Nat.Prime.Basic"], module_local_declarations_referenced: ["iterate"] }
+  };
+  assert.equal(core.matchesSearch(record, "M16ShardA.lean"), true);
+  assert.equal(core.matchesSearch(record, "Mathlib.Data.Nat.Prime.Basic"), true);
+  assert.equal(core.matchesSearch(record, "iterate"), true);
+});
+
 test("clears a selected proof when a search no longer includes it", () => {
   const selected = { case_id: "collatz:m15:Descent127" };
   const other = { case_id: "collatz:m15:Descent143" };

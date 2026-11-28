@@ -110,7 +110,15 @@
     const q = normalizeSearch(query);
     if (!q) return true;
     const parsed = parseCollatzStatement(record.lean_statement_exact);
-    const haystack = normalizeSearch([record.case_id, parsed?.theoremName, parsed?.plainText, record.lean_statement_exact].join("\n"));
+    const haystack = normalizeSearch([
+      record.case_id,
+      parsed?.theoremName,
+      parsed?.plainText,
+      record.lean_statement_exact,
+      record.source?.package_path,
+      record.dependencies?.imports,
+      record.dependencies?.module_local_declarations_referenced
+    ].join("\n"));
     return haystack.includes(q);
   }
 
