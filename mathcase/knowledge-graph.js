@@ -136,6 +136,26 @@
       links.append(link);
     }
     detail.append(links);
+    const related = document.createElement("details");
+    related.className = "related-records";
+    addText(related, "summary", "Show explicitly related records");
+    addText(related, "p", "These rows share a recorded source file or import with this row. That is a metadata link, not a claim that the proofs are equivalent or reusable.");
+    const relatedList = document.createElement("ul");
+    for (const item of core.relatedRecords(records, record)) {
+      const li = document.createElement("li");
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "related-record";
+      button.textContent = item.record.case_id;
+      button.addEventListener("click", () => { showRecord(item.record).catch((error) => setStatus(error.message, true)); });
+      li.append(button);
+      const reason = item.sameSource ? "same source file" : `shared import: ${item.sharedImports.join(", ")}`;
+      li.append(document.createTextNode(` (${reason})`));
+      relatedList.append(li);
+    }
+    if (!relatedList.children.length) addText(related, "p", "No other row shares an explicit source or import link.");
+    else related.append(relatedList);
+    detail.append(related);
     detail.hidden = false;
     setStatus("The exact statement matches the pinned saved record.");
   }

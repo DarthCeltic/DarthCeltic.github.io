@@ -158,5 +158,22 @@
     });
   }
 
-  return Object.freeze({ PIN, parseSha256Sidecar, verifySnapshotHashes, parseCollatzStatement, githubFileUrl, validateGraph, normalizeSearch, matchesSearch, selectionVisibleInResults, summarizeConnections });
+  function relatedRecords(records, selectedRecord, limit = 5) {
+    if (!Array.isArray(records) || !selectedRecord || !Number.isInteger(limit) || limit < 1) return [];
+    const source = selectedRecord.source?.package_path;
+    const imports = new Set(selectedRecord.dependencies?.imports || []);
+    return records.map((record) => {
+      if (!record || record.case_id === selectedRecord.case_id) return null;
+      const sameSource = typeof source === "string" && record.source?.package_path === source;
+      const sharedImports = (record.dependencies?.imports || []).filter((name) => imports.has(name));
+      if (!sameSource && sharedImports.length === 0) return null;
+      return { record, sameSource, sharedImports };
+    }).filter(Boolean).sort((a, b) =>
+      (Number(b.sameSource) * 2 + b.sharedImports.length) -
+      (Number(a.sameSource) * 2 + a.sharedImports.length) ||
+      a.record.case_id.localeCompare(b.record.case_id)
+    ).slice(0, limit);
+  }
+
+  return Object.freeze({ PIN, parseSha256Sidecar, verifySnapshotHashes, parseCollatzStatement, githubFileUrl, validateGraph, normalizeSearch, matchesSearch, selectionVisibleInResults, summarizeConnections, relatedRecords });
 });

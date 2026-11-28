@@ -85,3 +85,16 @@ test("summarizes only explicit source and dependency connections", () => {
   assert.deepEqual(summary.imports[0], { name: "Mathlib.X", count: 2 });
   assert.equal(summary.limits.semanticEquivalenceInferred, false);
 });
+
+test("returns bounded metadata neighbors without inferring meaning", () => {
+  const selected = { case_id: "a", source: { package_path: "sources/A.lean" }, dependencies: { imports: ["Mathlib.X"] } };
+  const neighbors = core.relatedRecords([
+    selected,
+    { case_id: "b", source: { package_path: "sources/A.lean" }, dependencies: { imports: ["Mathlib.X"] } },
+    { case_id: "c", source: { package_path: "sources/C.lean" }, dependencies: { imports: ["Mathlib.X"] } },
+    { case_id: "d", source: { package_path: "sources/D.lean" }, dependencies: { imports: ["Mathlib.Y"] } }
+  ], selected, 2);
+  assert.deepEqual(neighbors.map((item) => item.record.case_id), ["b", "c"]);
+  assert.equal(neighbors[0].sameSource, true);
+  assert.deepEqual(neighbors[1].sharedImports, ["Mathlib.X"]);
+});

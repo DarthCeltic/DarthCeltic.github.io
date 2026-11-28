@@ -32,6 +32,10 @@
 .library-detail dt, .meaning-list dt { font-weight: 700; }
 .library-detail dd, .meaning-list dd { margin: 0; overflow-wrap: anywhere; }
 .library-links { display: flex; flex-wrap: wrap; gap: 14px; margin: 16px 0 0; }
+.related-records { margin-top: 18px; }
+.related-records summary { font-weight: 700; cursor: pointer; }
+.related-record { padding: 0; border: 0; background: none; color: #14526d; text-decoration: underline; cursor: pointer; font: inherit; }
+.related-record:focus-visible { outline: 3px solid #cf8e19; outline-offset: 3px; }
 .library-more { margin-top: 18px; }
 .library-more summary { font-weight: 700; cursor: pointer; }
 @media (max-width: 620px) {
