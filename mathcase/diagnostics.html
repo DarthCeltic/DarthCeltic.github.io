@@ -66,6 +66,13 @@
         <p>The 24/15, 31/19, and 32/20 checks cover separate step counts and parity conditions. Each count belongs to its own finite residue space. The saved source explains the conditions, checks, and earlier audit failure.</p>
         <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-parity-envelopes-2026-11-v1">Read the exact statements and receipts ↗</a></div>
       </article>
+      <article class="case-card-page" id="collatz-23-14-monotone-envelope">
+        <span class="case-status">Arithmetic diagnostic · not a new theorem</span>
+        <h2>A shorter way to check the 23/14 arithmetic</h2>
+        <p>For the existing 23/14 bounded-drop rule, the endpoint gets larger as the number of odd shortcut moves increases. That means the large-number arithmetic can use one endpoint inequality instead of fifteen separate cases. A separate finite check covers the starts below 677.</p>
+        <p>MathCase checked the identity and endpoint constants in Python, then checked all 674 starts from 3 through 676 twice: 548 met the stated parity filter and all 548 dropped. This is a proof-organization aid, not a new Collatz result, convergence proof, or Lean replay.</p>
+        <div class="case-actions"><a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/collatz-23-14-monotone-envelope-v1">Open the explanation, checkers, and receipts ↗</a><a href="work.html#collatz-23-of-14">Read the formal 23/14 result ↗</a></div>
+      </article>
       <article class="case-card-page" id="m31-v1">
         <span class="case-status candidate">Saved Lean attempt · wording review and independent replay open</span>
         <h2>860 selected Collatz progression families</h2>
