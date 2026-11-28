@@ -192,7 +192,7 @@
     <p class="frontier-kicker">Grid physics · a finite check</p>
     <h2>Does a tiny Ising grid keep a smooth counting pattern?</h2>
     <p>Take a 3×3 square whose edges wrap around. Count arrangements with a fixed number of up spins, then group them by how many edges are “broken” between unlike neighbors.</p>
-    <p>For the tested four-up and five-up profiles, the three interior counts are <strong>45, 36, 45</strong>. Because <code>36² = 1,296</code> is less than <code>45 × 45 = 2,025</code>, those two profiles fail the log-concavity test. The other eight tested profiles pass. A separate width-four transfer check agrees with direct enumeration for periodic lengths 3, 4, and 5.</p>
+    <p>For the tested four-up and five-up profiles, the three interior counts are <strong>45, 36, 45</strong>. Because <code>36² = 1,296</code> is less than <code>45 × 45 = 2,025</code>, those two profiles fail the log-concavity test. The other eight tested profiles pass. Separate width-four and width-five transfer checks agree with direct enumeration on their listed finite lengths.</p>
     <details class="reading-details">
     <summary>Inspect the exact finite result and its limits</summary>
     <p>MathCase computed the profiles two ways: direct enumeration of all spin arrangements and an independent transfer calculation. Both methods agree on every tested bin. Leading and trailing zero bins were trimmed; interior zero bins were retained, so the test does not hide a zero.</p>
@@ -200,6 +200,7 @@
             <div class="frontier-links">
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ising-3x3-fixed-up-logconcavity-v1">Run the two-path checker and inspect the receipt ↗</a>
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ising-width4-joint-density-v1">Read the width-four transfer check ↗</a>
+              <a href="https://github.com/DarthCeltic/MathCase/tree/main/reproduction/ising-width5-joint-density-v1">Read the new width-five finite check ↗</a>
             </div>
     </details>
     </article>
