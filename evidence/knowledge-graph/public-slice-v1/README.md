@@ -14,4 +14,4 @@ The slice excludes 29 owner-local or out-of-package records and three historical
 
 On the [All work page](../../../work.html#knowledge-graph), click **Verify and load the index**. The browser checks the published manifest, index, and records against their pinned SHA-256 values, then checks each displayed statement against its recorded digest. The files are also available directly in this directory: `manifest.json`, `index.jsonl`, `records.jsonl`, `manifest.sha256`, and `records.sha256`.
 
-The public Lean image and clean-room build context remain unavailable, so this data does not establish independent reproduction of the Lean replay. No M4 gate is changed.
+The public Lean image and clean-room build context remain unavailable, so this data slice itself does not establish independent reproduction of the Lean replay. A separate fresh public-clone replay is now recorded in the M20 source-replay guide; no M4 gate is changed.

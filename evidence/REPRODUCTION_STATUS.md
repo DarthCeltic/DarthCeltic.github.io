@@ -12,7 +12,7 @@
 
 ## Still open
 
-The pinned Docker image used for the M20 and affine Lean runs is not anonymously pullable, and its complete rebuild context is not staged here. The M20 phase outputs are large; OLEAN binaries were intentionally omitted, while file hashes and text evidence are available. Therefore a stranger cannot yet repeat the flagship Lean replay from a fresh public checkout using only this site.
+The pinned Docker image used for the older M20 and affine Lean runs is not anonymously pullable, and its complete rebuild context is not staged here. The M20 phase outputs are large; OLEAN binaries were intentionally omitted, while file hashes and text evidence are available. The newer clean public-source replay uses the documented pinned bootstrap instead of that image; see the linked M20 replay folder for its terminal receipt and full stage manifest.
 
 The top-level M15–M20 export manifest is omitted because it contains a pointer to a non-public source branch. The shard statements, source hashes, axiom records, and receipt rows included in the public graph slice remain individually bound; the narrower M20 composition subpackage has its own manifest.
 
