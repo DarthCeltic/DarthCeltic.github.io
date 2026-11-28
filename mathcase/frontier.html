@@ -46,7 +46,7 @@
     <section class="research-hero" aria-labelledby="frontier-title">
       <p class="eyebrow">Frontier mathematics</p>
       <h1 id="frontier-title">Which patterns can you avoid?</h1>
-      <p>Color numbers on a line, join dots with colored edges, or split a fraction into smaller pieces. A small example gives you the rules of each puzzle. The six main checks below, plus four bounded C7 code-search results, show what happens when you take those rules further.</p>
+      <p>Color numbers on a line, join dots with colored edges, or split a fraction into smaller pieces. A small example gives you the rules of each puzzle. The six main checks below, plus five bounded C7 code-search results, show what happens when you take those rules further.</p>
       <div class="research-actions"><a class="button button-primary" href="#vdw-2-7">Start with number patterns</a><a class="button button-secondary" href="#ramsey-3-3-3-3">Explore colored graphs</a><a class="button button-secondary" href="#egyptian-28k-21">Split a fraction</a><a class="button button-secondary" href="#c7-five">See a bounded code search</a></div>
     </section>
     <section class="frontier-grid" aria-label="Six research questions">
@@ -175,7 +175,7 @@
     <p class="frontier-kicker">Codes · five-symbol words</p>
     <h2>Can 368 five-symbol words avoid every forbidden pair?</h2>
     <p>Two words conflict when every coordinate differs by 0, 1, or 6 modulo 7. A valid code keeps every pair out of that conflict pattern.</p>
-    <p>A bounded whole-graph search started from an empty set and tried 12,690 randomized greedy constructions. Its best valid set had 253 words. A separate 120-second multi-ejection run started from the known 367-word code plus eight independently checked one-swap variants; it made 9,941 moves across 83 starts and still found no 368-word code or new equal-size seed. The known 367-word construction still passes the independent checker.</p>
+    <p>A bounded whole-graph search started from an empty set and tried 12,690 randomized greedy constructions. Its best valid set had 253 words. A separate 120-second multi-ejection run started from the known 367-word code plus eight independently checked one-swap variants; it made 9,941 moves across 83 starts and still found no 368-word code or new equal-size seed. A later 60-second continuation prepared nine validated 367-word seeds and made 455 coordinated moves; it also stayed at 367. The known 367-word construction still passes the independent checker.</p>
     <details class="reading-details">
     <summary>Inspect the exact result, its limits and sources</summary>
     <p>The run ended <code>NO_368_FOUND_UNKNOWN</code>. A planted conflicting pair was rejected by the separate checker, which also checked all 67,161 pairs in the known 367-word control. This is a search miss, not a proof that 368 is impossible and not a change to the known <strong>367 ≤ α(C7⁵) ≤ 401</strong> interval.</p>
@@ -185,6 +185,7 @@
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier/c7-five-symbol-ejection-v1">Read the distinct ejection-chain miss ↗</a>
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier/c7-five-symbol-surplus-v1">Read the surplus-neighborhood miss ↗</a>
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/shannon-c7-368-persistence-v3">Read the equal-size-seed persistence miss ↗</a>
+              <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/shannon-c7-368-multiseed-ejection-v1">Read the nine-seed continuation miss ↗</a>
               <a href="https://arxiv.org/abs/1808.07438" target="_blank" rel="noopener noreferrer">Polak and Schrijver's construction ↗</a>
             </div>
     </details>
@@ -209,7 +210,7 @@
     <section class="frontier-footer-card" aria-labelledby="frontier-replay-title"><h2 id="frontier-replay-title">Run a frontier check yourself</h2><p>Choose a question to see its inputs, method and saved result. Bounded search logs are kept in the diagnostics archive with their exact caps and limits.</p>
     <details class="reading-details">
     <summary>Open the local commands and software requirements</summary>
-    <p>From a MathCase checkout, run <code>python scripts/run_frontier_case.py list</code>. Choose a case to produce logs and file hashes. The four C7 launcher routes are <code>c7-greedy</code>, <code>c7-ejection</code>, <code>c7-surplus</code>, and <code>c7-equal-seed-persist</code>; their bounded misses stay explicitly UNKNOWN. The <code>ising-width5</code> route checks the listed 5×3 and 5×4 finite grids. A separate published multi-ejection persistence receipt starts from nine validated 367-word seeds and is linked on the C7 card; it is evidence for that bounded run, not another launcher route. The checks use Python and, for the fraction identities, Lean 4.33.1. The Weak Schur check downloads two public colorings and verifies their hashes. The checks use no model calls.</p><p><a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11">Open the frontier research package</a> <a href="https://github.com/DarthCeltic/MathCase/blob/main/research/knowledge-graph-v1/README.md">See how cases connect ↗</a></p>
+    <p>From a MathCase checkout, run <code>python scripts/run_frontier_case.py list</code>. Choose a case to produce logs and file hashes. The four C7 launcher routes are <code>c7-greedy</code>, <code>c7-ejection</code>, <code>c7-surplus</code>, and <code>c7-equal-seed-persist</code>; their bounded misses stay explicitly UNKNOWN. The <code>ising-width5</code> route checks the listed 5×3 and 5×4 finite grids. The C7 card also links a separate nine-seed continuation receipt; it is evidence for that bounded run, not another launcher route. The checks use Python and, for the fraction identities, Lean 4.33.1. The Weak Schur check downloads two public colorings and verifies their hashes. The checks use no model calls.</p><p><a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11">Open the frontier research package</a> <a href="https://github.com/DarthCeltic/MathCase/blob/main/research/knowledge-graph-v1/README.md">See how cases connect ↗</a></p>
     </details>
     </section>
 
