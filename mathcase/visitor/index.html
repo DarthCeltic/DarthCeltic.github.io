@@ -10,7 +10,7 @@
   <link rel="icon" href="../assets/mathcase-branding-kit/favicon.ico">
   <link rel="stylesheet" href="workbench.css">
   <script defer src="lean-draft.js"></script>
-  <script defer src="workbench.js?v=20261126-lean-status"></script>
+  <script defer src="workbench.js?v=20261128-hosted-lean-guidance"></script>
 </head>
 <body>
   <a class="skip" href="#case-title">Skip to case</a>
@@ -141,13 +141,13 @@
         <section id="live-panel" class="live-panel" aria-label="Live Lean editor" hidden>
           <div class="live-head">
             <div>
-              <p>After Lean connects, check the editor's Messages panel for the result. Use the editor's Run control if it appears. Copy any edits back into this workbench to save them.</p>
-              <p class="check-disclosure">If “No connection to Lean” appears or “Updating…” does not finish, Lean has not checked your proof. Copy any edits back here, then reload from this draft or open it in a new tab. If the error remains, try the pinned local check below. The online editor’s output is not saved here; import a receipt from the local check to record the result.</p>
+              <p>Lean runs in a separate hosted editor. When it connects, read the editor's Messages panel and use its Run control if it appears. Copy any edits back into this workbench before reloading so your saved draft keeps them.</p>
+              <p class="check-disclosure">If the editor says “No connection to Lean” or “Updating…” never finishes, the hosted service did not check your proof. MathCase cannot reconnect that remote worker or read its internal status. Copy edits made inside the editor into the proof source above, then reload from the workbench draft or open the same draft in a new tab. For a check you can save and verify, open <a href="#local-check">Check locally and save a receipt</a> below. Hosted-editor output is not saved here; only an imported local receipt records a result.</p>
               <p id="live-connection-status" class="feedback" role="status" aria-live="polite"></p>
             </div>
             <div class="run-actions">
-              <button id="retry-lean" type="button" class="secondary">Reload from this draft</button>
-              <button id="open-lean-tab" type="button" class="secondary">Open this draft in a new tab</button>
+              <button id="retry-lean" type="button" class="secondary">Reload hosted editor from draft</button>
+              <button id="open-lean-tab" type="button" class="secondary">Open the same draft in a new tab</button>
               <button id="close-lean" type="button" class="secondary">Close editor</button>
             </div>
           </div>

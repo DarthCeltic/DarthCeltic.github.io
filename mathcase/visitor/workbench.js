@@ -536,7 +536,7 @@ function closeEditor() {
   elements["run-lean"].setAttribute("aria-expanded", "false");
 }
 
-function loadEditor(statusMessage = "The online editor is opening in this page. Its Lean version follows the hosted service and may differ from MathCase’s pinned local checker.") {
+function loadEditor(statusMessage = "Opening the hosted Lean editor in this page. Read its Messages panel: MathCase cannot see whether the remote worker connected. Its Lean version may differ from MathCase’s pinned local checker.") {
   const frame = document.createElement("iframe");
   frame.title = "Lean web editor for " + visibleName(active());
   frame.referrerPolicy = "no-referrer";
@@ -550,7 +550,7 @@ function loadEditor(statusMessage = "The online editor is opening in this page. 
 
 elements["run-lean"].addEventListener("click", () => loadEditor());
 elements["retry-lean"].addEventListener("click", () => {
-  loadEditor("Reloading the online editor from the code currently in this workbench…");
+  loadEditor("Reloading the hosted editor from the code currently in this workbench. Edits made only inside the editor must be copied back first.");
 });
 elements["open-lean-tab"].addEventListener("click", () => {
   window.open(editorUrl(), "_blank", "noopener,noreferrer");
