@@ -64,6 +64,12 @@
         <button id="open-example" class="library-button secondary" type="button" disabled>Open the example above</button>
       </div>
       <p id="graph-status" class="library-status" role="status" aria-live="polite">The proof records are not loaded. No data is fetched until you choose the load button.</p>
+      <details id="graph-connections" class="library-connections" hidden>
+        <summary>How these records connect</summary>
+        <p id="graph-connections-summary"></p>
+        <ul id="graph-connections-list"></ul>
+        <p class="scope-note">These are exact shared source-file and dependency counts. They do not say that two statements are equivalent, reusable, or novel.</p>
+      </details>
       <label for="graph-search">Find a theorem by name or phrase</label>
       <input id="graph-search" class="library-search" type="search" autocomplete="off" placeholder="For example: Descent127 or 32768 * k + 127" disabled>
       <p id="graph-count" class="library-count" aria-live="polite"></p>

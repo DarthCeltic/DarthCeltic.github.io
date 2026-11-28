@@ -17,6 +17,9 @@
   const count = document.getElementById("graph-count");
   const resultsNode = document.getElementById("graph-results");
   const detail = document.getElementById("graph-detail");
+  const connections = document.getElementById("graph-connections");
+  const connectionsSummary = document.getElementById("graph-connections-summary");
+  const connectionsList = document.getElementById("graph-connections-list");
   const snapshotCommit = document.getElementById("snapshot-commit");
   const replayPackageLink = document.getElementById("replay-package-link");
   snapshotCommit.textContent = core.PIN.commit;
@@ -169,6 +172,24 @@
       : `Showing ${visible.length} of ${matches.length} matching saved statements${matches.length > visible.length ? ". Add more words to narrow the list." : "."}`;
   }
 
+  function renderConnections() {
+    const summary = core.summarizeConnections(records);
+    if (!summary) return;
+    connectionsSummary.textContent = `${summary.recordCount.toLocaleString("en-US")} records come from ${summary.uniqueSourceFiles.toLocaleString("en-US")} source files. The shared imports and local names below are recorded links, not inferred mathematics.`;
+    connectionsList.replaceChildren();
+    for (const item of summary.sourceFiles.slice(0, 5)) {
+      const li = document.createElement("li");
+      li.textContent = `${item.count.toLocaleString("en-US")} records share ${item.name}`;
+      connectionsList.append(li);
+    }
+    for (const item of summary.imports.slice(0, 3)) {
+      const li = document.createElement("li");
+      li.textContent = `${item.count.toLocaleString("en-US")} records list the import ${item.name}`;
+      connectionsList.append(li);
+    }
+    connections.hidden = false;
+  }
+
   async function loadGraph() {
     loadButton.disabled = true;
     loadButton.setAttribute("aria-busy", "true");
@@ -196,6 +217,7 @@
       search.value = "32768k+127";
       search.focus();
       renderResults();
+      renderConnections();
       setStatus("4,262 records loaded. The browser checked the two committed SHA-256 files, the index hash recorded in the manifest, review labels, and statement formats.");
     } catch (error) {
       records = [];

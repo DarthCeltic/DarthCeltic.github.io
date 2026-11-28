@@ -15,6 +15,10 @@
 .library-panel label { display: block; margin: 18px 0 6px; font-weight: 700; }
 .library-search { width: 100%; min-height: 48px; padding: 10px 12px; border: 1px solid #708391; border-radius: 8px; font: inherit; }
 .library-count { min-height: 1.5em; color: #475467; }
+.library-connections { margin: 16px 0; padding: 14px 16px; border: 1px solid #d7e0e7; border-radius: 10px; background: #f7fafb; }
+.library-connections summary { cursor: pointer; font-weight: 700; }
+.library-connections p { line-height: 1.55; }
+.library-connections ul { margin-bottom: 0; }
 .library-results { display: grid; gap: 10px; padding-left: 24px; }
 .library-result { display: block; width: 100%; padding: 14px; text-align: left; border: 1px solid #cdd9e0; border-radius: 10px; background: #f9fbfc; color: #182f3f; font: inherit; cursor: pointer; }
 .library-result[aria-pressed="true"] { border-color: #14526d; box-shadow: inset 4px 0 #14526d; background: #eff7fa; }

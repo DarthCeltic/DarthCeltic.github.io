@@ -60,3 +60,16 @@ test("clears a selected proof when a search no longer includes it", () => {
   assert.equal(core.selectionVisibleInResults([other], selected.case_id), false);
   assert.equal(core.selectionVisibleInResults([selected, other], selected.case_id), true);
 });
+
+test("summarizes only explicit source and dependency connections", () => {
+  const summary = core.summarizeConnections([
+    { source: { package_path: "sources/A.lean" }, dependencies: { imports: ["Mathlib.X"], module_local_declarations_referenced: ["iterate"] } },
+    { source: { package_path: "sources/A.lean" }, dependencies: { imports: ["Mathlib.X"], module_local_declarations_referenced: ["iterate", "C"] } },
+    { source: { package_path: "sources/B.lean" }, dependencies: { imports: ["Mathlib.Y"], module_local_declarations_referenced: ["C"] } }
+  ]);
+  assert.equal(summary.recordCount, 3);
+  assert.equal(summary.uniqueSourceFiles, 2);
+  assert.deepEqual(summary.sourceFiles[0], { name: "sources/A.lean", count: 2 });
+  assert.deepEqual(summary.imports[0], { name: "Mathlib.X", count: 2 });
+  assert.equal(summary.limits.semanticEquivalenceInferred, false);
+});

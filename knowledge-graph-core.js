@@ -118,5 +118,37 @@
     return typeof selectedCaseId === "string" && matches.some((record) => record.case_id === selectedCaseId);
   }
 
-  return Object.freeze({ PIN, parseSha256Sidecar, verifySnapshotHashes, parseCollatzStatement, githubFileUrl, validateGraph, normalizeSearch, matchesSearch, selectionVisibleInResults });
+  function summarizeConnections(records) {
+    if (!Array.isArray(records)) return null;
+    const sourceCounts = new Map();
+    const importCounts = new Map();
+    const declarationCounts = new Map();
+    for (const record of records) {
+      const source = record?.source?.package_path;
+      if (typeof source === "string") sourceCounts.set(source, (sourceCounts.get(source) || 0) + 1);
+      for (const name of record?.dependencies?.imports || []) {
+        if (typeof name === "string") importCounts.set(name, (importCounts.get(name) || 0) + 1);
+      }
+      for (const name of record?.dependencies?.module_local_declarations_referenced || []) {
+        if (typeof name === "string") declarationCounts.set(name, (declarationCounts.get(name) || 0) + 1);
+      }
+    }
+    const ranked = (map) => [...map.entries()]
+      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .map(([name, count]) => ({ name, count }));
+    return Object.freeze({
+      recordCount: records.length,
+      uniqueSourceFiles: sourceCounts.size,
+      imports: ranked(importCounts),
+      sourceFiles: ranked(sourceCounts).slice(0, 10),
+      localDeclarations: ranked(declarationCounts).slice(0, 10),
+      limits: Object.freeze({
+        sourceAndDependencyCountsOnly: true,
+        semanticEquivalenceInferred: false,
+        importedConstantClosureNormalized: false
+      })
+    });
+  }
+
+  return Object.freeze({ PIN, parseSha256Sidecar, verifySnapshotHashes, parseCollatzStatement, githubFileUrl, validateGraph, normalizeSearch, matchesSearch, selectionVisibleInResults, summarizeConnections });
 });
