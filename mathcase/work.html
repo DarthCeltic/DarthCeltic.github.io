@@ -270,10 +270,10 @@
       <div class="result-reading">
         <div>
           <h2 id="geometry-midpoint-title">Why is the midpoint of the longest side equally far from all three corners?</h2>
-          <p>A familiar geometry fact says that the midpoint of a right triangle’s longest side is the same distance from all three corners. MathCase checked the algebra for a right triangle already placed in this coordinate layout.</p>
+          <p>A familiar geometry fact says that the midpoint of a right triangle’s longest side is the same distance from all three corners. MathCase checked the coordinate algebra directly, without assuming the triangle was already axis-aligned.</p>
           <p>Put the corners at <code>A=(0,0)</code>, <code>B=(6,0)</code>, and <code>C=(0,8)</code>. The midpoint of the longest side <code>BC</code> is <code>M=(3,4)</code>. Each squared distance is 25, so each actual distance is 5.</p>
-          <p>Lean checked the same algebra for every pair of positive side lengths in this axis-aligned coordinate model. This is a known geometry result, not a new theorem claim.</p>
-          <a class="result-next" href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/coordinate-right-triangle-midpoint-v1/README.md" target="_blank" rel="noopener noreferrer">Read the proof and replay guide ↗</a>
+          <p>Lean checked the general coordinate statement for any three real points whose two vectors from the right-angle corner have dot product zero. This is a known geometry result, not a new theorem claim.</p>
+          <a class="result-next" href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/coordinate-right-triangle-midpoint-general-v1/README.md" target="_blank" rel="noopener noreferrer">Read the proof and replay guide ↗</a>
         </div>
         <aside class="number-example" aria-label="What changes when the right-angle assumption is removed">
           <p class="example-label">Change one assumption</p>
@@ -284,12 +284,12 @@
       <details class="result-detail">
         <summary>See the exact statement, Lean result, and limits</summary>
         <div class="result-detail-body">
-          <p><strong>Coordinate statement:</strong> for positive real <code>a</code> and <code>b</code>, with <code>A=(0,0)</code>, <code>B=(a,0)</code>, <code>C=(0,b)</code>, and <code>M=(a/2,b/2)</code>, the squared distances <code>MA²</code>, <code>MB²</code>, and <code>MC²</code> are equal.</p>
-          <p><strong>What Lean checked:</strong> the exact source compiled and the axiom audit exited 0 in the R06 replay using Lean 4.33.1 and Mathlib v4.33.1. The printed axioms were <code>[propext, Classical.choice, Quot.sound]</code>; no <code>sorryAx</code> appeared. R06 used a warm pinned Mathlib cache, networking disabled, one CPU, a 2 GiB memory cap, and a 180-second limit per Lean process.</p>
-          <p><strong>What it does not check:</strong> the formal source assumes the triangle is already in this axis-aligned coordinate layout. MathCase has not formalized the rotation-and-translation argument from every Euclidean right triangle to that layout. A fresh public-clone replay and independent mathematical review remain open.</p>
+           <p><strong>Coordinate statement:</strong> for any real-coordinate points <code>A</code>, <code>B</code>, and <code>C</code>, if the vectors from <code>A</code> to <code>B</code> and from <code>A</code> to <code>C</code> have dot product zero, then the midpoint of <code>B,C</code> has equal squared distance to all three points.</p>
+           <p><strong>What Lean checked:</strong> the general source compiled and the public replay plus axiom audit exited 0 using Lean 4.33.1 and the pinned Mathlib lock. The printed axioms were <code>[propext, Classical.choice, Quot.sound]</code>; no <code>sorryAx</code> appeared. The exact receipt and all earlier failures are preserved in the repository.</p>
+           <p><strong>What it does not claim:</strong> this is a formal coordinate theorem for points in <code>ℝ²</code>, not a new geometry result or a formal development of every abstract Euclidean plane.</p>
           <p>The preserved record includes earlier setup failures and timeouts. An earlier receipt contained a <code>sorryAx</code> field that contradicted its printed audit; R06 recompiled the exact same source and audit and reproduced the earlier output hashes. The old receipt was not edited.</p>
           <div class="record-links">
-            <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/coordinate-right-triangle-midpoint-v1/GeometryMidpoint.lean" target="_blank" rel="noopener noreferrer">Open the Lean source ↗</a>
+             <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/coordinate-right-triangle-midpoint-general-v1/GeometryGeneral.lean" target="_blank" rel="noopener noreferrer">Open the Lean source ↗</a>
             <a href="https://github.com/DarthCeltic/MathCase/blob/main/reproduction/CASE_CATALOG.md" target="_blank" rel="noopener noreferrer">Find the local replay command ↗</a>
           </div>
         </div>
