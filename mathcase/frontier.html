@@ -46,8 +46,8 @@
     <section class="research-hero" aria-labelledby="frontier-title">
       <p class="eyebrow">Frontier mathematics</p>
       <h1 id="frontier-title">Which patterns can you avoid?</h1>
-      <p>Color numbers on a line, join dots with colored edges, or split a fraction into smaller pieces. A small example gives you the rules of each puzzle. The six checks below show what happens when you take those rules further.</p>
-      <div class="research-actions"><a class="button button-primary" href="#vdw-2-7">Start with number patterns</a><a class="button button-secondary" href="#ramsey-3-3-3-3">Explore colored graphs</a><a class="button button-secondary" href="#egyptian-28k-21">Split a fraction</a></div>
+      <p>Color numbers on a line, join dots with colored edges, or split a fraction into smaller pieces. A small example gives you the rules of each puzzle. The six main checks below, plus one bounded code-search result, show what happens when you take those rules further.</p>
+      <div class="research-actions"><a class="button button-primary" href="#vdw-2-7">Start with number patterns</a><a class="button button-secondary" href="#ramsey-3-3-3-3">Explore colored graphs</a><a class="button button-secondary" href="#egyptian-28k-21">Split a fraction</a><a class="button button-secondary" href="#c7-five">See a bounded code search</a></div>
     </section>
     <section class="frontier-grid" aria-label="Six research questions">
     <article class="frontier-card" id="vdw-2-7">
@@ -159,6 +159,23 @@
               <a href="tools.html#fraction-identity">Check a 4/21 example in your browser</a>
               <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier-2026-11/egyptian-28k-plus-21">Open Lean sources and receipt ↗</a>
               <a href="https://doi.org/10.1017/S1446788712000468" target="_blank" rel="noopener noreferrer">Elsholtz and Tao on the equation ↗</a>
+            </div>
+    </details>
+    </article>
+    </section>
+    <section class="frontier-grid" aria-label="Additional bounded research">
+    <article class="frontier-card" id="c7-five">
+    <p class="frontier-kicker">Codes · five-symbol words</p>
+    <h2>Can 368 five-symbol words avoid every forbidden pair?</h2>
+    <p>Two words conflict when every coordinate differs by 0, 1, or 6 modulo 7. A valid code keeps every pair out of that conflict pattern.</p>
+    <p>A bounded whole-graph search started from an empty set and tried 12,549 randomized greedy constructions. Its best valid set had 253 words. The known 367-word construction still passes the independent checker.</p>
+    <details class="reading-details">
+    <summary>Inspect the exact result, its limits and sources</summary>
+    <p>The run ended <code>NO_368_FOUND_UNKNOWN</code>. A planted conflicting pair was rejected by the separate checker, which also checked all 67,161 pairs in the known 367-word control. This is a search miss, not a proof that 368 is impossible and not a change to the known <strong>367 ≤ α(C7⁵) ≤ 401</strong> interval.</p>
+            <p class="frontier-next"><strong>Next question.</strong> use an exchange or surplus search that starts from the known 367-word construction without freezing its core.</p>
+            <div class="frontier-links">
+              <a href="https://github.com/DarthCeltic/MathCase/tree/main/research/frontier/c7-five-symbol-greedy-v1">Run the saved search and independent checker ↗</a>
+              <a href="https://arxiv.org/abs/1808.07438" target="_blank" rel="noopener noreferrer">Polak and Schrijver's construction ↗</a>
             </div>
     </details>
     </article>
